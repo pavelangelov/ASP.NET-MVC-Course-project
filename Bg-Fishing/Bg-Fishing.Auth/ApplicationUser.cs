@@ -2,11 +2,12 @@
 using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+
+using Bg_Fishing.Models.Models;
 
 namespace Bg_Fishing.Auth
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : AppUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

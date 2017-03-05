@@ -97,6 +97,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bg-Fishing.Models\Bg-Fishing.Models.csproj">
+      <Project>{85F5D3F9-9B86-4BD0-980E-CEA73929FC63}</Project>
+      <Name>Bg-Fishing.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

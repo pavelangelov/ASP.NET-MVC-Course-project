@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bg_Fishing.Models
 {
-    public class Class1
+    public class Lake
     {
     }
 }

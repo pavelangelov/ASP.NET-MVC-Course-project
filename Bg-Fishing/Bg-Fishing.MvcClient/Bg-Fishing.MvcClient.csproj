@@ -306,6 +306,10 @@
       <Project>{1808E7BA-2D82-4C6A-B828-9352256F75D8}</Project>
       <Name>Bg-Fishing.Auth</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Models\Bg-Fishing.Models.csproj">
+      <Project>{85f5d3f9-9b86-4bd0-980e-cea73929fc63}</Project>
+      <Name>Bg-Fishing.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
