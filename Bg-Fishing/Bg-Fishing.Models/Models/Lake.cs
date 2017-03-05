@@ -10,9 +10,9 @@ namespace Bg_Fishing.Models
     public class Lake : ILake, IIdentifiable
     {
         private string name;
-        private string location;
+        private ILocation location;
 
-        public Lake(string name, string location)
+        public Lake(string name, ILocation location)
         {
             this.Id = Guid.NewGuid().ToString();
             this.Name = name;
@@ -30,6 +30,8 @@ namespace Bg_Fishing.Models
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
+        [MinLength(2)]
+        [MaxLength(25)]
         public string Name
         {
             get
@@ -45,10 +47,15 @@ namespace Bg_Fishing.Models
         }
 
         /// <summary>
+        /// Get or Set additional info about the lake.
+        /// </summary>
+        public string Info { get; set; }
+
+        /// <summary>
         /// Get lake location.
         /// </summary>
         [Required]
-        public string Location
+        public ILocation Location
         {
             get
             {

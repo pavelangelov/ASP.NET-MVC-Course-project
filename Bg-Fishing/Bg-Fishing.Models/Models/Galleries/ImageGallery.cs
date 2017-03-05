@@ -27,6 +27,8 @@ namespace Bg_Fishing.Models.Galleries
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
+        [MinLength(2)]
+        [MaxLength(25)]
         public string Name
         {
             get

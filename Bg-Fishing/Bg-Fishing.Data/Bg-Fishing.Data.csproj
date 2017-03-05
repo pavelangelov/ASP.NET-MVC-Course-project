@@ -53,11 +53,27 @@
   <ItemGroup>
     <Compile Include="FishingContext.cs" />
     <Compile Include="IDatabaseContext.cs" />
+    <Compile Include="Migrations\201703051500003_Init.cs" />
+    <Compile Include="Migrations\201703051500003_Init.Designer.cs">
+      <DependentUpon>201703051500003_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bg-Fishing.Models\Bg-Fishing.Models.csproj">
+      <Project>{85F5D3F9-9B86-4BD0-980E-CEA73929FC63}</Project>
+      <Name>Bg-Fishing.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703051500003_Init.resx">
+      <DependentUpon>201703051500003_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

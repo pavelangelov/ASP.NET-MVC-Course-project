@@ -10,9 +10,14 @@ namespace Bg_Fishing.Models.Contracts
         string Name { get; set; }
 
         /// <summary>
+        /// Get or Set additional info about the lake.
+        /// </summary>
+        string Info { get; set; }
+
+        /// <summary>
         /// Get lake location.
         /// </summary>
-        string Location { get; }
+        ILocation Location { get; }
 
         /// <summary>
         /// Get collection of available fish in the lake.

@@ -2,7 +2,7 @@
 {
     public enum UserType
     {
-        Annonymous = 0,
+        Anonymous = 0,
         Admin = 1,
         Moderator = 2,
         User

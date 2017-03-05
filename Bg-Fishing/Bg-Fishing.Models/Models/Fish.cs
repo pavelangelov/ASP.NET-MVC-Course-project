@@ -17,6 +17,7 @@ namespace Bg_Fishing.Models
         {
             this.Id = Guid.NewGuid().ToString();
             this.Name = name;
+            this.FishType = fishType;
             this.Lakes = new HashSet<Lake>();
         }
 
@@ -27,6 +28,8 @@ namespace Bg_Fishing.Models
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
+        [MinLength(2)]
+        [MaxLength(25)]
         public string Name
         {
             get
@@ -64,6 +67,11 @@ namespace Bg_Fishing.Models
         /// Get fish type.
         /// </summary>
         public FishType FishType { get; private set; }
+
+        /// <summary>
+        /// Get or Set image url.
+        /// </summary>
+        public string ImageUrl { get; set; }
 
         /// <summary>
         /// Get collection of lakes where this fish is available.

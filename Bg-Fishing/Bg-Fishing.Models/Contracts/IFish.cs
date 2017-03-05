@@ -22,6 +22,11 @@ namespace Bg_Fishing.Models.Contracts
         FishType FishType { get; }
 
         /// <summary>
+        /// Get or Set image url.
+        /// </summary>
+        string ImageUrl { get; set; }
+
+        /// <summary>
         /// Get collection of lakes where this fish is available.
         /// </summary>
         ICollection<Lake> Lakes { get; }
