@@ -19,12 +19,12 @@ namespace Bg_Fishing.Models
         }
 
         /// <summary>
-        /// Get Lake`s Id.
+        /// Get lake Id.
         /// </summary>
         public string Id { get; private set; }
 
         /// <summary>
-        /// Get or Set Lake`s name.
+        /// Get or Set lake name.
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
@@ -43,7 +43,7 @@ namespace Bg_Fishing.Models
         }
 
         /// <summary>
-        /// Get Lake location.
+        /// Get lake location.
         /// </summary>
         [Required]
         public string Location

@@ -20,7 +20,7 @@ namespace Bg_Fishing.Models.Galleries
         public string Id { get; private set; }
         
         /// <summary>
-        /// Get Gallery`s name.
+        /// Get gallery name.
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
@@ -40,7 +40,7 @@ namespace Bg_Fishing.Models.Galleries
         }
 
         /// <summary>
-        /// Get or Set Lake`s Id.
+        /// Get or Set lake Id.
         /// </summary>
         [Required]
         public string LakeId { get; set; }

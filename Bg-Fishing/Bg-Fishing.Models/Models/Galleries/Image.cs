@@ -12,12 +12,12 @@ namespace Bg_Fishing.Models.Galleries
         }
         
         /// <summary>
-        /// Get Image Id.
+        /// Get image Id.
         /// </summary>
         public string Id { get; private set; }
 
         /// <summary>
-        /// Get Image url.
+        /// Get image url.
         /// </summary>
         [Required]
         public string ImageUrl { get; private set; }

@@ -1,9 +1,5 @@
-﻿using Bg_Fishing.Utils.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bg_Fishing.Models.Galleries
 {
@@ -17,12 +13,22 @@ namespace Bg_Fishing.Models.Galleries
             this.PostedOn = postedon;
         }
 
-        public string Id { get; set; }
+        public string Id { get; private set; }
 
+        /// <summary>
+        /// Get or Set video title.
+        /// </summary>
         public string Title { get; set; }
 
-        public string Url { get; set; }
+        /// <summary>
+        /// Get video url.
+        /// </summary>
+        [Required]
+        public string Url { get; private set; }
 
-        public DateTime PostedOn { get; set; }
+        /// <summary>
+        /// Get video posted date.
+        /// </summary>
+        public DateTime PostedOn { get; private set; }
     }
 }

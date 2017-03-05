@@ -22,7 +22,7 @@ namespace Bg_Fishing.Models
         public string Id { get; private set; }
 
         /// <summary>
-        /// Get Fish`s name.
+        /// Get fish name.
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
