@@ -1,11 +1,9 @@
-﻿using Bg_Fishing.Models.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Bg_Fishing.Models.Enums;
 
 namespace Bg_Fishing.Models
 {
@@ -23,6 +21,9 @@ namespace Bg_Fishing.Models
 
         public string Id { get; private set; }
 
+        /// <summary>
+        /// Get Fish`s name.
+        /// </summary>
         [Required]
         [Index(IsUnique = true)]
         public string Name
@@ -40,6 +41,9 @@ namespace Bg_Fishing.Models
             }
         }
 
+        /// <summary>
+        /// Get or Set the additional info about the fish.
+        /// </summary>
         public string Info
         {
             get
@@ -55,8 +59,14 @@ namespace Bg_Fishing.Models
             }
         }
 
-        public FishType FishType { get; set; }
+        /// <summary>
+        /// Get fish type.
+        /// </summary>
+        public FishType FishType { get; private set; }
 
+        /// <summary>
+        /// Get collection of lakes where this fish is available.
+        /// </summary>
         public virtual ICollection<Lake> Lakes { get; set; }
     }
 }

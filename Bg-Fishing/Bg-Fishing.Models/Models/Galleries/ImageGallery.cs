@@ -3,28 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bg_Fishing.Models
+namespace Bg_Fishing.Models.Galleries
 {
-    public class Lake
+    public class ImageGallery
     {
         private string name;
-        private string location;
 
-        public Lake(string name, string location)
+        public ImageGallery(string name, string lakeId)
         {
             this.Id = Guid.NewGuid().ToString();
             this.Name = name;
-            this.Location = location;
-            this.Fish = new HashSet<Fish>();
+            this.LakeId = lakeId;
+            this.Images = new HashSet<Image>();
         }
 
-        /// <summary>
-        /// Get Lake`s Id.
-        /// </summary>
         public string Id { get; private set; }
-
+        
         /// <summary>
-        /// Get or Set Lake`s name.
+        /// Get Gallery`s name.
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
@@ -38,31 +34,22 @@ namespace Bg_Fishing.Models
             set
             {
                 // TODO: Validate
+
                 this.name = value;
             }
         }
 
         /// <summary>
-        /// Get Lake location.
+        /// Get or Set Lake`s Id.
         /// </summary>
         [Required]
-        public string Location
-        {
-            get
-            {
-                return this.location;
-            }
+        public string LakeId { get; set; }
 
-            private set
-            {
-                // TODO: Validate
-                this.location = value;
-            }
-        }
+        public virtual Lake Lake { get; set; }
 
         /// <summary>
-        /// Get collection of available fish in the lake.
+        /// Get all images from the gallery.
         /// </summary>
-        public virtual ICollection<Fish> Fish { get; private set; }
+        public virtual ICollection<Image> Images { get; private set; }
     }
 }

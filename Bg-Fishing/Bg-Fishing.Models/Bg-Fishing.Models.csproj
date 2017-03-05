@@ -85,7 +85,11 @@
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Fish.cs" />
+    <Compile Include="Models\Galleries\ImageGallery.cs" />
+    <Compile Include="Models\Galleries\Image.cs" />
+    <Compile Include="Models\Galleries\Video.cs" />
     <Compile Include="Models\Lake.cs" />
+    <Compile Include="Models\Galleries\VideoGallery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contracts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bg-Fishing.Utils\Bg-Fishing.Utils.csproj">
+      <Project>{53AFDE11-A936-4386-BB69-F695F417E7E5}</Project>
+      <Name>Bg-Fishing.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

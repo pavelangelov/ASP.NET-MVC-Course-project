@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
 
-using Bg_Fishing.Models.Models;
+using Bg_Fishing.Models;
 
 namespace Bg_Fishing.Auth
 {

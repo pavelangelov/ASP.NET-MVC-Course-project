@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Bg_Fishing.Models.Models
+namespace Bg_Fishing.Models
 {
     public class AppUser : IdentityUser
     {
@@ -23,8 +23,14 @@ namespace Bg_Fishing.Models.Models
             this.UserName = userName;
         }
 
+        /// <summary>
+        /// Get or Set user type.
+        /// </summary>
         public UserType UserType { get; set; }
 
+        /// <summary>
+        /// Get or Set user age.
+        /// </summary>
         public int Age
         {
             get
@@ -39,6 +45,9 @@ namespace Bg_Fishing.Models.Models
             }
         }
 
+        /// <summary>
+        /// Get or Set first name.
+        /// </summary>
         [Required]
         public string FirstName
         {
@@ -55,6 +64,9 @@ namespace Bg_Fishing.Models.Models
             }
         }
 
+        /// <summary>
+        /// Get or Set middle name.
+        /// </summary>
         public string MiddleName
         {
             get
@@ -70,6 +82,9 @@ namespace Bg_Fishing.Models.Models
             }
         }
 
+        /// <summary>
+        /// Get or Set last name.
+        /// </summary>
         [Required]
         public string LastName
         {
@@ -86,6 +101,9 @@ namespace Bg_Fishing.Models.Models
             }
         }
 
+        /// <summary>
+        /// Get or Set avatar.
+        /// </summary>
         public string AvatarUrl { get; set; }
     }
 }
