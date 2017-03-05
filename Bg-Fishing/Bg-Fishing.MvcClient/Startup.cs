@@ -9,6 +9,8 @@ namespace Bg_Fishing.MvcClient
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+            app.MapSignalR();
         }
     }
 }

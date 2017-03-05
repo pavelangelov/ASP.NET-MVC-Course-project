@@ -10,6 +10,9 @@ namespace Bg_Fishing.MvcClient.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Microsoft.AspNet.SignalR;
+    using SignalrDependencyResolver;
+    using System.Web.Http;
 
     public static class NinjectWebCommon 
     {
@@ -45,7 +48,10 @@ namespace Bg_Fishing.MvcClient.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
+                RegisterWebApiResolver(kernel);
+                RegisterSignalr(kernel);
                 RegisterServices(kernel);
+
                 return kernel;
             }
             catch
@@ -53,6 +59,24 @@ namespace Bg_Fishing.MvcClient.App_Start
                 kernel.Dispose();
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Register Ninject as Dependency resolver for WebApi Controllers
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
+        private static void RegisterWebApiResolver(IKernel kernel)
+        {
+            GlobalConfiguration.Configuration.DependencyResolver = kernel.Get<System.Web.Http.Dependencies.IDependencyResolver>();
+        }
+
+        /// <summary>
+        /// Register Ninject as Dependency resolver for Signalr hubs
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
+        private static void RegisterSignalr(IKernel kernel)
+        {
+            GlobalHost.DependencyResolver = new NinjectSignalrDependencyResolver(kernel);
         }
 
         /// <summary>
