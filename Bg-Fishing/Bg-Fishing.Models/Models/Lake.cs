@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using Bg_Fishing.Models.Contracts;
+
 namespace Bg_Fishing.Models
 {
-    public class Lake
+    public class Lake : ILake, IIdentifiable
     {
         private string name;
         private string location;

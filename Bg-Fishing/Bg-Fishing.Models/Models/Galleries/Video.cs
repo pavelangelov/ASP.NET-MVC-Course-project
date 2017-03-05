@@ -1,9 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Models.Contracts.Galleries;
+
 namespace Bg_Fishing.Models.Galleries
 {
-    public class Video
+    public class Video : IVideo, IIdentifiable
     {
         public Video(string title, string url, DateTime postedon)
         {

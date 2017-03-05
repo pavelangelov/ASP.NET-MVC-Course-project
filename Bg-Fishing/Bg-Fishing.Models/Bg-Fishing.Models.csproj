@@ -81,6 +81,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Galleries\IImageGallery.cs" />
+    <Compile Include="Contracts\Galleries\IVideo.cs" />
+    <Compile Include="Contracts\Galleries\IVideoGallery.cs" />
+    <Compile Include="Contracts\IAppUser.cs" />
+    <Compile Include="Contracts\IFish.cs" />
+    <Compile Include="Contracts\IIdentifiable.cs" />
+    <Compile Include="Contracts\Galleries\IImage.cs" />
+    <Compile Include="Contracts\ILake.cs" />
     <Compile Include="Enums\FishType.cs" />
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -96,9 +104,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Bg-Fishing.Utils\Bg-Fishing.Utils.csproj">
       <Project>{53AFDE11-A936-4386-BB69-F695F417E7E5}</Project>

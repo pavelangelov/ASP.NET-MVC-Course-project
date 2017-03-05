@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Models.Contracts.Galleries;
+
 namespace Bg_Fishing.Models.Galleries
 {
-    public class ImageGallery
+    public class ImageGallery : IImageGallery, IIdentifiable
     {
         private string name;
 

@@ -3,9 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 using Microsoft.AspNet.Identity.EntityFramework;
 
+using Bg_Fishing.Models.Contracts;
+
 namespace Bg_Fishing.Models
 {
-    public class AppUser : IdentityUser
+    public class AppUser : IdentityUser, IAppUser
     {
         private string firstName;
         private string middleName;

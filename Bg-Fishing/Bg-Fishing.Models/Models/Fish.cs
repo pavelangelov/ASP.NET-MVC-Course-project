@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using Bg_Fishing.Models.Enums;
+using Bg_Fishing.Models.Contracts;
 
 namespace Bg_Fishing.Models
 {
-    public class Fish
+    public class Fish : IFish, IIdentifiable
     {
         private string name;
         private string info;
@@ -33,7 +34,7 @@ namespace Bg_Fishing.Models
                 return this.name;
             }
 
-            set
+            private set
             {
                 // TODO: Validate
 
@@ -67,6 +68,6 @@ namespace Bg_Fishing.Models
         /// <summary>
         /// Get collection of lakes where this fish is available.
         /// </summary>
-        public virtual ICollection<Lake> Lakes { get; set; }
+        public virtual ICollection<Lake> Lakes { get; private set; }
     }
 }
