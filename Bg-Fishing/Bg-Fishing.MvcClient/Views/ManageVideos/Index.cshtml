@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Manage videos";
+}
+
+<div class="container">
+    <button id="show-upload" class="btn btn-success">Добавяне ново видео</button>
+    <button id="show-remove" class="btn btn-success">Премахване на видео</button>
+    <p id="result"></p>
+    <hr />
+
+    <div id="content">
+        <div class="add-video-container" hidden>
+            <form class="form-group col-sm-8">
+                <label for="video-url" class="label label-success">Линк към видеото</label>
+                <input type="text" id="video-url" class="form-control" value="" />
+                <input type="submit" id="video-upload" class="btn-small btn-primary" value="Добави" />
+            </form>
+        </div>
+        <div class="remove-video-container" hidden>
+            <h3>Премахване на видео от галерията.</h3>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#show-upload').on('click', (ev) => {
+        ev.preventDefault();
+        $('.add-video-container').show();
+        $('.remove-video-container').hide();
+    })
+
+    $('#show-remove').on('click', (ev) => {
+        ev.preventDefault();
+        $('.remove-video-container').show();
+        $('.add-video-container').hide();
+    })
+
+    $('#video-upload').on('click', (ev) => {
+        ev.preventDefault();
+        let videoUrl = $('#video-url').val();
+        if (videoUrl) {
+            $.ajax({
+                method: 'POST',
+                url: '@Url.Action("Add")',
+                data: { 'url': videoUrl },
+                cache: false,
+                success: (data) => {
+                    if (data.status === 'success') {
+                        $('#result').removeClass('text-danger').addClass('text-success').html(data.message);
+                    } else {
+                        $('#result').removeClass('text-success').addClass('text-danger').html(data.message);
+                    }
+                },
+                error: (err) => {
+                    $('#result').removeClass('text-success').addClass('text-danger').html(err.message);
+                }
+            })
+        }
+    })
+</script>

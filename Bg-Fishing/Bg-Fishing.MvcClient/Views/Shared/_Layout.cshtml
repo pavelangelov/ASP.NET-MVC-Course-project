@@ -8,6 +8,9 @@
 
 </head>
 <body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
     <div class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid page-scroll">
             <div class="navbar-header">
@@ -36,8 +39,6 @@
 
     @Html.Partial("_FooterPartial")
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
 
         <!-- Theme JavaScript -->
