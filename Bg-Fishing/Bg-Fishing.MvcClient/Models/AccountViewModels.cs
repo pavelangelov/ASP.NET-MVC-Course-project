@@ -79,6 +79,20 @@ namespace Bg_Fishing.MvcClient.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "First name must be between 2 and 25 symbols.", MinimumLength = 2)]
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+        
+        [StringLength(25, ErrorMessage = "Middle name must be less than 25 symbols.")]
+        [Display(Name = "Middle name")]
+        public string MiddleName { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "Last name must be between 2 and 25 symbols.", MinimumLength = 2)]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
     }
 
     public class ResetPasswordViewModel

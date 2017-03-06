@@ -1,13 +1,35 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@{ 
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
 
-@Html.Partial("_ContactHeaderPartial")
+</head>
+<body>
+    @Html.Partial("_NavPartial")
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <p>Want to get in touch with me? Fill out the form below to send me a message and I will try to get back to you within 24 hours!</p>
+    @Html.Partial("_ContactHeaderPartial")
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Want to get in touch with me? Fill out the form below to send me a message and I will try to get back to you within 24 hours!</p>
+            </div>
         </div>
     </div>
-</div>
+
+    @Html.Partial("_FooterPartial")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <!-- Theme JavaScript -->
+    <script src="~/Scripts/themes-scripts/clean-blog.js"></script>
+</body>
+
+</html>

@@ -3,30 +3,41 @@
     ViewBag.Title = "Create a new account.";
 }
 
-@Html.Partial("_CommonHeaderPartial")
-
-<div class="container">
+<div class="container-fluid">
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         <hr />
-        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            <div class="col-md-offset-2 col-md-4">
+                @Html.LabelFor(m => m.Email, new { @class = "label label-default", @for = "email" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "email" })
+                @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            <div class="col-md-offset-2 col-md-4">
+                @Html.LabelFor(m => m.Password, new { @class = "label label-default", @for = "password" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @id = "password" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "label label-default", @for = "confirm-password" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @id = "confirm-password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            <div class="col-md-offset-2 col-md-4">
+                @Html.LabelFor(m => m.FirstName, new { @class = "label label-default", @for = "firstname" })
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @id = "firstname" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.LastName, new { @class = "label label-default", @for = "lastname" })
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @id = "lastname" })
+                @Html.ValidationMessageFor(m => m.LastName)
             </div>
         </div>
         <div class="form-group">
