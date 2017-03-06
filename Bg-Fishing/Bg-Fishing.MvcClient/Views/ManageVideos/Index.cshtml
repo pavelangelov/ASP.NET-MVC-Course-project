@@ -12,9 +12,25 @@
     <div id="content">
         <div class="add-video-container" hidden>
             <form class="form-group col-sm-8">
-                <label for="video-url" class="label label-success">Линк към видеото</label>
-                <input type="text" id="video-url" class="form-control" value="" />
-                <input type="submit" id="video-upload" class="btn-small btn-primary" value="Добави" />
+                <label for="category" class="label label-success">Избери категория</label>
+                <div id="category">
+                    <div class="col-sm-6">
+                        <select id="category-select" class="form-control">
+                            <option value="">-------</option>
+                            <option value="Забавни">Забавни</option>
+                            <option value="Уроци">Уроци</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-8">
+                        <label for="category-name" class="label label-success">Създай нова категотия</label>
+                        <input type="text" id="category-name" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label for="video-url" class="label label-success">Линк към видеото</label>
+                    <input type="text" id="video-url" class="form-control" value="" />
+                    <input type="submit" id="video-upload" class="btn-small btn-primary" value="Добави" />
+                </div>
             </form>
         </div>
         <div class="remove-video-container" hidden>
@@ -40,10 +56,15 @@
         ev.preventDefault();
         let videoUrl = $('#video-url').val();
         if (videoUrl) {
+            var selectedCategory = $('#category-select').val() || $('#category-name').val();
+            if (!selectedCategory) {
+                return;
+            }
+
             $.ajax({
                 method: 'POST',
                 url: '@Url.Action("Add")',
-                data: { 'url': videoUrl },
+                data: { 'url': videoUrl, 'categoryName': selectedCategory },
                 cache: false,
                 success: (data) => {
                     if (data.status === 'success') {

@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,8 +50,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="Contracts\IVideoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\VideoService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bg-Fishing.Data\Bg-Fishing.Data.csproj">
+      <Project>{E84D8AE0-C348-4B83-8A01-9086799FF3B8}</Project>
+      <Name>Bg-Fishing.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Models\Bg-Fishing.Models.csproj">
+      <Project>{85F5D3F9-9B86-4BD0-980E-CEA73929FC63}</Project>
+      <Name>Bg-Fishing.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Utils\Bg-Fishing.Utils.csproj">
+      <Project>{53AFDE11-A936-4386-BB69-F695F417E7E5}</Project>
+      <Name>Bg-Fishing.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,13 @@ namespace Bg_Fishing.Models
 {
     public class Location : ILocation, IIdentifiable
     {
+        public Location()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public Location(double latitude, double longitude)
+            : this()
         {
             this.Id = Guid.NewGuid().ToString();
             this.Latitude = latitude;

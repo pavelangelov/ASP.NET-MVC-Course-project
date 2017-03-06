@@ -12,9 +12,14 @@ namespace Bg_Fishing.Models.Galleries
     {
         private string name;
 
-        public ImageGallery(string name, string lakeId)
+        public ImageGallery()
         {
             this.Id = Guid.NewGuid().ToString();
+        }
+
+        public ImageGallery(string name, string lakeId)
+            : this()
+        {
             this.Name = name;
             this.LakeId = lakeId;
             this.Images = new HashSet<Image>();

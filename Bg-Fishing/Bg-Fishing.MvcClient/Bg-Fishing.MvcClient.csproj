@@ -203,6 +203,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectModules\FishingServicesNinjectModule.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SignalrDependencyResolver\NinjectSignalrDependencyResolver.cs" />
@@ -349,7 +350,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="App_Start\NinjectModules\" />
     <Folder Include="Hubs\" />
     <Folder Include="Models\ViewModels\" />
   </ItemGroup>
@@ -361,9 +361,21 @@
       <Project>{1808E7BA-2D82-4C6A-B828-9352256F75D8}</Project>
       <Name>Bg-Fishing.Auth</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Data\Bg-Fishing.Data.csproj">
+      <Project>{E84D8AE0-C348-4B83-8A01-9086799FF3B8}</Project>
+      <Name>Bg-Fishing.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bg-Fishing.Models\Bg-Fishing.Models.csproj">
       <Project>{85f5d3f9-9b86-4bd0-980e-cea73929fc63}</Project>
       <Name>Bg-Fishing.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Services\Bg-Fishing.Services.csproj">
+      <Project>{6D2C8DA8-A126-439B-A0D2-F486E8C149B1}</Project>
+      <Name>Bg-Fishing.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Utils\Bg-Fishing.Utils.csproj">
+      <Project>{53AFDE11-A936-4386-BB69-F695F417E7E5}</Project>
+      <Name>Bg-Fishing.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -12,9 +12,14 @@ namespace Bg_Fishing.Models
         private string name;
         private ILocation location;
 
-        public Lake(string name, ILocation location)
+        public Lake()
         {
             this.Id = Guid.NewGuid().ToString();
+        }
+
+        public Lake(string name, ILocation location)
+            : this()
+        {
             this.Name = name;
             this.Location = location;
             this.Fish = new HashSet<Fish>();

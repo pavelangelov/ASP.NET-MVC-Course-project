@@ -8,9 +8,14 @@ namespace Bg_Fishing.Models.Galleries
 {
     public class Image : IImage, IIdentifiable
     {
-        public Image(string imageUrl)
+        public Image()
         {
             this.Id = Guid.NewGuid().ToString();
+        }
+
+        public Image(string imageUrl)
+            : this()
+        {
             this.ImageUrl = imageUrl;
         }
         

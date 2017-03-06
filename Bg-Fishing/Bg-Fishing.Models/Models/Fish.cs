@@ -13,9 +13,14 @@ namespace Bg_Fishing.Models
         private string name;
         private string info;
 
-        public Fish(string name, FishType fishType)
+        public Fish()
         {
             this.Id = Guid.NewGuid().ToString();
+        }
+
+        public Fish(string name, FishType fishType)
+            : this()
+        {
             this.Name = name;
             this.FishType = fishType;
             this.Lakes = new HashSet<Lake>();

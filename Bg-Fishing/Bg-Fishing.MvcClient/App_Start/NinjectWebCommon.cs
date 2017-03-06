@@ -13,6 +13,7 @@ namespace Bg_Fishing.MvcClient.App_Start
     using Microsoft.AspNet.SignalR;
     using SignalrDependencyResolver;
     using System.Web.Http;
+    using NinjectModules;
 
     public static class NinjectWebCommon 
     {
@@ -83,6 +84,7 @@ namespace Bg_Fishing.MvcClient.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Load(new FishingServicesNinjectModule());
         }        
     }
 }

@@ -8,9 +8,14 @@ namespace Bg_Fishing.Models.Galleries
 {
     public class Video : IVideo, IIdentifiable
     {
-        public Video(string title, string url, DateTime postedon)
+        public Video()
         {
             this.Id = Guid.NewGuid().ToString();
+        }
+
+        public Video(string title, string url, DateTime postedon)
+            : this()
+        {
             this.Title = title;
             this.Url = url;
             this.PostedOn = postedon;
