@@ -21,6 +21,13 @@ namespace Bg_Fishing.Services
             this.dbContext = dbContext;
         }
 
+        public IEnumerable<string> GetAll()
+        {
+            var names = this.dbContext.VideoGalleries.Select(g => g.Name);
+
+            return names;
+        }
+
         public void AddVideoToGallery(string galleryName, Video video)
         {
             var gallery = this.dbContext.VideoGalleries.FirstOrDefault(g => g.Name == galleryName);

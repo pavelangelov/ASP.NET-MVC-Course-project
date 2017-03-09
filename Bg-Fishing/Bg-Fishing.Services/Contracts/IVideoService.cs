@@ -9,6 +9,8 @@ namespace Bg_Fishing.Services.Contracts
 {
     public interface IVideoService
     {
+        IEnumerable<string> GetAll();
+
         void AddVideoToGallery(string galleryName, Video video);
 
         bool RemoveVideoFromGallery(string galleryName, string videoId);

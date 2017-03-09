@@ -1,4 +1,4 @@
-﻿
+﻿@model Bg_Fishing.MvcClient.Models.ViewModels.Moderator.AddVideoViewModel
 @{
     ViewBag.Title = "Manage videos";
 }
@@ -10,28 +10,34 @@
     <hr />
 
     <div id="content">
-        <div class="add-video-container" hidden>
-            <form class="form-group col-sm-8">
-                <label for="category" class="label label-success">Избери категория</label>
+        <div class="add-video-container col-sm-8">
+            @using (@Html.BeginForm())
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div id="category">
                     <div class="col-sm-6">
-                        <select id="category-select" class="form-control">
-                            <option value="">-------</option>
-                            <option value="Забавни">Забавни</option>
-                            <option value="Уроци">Уроци</option>
-                        </select>
+                        @Html.LabelFor(m => m.GalleryName, new { @class = "label label-success" })
+                        @Html.DropDownListFor(m => m.GalleryName, Model.GalleryNames, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.GalleryName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-sm-8">
-                        <label for="category-name" class="label label-success">Създай нова категотия</label>
-                        <input type="text" id="category-name" class="form-control" value="" />
+                        @Html.LabelFor(m => m.NewGalleryName, new { @class = "label label-success" })
+                        @Html.TextBoxFor(m => m.NewGalleryName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.NewGalleryName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.LabelFor(m => m.VideoTitle, new { @class = "label label-success" })
+                        @Html.TextBoxFor(m => m.VideoTitle, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.VideoTitle, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <label for="video-url" class="label label-success">Линк към видеото</label>
-                    <input type="text" id="video-url" class="form-control" value="" />
+                    @Html.LabelFor(m => m.VideoUrl, new { @class = "label label-success" })
+                    @Html.TextBoxFor(m => m.VideoUrl, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VideoUrl, "", new { @class = "text-danger" })
                     <input type="submit" id="video-upload" class="btn-small btn-primary" value="Добави" />
                 </div>
-            </form>
+            }
         </div>
         <div class="remove-video-container" hidden>
             <h3>Премахване на видео от галерията.</h3>
@@ -40,43 +46,23 @@
 </div>
 
 <script>
-    $('#show-upload').on('click', (ev) => {
-        ev.preventDefault();
-        $('.add-video-container').show();
-        $('.remove-video-container').hide();
-    })
-
-    $('#show-remove').on('click', (ev) => {
-        ev.preventDefault();
-        $('.remove-video-container').show();
-        $('.add-video-container').hide();
-    })
-
     $('#video-upload').on('click', (ev) => {
         ev.preventDefault();
-        let videoUrl = $('#video-url').val();
-        if (videoUrl) {
-            var selectedCategory = $('#category-select').val() || $('#category-name').val();
-            if (!selectedCategory) {
-                return;
-            }
-
-            $.ajax({
-                method: 'POST',
-                url: '@Url.Action("Add")',
-                data: { 'url': videoUrl, 'categoryName': selectedCategory },
-                cache: false,
-                success: (data) => {
-                    if (data.status === 'success') {
-                        $('#result').removeClass('text-danger').addClass('text-success').html(data.message);
-                    } else {
-                        $('#result').removeClass('text-success').addClass('text-danger').html(data.message);
-                    }
-                },
-                error: (err) => {
-                    $('#result').removeClass('text-success').addClass('text-danger').html(err.message);
+        $.ajax({
+            method: 'POST',
+            url: '@Url.Action("Index")',
+            data: $('form').serialize(),
+            cache: false,
+            success: (data) => {
+                if (data.status === 'success') {
+                    $('#result').removeClass('text-danger').addClass('text-success').html(data.message);
+                } else {
+                    $('#result').removeClass('text-success').addClass('text-danger').html(data.message);
                 }
-            })
-        }
+            },
+            error: (err) => {
+                $('#result').removeClass('text-success').addClass('text-danger').html(err.message);
+            }
+        })
     })
 </script>

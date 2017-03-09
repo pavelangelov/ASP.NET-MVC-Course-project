@@ -20,7 +20,7 @@
                 </button>
                 @Html.ActionLink("Bg-Fishing", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse"  id="bs-example-navbar-collapse-1">
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -39,10 +39,17 @@
 
     @Html.Partial("_FooterPartial")
 
-        @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
 
-        <!-- Theme JavaScript -->
-        <script src="~/Scripts/themes-scripts/clean-blog.js"></script>
+    <!-- Theme JavaScript -->
+    <script src="~/Scripts/themes-scripts/clean-blog.js"></script>
+
+    <!-- Site scripts-->
+    <script>
+        $(document).ready(function() {
+            $(this).scrollTop(0);
+        })
+    </script>
 </body>
 
 </html>
