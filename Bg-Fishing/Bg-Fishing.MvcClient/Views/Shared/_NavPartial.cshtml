@@ -1,20 +1,19 @@
-﻿
-<div class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                Menu <i class="fa fa-bars"></i>
-            </button>
-            @Html.ActionLink("Bg-Fishing", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-            @Html.Partial("_LoginPartial")
-        </div>
-    </div>
-</div>
+﻿<li class="dropdown">
+        <a id="options-dropdown" class="dropdown-toggle" role="button" data-toggle="dropdown">
+            Опции
+            <span class="glyphicon glyphicon-list"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="options-dropdown">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="dropdown-header">Менажиране на галериите</li>
+                <li>
+                    @Html.ActionLink("Ново видео", "Index", "AddVideo")
+                </li>
+            }
+            else
+            {
+
+            }
+        </ul>
+</li>

@@ -15,23 +15,23 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div id="category">
                     <div class="col-sm-6">
-                        @Html.LabelFor(m => m.GalleryName, new { @class = "label label-success" })
+                        @Html.LabelFor(m => m.GalleryName, new { @class = "label label-primary" })
                         @Html.DropDownListFor(m => m.GalleryName, Model.GalleryNames, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.GalleryName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-sm-8">
-                        @Html.LabelFor(m => m.NewGalleryName, new { @class = "label label-success" })
+                        @Html.LabelFor(m => m.NewGalleryName, new { @class = "label label-primary" })
                         @Html.TextBoxFor(m => m.NewGalleryName, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.NewGalleryName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-sm-8">
-                        @Html.LabelFor(m => m.VideoTitle, new { @class = "label label-success" })
+                        @Html.LabelFor(m => m.VideoTitle, new { @class = "label label-primary" })
                         @Html.TextBoxFor(m => m.VideoTitle, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.VideoTitle, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    @Html.LabelFor(m => m.VideoUrl, new { @class = "label label-success" })
+                    @Html.LabelFor(m => m.VideoUrl, new { @class = "label label-primary" })
                     @Html.TextBoxFor(m => m.VideoUrl, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.VideoUrl, "", new { @class = "text-danger" })
                     <input type="submit" id="video-upload" class="btn-small btn-primary" value="Добави" />
