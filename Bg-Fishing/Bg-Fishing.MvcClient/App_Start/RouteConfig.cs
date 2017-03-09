@@ -13,6 +13,14 @@ namespace Bg_Fishing.MvcClient
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.LowercaseUrls = true;
+
+            routes.MapRoute(
+                name: "AddVideo",
+                url: "add/video",
+                defaults: new { controller = "AddVideo", action = "Index" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
