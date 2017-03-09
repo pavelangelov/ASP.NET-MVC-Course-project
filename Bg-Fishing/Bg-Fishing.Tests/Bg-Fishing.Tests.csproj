@@ -39,6 +39,7 @@
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Moq, Version=4.7.1.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.7.1\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
@@ -62,6 +63,7 @@
   <ItemGroup>
     <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\GetIndex_Should.cs" />
+    <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\PostIndex_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bg-Fishing.Models\Bg-Fishing.Models.csproj">
+      <Project>{85F5D3F9-9B86-4BD0-980E-CEA73929FC63}</Project>
+      <Name>Bg-Fishing.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bg-Fishing.MvcClient\Bg-Fishing.MvcClient.csproj">
       <Project>{50FFB861-DEFB-4C94-AAD5-901E8E9A8D18}</Project>
       <Name>Bg-Fishing.MvcClient</Name>
