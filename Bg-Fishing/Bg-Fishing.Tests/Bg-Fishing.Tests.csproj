@@ -60,8 +60,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="MvcClient\Controllers\Moderator\ManageVideosControllerTests\Constructor_Should.cs" />
-    <Compile Include="MvcClient\Controllers\Moderator\ManageVideosControllerTests\GetIndex_Should.cs" />
+    <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\Constructor_Should.cs" />
+    <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\GetIndex_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

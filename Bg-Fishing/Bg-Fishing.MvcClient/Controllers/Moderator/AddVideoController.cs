@@ -1,21 +1,20 @@
-﻿using Bg_Fishing.Models.Galleries;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
+
+using Bg_Fishing.Models.Galleries;
 using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace Bg_Fishing.MvcClient.Controllers.Moderator
 {
     [Authorize(Roles = "Moderator")]
-    public class ManageVideosController : Controller
+    public class AddVideoController : Controller
     {
         private IVideoService videoService;
 
-        public ManageVideosController(IVideoService videoService)
+        public AddVideoController(IVideoService videoService)
         {
             Validator.ValidateForNull(videoService, "videoService");
 

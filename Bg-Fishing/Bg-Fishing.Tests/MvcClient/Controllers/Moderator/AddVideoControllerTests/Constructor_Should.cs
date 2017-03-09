@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Bg_Fishing.MvcClient.Controllers.Moderator;
 using Bg_Fishing.Services.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.ManageVideosControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTests
 {
     [TestFixture]
     public class Constructor_Should
@@ -15,7 +15,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.ManageVideosControlle
         public void ThrowArgumentNullException_IfPassedVideoService_IsNull()
         {
             // Arrange, Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new ManageVideosController(null)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new AddVideoController(null)).Message;
             StringAssert.Contains("videoService", message);
         }
 
@@ -26,7 +26,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.ManageVideosControlle
             var mockedService = new Mock<IVideoService>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new ManageVideosController(mockedService.Object));
+            Assert.DoesNotThrow(() => new AddVideoController(mockedService.Object));
         }
     }
 }

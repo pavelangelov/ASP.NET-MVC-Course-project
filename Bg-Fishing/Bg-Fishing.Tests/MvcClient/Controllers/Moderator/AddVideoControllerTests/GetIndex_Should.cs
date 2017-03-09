@@ -8,7 +8,7 @@ using Bg_Fishing.MvcClient.Controllers.Moderator;
 using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
 using Bg_Fishing.Services.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.ManageVideosControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTests
 {
     [TestFixture]
     public class GetIndex_Should
@@ -20,7 +20,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.ManageVideosControlle
             var galleryNames = new string[] { "Test", "Test2" };
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetAll()).Returns(galleryNames).Verifiable();
-            var controller = new ManageVideosController(mockedService.Object);
+            var controller = new AddVideoController(mockedService.Object);
 
             // Act
             var view = controller.Index() as ViewResult;
