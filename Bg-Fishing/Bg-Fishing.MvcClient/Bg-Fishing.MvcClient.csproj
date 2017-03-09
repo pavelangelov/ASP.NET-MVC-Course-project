@@ -346,6 +346,7 @@
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavPartial.cshtml" />
     <Content Include="Views\AddVideo\Index.cshtml" />
+    <Content Include="Views\Shared\RoleNavigations\_Moderator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

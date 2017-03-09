@@ -1,19 +1,34 @@
-﻿<li class="dropdown">
-        <a id="options-dropdown" class="dropdown-toggle" role="button" data-toggle="dropdown">
-            Опции
-            <span class="glyphicon glyphicon-list"></span>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="options-dropdown">
-            @if (User.Identity.IsAuthenticated)
+﻿<li class="dropdown dropdown-accordion" data-accordion="#accordion">
+    <a id="options-dropdown" class="dropdown-toggle" role="button" data-toggle="dropdown">
+        Опции
+        <span class="glyphicon glyphicon-list"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="options-dropdown">
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (Context.User.IsInRole("Moderator"))
             {
-                <li class="dropdown-header">Менажиране на галериите</li>
-                <li>
-                    @Html.ActionLink("Ново видео", "Index", "AddVideo")
-                </li>
+                @Html.Partial("RoleNavigations/_Moderator");
             }
-            else
-            {
-
-            }
-        </ul>
+        }
+        <li>
+            Test
+        </li>
+    </ul>
 </li>
+
+<script>
+    // Collapse accordion every time dropdown is shown
+    $('.dropdown-accordion').on('show.bs.dropdown', function (event) {
+        var accordion = $(this).find($(this).data('accordion'));
+        accordion.find('.panel-collapse.in').collapse('hide');
+    });
+
+    // Prevent dropdown to be closed when we click on an accordion link
+    $('.dropdown-accordion').on('click', 'a[data-toggle="collapse"]', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $($(this).data('parent')).find('.panel-collapse.in').collapse('hide');
+        $($(this).attr('href')).collapse('show');
+    })
+</script>

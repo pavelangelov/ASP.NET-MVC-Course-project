@@ -1,0 +1,50 @@
+﻿<li class="dropdown-header">Менажиране на галериите</li>
+<li>
+    @Html.ActionLink("Ново видео", "Index", "AddVideo")
+</li>
+<li>
+    @Html.ActionLink("Премахване на видео", "Video", "Remove")
+</li>
+<li>
+    @Html.ActionLink("Нова снимка", "Index", "AddImage")
+</li>
+<li>
+    @Html.ActionLink("Премахване на снимка", "Image", "Remove")
+</li>
+<li class="dropdown-header">Язовири и риби</li>
+<li>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        Язовири
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.ActionLink("Добавяне на язовир", "Add", "Lake")
+                    @Html.ActionLink("Премахване на язовир", "Remove", "Lake")
+                    @Html.ActionLink("Обновяване на язовир", "Edit", "Lake")
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        Риби
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.ActionLink("Добавяне на язовир", "Add", "Fish")
+                    @Html.ActionLink("Премахване на язовир", "Remove", "Fish")
+                    @Html.ActionLink("Обновяване на язовир", "Edit", "Fish")
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
