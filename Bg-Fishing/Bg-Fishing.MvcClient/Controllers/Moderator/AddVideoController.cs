@@ -33,7 +33,17 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
         public ActionResult Index(AddVideoViewModel model)
         {
             this.SetGalleryNames(model);
-            var galleryName = model.GalleryName == null ? model.NewGalleryName : model.GalleryName;
+            string galleryName;
+
+            if (model.GalleryId != null)
+            {
+                galleryName = this.videoService.GetGalleryNameById(model.GalleryId);
+            }
+            else
+            {
+                galleryName = model.NewGalleryName;
+            }
+            
             if (model.VideoUrl == null || model.VideoUrl.Length == 0)
             {
                 return Json(new { status = "error", message = "Линкът към видеото е невалиден." });

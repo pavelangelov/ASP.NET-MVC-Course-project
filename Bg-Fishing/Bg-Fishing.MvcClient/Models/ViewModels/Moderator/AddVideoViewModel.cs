@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Bg_Fishing.DTOs;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
@@ -7,7 +8,7 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Moderator
 {
     public class AddVideoViewModel
     {
-        private IEnumerable<string> galleryNames;
+        private IEnumerable<GalleryDTO> galleryNames;
 
         [Required]
         [Display(Name = "Линк към видеото")]
@@ -18,7 +19,7 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Moderator
         public string VideoTitle { get; set; }
 
         [Display(Name = "Избери категория")]
-        public string GalleryName { get; set; }
+        public string GalleryId { get; set; }
 
         [Display(Name = "Създай нова категотия")]
         public string NewGalleryName { get; set; }
@@ -34,8 +35,8 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Moderator
 
                 var allNames = this.galleryNames.Select(n => new SelectListItem
                 {
-                    Value = n,
-                    Text = n
+                    Value = n.GalleryId,
+                    Text = n.Name
                 });
 
                 return this.DefaultGalleryName.Concat(allNames);
@@ -54,7 +55,7 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Moderator
             }
         }
 
-        public void SetNames(IEnumerable<string> names)
+        public void SetNames(IEnumerable<GalleryDTO> names)
         {
             this.galleryNames = names;
         }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Bg_Fishing.DTOs
 {
-    public class Class1
+    public class GalleryDTO
     {
+        public string Name { get; set; }
+
+        public string GalleryId { get; set; }
     }
 }

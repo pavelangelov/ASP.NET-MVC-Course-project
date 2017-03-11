@@ -17,7 +17,9 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
         public void ReturnJsonWithErrorMessage_IfVideoLinkIsNotValid()
         {
             // Arrange
+            var galleryName = "Valid name";
             var mockedService = new Mock<IVideoService>();
+            mockedService.Setup(s => s.GetGalleryNameById(It.IsAny<string>())).Returns(galleryName);
             mockedService.Setup(s => s.AddVideoToGallery(It.IsAny<string>(), It.IsAny<Video>())).Verifiable();
 
             var mockedModel = new AddVideoViewModel();
@@ -38,6 +40,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
         {
             // Arrange
             var mockedService = new Mock<IVideoService>();
+            mockedService.Setup(s => s.GetGalleryNameById(It.IsAny<string>())).Verifiable();
             mockedService.Setup(s => s.AddVideoToGallery(It.IsAny<string>(), It.IsAny<Video>())).Verifiable();
 
             var mockedModel = new AddVideoViewModel() { VideoUrl = "valid" };
@@ -58,10 +61,12 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
         public void ReturnJsonWithErrorMessage_IfVideoTitleIsNotValid()
         {
             // Arrange
+            var galleryName = "Valid name";
             var mockedService = new Mock<IVideoService>();
+            mockedService.Setup(s => s.GetGalleryNameById(It.IsAny<string>())).Returns(galleryName);
             mockedService.Setup(s => s.AddVideoToGallery(It.IsAny<string>(), It.IsAny<Video>())).Verifiable();
 
-            var mockedModel = new AddVideoViewModel() { VideoUrl = "valid", GalleryName = "valid" };
+            var mockedModel = new AddVideoViewModel() { VideoUrl = "valid", GalleryId = "valid" };
             var controller = new AddVideoController(mockedService.Object);
             controller.ModelState.AddModelError("VideoTitle", "Error");
 

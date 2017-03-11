@@ -1,0 +1,9 @@
+﻿@model Bg_Fishing.MvcClient.Models.ViewModels.Common.VideoGalleriesViewModel
+
+@{
+    ViewBag.Title = "Videos";
+}
+<div class="container">
+    @Html.LabelFor(m => m.Galleries, new { @for = "galleries", @class = "label label-warning" })
+    @Html.DropDownListFor(m => m.GalleryName, Model.Galleries, new { @id = "galleries", @class = "form-control" })
+</div>

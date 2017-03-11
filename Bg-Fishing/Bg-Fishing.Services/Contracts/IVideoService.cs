@@ -1,4 +1,5 @@
-﻿using Bg_Fishing.Models.Galleries;
+﻿using Bg_Fishing.DTOs;
+using Bg_Fishing.Models.Galleries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace Bg_Fishing.Services.Contracts
 {
     public interface IVideoService
     {
-        IEnumerable<string> GetAll();
+        IEnumerable<GalleryDTO> GetAll();
+
+        string GetGalleryNameById(string galleryId);
 
         void AddVideoToGallery(string galleryName, Video video);
 
