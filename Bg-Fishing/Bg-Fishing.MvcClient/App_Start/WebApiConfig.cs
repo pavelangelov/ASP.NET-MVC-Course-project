@@ -15,6 +15,11 @@ namespace Bg_Fishing.MvcClient
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "VideosApi",
+                routeTemplate: "api/{controller}/{galleryId}/all"
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

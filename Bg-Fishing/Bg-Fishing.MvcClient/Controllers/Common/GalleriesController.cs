@@ -1,6 +1,7 @@
 ﻿using Bg_Fishing.MvcClient.Models.ViewModels.Common;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,16 @@ namespace Bg_Fishing.MvcClient.Controllers.Common
             model.SetGalleries(galleries);
 
             return View(model);
+        }
+
+        [HttpGet]
+        public string GetVideos(string galleryId)
+        {
+            var videos = this.videoService.GetVideosFromGallery(galleryId);
+
+            var videosArr = JsonConvert.SerializeObject(videos);
+
+            return videosArr;
         }
     }
 }

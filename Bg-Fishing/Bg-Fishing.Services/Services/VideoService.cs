@@ -8,6 +8,7 @@ using Bg_Fishing.Models.Galleries;
 using Bg_Fishing.Data;
 using Bg_Fishing.Utils;
 using Bg_Fishing.DTOs;
+using System.Data.Entity;
 
 namespace Bg_Fishing.Services
 {
@@ -27,6 +28,24 @@ namespace Bg_Fishing.Services
             var gallery =  this.dbContext.VideoGalleries.FirstOrDefault( g => g.Id == galleryId);
 
             return gallery != null ? gallery.Name : null;
+        }
+
+        public IEnumerable<VideoDTO> GetVideosFromGallery(string galleryId)
+        {
+            var gallery = this.dbContext.VideoGalleries.Include(g => g.Videos).FirstOrDefault(g => g.Id == galleryId);
+
+            if (gallery != null)
+            {
+                return gallery.Videos.Select(v => new VideoDTO
+                {
+                    Title = v.Title,
+                    Url = v.Url
+                });
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IEnumerable<GalleryDTO> GetAll()

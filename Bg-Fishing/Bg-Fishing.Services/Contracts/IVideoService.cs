@@ -14,6 +14,8 @@ namespace Bg_Fishing.Services.Contracts
 
         string GetGalleryNameById(string galleryId);
 
+        IEnumerable<VideoDTO> GetVideosFromGallery(string galleryId);
+
         void AddVideoToGallery(string galleryName, Video video);
 
         bool RemoveVideoFromGallery(string galleryName, string videoId);
