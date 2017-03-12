@@ -15,6 +15,7 @@ namespace Bg_Fishing.Models
         public Lake()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Fish = new HashSet<Fish>();
         }
 
         public Lake(string name, ILocation location)
@@ -22,7 +23,13 @@ namespace Bg_Fishing.Models
         {
             this.Name = name;
             this.Location = location;
-            this.Fish = new HashSet<Fish>();
+        }
+
+
+        public Lake(string name, ILocation location, string info)
+            : this(name, location)
+        {
+            this.Info = info;
         }
 
         /// <summary>

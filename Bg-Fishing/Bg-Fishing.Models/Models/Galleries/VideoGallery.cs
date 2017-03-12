@@ -13,13 +13,13 @@ namespace Bg_Fishing.Models.Galleries
         public VideoGallery()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Videos = new HashSet<Video>();
         }
 
         public VideoGallery(string name)
             : this()
         {
             this.Name = name;
-            this.Videos = new HashSet<Video>();
         }
 
         /// <summary>

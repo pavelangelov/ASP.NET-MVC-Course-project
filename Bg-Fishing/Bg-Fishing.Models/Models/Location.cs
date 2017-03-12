@@ -14,9 +14,14 @@ namespace Bg_Fishing.Models
         public Location(double latitude, double longitude)
             : this()
         {
-            this.Id = Guid.NewGuid().ToString();
             this.Latitude = latitude;
             this.Longitude = longitude;
+        }
+
+        public Location(double latitude, double longitude, string info)
+            : this(latitude, longitude)
+        {
+            this.Info = info;
         }
 
         public string Id { get; set; }

@@ -13,10 +13,17 @@ namespace Bg_Fishing.Models.Galleries
             this.Id = Guid.NewGuid().ToString();
         }
 
-        public Image(string imageUrl)
+        public Image(string imageUrl, DateTime date)
             : this()
         {
             this.ImageUrl = imageUrl;
+            this.Date = date;
+        }
+
+        public Image(string imageUrl, DateTime date, string info)
+            : this(imageUrl, date)
+        {
+            this.Info = info;
         }
         
         /// <summary>

@@ -13,12 +13,12 @@ namespace Bg_Fishing.Models.Galleries
             this.Id = Guid.NewGuid().ToString();
         }
 
-        public Video(string title, string url, DateTime postedon)
+        public Video(string title, string url, DateTime postedOn)
             : this()
         {
             this.Title = title;
             this.Url = url;
-            this.PostedOn = postedon;
+            this.PostedOn = postedOn;
         }
 
         public string Id { get; private set; }

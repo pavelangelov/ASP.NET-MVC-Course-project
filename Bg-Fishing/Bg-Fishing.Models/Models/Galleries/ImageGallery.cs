@@ -15,6 +15,7 @@ namespace Bg_Fishing.Models.Galleries
         public ImageGallery()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Images = new HashSet<Image>();
         }
 
         public ImageGallery(string name, string lakeId)
@@ -22,7 +23,6 @@ namespace Bg_Fishing.Models.Galleries
         {
             this.Name = name;
             this.LakeId = lakeId;
-            this.Images = new HashSet<Image>();
         }
 
         public string Id { get; private set; }

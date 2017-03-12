@@ -16,14 +16,21 @@ namespace Bg_Fishing.Models
         public Fish()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Lakes = new HashSet<Lake>();
         }
 
-        public Fish(string name, FishType fishType)
+        public Fish(string name, FishType fishType, string imageUrl)
             : this()
         {
             this.Name = name;
             this.FishType = fishType;
-            this.Lakes = new HashSet<Lake>();
+            this.ImageUrl = imageUrl;
+        }
+
+        public Fish(string name, FishType fishType, string imageUrl, string info)
+            : this(name, fishType, imageUrl)
+        {
+            this.Info = info;
         }
 
         public string Id { get; private set; }
