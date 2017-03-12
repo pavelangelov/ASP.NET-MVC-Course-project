@@ -5,7 +5,7 @@ using Bg_Fishing.DTOs;
 using Bg_Fishing.MvcClient.Controllers.Common;
 using Bg_Fishing.Services.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.Common
+namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
 {
     [TestFixture]
     public class GetVideos_Should
