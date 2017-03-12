@@ -6,6 +6,8 @@ using Bg_Fishing.Models.Galleries;
 using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.MvcClient.Controllers.Moderator
 {
@@ -13,12 +15,18 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
     public class AddVideoController : Controller
     {
         private IVideoService videoService;
+        private IVideoFactory videoFactory;
+        private IDateProvider dateProvider;
 
-        public AddVideoController(IVideoService videoService)
+        public AddVideoController(IVideoService videoService, IVideoFactory videoFactory, IDateProvider dateProvider)
         {
             Validator.ValidateForNull(videoService, "videoService");
+            Validator.ValidateForNull(videoFactory, "videoFactory");
+            Validator.ValidateForNull(dateProvider, "dateProvider");
 
             this.videoService = videoService;
+            this.videoFactory = videoFactory;
+            this.dateProvider = dateProvider;
         }
 
         [HttpGet]
@@ -58,7 +66,8 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
                 try
                 {
                     // Add video to Gallery.
-                    var video = new Video(model.VideoTitle, model.VideoUrl, DateTime.Now);
+                    var date = this.dateProvider.GetDate();
+                    var video = this.videoFactory.CreateVideo(model.VideoTitle, model.VideoUrl, date);
                     this.videoService.AddVideoToGallery(galleryName, video);
                     this.videoService.Save();
                     return Json(new { status = "success", message = "Видеото е добавено." });

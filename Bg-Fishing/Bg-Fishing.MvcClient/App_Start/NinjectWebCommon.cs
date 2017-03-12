@@ -84,6 +84,8 @@ namespace Bg_Fishing.MvcClient.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Load(new CommonNinjectModule());
+            kernel.Load(new FishingServicesNinjectModule());
             kernel.Load(new FishingServicesNinjectModule());
         }        
     }

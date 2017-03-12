@@ -4,10 +4,12 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
+using Bg_Fishing.DTOs;
+using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Controllers.Moderator;
 using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
 using Bg_Fishing.Services.Contracts;
-using Bg_Fishing.DTOs;
+using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTests
 {
@@ -21,7 +23,9 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
             var galleryNames = new GalleryDTO[] { new GalleryDTO { Name = "Test" }, new GalleryDTO { Name = "Test2" } };
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetAll()).Returns(galleryNames).Verifiable();
-            var controller = new AddVideoController(mockedService.Object);
+            var mockedVideoFactory = new Mock<IVideoFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+            var controller = new AddVideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
 
             // Act
             var view = controller.Index() as ViewResult;

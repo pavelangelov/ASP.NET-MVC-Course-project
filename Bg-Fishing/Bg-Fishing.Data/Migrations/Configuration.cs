@@ -20,12 +20,12 @@
             {
                 var fishesArr = new Fish[]
                 {
-                    new Fish("Сьомга", FishType.FreshAndSaltWather) { ImageUrl = "/Images/Fish/salomon.png"},
-                    new Fish("Балканска пъстърва", FishType.Freshwather) { ImageUrl = "/Images/Fish/balkan-trout.jpg" },
-                    new Fish("Сьомгова пъстърва", FishType.Freshwather) { ImageUrl = "/Images/Fish/salomon-trout.png" },
-                    new Fish("Шаран", FishType.Freshwather) { ImageUrl = "/Images/Fish/carp.jpg" },
-                    new Fish("Сом", FishType.Freshwather) { ImageUrl = "/Images/Fish/catfish.jpg" },
-                    new Fish("Каракуда", FishType.Freshwather) { ImageUrl = "/Images/Fish/crucian.jpg" }
+                    new Fish("Сьомга", FishType.FreshAndSaltWather, "/Images/Fish/salomon.png"),
+                    new Fish("Балканска пъстърва", FishType.Freshwather, "/Images/Fish/balkan-trout.jpg"),
+                    new Fish("Сьомгова пъстърва", FishType.Freshwather, "/Images/Fish/salomon-trout.png"),
+                    new Fish("Шаран", FishType.Freshwather, "/Images/Fish/carp.jpg"),
+                    new Fish("Сом", FishType.Freshwather, "/Images/Fish/catfish.jpg"),
+                    new Fish("Каракуда", FishType.Freshwather, "/Images/Fish/crucian.jpg")
                 };
 
                 foreach (var fish in fishesArr)

@@ -78,6 +78,10 @@
       <Project>{4e95dc48-f55a-47b2-99d5-12d5aae88a54}</Project>
       <Name>Bg-Fishing.DTOs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Factories\Bg-Fishing.Factories.csproj">
+      <Project>{1594E717-D78F-4050-83D9-56CE6C5A52E9}</Project>
+      <Name>Bg-Fishing.Factories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bg-Fishing.Models\Bg-Fishing.Models.csproj">
       <Project>{85F5D3F9-9B86-4BD0-980E-CEA73929FC63}</Project>
       <Name>Bg-Fishing.Models</Name>
@@ -89,6 +93,10 @@
     <ProjectReference Include="..\Bg-Fishing.Services\Bg-Fishing.Services.csproj">
       <Project>{6D2C8DA8-A126-439B-A0D2-F486E8C149B1}</Project>
       <Name>Bg-Fishing.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bg-Fishing.Utils\Bg-Fishing.Utils.csproj">
+      <Project>{53AFDE11-A936-4386-BB69-F695F417E7E5}</Project>
+      <Name>Bg-Fishing.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
