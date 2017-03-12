@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 
-using Bg_Fishing.Models.Galleries;
+using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
-using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.MvcClient.Controllers.Moderator
@@ -65,7 +64,6 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
             {
                 try
                 {
-                    // Add video to Gallery.
                     var date = this.dateProvider.GetDate();
                     var video = this.videoFactory.CreateVideo(model.VideoTitle, model.VideoUrl, date);
                     this.videoService.AddVideoToGallery(galleryName, video);
