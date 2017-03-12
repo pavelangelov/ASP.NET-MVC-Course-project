@@ -1,8 +1,10 @@
-﻿using Bg_Fishing.DTOs;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
+
+using Bg_Fishing.DTOs;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Models.ViewModels.Moderator
 {
@@ -11,17 +13,17 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Moderator
         private IEnumerable<GalleryDTO> galleryNames;
 
         [Required]
-        [Display(Name = "Линк към видеото")]
+        [Display(Name = ViewModelsDisplayNames.VideoUrl_DisplayName)]
         public string VideoUrl { get; set; }
 
         [Required]
-        [Display(Name = "Заглавие на видеото")]
+        [Display(Name = ViewModelsDisplayNames.VideoTitle_DisplayName)]
         public string VideoTitle { get; set; }
 
-        [Display(Name = "Избери категория")]
+        [Display(Name = ViewModelsDisplayNames.CategoryId_DisplayName)]
         public string GalleryId { get; set; }
 
-        [Display(Name = "Създай нова категотия")]
+        [Display(Name = ViewModelsDisplayNames.NewGalleryName_DisplayName)]
         public string NewGalleryName { get; set; }
 
         public IEnumerable<SelectListItem> GalleryNames

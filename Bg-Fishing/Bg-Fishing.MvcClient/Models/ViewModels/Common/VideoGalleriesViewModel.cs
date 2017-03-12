@@ -1,10 +1,10 @@
-﻿using Bg_Fishing.DTOs;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using Bg_Fishing.DTOs;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Models.ViewModels.Common
 {
@@ -14,7 +14,7 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Common
 
         public string GalleryName { get; set; }
 
-        [Display(Name = "Избери галерия")]
+        [Display(Name = ViewModelsDisplayNames.GalleriesDisplayName)]
         public IEnumerable<SelectListItem> Galleries
         {
             get
