@@ -86,7 +86,7 @@ namespace Bg_Fishing.MvcClient.App_Start
         {
             kernel.Load(new CommonNinjectModule());
             kernel.Load(new FishingServicesNinjectModule());
-            kernel.Load(new FishingServicesNinjectModule());
+            kernel.Load(new FishingFactoriesNinjectModule());
         }        
     }
 }
