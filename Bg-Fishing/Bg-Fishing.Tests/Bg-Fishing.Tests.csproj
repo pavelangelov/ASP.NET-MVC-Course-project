@@ -61,6 +61,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\GetIndex_Should.cs" />
     <Compile Include="MvcClient\Controllers\Moderator\AddVideoControllerTests\PostIndex_Should.cs" />

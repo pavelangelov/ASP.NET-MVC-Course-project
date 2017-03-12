@@ -1,12 +1,10 @@
-﻿using Bg_Fishing.MvcClient.Models.ViewModels.Common;
+﻿using System.Web.Mvc;
+
+using Newtonsoft.Json;
+
+using Bg_Fishing.MvcClient.Models.ViewModels.Common;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace Bg_Fishing.MvcClient.Controllers.Common
 {
