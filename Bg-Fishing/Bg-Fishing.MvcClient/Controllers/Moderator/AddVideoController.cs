@@ -53,12 +53,12 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
             
             if (model.VideoUrl == null || model.VideoUrl.Length == 0)
             {
-                return Json(new { status = "error", message = "Линкът към видеото е невалиден." });
+                return Json(new { status = "error", message = GlobalMessages.InvalidVideoUrlMessage });
             }
 
             if (galleryName == null || galleryName.Length == 0)
             {
-                return Json(new { status = "error", message = "Не е избрана категория." });
+                return Json(new { status = "error", message = GlobalMessages.InvalidGalleryNameMessage });
             }
             if (ModelState.IsValid)
             {
@@ -68,16 +68,16 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
                     var video = this.videoFactory.CreateVideo(model.VideoTitle, model.VideoUrl, date);
                     this.videoService.AddVideoToGallery(galleryName, video);
                     this.videoService.Save();
-                    return Json(new { status = "success", message = "Видеото е добавено." });
+                    return Json(new { status = "success", message = GlobalMessages.AddVideoSuccessMessage });
                 }
                 catch (Exception ex)
                 {
-                    return Json(new { status = "error", message = "Видеото не може да бъде добавено." });
+                    return Json(new { status = "error", message = GlobalMessages.AddVideoErrorMessage });
                 }
             }
             else
             {
-                return Json(new { status = "error", message = "Невалидно загалвие на видеото." });
+                return Json(new { status = "error", message = GlobalMessages.InvalidVideoTitleMessage });
             }
         }
 
