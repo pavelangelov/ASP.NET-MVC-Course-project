@@ -17,12 +17,14 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
         public void ReturnJsonWithErrorMessage_IfVideoLinkIsNotValid()
         {
             // Arrange
+            var galleryId = "id";
+            var videoTitle = "Title";
             var galleryName = "Valid name";
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetGalleryNameById(It.IsAny<string>())).Returns(galleryName);
             mockedService.Setup(s => s.AddVideoToGallery(It.IsAny<string>(), It.IsAny<Video>())).Verifiable();
 
-            var mockedModel = new AddVideoViewModel();
+            var mockedModel = new AddVideoViewModel() { GalleryId = galleryId, VideoTitle = videoTitle };
             var controller = new AddVideoController(mockedService.Object);
 
             // Act
@@ -39,11 +41,13 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
         public void ReturnJsonWithErrorMessage_IfGalleryNameIsNull()
         {
             // Arrange
+            var videoTitle = "Title";
+            var videoUrl = "url";
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetGalleryNameById(It.IsAny<string>())).Verifiable();
             mockedService.Setup(s => s.AddVideoToGallery(It.IsAny<string>(), It.IsAny<Video>())).Verifiable();
 
-            var mockedModel = new AddVideoViewModel() { VideoUrl = "valid" };
+            var mockedModel = new AddVideoViewModel() { VideoUrl = videoUrl, VideoTitle = videoTitle };
             var controller = new AddVideoController(mockedService.Object);
 
             // Act
@@ -62,11 +66,13 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
         {
             // Arrange
             var galleryName = "Valid name";
+            var videoUrl = "url";
+            var galleryId = "id";
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetGalleryNameById(It.IsAny<string>())).Returns(galleryName);
             mockedService.Setup(s => s.AddVideoToGallery(It.IsAny<string>(), It.IsAny<Video>())).Verifiable();
 
-            var mockedModel = new AddVideoViewModel() { VideoUrl = "valid", GalleryId = "valid" };
+            var mockedModel = new AddVideoViewModel() { VideoUrl = videoUrl, GalleryId = galleryId };
             var controller = new AddVideoController(mockedService.Object);
             controller.ModelState.AddModelError("VideoTitle", "Error");
 
