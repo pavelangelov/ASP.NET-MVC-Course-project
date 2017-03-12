@@ -3,51 +3,15 @@
 @{
     ViewBag.Title = "Videos";
 }
-<div class="container row">
+<div class="container col-sm-4 col-sm-offset-4">
     @Html.LabelFor(m => m.Galleries, new { @for = "galleries", @class = "label label-warning" })
-    @Html.DropDownListFor(m => m.GalleryName, Model.Galleries, new { @id = "galleries", @class = "form-control" })
+    @Html.DropDownListFor(m => m.GalleryName, Model.Galleries, new { @id = "galleries", @class = "form-control col-sm-4" })
 </div>
-<div id="videos-container" class="container"></div>
+<div class="container col-sm-12">
+    <h2 id="gallery-name" class="text-center text-info"></h2>
+</div>
+<div id="videos-container" class="container col-sm-12"></div>
 
-<script>
-    $('#galleries').on('change', () => {
-        var selectedValue = $('#galleries').val();
-        if (selectedValue !== undefined && selectedValue !== "") {
-            $.ajax({
-                method: 'GET',
-                url: `/Galleries/GetVideos?galleryId=${selectedValue}`,
-                success: (data) => {
-                    if (data !== null) {
-                        var videos = JSON.parse(data);
-                        console.log(videos);
-                        console.log(data);
-                        dispalyVideos(videos);
-                    }
-                },
-                error: (err) => {
-                    console.log(err);
-                }
-            })
-        }
-    })
-
-    function dispalyVideos(videosArr) {
-        var len = videosArr.length;
-        var container = $('#videos-container');
-        container.html('');
-
-        for (var i = 0; i < len; i += 1) {
-            var video = $('<div />').addClass('col-sm-4');
-
-            var title = $('<h4 />').html(videosArr[i].Title);
-            var frame = $('<iframe />');
-            var url = videosArr[i].Url.replace("watch?v=", "embed/");
-            frame.attr('src', url);
-
-            video.append(title);
-            video.append(frame);
-
-            video.appendTo(container);
-        }
-    }
-</script>
+@section PageScripts{
+    <script src="~/Scripts/page-scripts/show-videos.js"></script>
+}
