@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace Bg_Fishing.MvcClient.Areas.Moderator
 {
     [Authorize(Roles = "Moderator")]
-    public class ModeratorBase : Controller
+    public class ModeratorBaseController : Controller
     {
     }
 }

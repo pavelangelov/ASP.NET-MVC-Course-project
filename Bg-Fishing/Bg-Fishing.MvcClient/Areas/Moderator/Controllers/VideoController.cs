@@ -10,7 +10,7 @@ using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
-    public class VideoController : ModeratorBase
+    public class VideoController : ModeratorBaseController
     {
         // GET: Moderator/Video
         private IVideoService videoService;

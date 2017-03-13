@@ -224,7 +224,7 @@
     <Compile Include="Areas\Moderator\Controllers\VideoController.cs" />
     <Compile Include="Areas\Moderator\Models\AddVideoViewModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
-    <Compile Include="Areas\Moderator\ModeratorBase.cs" />
+    <Compile Include="Areas\Moderator\ModeratorBaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Common\GalleriesController.cs" />
     <Compile Include="Controllers\FishListController.cs" />
