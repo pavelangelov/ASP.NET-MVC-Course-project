@@ -16,9 +16,9 @@ namespace Bg_Fishing.MvcClient
             routes.LowercaseUrls = true;
 
             routes.MapRoute(
-                name: "AddVideo",
-                url: "add/video",
-                defaults: new { controller = "AddVideo", action = "Index" }
+                name: "FishList",
+                url: "fish/{action}/{name}",
+                defaults: new { controller = "FishList", action = "Index", name = UrlParameter.Optional }
             );
 
             routes.MapRoute(

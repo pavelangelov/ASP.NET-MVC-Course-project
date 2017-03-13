@@ -32,7 +32,10 @@ namespace Bg_Fishing.MvcClient.Controllers
         [HttpGet]
         public ActionResult Details(string name)
         {
-            return View();
+            var fish = this.fishService.FindByName(name);
+            var model = new FishListViewModel() { SelectedFish = fish };
+
+            return View(model);
         }
     }
 }

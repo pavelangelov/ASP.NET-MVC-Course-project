@@ -1,4 +1,32 @@
-﻿
+﻿@model Bg_Fishing.MvcClient.Models.ViewModels.FishListViewModel
 @{
     ViewBag.Title = "Риби";
 }
+
+@section PageStyles {
+    <link href="~/Content/page-styles/details.css" rel="stylesheet" />
+}
+
+<div class="container col-sm-offset-2">
+    <div class="media block-update-card">
+        <a class="pull-left" href="#">
+            <img class="media-object update-card-MDimentions" src="@Model.SelectedFish.ImageUrl" alt="...">
+        </a>
+        <div class="media-body update-card-body">
+            <h2 class="media-heading">@Model.SelectedFish.Name</h2>
+            <div class="btn-toolbar card-body-social" role="toolbar">
+                <h4>Налична в язовири: </h4>
+                @foreach (var lake in Model.SelectedFish.Lakes)
+                {
+                    @Html.ActionLink(@lake.Name, "Details", "LakeList", new { Area = "", name = lake.Name }, null)
+                }
+            </div>
+        </div>
+        <div class="block-update-card status">
+            <div class="update-card-body">
+                <h4>Подробности: </h4>
+                <p>@Model.SelectedFish.Info</p>
+            </div>
+        </div>
+    </div>
+</div>
