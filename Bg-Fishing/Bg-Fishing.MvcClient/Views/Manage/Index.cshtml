@@ -13,11 +13,11 @@
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink("Change your password", "ChangePassword", new { Area = "" }, null)
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                @Html.ActionLink("Create", "SetPassword", new { Area = "" }, null)
             }
             ]
         </dd>

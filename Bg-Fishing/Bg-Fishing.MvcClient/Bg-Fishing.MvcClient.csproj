@@ -220,11 +220,14 @@
     <Compile Include="App_Start\SignalrDependencyResolver\NinjectSignalrDependencyResolver.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Moderator\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Moderator\Models\AddVideoViewModel.cs" />
+    <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Common\GalleriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\Moderator\AddVideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,7 +235,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\Common\VideoGalleriesViewModel.cs" />
-    <Compile Include="Models\ViewModels\Moderator\AddVideoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -297,7 +299,16 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Moderator\Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Moderator\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Moderator\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Moderator\Views\Video\Add.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\Backgrounds\common-bg.jpg" />
     <Content Include="Images\Backgrounds\contact-bg.jpg" />
@@ -322,6 +333,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />
     <Content Include="Scripts\page-scripts\show-videos.js" />
@@ -367,12 +379,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavPartial.cshtml" />
-    <Content Include="Views\AddVideo\Index.cshtml" />
     <Content Include="Views\Shared\RoleNavigations\_Moderator.cshtml" />
     <Content Include="Views\Galleries\Videos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Hubs\" />
   </ItemGroup>
   <ItemGroup>

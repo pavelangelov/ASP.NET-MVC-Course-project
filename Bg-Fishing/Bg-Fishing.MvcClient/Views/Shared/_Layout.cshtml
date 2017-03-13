@@ -18,11 +18,11 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                @Html.ActionLink("Bg-Fishing", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Bg-Fishing", "Index", "Home", new { Area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Начало", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Начало", "Index", "Home", new { Area = "" }, null)</li>
                     @Html.Partial("_NavPartial")
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -6,16 +6,16 @@ using NUnit.Framework;
 
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Models.Galleries;
-using Bg_Fishing.MvcClient.Controllers.Moderator;
-using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
+using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
+using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
-using Bg_Fishing.Utils.Contracts;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.VideoControllerTests
 {
     [TestFixture]
-    public class PostIndex_Should
+    public class PostAdd_Should
     {
         [Test]
         public void ReturnJsonWithErrorMessage_IfVideoLinkIsNotValid()
@@ -32,10 +32,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
             var mockedDateProvider = new Mock<IDateProvider>();
 
             var mockedModel = new AddVideoViewModel() { GalleryId = galleryId, VideoTitle = videoTitle };
-            var controller = new AddVideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
+            var controller = new VideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
 
             // Act
-            var result = controller.Index(mockedModel) as JsonResult;
+            var result = controller.Add(mockedModel) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
@@ -55,15 +55,15 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetGalleryNameById(It.IsAny<string>())).Verifiable();
             mockedService.Setup(s => s.AddVideoToGallery(It.IsAny<string>(), It.IsAny<Video>())).Verifiable();
-            
+
             var mockedVideoFactory = new Mock<IVideoFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
 
             var mockedModel = new AddVideoViewModel() { VideoUrl = videoUrl, VideoTitle = videoTitle };
-            var controller = new AddVideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
+            var controller = new VideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
 
             // Act
-            var result = controller.Index(mockedModel) as JsonResult;
+            var result = controller.Add(mockedModel) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
@@ -90,11 +90,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
             var mockedDateProvider = new Mock<IDateProvider>();
 
             var mockedModel = new AddVideoViewModel() { VideoUrl = videoUrl, GalleryId = galleryId };
-            var controller = new AddVideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
+            var controller = new VideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
             controller.ModelState.AddModelError("VideoTitle", "Error");
 
             // Act
-            var result = controller.Index(mockedModel) as JsonResult;
+            var result = controller.Add(mockedModel) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
@@ -124,11 +124,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(p => p.GetDate()).Verifiable();
 
-            var controller = new AddVideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
+            var controller = new VideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
             var mockedModel = new AddVideoViewModel() { VideoUrl = videoUrl, GalleryId = galleryId, VideoTitle = videoTitle };
 
             // Act
-            var result = controller.Index(mockedModel) as JsonResult;
+            var result = controller.Add(mockedModel) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
@@ -163,11 +163,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(p => p.GetDate()).Verifiable();
 
-            var controller = new AddVideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
+            var controller = new VideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
             var mockedModel = new AddVideoViewModel() { VideoUrl = videoUrl, GalleryId = galleryId, VideoTitle = videoTitle };
 
             // Act
-            var result = controller.Index(mockedModel) as JsonResult;
+            var result = controller.Add(mockedModel) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert

@@ -6,15 +6,15 @@ using NUnit.Framework;
 
 using Bg_Fishing.DTOs;
 using Bg_Fishing.Factories.Contracts;
-using Bg_Fishing.MvcClient.Controllers.Moderator;
-using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
+using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
+using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.VideoControllerTests
 {
     [TestFixture]
-    public class GetIndex_Should
+    public class GetAdd_Should
     {
         [Test]
         public void GetAllGalleryNames_AndStoreItToViewModel()
@@ -25,10 +25,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Moderator.AddVideoControllerTes
             mockedService.Setup(s => s.GetAll()).Returns(galleryNames).Verifiable();
             var mockedVideoFactory = new Mock<IVideoFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
-            var controller = new AddVideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
+            var controller = new VideoController(mockedService.Object, mockedVideoFactory.Object, mockedDateProvider.Object);
 
             // Act
-            var view = controller.Index() as ViewResult;
+            var view = controller.Add() as ViewResult;
             var model = view.ViewData.Model as AddVideoViewModel;
 
             // Assert

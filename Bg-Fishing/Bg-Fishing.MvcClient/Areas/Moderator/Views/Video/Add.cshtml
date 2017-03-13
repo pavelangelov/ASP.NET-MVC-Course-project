@@ -1,4 +1,4 @@
-﻿@model Bg_Fishing.MvcClient.Models.ViewModels.Moderator.AddVideoViewModel
+﻿@model Bg_Fishing.MvcClient.Areas.Moderator.Models.AddVideoViewModel
 @{
     ViewBag.Title = "Add video";
 }
@@ -49,7 +49,7 @@
         ev.preventDefault();
         $.ajax({
             method: 'POST',
-            url: '@Url.Action("Index")',
+            url: '@Url.Action("Add")',
             data: $('form').serialize(),
             cache: false,
             success: (data) => {

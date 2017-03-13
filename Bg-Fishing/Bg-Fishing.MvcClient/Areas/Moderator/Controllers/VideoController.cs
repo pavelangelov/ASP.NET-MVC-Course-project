@@ -1,23 +1,24 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-
-using Bg_Fishing.Factories.Contracts;
-using Bg_Fishing.MvcClient.Models.ViewModels.Moderator;
+﻿using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
-namespace Bg_Fishing.MvcClient.Controllers.Moderator
+namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
-    [Authorize(Roles = "Moderator")]
-    public class AddVideoController : Controller
+    public class VideoController : Controller
     {
+        // GET: Moderator/Video
         private IVideoService videoService;
         private IVideoFactory videoFactory;
         private IDateProvider dateProvider;
 
-        public AddVideoController(IVideoService videoService, IVideoFactory videoFactory, IDateProvider dateProvider)
+        public VideoController(IVideoService videoService, IVideoFactory videoFactory, IDateProvider dateProvider)
         {
             Validator.ValidateForNull(videoService, "videoService");
             Validator.ValidateForNull(videoFactory, "videoFactory");
@@ -29,7 +30,7 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Add()
         {
             var viewModel = new AddVideoViewModel();
             this.SetGalleryNames(viewModel);
@@ -37,7 +38,7 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
         }
 
         [HttpPost]
-        public ActionResult Index(AddVideoViewModel model)
+        public ActionResult Add(AddVideoViewModel model)
         {
             this.SetGalleryNames(model);
             string galleryName;
@@ -50,7 +51,7 @@ namespace Bg_Fishing.MvcClient.Controllers.Moderator
             {
                 galleryName = model.NewGalleryName;
             }
-            
+
             if (model.VideoUrl == null || model.VideoUrl.Length == 0)
             {
                 return Json(new { status = "error", message = GlobalMessages.InvalidVideoUrlMessage });

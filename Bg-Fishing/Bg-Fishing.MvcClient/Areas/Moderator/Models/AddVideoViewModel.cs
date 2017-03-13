@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Bg_Fishing.DTOs;
+using Bg_Fishing.Utils;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
-using Bg_Fishing.DTOs;
-using Bg_Fishing.Utils;
-
-namespace Bg_Fishing.MvcClient.Models.ViewModels.Moderator
+namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
     public class AddVideoViewModel
     {
