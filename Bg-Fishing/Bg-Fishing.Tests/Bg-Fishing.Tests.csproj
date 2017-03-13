@@ -67,6 +67,9 @@
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\Videos_Should.cs" />
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\GetVideos_Should.cs" />
+    <Compile Include="MvcClient\Controllers\FishListControllerTests\Constructor_Should.cs" />
+    <Compile Include="MvcClient\Controllers\FishListControllerTests\Details_Should.cs" />
+    <Compile Include="MvcClient\Controllers\FishListControllerTests\Index_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

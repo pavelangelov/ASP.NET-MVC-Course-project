@@ -1,11 +1,8 @@
-﻿using Bg_Fishing.MvcClient.Models.ViewModels;
+﻿using System.Web.Mvc;
+
+using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
