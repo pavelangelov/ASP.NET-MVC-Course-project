@@ -1,4 +1,30 @@
-﻿
+﻿@model Bg_Fishing.MvcClient.Models.ViewModels.FishListViewModel
 @{
     ViewBag.Title = "Риби";
 }
+
+@section PageScripts {
+    <link href="~/Content/page-styles/fish-list-index.css" rel="stylesheet" />
+    }
+
+<div class="container">
+    @foreach (var fish in Model.FishCollection)
+    {
+        <div class="card fish-container">
+            <img class="card-img-top fish-image" src="@fish.ImageUrl" alt="Fish Image" />
+            <div class="card-block">
+                <h4 class="card-title">@fish.Name</h4>
+                <div class="card-text">
+                    <div class="text-success">Налична в язовири: </div>
+                    <div>
+                        @foreach (var lake in fish.Lakes)
+                        {
+                            @Html.ActionLink(lake.Name, "Details", new { Area = "", name = lake.Name })
+                        }
+                    </div>
+                    @Html.ActionLink("Детайли", "Details", new { Area = "", name = fish.Name }, new { @class = "btn btn-info" })
+                </div>
+            </div>
+        </div>
+    }
+</div>

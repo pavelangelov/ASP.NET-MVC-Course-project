@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-
+    @RenderSection("PageStyles", required: false)
 </head>
 <body>
     @Scripts.Render("~/bundles/jquery")

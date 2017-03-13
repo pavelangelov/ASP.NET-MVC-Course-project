@@ -9,7 +9,7 @@ using Bg_Fishing.Models.Enums;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 
-namespace Bg_Fishing.Services.Services
+namespace Bg_Fishing.Services
 {
     public class FishService : IFishService
     {

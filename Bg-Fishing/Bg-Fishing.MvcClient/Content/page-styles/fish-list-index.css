@@ -1,0 +1,9 @@
+﻿.fish-container {
+    display: inline-block;
+    margin: 15px;
+}
+
+.fish-image {
+    width: 23em;
+    height: 13em;
+}
