@@ -80,6 +80,11 @@
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Details_Should.cs" />
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Index_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FishServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\FishServiceTests\FindByName_Should.cs" />
+    <Compile Include="Services\FishServiceTests\GetAllByType_Should.cs" />
+    <Compile Include="Services\FishServiceTests\GetAll_Should.cs" />
+    <Compile Include="Services\FishServiceTests\Save_Should.cs" />
     <Compile Include="Services\Mocks\MockDbSet.cs" />
     <Compile Include="Services\VideoServiceTests\AddVideoToGallery_Should.cs" />
     <Compile Include="Services\VideoServiceTests\Constructor_Should.cs" />
@@ -88,7 +93,7 @@
     <Compile Include="Services\VideoServiceTests\GetVideosFromGallery_Should.cs" />
     <Compile Include="Services\VideoServiceTests\RemoveVideoFromGallery_Should.cs" />
     <Compile Include="Services\VideoServiceTests\Save_Should.cs" />
-    <Compile Include="Services\VideoServiceTests\Utils.cs" />
+    <Compile Include="Services\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -124,9 +129,7 @@
       <Name>Bg-Fishing.Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\FishServiceTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
