@@ -1,12 +1,8 @@
-﻿using Bg_Fishing.Data;
-using Bg_Fishing.Services;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Bg_Fishing.Data;
+using Bg_Fishing.Services;
 
 namespace Bg_Fishing.Tests.Services.FishServiceTests
 {
