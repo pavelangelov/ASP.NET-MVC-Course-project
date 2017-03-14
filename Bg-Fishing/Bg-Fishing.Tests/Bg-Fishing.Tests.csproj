@@ -39,6 +39,14 @@
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Moq, Version=4.7.1.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.7.1\lib\net45\Moq.dll</HintPath>
@@ -49,6 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
@@ -71,12 +80,19 @@
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Details_Should.cs" />
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Index_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Mocks\MockDbSet.cs" />
+    <Compile Include="Services\VideoServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\VideoServiceTests\GetGalleryNameById_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bg-Fishing.Data\Bg-Fishing.Data.csproj">
+      <Project>{e84d8ae0-c348-4b83-8a01-9086799ff3b8}</Project>
+      <Name>Bg-Fishing.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bg-Fishing.DTOs\Bg-Fishing.DTOs.csproj">
       <Project>{4e95dc48-f55a-47b2-99d5-12d5aae88a54}</Project>
       <Name>Bg-Fishing.DTOs</Name>
@@ -101,6 +117,9 @@
       <Project>{53AFDE11-A936-4386-BB69-F695F417E7E5}</Project>
       <Name>Bg-Fishing.Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\FishServiceTests\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

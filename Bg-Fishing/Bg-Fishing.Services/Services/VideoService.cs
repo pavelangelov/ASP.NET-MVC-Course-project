@@ -1,14 +1,12 @@
-﻿using Bg_Fishing.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bg_Fishing.Models.Galleries;
-using Bg_Fishing.Data;
-using Bg_Fishing.Utils;
-using Bg_Fishing.DTOs;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+
+using Bg_Fishing.Data;
+using Bg_Fishing.DTOs;
+using Bg_Fishing.Models.Galleries;
+using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Services
 {
