@@ -82,6 +82,11 @@ namespace Bg_Fishing.Services
         public bool RemoveVideoFromGallery(string galleryName, string videoId)
         {
             var gallery = this.dbContext.VideoGalleries.FirstOrDefault(g => g.Name == galleryName);
+            if (gallery == null)
+            {
+                return false;
+            }
+
             var video = gallery.Videos.FirstOrDefault(v => v.Id == videoId);
             if (video != null)
             {

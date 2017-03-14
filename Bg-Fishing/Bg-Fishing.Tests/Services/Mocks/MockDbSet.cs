@@ -7,7 +7,7 @@ namespace Bg_Fishing.Tests.Services.Mocks
 {
     public class MockDbSet
     {
-        public static IDbSet<T> Mock<T>(IQueryable<T> queryable) where T : class
+        public static Mock<IDbSet<T>> Mock<T>(IQueryable<T> queryable) where T : class
         {
             var mockSet = new Mock<IDbSet<T>>();
 
@@ -16,7 +16,7 @@ namespace Bg_Fishing.Tests.Services.Mocks
             mockSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
             mockSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
 
-            return mockSet.Object;
+            return mockSet;
         }
     }
 }
