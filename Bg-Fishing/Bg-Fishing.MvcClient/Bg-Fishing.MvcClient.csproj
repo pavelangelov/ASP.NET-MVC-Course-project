@@ -221,9 +221,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\Controllers\LakeController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\LocationController.cs" />
     <Compile Include="Areas\Moderator\Controllers\VideoController.cs" />
     <Compile Include="Areas\Moderator\Models\AddVideoViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\LakeViewModel.cs" />
+    <Compile Include="Areas\Moderator\Models\LocationViewModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\ModeratorBaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -310,6 +312,7 @@
     <Content Include="Areas\Moderator\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Moderator\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Moderator\Views\Video\Add.cshtml" />
+    <Content Include="Areas\Moderator\Views\Location\Add.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -341,12 +344,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />
     <Content Include="Scripts\page-scripts\show-videos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\secret\config.js" />
     <Content Include="Scripts\themes-scripts\clean-blog.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />

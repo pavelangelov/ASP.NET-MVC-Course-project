@@ -1,0 +1,40 @@
+﻿@model Bg_Fishing.MvcClient.Areas.Moderator.Models.LocationViewModel
+@{
+    ViewBag.Title = "Добавяне на локация";
+}
+
+@section HeaderScripts {
+    <script src="~/Scripts/secret/config.js"></script>
+}
+
+@using (@Html.BeginForm())
+{
+    <div class="row">
+        <div class="container col-sm-5 col-sm-offset-1">
+            <h3>Въведи координати</h3>
+            @Html.LabelFor(m => m.Latitude, new { @class = "label label-succes" })
+            @Html.TextBoxFor(m => m.Latitude, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.Longitude, new { @class = "label label-succes" })
+            @Html.TextBoxFor(m => m.Longitude, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.Info, new { @class = "label label-succes" })
+            @Html.TextAreaFor(m => m.Info, new { @class = "form-control" })
+
+            <input type="submit" class="btn btn-primary" value="Добави" />
+        </div>
+
+        <div class="container col-sm-5">
+            <h3>Вземи координати от адрес</h3>
+            <label class="label label-succes">Адрес</label>
+            <input type="text" id="address-input" class="form-control" />
+            <p>Ако не намерите търсените координати, въведете името на града заедно с кода на страната за по-добър резултат.</p>
+            <h4 id="search-result">Координати за: </h4>
+            <input type="submit" id="geo-click" class="btn btn-primary" value="Координати" />
+        </div>
+    </div>
+}
+
+@section PageScripts {
+    <script src="~/Scripts/page-scripts/get-coordinates.js"></script>
+}
