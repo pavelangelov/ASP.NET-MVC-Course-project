@@ -1,6 +1,8 @@
 ﻿using System;
 
 using Bg_Fishing.Models.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bg_Fishing.Models
 {
@@ -27,10 +29,15 @@ namespace Bg_Fishing.Models
 
         public string Id { get; set; }
 
+        [Index(IsUnique = true)]
+        [MinLength(2)]
+        [MaxLength(50)]
         public string Name { get; set; }
 
+        [Required]
         public double Latitude { get; private set; }
 
+        [Required]
         public double Longitude { get; private set; }
 
         public string Info { get; set; }
