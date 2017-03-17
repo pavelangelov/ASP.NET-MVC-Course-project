@@ -15,7 +15,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
         public double Longitude { get; set; }
 
         [Required]
-        [Display(Name = "Място")]
+        [Display(Name = "Местоположение")]
         public string Name { get; set; }
 
         [Display(Name = "Информация")]
