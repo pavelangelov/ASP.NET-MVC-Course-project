@@ -17,6 +17,7 @@ namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
 
             this.Bind<IVideoService>().To<VideoService>();
             this.Bind<IFishService>().To<FishService>();
+            this.Bind<ILocationService>().To<LocationService>();
         }
     }
 }

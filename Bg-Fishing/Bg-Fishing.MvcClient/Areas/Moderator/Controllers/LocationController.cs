@@ -1,23 +1,25 @@
-﻿using Bg_Fishing.Factories.Contracts;
-using Bg_Fishing.MvcClient.Areas.Moderator.Models;
-using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 using System.Web.Mvc;
+
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.MvcClient.Areas.Moderator.Models;
+using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
     public class LocationController : Controller
     {
         private ILocationFactory locationFactory;
+        private ILocationService locationService;
 
-        public LocationController(ILocationFactory locationFactory)
+        public LocationController(ILocationFactory locationFactory, ILocationService locationService)
         {
             Validator.ValidateForNull(locationFactory, "locationFactory");
+            Validator.ValidateForNull(locationService, "locationService");
 
             this.locationFactory = locationFactory;
+            this.locationService = locationService;
         }
 
         [HttpGet]
@@ -31,8 +33,17 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         {
             if (ModelState.IsValid)
             {
-                var location = this.locationFactory.CreateLocation(model.Latitude, model.Longitude, model.Name, model.Info);
-                // TODO: Add new location
+                try
+                {
+                    var location = this.locationFactory.CreateLocation(model.Latitude, model.Longitude, model.Name, model.Info);
+                    this.locationService.Add(location);
+                    this.locationService.Save();
+                }
+                catch (Exception)
+                {
+                    // TODO: Return friendly error message to user
+                    throw;
+                }
             }
 
             return View();

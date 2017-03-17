@@ -44,6 +44,8 @@
     <Compile Include="GalleryDTO.cs" />
     <Compile Include="LakeDTOs\LakeDTO.cs" />
     <Compile Include="FishDTOs\FishDTO.cs" />
+    <Compile Include="LocationDTOs\AllLocationPropsDTO.cs" />
+    <Compile Include="LocationDTOs\LocationDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VideoDTO.cs" />
   </ItemGroup>
