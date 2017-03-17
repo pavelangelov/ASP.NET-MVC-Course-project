@@ -12,7 +12,6 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
     public class VideoController : ModeratorBaseController
     {
-        // GET: Moderator/Video
         private IVideoService videoService;
         private IVideoFactory videoFactory;
         private IDateProvider dateProvider;
@@ -37,6 +36,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(AddVideoViewModel model)
         {
             this.SetGalleryNames(model);

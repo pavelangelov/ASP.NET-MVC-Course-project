@@ -12,6 +12,7 @@
         <div class="add-video-container col-sm-8">
             @using (@Html.BeginForm())
             {
+                @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div id="category">
                     <div class="col-sm-6">
