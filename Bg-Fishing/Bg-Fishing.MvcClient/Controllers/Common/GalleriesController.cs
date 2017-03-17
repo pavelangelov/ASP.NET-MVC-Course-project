@@ -19,7 +19,8 @@ namespace Bg_Fishing.MvcClient.Controllers.Common
             this.videoService = videoService;
         }
 
-        // GET: Galleries
+        // GET: Galleries Names
+        [HttpGet]
         public ActionResult Videos()
         {
             var model = new VideoGalleriesViewModel();
