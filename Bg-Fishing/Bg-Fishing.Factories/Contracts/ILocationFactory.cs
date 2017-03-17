@@ -6,8 +6,8 @@ namespace Bg_Fishing.Factories.Contracts
     {
         Location CreateLocation();
 
-        Location CreateLocation(double latitude, double longitude);
+        Location CreateLocation(double latitude, double longitude, string name);
 
-        Location CreateLocation(double latitude, double longitude, string info);
+        Location CreateLocation(double latitude, double longitude, string name, string info);
     }
 }
