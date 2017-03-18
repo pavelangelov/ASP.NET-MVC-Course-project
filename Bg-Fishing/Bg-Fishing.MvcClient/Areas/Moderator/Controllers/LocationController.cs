@@ -39,16 +39,15 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                     this.locationService.Add(location);
                     this.locationService.Save();
 
-                    return Json(new { status = "success", message = "Локацията е добавена." });
+                    return Json(new { status = "success", message = GlobalMessages.AddLocationSuccessMessage });
                 }
                 catch (Exception)
                 {
-                    return Json(new { status = "error", message = "Локацията не може да бъде добавена. Проверете дали вече няма локация за това местоположение." });
-                    throw;
+                    return Json(new { status = "error", message = GlobalMessages.AddLocationErrorMessage });
                 }
             }
 
-            return Json(new { status = "error", message = "Всички полета без \"Информация\" са задължителни." });
+            return Json(new { status = "error", message = GlobalMessages.InvalidLocationModelErrorMessage });
         }
     }
 }
