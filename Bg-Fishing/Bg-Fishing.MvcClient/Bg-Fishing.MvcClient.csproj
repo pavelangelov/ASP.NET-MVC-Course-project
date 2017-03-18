@@ -255,6 +255,7 @@
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
     <Content Include="Content\page-styles\details.css" />
     <Content Include="Content\page-styles\fish-list-index.css" />
+    <Content Include="Content\page-styles\nav-bar-styles.css" />
     <Content Include="Content\solar-theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

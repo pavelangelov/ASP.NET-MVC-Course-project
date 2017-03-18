@@ -3,7 +3,7 @@
         Опции
         <span class="glyphicon glyphicon-list"></span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="options-dropdown">
+    <ul class="dropdown-menu" id="moderator-dropdown" aria-labelledby="options-dropdown">
         @if (User.Identity.IsAuthenticated)
         {
             if (Context.User.IsInRole("Moderator"))

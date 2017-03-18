@@ -1,48 +1,97 @@
-﻿<li class="dropdown-header">Менажиране на галериите</li>
-<li>
-    @Html.ActionLink("Ново видео", "Add", "Video", new { Area = "Moderator" }, new { })
-</li>
-<li>
-    @Html.ActionLink("Премахване на видео", "Video", "Remove")
-</li>
-<li>
-    @Html.ActionLink("Нова снимка", "Index", "AddImage")
-</li>
-<li>
-    @Html.ActionLink("Премахване на снимка", "Image", "Remove")
-</li>
-<li class="dropdown-header">Язовири и риби</li>
-<li>
+﻿<li>
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Язовири
+                        Менажиране на галериите
                     </a>
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse">
                 <div class="panel-body">
-                    @Html.ActionLink("Добавяне на язовир", "Add", "Lake")
-                    @Html.ActionLink("Премахване на язовир", "Remove", "Lake")
-                    @Html.ActionLink("Обновяване на язовир", "Edit", "Lake")
+                    <div>
+                        @Html.ActionLink("Ново видео", "Add", "Video", new { Area = "Moderator" }, new { })
+                    </div>
+                    <div>
+                        @Html.ActionLink("Премахване на видео", "Video", "Remove")
+                    </div>
+                    <div>
+                        @Html.ActionLink("Нова снимка", "Index", "AddImage")
+                    </div>
+                    <div>
+                        @Html.ActionLink("Премахване на снимка", "Image", "Remove")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        Язовири
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div>
+                        @Html.ActionLink("Добавяне на язовир", "Add", "Lake")
+                    </div>
+                    <div>
+                        @Html.ActionLink("Премахване на язовир", "Remove", "Lake")
+                    </div>
+                    <div>
+                        @Html.ActionLink("Обновяване на язовир", "Edit", "Lake")
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThird">
+                            Риби
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThird" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div>
+                            @Html.ActionLink("Добавяне на риба", "Add", "Fish")
+                        </div>
+                        <div>
+                            @Html.ActionLink("Премахване на риба", "Remove", "Fish")
+                        </div>
+                        <div>
+                        </div>
+                        @Html.ActionLink("Обновяване на риба", "Edit", "Fish")
+                    </div>
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                        Риби
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseForth">
+                        Локации
                     </a>
                 </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
+            <div id="collapseForth" class="panel-collapse collapse">
                 <div class="panel-body">
-                    @Html.ActionLink("Добавяне на язовир", "Add", "Fish")
-                    @Html.ActionLink("Премахване на язовир", "Remove", "Fish")
-                    @Html.ActionLink("Обновяване на язовир", "Edit", "Fish")
+                    <div>
+                        @Html.ActionLink("Добавяне на локация", "Add", "Location", new { Area = "Moderator" })
+                    </div>
+                    <div>
+                        @Html.ActionLink("Премахване на локация", "Remove", "Fish", new { Area = "Moderator" })
+                    </div>
+                    <div>
+                        @Html.ActionLink("Всички локации", "Edit", "Fish", new { Area = "Moderator" })
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -25,7 +25,8 @@ namespace Bg_Fishing.MvcClient
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/solar-theme.min.css",
                       "~/Content/font-awesome-4.7.0/css/font-awesome.min.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Site.css",
+                      "~/Content/page-styles/nav-bar-styles.css"));
         }
     }
 }
