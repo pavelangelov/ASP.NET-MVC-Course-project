@@ -1,0 +1,5 @@
+language: csharp
+solution: ./Bg-Fishing/Bg-Fishing.sln
+script:
+  - xbuild /p:Configuration=Release ./Bg-Fishing/Bg-Fishing.sln
+  - mono ./Bg-Fishing/packages/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./Bg-Fishing/Bg-Fishing.Tests/bin/Release/Bg-Fishing.Tests.dll
