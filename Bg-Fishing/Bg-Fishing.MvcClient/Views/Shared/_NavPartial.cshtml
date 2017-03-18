@@ -4,13 +4,6 @@
         <span class="glyphicon glyphicon-list"></span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="options-dropdown">
-        @*@if (User.Identity.IsAuthenticated)
-        {
-            if (Context.User.IsInRole("Moderator"))
-            {
-                @Html.Partial("RoleNavigations/_Moderator");
-            }
-        }*@
         <li>
             @Html.ActionLink("Видео галерии", "Videos", "Galleries", new { Area = "" }, null)
             @Html.ActionLink("Риби", "Index", "FishList", new { Area = "" }, null)
