@@ -9,7 +9,7 @@ namespace Bg_Fishing.Data
     public class FishingContext : DbContext, IDatabaseContext
     {
         public FishingContext()
-            : base("name=DefaultConnection")
+            : base("DefaultConnection")
         {
         }
         
