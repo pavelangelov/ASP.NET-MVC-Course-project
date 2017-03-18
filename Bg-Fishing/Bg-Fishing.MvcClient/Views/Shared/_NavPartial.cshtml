@@ -1,19 +1,35 @@
 ﻿<li class="dropdown dropdown-accordion" data-accordion="#accordion">
     <a id="options-dropdown" class="dropdown-toggle" role="button" data-toggle="dropdown">
-        Опции
+        Меню
         <span class="glyphicon glyphicon-list"></span>
     </a>
-    <ul class="dropdown-menu" id="moderator-dropdown" aria-labelledby="options-dropdown">
-        @if (User.Identity.IsAuthenticated)
+    <ul class="dropdown-menu" aria-labelledby="options-dropdown">
+        @*@if (User.Identity.IsAuthenticated)
         {
             if (Context.User.IsInRole("Moderator"))
             {
                 @Html.Partial("RoleNavigations/_Moderator");
             }
-        }
+        }*@
         <li>
             @Html.ActionLink("Видео галерии", "Videos", "Galleries", new { Area = "" }, null)
             @Html.ActionLink("Риби", "Index", "FishList", new { Area = "" }, null)
         </li>
     </ul>
 </li>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (Context.User.IsInRole("Moderator"))
+    {
+        <li class="dropdown dropdown-accordion" data-accordion="#accordion">
+        <a id="options-dropdown2" class="dropdown-toggle" role="button" data-toggle="dropdown">
+            Модератор
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <ul class="dropdown-menu" id="moderator-dropdown" aria-labelledby="options-dropdown">
+            @Html.Partial("RoleNavigations/_Moderator")
+        </ul>
+    </li>
+    }
+}
