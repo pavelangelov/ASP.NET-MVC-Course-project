@@ -36,5 +36,17 @@ namespace Bg_Fishing.Tests.Services
 
             return collection;
         }
+
+        public static IList<Location> GetLocationsCollection()
+        {
+            var collection = new List<Location>
+            {
+                new Location(1.1, 1.1, "First"),
+                new Location(2.1, 2.1, "Second"),
+                new Location(3.1, 3.1 ,"Third")
+            };
+
+            return collection;
+        }
     }
 }
