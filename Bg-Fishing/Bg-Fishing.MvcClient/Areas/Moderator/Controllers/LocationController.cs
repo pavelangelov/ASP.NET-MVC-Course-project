@@ -38,15 +38,17 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                     var location = this.locationFactory.CreateLocation(model.Latitude, model.Longitude, model.Name, model.Info);
                     this.locationService.Add(location);
                     this.locationService.Save();
+
+                    return Json(new { status = "success", message = "Локацията е добавена." });
                 }
                 catch (Exception)
                 {
-                    // TODO: Return friendly error message to user
+                    return Json(new { status = "error", message = "Локацията не може да бъде добавена. Проверете дали вече няма локация за това местоположение." });
                     throw;
                 }
             }
 
-            return View();
+            return Json(new { status = "error", message = "Всички полета без \"Информация\" са задължителни." });
         }
     }
 }

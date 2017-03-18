@@ -7,9 +7,9 @@
     <script src="~/Scripts/secret/config.js"></script>
 }
 
-@using (@Html.BeginForm())
-{
-    <div class="row">
+<div class="row">
+    @using (@Html.BeginForm())
+    {
         <div class="container col-sm-5 col-sm-offset-1">
             <h3>Въведи координати</h3>
             @Html.LabelFor(m => m.Name, new { @class = "label label-succes" })
@@ -24,9 +24,11 @@
             @Html.LabelFor(m => m.Info, new { @class = "label label-succes" })
             @Html.TextAreaFor(m => m.Info, new { @class = "form-control" })
 
-            <input type="submit" class="btn btn-primary" value="Добави" />
+            <input type="submit" id="add" class="btn btn-primary" value="Добави" />
+            <div id="result"></div>
         </div>
-
+    }
+    
         <div class="container col-sm-5">
             <h3>Вземи координати от адрес</h3>
             <label class="label label-succes">Адрес</label>
@@ -35,9 +37,9 @@
             <h4 id="search-result">Координати за: </h4>
             <input type="submit" id="geo-click" class="btn btn-primary" value="Координати" />
         </div>
-    </div>
-}
+</div>
 
 @section PageScripts {
+    <script src="~/Scripts/page-scripts/add-location.js"></script>
     <script src="~/Scripts/page-scripts/get-coordinates.js"></script>
 }
