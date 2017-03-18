@@ -12,7 +12,7 @@
                     lat = location.lat,
                     long = location.lng;
 
-                $('#search-result').html('Координати за: ' + placeName);
+                $('#search-result').html(placeName);
                 $('#Name').val(placeName);
                 $('#Latitude').val(lat);
                 $('#Longitude').val(long);
