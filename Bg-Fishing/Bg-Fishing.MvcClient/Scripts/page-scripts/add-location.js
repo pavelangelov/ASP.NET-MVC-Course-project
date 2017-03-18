@@ -1,6 +1,6 @@
 ﻿$('#add').on('click', (ev) => {
     ev.preventDefault();
-    let name = $('#Name').val(),
+    let name = $('#LocationName').val(),
         latitude = $('#Latitude').val(),
         longitude = $('#Longitude').val(),
         info = $('#Info').val();

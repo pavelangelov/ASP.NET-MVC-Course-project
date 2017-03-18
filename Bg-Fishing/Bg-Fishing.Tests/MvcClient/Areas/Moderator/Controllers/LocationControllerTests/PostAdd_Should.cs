@@ -56,7 +56,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LocationControl
             mockedLocationService.Setup(s => s.Save()).Throws<Exception>();
 
             var controller = new LocationController(mockedLocationFactory.Object, mockedLocationService.Object);
-            var model = new LocationViewModel() { Name = "Name", Latitude = 1, Longitude = 1 } ;
+            var model = new LocationViewModel() { LocationName = "Name", Latitude = 1, Longitude = 1 } ;
 
             // Act
             var result = controller.Add(model) as JsonResult;
@@ -83,7 +83,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LocationControl
             mockedLocationService.Setup(s => s.Save()).Verifiable();
 
             var controller = new LocationController(mockedLocationFactory.Object, mockedLocationService.Object);
-            var model = new LocationViewModel() { Name = "Name", Latitude = 1, Longitude = 1 };
+            var model = new LocationViewModel() { LocationName = "Name", Latitude = 1, Longitude = 1 };
 
             // Act
             var result = controller.Add(model) as JsonResult;

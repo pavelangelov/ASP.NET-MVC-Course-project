@@ -314,6 +314,7 @@
     <Content Include="Areas\Moderator\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Moderator\Views\Video\Add.cshtml" />
     <Content Include="Areas\Moderator\Views\Location\Add.cshtml" />
+    <Content Include="Areas\Moderator\Views\Lake\Add.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -403,7 +404,6 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Moderator\Views\Lake\" />
     <Folder Include="Hubs\" />
   </ItemGroup>
   <ItemGroup>

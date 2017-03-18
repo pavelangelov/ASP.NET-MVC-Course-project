@@ -1,0 +1,71 @@
+﻿@model Bg_Fishing.MvcClient.Areas.Moderator.Models.LakeViewModel
+@{
+    ViewBag.Title = "Нов язовир";
+}
+
+@section HeaderScripts {
+    <script src="~/Scripts/secret/config.js"></script>
+}
+
+<div class="container">
+    <div class="col-sm-6">
+        @using (Html.BeginForm())
+        {
+            <h3>Данни на язовира</h3>
+            @Html.LabelFor(m => m.Name, new { @class = "label label-warning" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.Info, new { @class = "label label-warning" })
+            @Html.TextAreaFor(m => m.Info, new { @class = "form-control" })
+
+            @Html.LabelFor(m => m.LocationName, new { @class = "label label-warning" })
+            @Html.TextBoxFor(m => m.LocationName, new { @class = "form-control", @disabled = "disabled" })
+
+            @Html.LabelFor(m => m.Latitude, new { @class = "label label-warning" })
+            @Html.TextBoxFor(m => m.Latitude, new { @class = "form-control", @disabled = "disabled" })
+
+            @Html.LabelFor(m => m.Longitude, new { @class = "label label-warning" })
+            @Html.TextBoxFor(m => m.Longitude, new { @class = "form-control", @disabled = "disabled" })
+
+            <input type="submit" id="add-lake" class="btn btn-primary" value="Добави" />
+        }
+    </div>
+
+    <div class="container col-sm-5">
+        <h3>Вземи координати от адрес</h3>
+        <label class="label label-succes">Адрес</label>
+        <input type="text" id="address-input" class="form-control" />
+        <p>Ако не намерите търсените координати, въведете името на града заедно с кода на страната за по-добър резултат.</p>
+        <h4>Координати за: <span id="search-result" class="text-info"></span></h4>
+        <input type="submit" id="geo-click" class="btn btn-primary" value="Координати" />
+    </div>
+</div>
+
+<script>
+    $('#add-lake').on('click', (ev) => {
+        ev.preventDefault();
+        let data = {
+            name: $('#Name').val(),
+            locationName: $('#LocationName').val(),
+            latitude: $('#Latitude').val(),
+            longitude: $('#Longitude').val(),
+            info: $('#Info').val()
+        };
+
+        $.ajax({
+            method: 'POST',
+            url: '/moderator/lake/add',
+            data: data,
+            success: (response) => {
+                console.log(response.message);
+            },
+            error: (err) => {
+                console.log('Error: ' + error.message);
+            }
+        })
+    })
+</script>
+
+@section PageScripts {
+    <script src="~/Scripts/page-scripts/get-coordinates.js"></script>
+}

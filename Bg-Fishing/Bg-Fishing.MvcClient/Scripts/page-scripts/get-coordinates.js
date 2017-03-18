@@ -13,11 +13,10 @@
                     long = location.lng;
 
                 $('#search-result').html(placeName);
-                $('#Name').val(placeName);
+                $('#LocationName').val(placeName);
                 $('#Latitude').val(lat);
                 $('#Longitude').val(long);
             }
-            console.log(data);
         },
         error: (err) => {
             console.log(err);

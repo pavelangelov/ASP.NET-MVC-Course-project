@@ -35,7 +35,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
             {
                 try
                 {
-                    var location = this.locationFactory.CreateLocation(model.Latitude, model.Longitude, model.Name, model.Info);
+                    var location = this.locationFactory.CreateLocation(model.Latitude, model.Longitude, model.LocationName, model.Info);
                     this.locationService.Add(location);
                     this.locationService.Save();
 

@@ -16,7 +16,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 
         [Required]
         [Display(Name = "Местоположение")]
-        public string Name { get; set; }
+        public string LocationName { get; set; }
 
         [Display(Name = "Информация")]
         public string Info { get; set; }
