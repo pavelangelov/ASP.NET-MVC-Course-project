@@ -19,5 +19,12 @@
         public const string InvalidLocationModelErrorMessage = "Всички полета без \"Информация\" са задължителни.";
 
         #endregion
+
+        #region AddLake
+
+        public const string AddLakeSuccessMessage = "Язовира е добавен успешно";
+        public const string AddLakeErrorMessage = "Визникна грешка при добавянето на язовира. Проверете дали вече няма добавен язовир с това име.";
+
+        #endregion
     }
 }

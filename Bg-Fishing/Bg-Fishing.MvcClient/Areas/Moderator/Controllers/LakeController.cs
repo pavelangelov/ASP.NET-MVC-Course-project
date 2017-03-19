@@ -1,12 +1,11 @@
-﻿using Bg_Fishing.Factories.Contracts;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
+
+using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
@@ -57,11 +56,11 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                     this.lakeService.Add(lake);
                     this.lakeService.Save();
 
-                    return Json(new { status = "success", message = "Язовира е добавен успешно" });
+                    return Json(new { status = "success", message = GlobalMessages.AddLakeSuccessMessage });
                 }
                 catch (Exception)
                 {
-                    return Json(new { status = "error", message = "Визникна грешка при добавянето на язовира. Проверете дали вече няма добавен язовир с това име." });
+                    return Json(new { status = "error", message = GlobalMessages.AddLakeErrorMessage });
                 }
                 
             }
