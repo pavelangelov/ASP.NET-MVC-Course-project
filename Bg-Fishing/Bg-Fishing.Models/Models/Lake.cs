@@ -10,7 +10,7 @@ namespace Bg_Fishing.Models
     public class Lake : ILake, IIdentifiable
     {
         private string name;
-        private ILocation location;
+        private Location location;
 
         public Lake()
         {
@@ -18,7 +18,7 @@ namespace Bg_Fishing.Models
             this.Fish = new HashSet<Fish>();
         }
 
-        public Lake(string name, ILocation location)
+        public Lake(string name, Location location)
             : this()
         {
             this.Name = name;
@@ -26,7 +26,7 @@ namespace Bg_Fishing.Models
         }
 
 
-        public Lake(string name, ILocation location, string info)
+        public Lake(string name, Location location, string info)
             : this(name, location)
         {
             this.Info = info;
@@ -67,7 +67,7 @@ namespace Bg_Fishing.Models
         /// Get lake location.
         /// </summary>
         [Required]
-        public ILocation Location
+        public Location Location
         {
             get
             {

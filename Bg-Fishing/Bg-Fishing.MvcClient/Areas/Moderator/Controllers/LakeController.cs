@@ -14,16 +14,23 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
     {
         private ILakeFactory lakeFactory;
         private ILocationFactory locationFactory;
+        private ILakeService lakeService;
         private ILocationService locationService;
 
-        public LakeController(ILakeFactory lakeFactory, ILocationFactory locationFactory, ILocationService locationService)
+        public LakeController(
+            ILakeFactory lakeFactory, 
+            ILocationFactory locationFactory, 
+            ILakeService lakeService, 
+            ILocationService locationService)
         {
             Validator.ValidateForNull(lakeFactory, paramName: "lakeFactory");
             Validator.ValidateForNull(locationFactory, paramName: "locationFactory");
+            Validator.ValidateForNull(lakeService, paramName: "lakeService");
             Validator.ValidateForNull(locationService, paramName: "locationService");
 
             this.lakeFactory = lakeFactory;
             this.locationFactory = locationFactory;
+            this.lakeService = lakeService;
             this.locationService = locationService;
         }
 
@@ -38,16 +45,25 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         {
             if (ModelState.IsValid)
             {
-                var location = this.locationService.FindByName(model.LocationName);
-                if (location == null)
+                try
                 {
-                    location = this.locationFactory.CreateLocation(model.Latitude, model.Longitude, model.LocationName);
+                    var location = this.locationService.FindByName(model.LocationName);
+                    if (location == null)
+                    {
+                        location = this.locationFactory.CreateLocation(model.Latitude, model.Longitude, model.LocationName);
+                    }
+
+                    var lake = this.lakeFactory.CreateLake(model.Name, location, model.Info);
+                    this.lakeService.Add(lake);
+                    this.lakeService.Save();
+
+                    return Json(new { status = "success", message = "Язовира е добавен успешно" });
                 }
-
-                var lake = this.lakeFactory.CreateLake(model.Name, location, model.Info);
-
-                // TODO: Add new lake
-                return Json(new { status = "success", message = "Язовира е добавен успешно" });
+                catch (Exception)
+                {
+                    return Json(new { status = "error", message = "Визникна грешка при добавянето на язовира. Проверете дали вече няма добавен язовир с това име." });
+                }
+                
             }
             else
             {

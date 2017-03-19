@@ -7,5 +7,7 @@
         double Longitude { get; }
 
         string Info { get; }
+
+        string Name { get; }
     }
 }

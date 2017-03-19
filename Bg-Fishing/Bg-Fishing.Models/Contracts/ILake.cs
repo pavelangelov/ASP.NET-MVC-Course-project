@@ -17,7 +17,7 @@ namespace Bg_Fishing.Models.Contracts
         /// <summary>
         /// Get lake location.
         /// </summary>
-        ILocation Location { get; }
+        Location Location { get; }
 
         /// <summary>
         /// Get collection of available fish in the lake.
