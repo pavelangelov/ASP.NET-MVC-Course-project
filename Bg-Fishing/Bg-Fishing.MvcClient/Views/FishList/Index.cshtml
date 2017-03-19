@@ -15,13 +15,13 @@
             <div class="card-block">
                 <h4 class="card-title">@fish.Name</h4>
                 <div class="card-text">
-                    <div class="text-success">Налична в язовири: </div>
-                    <div>
+                    <div><span class="text-success">Налична в язовири: </span></div>
+                    <ul class="list-inline">
                         @foreach (var lake in fish.Lakes)
                         {
-                            @Html.ActionLink(lake.Name, "Details", new { Area = "", name = lake.Name })
+                            <li>@Html.ActionLink(lake.Name, "Details", new { Area = "", name = lake.Name })</li>
                         }
-                    </div>
+                    </ul>
                     @Html.ActionLink("Детайли", "Details", new { Area = "", name = fish.Name }, new { @class = "btn btn-info" })
                 </div>
             </div>

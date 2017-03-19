@@ -3,6 +3,7 @@
 using Bg_Fishing.Data;
 using Bg_Fishing.Services;
 using Bg_Fishing.Services.Contracts;
+using Ninject.Web.Common;
 
 namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
 {
@@ -10,7 +11,7 @@ namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
     {
         public override void Load()
         {
-            this.Bind<IDatabaseContext>().To<FishingContext>();
+            this.Bind<IDatabaseContext>().To<FishingContext>().InRequestScope();
 
             this.Bind<IVideoService>().To<VideoService>();
             this.Bind<IFishService>().To<FishService>();

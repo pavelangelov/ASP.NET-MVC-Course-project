@@ -228,6 +228,7 @@
     <Compile Include="Areas\Moderator\Controllers\LakeController.cs" />
     <Compile Include="Areas\Moderator\Controllers\LocationController.cs" />
     <Compile Include="Areas\Moderator\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Moderator\Models\AddFishViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\AddVideoViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\LakeViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\LocationViewModel.cs" />
@@ -320,6 +321,7 @@
     <Content Include="Areas\Moderator\Views\Video\Add.cshtml" />
     <Content Include="Areas\Moderator\Views\Location\Add.cshtml" />
     <Content Include="Areas\Moderator\Views\Lake\Add.cshtml" />
+    <Content Include="Areas\Moderator\Views\Lake\AddFish.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -32,8 +32,10 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
 
             var mockedLocationService = new Mock<ILocationService>();
             mockedLocationService.Setup(s => s.FindByName(It.IsAny<string>())).Verifiable();
+            
+            var mockedFishService = new Mock<IFishService>();
 
-            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object);
+            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object);
             controller.ModelState.AddModelError("Name", "Test error!");
 
             // Act
@@ -71,7 +73,9 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedLocationService = new Mock<ILocationService>();
             mockedLocationService.Setup(s => s.FindByName(It.IsAny<string>())).Verifiable();
 
-            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object);
+            var mockedFishService = new Mock<IFishService>();
+
+            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object);
 
             // Act
             var result = controller.Add(new LakeViewModel()) as JsonResult;
@@ -107,7 +111,9 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedLocationService = new Mock<ILocationService>();
             mockedLocationService.Setup(s => s.FindByName(It.IsAny<string>())).Verifiable();
 
-            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object);
+            var mockedFishService = new Mock<IFishService>();
+
+            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object);
 
             // Act
             var result = controller.Add(new LakeViewModel()) as JsonResult;

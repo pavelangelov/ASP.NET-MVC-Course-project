@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 using Bg_Fishing.Data;
 using Bg_Fishing.DTOs.FishDTOs;
 using Bg_Fishing.DTOs.LakeDTOs;
+using Bg_Fishing.Models;
 using Bg_Fishing.Models.Enums;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
@@ -22,7 +24,14 @@ namespace Bg_Fishing.Services
             this.dbContext = dbContext;
         }
 
-        public AllFishPropsDTO FindByName(string name)
+        public Fish FindByName(string name)
+        {
+            var fish = this.dbContext.Fish.FirstOrDefault(f => f.Name == name);
+
+            return fish;
+        }
+
+        public AllFishPropsDTO GetFishDTOByName(string name)
         {
             var fish = this.dbContext.Fish.Include(f => f.Lakes).FirstOrDefault(f => f.Name == name);
 

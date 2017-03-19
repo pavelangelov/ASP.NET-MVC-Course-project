@@ -20,7 +20,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.FishListControllerTests
             var mockedFish = new AllFishPropsDTO { Name = "First" };
 
             var mockedFishService = new Mock<IFishService>();
-            mockedFishService.Setup(s => s.FindByName(It.IsAny<string>())).Returns(mockedFish).Verifiable();
+            mockedFishService.Setup(s => s.GetFishDTOByName(It.IsAny<string>())).Returns(mockedFish).Verifiable();
 
             var controller = new FishListController(mockedFishService.Object);
 
@@ -30,7 +30,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.FishListControllerTests
 
             // Assert
             Assert.AreEqual(mockedFish, model.SelectedFish);
-            mockedFishService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);
+            mockedFishService.Verify(s => s.GetFishDTOByName(It.IsAny<string>()), Times.Once);
         }
     }
 }

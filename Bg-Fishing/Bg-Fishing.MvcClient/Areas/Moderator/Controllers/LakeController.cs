@@ -15,22 +15,26 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         private ILocationFactory locationFactory;
         private ILakeService lakeService;
         private ILocationService locationService;
+        private IFishService fishService;
 
         public LakeController(
-            ILakeFactory lakeFactory, 
-            ILocationFactory locationFactory, 
-            ILakeService lakeService, 
-            ILocationService locationService)
+            ILakeFactory lakeFactory,
+            ILocationFactory locationFactory,
+            ILakeService lakeService,
+            ILocationService locationService,
+            IFishService fishService)
         {
             Validator.ValidateForNull(lakeFactory, paramName: "lakeFactory");
             Validator.ValidateForNull(locationFactory, paramName: "locationFactory");
             Validator.ValidateForNull(lakeService, paramName: "lakeService");
             Validator.ValidateForNull(locationService, paramName: "locationService");
+            Validator.ValidateForNull(fishService, paramName: "fishService");
 
             this.lakeFactory = lakeFactory;
             this.locationFactory = locationFactory;
             this.lakeService = lakeService;
             this.locationService = locationService;
+            this.fishService = fishService;
         }
 
         [HttpGet]
@@ -62,7 +66,51 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                 {
                     return Json(new { status = "error", message = GlobalMessages.AddLakeErrorMessage });
                 }
-                
+
+            }
+            else
+            {
+                var errors = string.Join("<br/>", ModelState.Values
+                                                        .SelectMany(v => v.Errors
+                                                                          .Select(e => e.ErrorMessage)));
+                return Json(new { status = "error", message = errors });
+            }
+        }
+
+        [HttpGet]
+        public ActionResult AddFish()
+        {
+            var model = new AddFishViewModel();
+            var fish = this.fishService.GetAll();
+            model.Fish = fish;
+
+            var lakes = this.lakeService.GetAll();
+            model.Lakes = lakes;
+
+            return View(model);
+        }
+
+        public ActionResult AddFish(AddFishViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var lake = this.lakeService.FindByName(model.SelectedLake);
+                    foreach (var fishName in model.SelectedFish)
+                    {
+                        var fish = this.fishService.FindByName(fishName);
+                        lake.Fish.Add(fish);
+                    }
+
+                    this.lakeService.Save();
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { status = "error", message = "Възникна грешка при добавянето на на избраните риби." });
+                }
+
+                return Json(new { status = "success", message = string.Format("Рибата е добавена във {1}.", model.SelectedFish, model.SelectedLake) });
             }
             else
             {

@@ -1,0 +1,72 @@
+﻿@model Bg_Fishing.MvcClient.Areas.Moderator.Models.AddFishViewModel
+@{
+    ViewBag.Title = "Добави риба към язовир.";
+}
+
+<div class="container">
+    @using (@Html.BeginForm())
+    {
+        <div class="col-sm-5 col-sm-offset-1">
+            <p id="result"></p>
+            @Html.LabelFor(m => m.Lakes, new { @class = "label label-warning" })
+            <select id="SelectedLake" class="form-control">
+                <option>-----</option>
+                @foreach (var lake in Model.Lakes)
+                {
+                    <option value="@lake.Name">@lake.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1">
+            @Html.LabelFor(m => m.SelectedFish, new { @class = "label label-warning" })
+            <select id="SelectedFish" class="form-control" multiple>
+                @foreach (var fish in Model.Fish)
+                {
+                    <option value="@fish.Name">@fish.Name</option>
+                }
+            </select>
+        </div>
+        <br />
+       <div class="col-sm-10 text-center">
+           <input type="submit" id="add" class="btn btn-primary" value="Добави" />
+       </div>
+    }
+</div>
+
+<script>
+    $('#add').on('click', (ev) => {
+        ev.preventDefault();
+        var selectedLake = $('#SelectedLake').val();
+
+        var selectedFish = [];
+        $('#SelectedFish :selected').each((i, selected) => {
+            selectedFish[i] = $(selected).text();
+        });
+
+        if (selectedLake.length && selectedFish.length > 0) {
+            $.ajax({
+                method: 'POST',
+                url: '/moderator/lake/addFish',
+                data: {
+                    selectedLake,
+                    selectedFish
+                },
+                success: (response) => {
+                    if (response.status === "success") {
+                        $('#result').addClass('text-success')
+                                    .removeClass('text-danger')
+                                    .html(response.message)
+                    } else {
+                        $('#result').removeClass('text-success')
+                                .addClass('text-danger')
+                                .html(response.message)
+                    }
+                },
+                error: (err) => {
+                    console.log(err.message);
+                }
+            })
+        }
+
+    })
+</script>

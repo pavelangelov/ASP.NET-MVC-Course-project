@@ -20,8 +20,9 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedLocationFactory = new Mock<ILocationFactory>();
             var mockedLakeService = new Mock<ILakeService>();
             var mockedLocationService = new Mock<ILocationService>();
+            var mockedFishService = new Mock<IFishService>();
 
-            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object);
+            var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object);
 
             // Act
             var view = controller.Add() as ViewResult;
