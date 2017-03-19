@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201703171908549_Added-Location-DataAnnotations.Designer.cs">
       <DependentUpon>201703171908549_Added-Location-DataAnnotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703191412358_Location-Fixes.cs" />
+    <Compile Include="Migrations\201703191412358_Location-Fixes.Designer.cs">
+      <DependentUpon>201703191412358_Location-Fixes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703171908549_Added-Location-DataAnnotations.resx">
       <DependentUpon>201703171908549_Added-Location-DataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703191412358_Location-Fixes.resx">
+      <DependentUpon>201703191412358_Location-Fixes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
