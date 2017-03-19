@@ -1,11 +1,8 @@
-﻿using Bg_Fishing.Data;
+﻿using Ninject.Modules;
+
+using Bg_Fishing.Data;
 using Bg_Fishing.Services;
 using Bg_Fishing.Services.Contracts;
-using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
 {
@@ -18,6 +15,7 @@ namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
             this.Bind<IVideoService>().To<VideoService>();
             this.Bind<IFishService>().To<FishService>();
             this.Bind<ILocationService>().To<LocationService>();
+            this.Bind<ILakeService>().To<LakeService>();
         }
     }
 }
