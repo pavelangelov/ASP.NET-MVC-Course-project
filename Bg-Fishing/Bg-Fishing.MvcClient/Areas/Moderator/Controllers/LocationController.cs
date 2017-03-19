@@ -8,7 +8,7 @@ using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
-    public class LocationController : Controller
+    public class LocationController : ModeratorBaseController
     {
         private ILocationFactory locationFactory;
         private ILocationService locationService;

@@ -9,7 +9,7 @@ namespace Bg_Fishing.Services.Contracts
     {
         IEnumerable<LocationDTO> GetAll();
 
-        AllLocationPropsDTO FindByName(string name);
+        Location FindByName(string name);
 
         void Add(Location location);
 

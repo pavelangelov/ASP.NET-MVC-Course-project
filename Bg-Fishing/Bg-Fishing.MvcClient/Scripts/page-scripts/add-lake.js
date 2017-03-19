@@ -14,7 +14,7 @@
         data: data,
         success: (response) => {
             let result = $('#result');
-            if (response.status == 'success') {
+            if (response.status === 'success') {
                 result.removeClass('text-danger')
                        .addClass('text-success')
                        .html(response.message);
@@ -27,5 +27,5 @@
         error: (err) => {
             console.log('Error: ' + error.message);
         }
-    })
-})
+    });
+});

@@ -25,22 +25,11 @@ namespace Bg_Fishing.Services
             this.dbContext.Locations.Add(location);
         }
 
-        public AllLocationPropsDTO FindByName(string name)
+        public Location FindByName(string name)
         {
             var location = this.dbContext.Locations.FirstOrDefault(l => l.Name == name);
-
-            if (location != null)
-            {
-                return new AllLocationPropsDTO
-                {
-                    Name = location.Name,
-                    Latitude = location.Latitude,
-                    Longitude = location.Longitude,
-                    Info = location.Info
-                };
-            }
-
-            return null;
+            
+            return location;
         }
 
         public IEnumerable<LocationDTO> GetAll()

@@ -70,7 +70,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                     this.videoService.Save();
                     return Json(new { status = "success", message = GlobalMessages.AddVideoSuccessMessage });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Json(new { status = "error", message = GlobalMessages.AddVideoErrorMessage });
                 }
