@@ -18,6 +18,8 @@ namespace Bg_Fishing.MvcClient
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            DefaultModelBinder.ResourceClassKey = "ValidationMessages";
         }
     }
 }

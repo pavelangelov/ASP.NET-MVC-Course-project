@@ -25,7 +25,9 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
             }
             else
             {
-                var errors = string.Join(" ", ModelState.Values);
+                var errors = string.Join("<br/>", ModelState.Values
+                                                        .SelectMany(v => v.Errors
+                                                                          .Select(e => e.ErrorMessage)));
                 return Json(new { status = "error", message = errors });
             }
         }

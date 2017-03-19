@@ -8,17 +8,22 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
     public class LakeViewModel
     {
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [Display(Name = "Име на Язовира")]
-        [Required]
+        
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         public string LocationName { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         public double Latitude { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         public double Longitude { get; set; }
 
         public string Info { get; set; }

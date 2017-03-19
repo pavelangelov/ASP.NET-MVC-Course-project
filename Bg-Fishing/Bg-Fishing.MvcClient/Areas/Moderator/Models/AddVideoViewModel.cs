@@ -13,11 +13,13 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
     {
         private IEnumerable<GalleryDTO> galleryNames;
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [Display(Name = ViewModelsDisplayNames.VideoUrl_DisplayName)]
         public string VideoUrl { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [Display(Name = ViewModelsDisplayNames.VideoTitle_DisplayName)]
         public string VideoTitle { get; set; }
 

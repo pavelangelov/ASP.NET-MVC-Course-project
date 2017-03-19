@@ -8,6 +8,7 @@
 }
 
 <div class="container">
+    <p id="result"></p>
     <div class="col-sm-6">
         @using (Html.BeginForm())
         {
@@ -41,31 +42,7 @@
     </div>
 </div>
 
-<script>
-    $('#add-lake').on('click', (ev) => {
-        ev.preventDefault();
-        let data = {
-            name: $('#Name').val(),
-            locationName: $('#LocationName').val(),
-            latitude: $('#Latitude').val(),
-            longitude: $('#Longitude').val(),
-            info: $('#Info').val()
-        };
-
-        $.ajax({
-            method: 'POST',
-            url: '/moderator/lake/add',
-            data: data,
-            success: (response) => {
-                console.log(response.message);
-            },
-            error: (err) => {
-                console.log('Error: ' + error.message);
-            }
-        })
-    })
-</script>
-
 @section PageScripts {
+    <script src="~/Scripts/page-scripts/add-lake.js"></script>
     <script src="~/Scripts/page-scripts/get-coordinates.js"></script>
 }
