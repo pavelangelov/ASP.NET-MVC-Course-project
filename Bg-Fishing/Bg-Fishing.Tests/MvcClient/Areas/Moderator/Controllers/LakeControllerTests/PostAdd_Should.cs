@@ -1,11 +1,11 @@
-﻿using Bg_Fishing.Factories.Contracts;
-using Bg_Fishing.Models;
-using System;
+﻿using System;
 using System.Web.Mvc;
 
 using Moq;
 using NUnit.Framework;
 
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Models;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;

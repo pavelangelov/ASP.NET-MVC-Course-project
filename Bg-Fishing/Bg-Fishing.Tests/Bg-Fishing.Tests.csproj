@@ -70,15 +70,18 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\LakeControllerClass_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\GetAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LocationControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LocationControllerTests\GetAdd_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\LocationControllerTests\LocationControllerClass_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LocationControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\GetAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\PostAdd_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\VieoControllerClass_Should.cs" />
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\Videos_Should.cs" />
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\GetVideos_Should.cs" />
