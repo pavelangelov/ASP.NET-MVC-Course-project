@@ -88,6 +88,12 @@
     <Compile Include="Services\FishServiceTests\GetAllByType_Should.cs" />
     <Compile Include="Services\FishServiceTests\GetAll_Should.cs" />
     <Compile Include="Services\FishServiceTests\Save_Should.cs" />
+    <Compile Include="Services\LakeServiceTests\Add_Should.cs" />
+    <Compile Include="Services\LakeServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\LakeServiceTests\FindByLocation_Should.cs" />
+    <Compile Include="Services\LakeServiceTests\FindByName_Should.cs" />
+    <Compile Include="Services\LakeServiceTests\GetAll_Should.cs" />
+    <Compile Include="Services\LakeServiceTests\Save_Should.cs" />
     <Compile Include="Services\LocationServiceTests\Add_Should.cs" />
     <Compile Include="Services\LocationServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\LocationServiceTests\FindByName_Should.cs" />

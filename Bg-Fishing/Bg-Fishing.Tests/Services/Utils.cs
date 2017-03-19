@@ -48,5 +48,18 @@ namespace Bg_Fishing.Tests.Services
 
             return collection;
         }
+
+        public static IList<Lake> GetLakesCollection()
+        {
+            var matchedLocation = new Location() { Name = "Valid" };
+            var collection = new List<Lake>
+            {
+                new Lake("First", matchedLocation),
+                new Lake("Second", new Location() { Name = "Invalid"}),
+                new Lake("Third", matchedLocation)
+            };
+
+            return collection;
+        }
     }
 }
