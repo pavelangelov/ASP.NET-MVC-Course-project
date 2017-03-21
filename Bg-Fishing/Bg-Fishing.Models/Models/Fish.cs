@@ -43,8 +43,7 @@ namespace Bg_Fishing.Models
         [Index(IsUnique = true)]
         [StringLength(
             Constants.NameMaxLength, 
-            MinimumLength = Constants.NameMinLength,
-            ErrorMessage = GlobalMessages.FishNameErrorMessage)]
+            MinimumLength = Constants.NameMinLength)]
         public string Name
         {
             get
@@ -54,7 +53,11 @@ namespace Bg_Fishing.Models
 
             private set
             {
-                // TODO: Validate
+                var minLength = Constants.NameMinLength;
+                var maxLength = Constants.NameMaxLength;
+                var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Name", minLength, maxLength);
+
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, "Name", errorMessage);
 
                 this.name = value;
             }

@@ -4,12 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Models
 {
     public class Lake : ILake, IIdentifiable
     {
         private string name;
+        private string info;
         private Location location;
 
         public Lake()
@@ -42,8 +44,8 @@ namespace Bg_Fishing.Models
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
-        [MinLength(2)]
-        [MaxLength(25)]
+        [MinLength(Constants.NameMinLength)]
+        [MaxLength(Constants.NameMaxLength)]
         public string Name
         {
             get
@@ -53,7 +55,12 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: Validate
+                var minLength = Constants.NameMinLength;
+                var maxLength = Constants.NameMaxLength;
+                var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Name", minLength, maxLength);
+
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, "Name", errorMessage);
+
                 this.name = value;
             }
         }
@@ -61,7 +68,25 @@ namespace Bg_Fishing.Models
         /// <summary>
         /// Get or Set additional info about the lake.
         /// </summary>
-        public string Info { get; set; }
+        [StringLength(Constants.InfoMaxLEngth)]
+        public string Info
+        {
+            get
+            {
+                return this.info;
+            }
+
+            set
+            {
+                var minLength = 0;
+                var maxLength = Constants.InfoMaxLEngth;
+                var errorMessage = GlobalMessages.InfoErrorMessage;
+
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, "Info", errorMessage);
+
+                this.info = value;
+            }
+        }
 
         /// <summary>
         /// Get lake location.

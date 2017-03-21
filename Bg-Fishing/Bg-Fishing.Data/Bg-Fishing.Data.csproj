@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201703211651175_Fish-Constraints-Added.Designer.cs">
       <DependentUpon>201703211651175_Fish-Constraints-Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703211729006_Added_Lake_COnstraints.cs" />
+    <Compile Include="Migrations\201703211729006_Added_Lake_COnstraints.Designer.cs">
+      <DependentUpon>201703211729006_Added_Lake_COnstraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703211651175_Fish-Constraints-Added.resx">
       <DependentUpon>201703211651175_Fish-Constraints-Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211729006_Added_Lake_COnstraints.resx">
+      <DependentUpon>201703211729006_Added_Lake_COnstraints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
