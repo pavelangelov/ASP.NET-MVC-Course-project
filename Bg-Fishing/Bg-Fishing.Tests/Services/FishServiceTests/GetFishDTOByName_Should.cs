@@ -10,10 +10,10 @@ using Bg_Fishing.Tests.Services.Mocks;
 namespace Bg_Fishing.Tests.Services.FishServiceTests
 {
     [TestFixture]
-    public class FindByName_Should
+    public class GetFishDTOByName_Should
     {
         [Test]
-        public void ReturnCorrectResult_IfNameMatch()
+        public void ReturnCorrectResult_IfNameMatched()
         {
             // Arrange
             var fishCollection = Utils.GetFishCollection();
@@ -26,15 +26,16 @@ namespace Bg_Fishing.Tests.Services.FishServiceTests
             var searchedFish = fishCollection.Last();
 
             // Act
-            var fish = fishService.FindByName(searchedFish.Name);
+            var fish = fishService.GetFishDTOByName(searchedFish.Name);
 
             // Assert
             Assert.AreEqual(searchedFish.Name, fish.Name);
+            Assert.AreEqual(searchedFish.ImageUrl, fish.ImageUrl);
             Assert.AreEqual(searchedFish.Id, fish.Id);
         }
 
         [Test]
-        public void ReturnNull_IfNameNotMatch()
+        public void ReturnNull_IfNameNotMatched()
         {
             // Arrange
             var fishCollection = Utils.GetFishCollection();
@@ -46,7 +47,7 @@ namespace Bg_Fishing.Tests.Services.FishServiceTests
             var fishService = new FishService(mockedDbContext.Object);
 
             // Act
-            var fish = fishService.FindByName("Invalid name");
+            var fish = fishService.GetFishDTOByName("invalid name");
 
             // Assert
             Assert.IsNull(fish);
