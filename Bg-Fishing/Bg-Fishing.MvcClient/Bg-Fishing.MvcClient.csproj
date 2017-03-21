@@ -238,6 +238,7 @@
     <Compile Include="Controllers\Common\GalleriesController.cs" />
     <Compile Include="Controllers\FishListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LakesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -404,6 +405,7 @@
     <Content Include="Views\Galleries\Videos.cshtml" />
     <Content Include="Views\FishList\Index.cshtml" />
     <Content Include="Views\FishList\Details.cshtml" />
+    <Content Include="Views\Lakes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApiControllers\" />

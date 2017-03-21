@@ -19,7 +19,7 @@
                 <ul class="list-inline">
                     @foreach (var lake in Model.SelectedFish.Lakes)
                     {
-                        <li>@Html.ActionLink(@lake.Name, "Details", "LakeList", new { Area = "", name = lake.Name }, null)</li>
+                        <li>@Html.ActionLink(@lake.Name, "Info", "Lakes", new { Area = "", name = lake.Name }, null)</li>
                     }
                 </ul>
             </div>
