@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using Bg_Fishing.Models.Enums;
 using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Models
 {
@@ -40,8 +41,10 @@ namespace Bg_Fishing.Models
         /// </summary>
         [Required]
         [Index(IsUnique = true)]
-        [MinLength(2)]
-        [MaxLength(25)]
+        [StringLength(
+            Constants.NameMaxLength, 
+            MinimumLength = Constants.NameMinLength,
+            ErrorMessage = GlobalMessages.FishNameErrorMessage)]
         public string Name
         {
             get
@@ -60,6 +63,7 @@ namespace Bg_Fishing.Models
         /// <summary>
         /// Get or Set the additional info about the fish.
         /// </summary>
+        [StringLength(Constants.InfoMaxLEngth)]
         public string Info
         {
             get
@@ -69,7 +73,11 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: Validate
+                var minLength = 0;
+                var maxLength = Constants.InfoMaxLEngth;
+                var errorMessage = GlobalMessages.InfoErrorMessage;
+
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, "Info", errorMessage);
 
                 this.info = value;
             }

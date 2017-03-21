@@ -31,6 +31,8 @@
 
         public const string AgeErrorMessage = "Годините на потребителя трябва да са в интервал {0} - {1}";
         public const string NameErrorMessage = "{0} на потребителя трябва да е между {1} и {2} символа.";
+        public const string FishNameErrorMessage = "Името на рибата трябва да е между 2 и 35 символа.";
+        public const string InfoErrorMessage = "Допълнителната информация не може да е с дължина над 2500 символа";
 
         #endregion
     }

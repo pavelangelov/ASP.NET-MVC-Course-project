@@ -15,5 +15,6 @@ namespace Bg_Fishing.Utils
         public const int NameMaxLength = 35;
         public const int PasswordMinLength = 6;
         public const int PasswordMaxLength = 100;
+        public const int InfoMaxLEngth = 3000;
     }
 }
