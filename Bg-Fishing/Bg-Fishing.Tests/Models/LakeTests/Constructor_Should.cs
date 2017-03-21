@@ -27,7 +27,7 @@ namespace Bg_Fishing.Tests.Models.LakeTests
         [TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
         public void ThrowArgumentException_IfNameIsNotValid(string invalidName)
         {
-            // Arrange, Act & Act
+            // Arrange, Act & Assert
             var message = Assert.Throws<ArgumentException>(() => new Lake(invalidName, It.IsAny<Location>())).Message;
             StringAssert.Contains("Name", message);
         }
@@ -35,7 +35,7 @@ namespace Bg_Fishing.Tests.Models.LakeTests
         [Test]
         public void ThrowArgumentNullException_IfLocationIsNull()
         {
-            // Arrange, Act & Act
+            // Arrange, Act & Assert
             var message = Assert.Throws<ArgumentNullException>(() => new Lake("some name", null)).Message;
             StringAssert.Contains("Location", message);
         }
@@ -45,9 +45,13 @@ namespace Bg_Fishing.Tests.Models.LakeTests
         [TestCase("1000 Lulin-Center, Sofia, Bulgaria")]
         public void NotThrow_IfNameAndLocationAreValid(string validName)
         {
-            // Arrange, Act & Act
+            // Arrange, Act
             var validLocation = new Location();
-            Assert.DoesNotThrow(() => new Lake(validName, validLocation));
+            var lake =  new Lake(validName, validLocation);
+
+            // Assert
+            Assert.AreEqual(validName, lake.Name);
+            Assert.AreEqual(validLocation, lake.Location);
         }
 
         [Test]

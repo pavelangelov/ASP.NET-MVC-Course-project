@@ -43,9 +43,15 @@ namespace Bg_Fishing.Tests.Models.LocationTests
         [TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
         public void NotThrow_ValuesAreValid(string validName)
         {
-            // Arrange, Act & Assert
+            // Arrange, Act
             var validInfo = new string('a', Constants.InfoMaxLEngth);
-           Assert.DoesNotThrow(() => new Location(1, 1, validName, validInfo));
+            var location = new Location(1, 1, validName, validInfo);
+
+            // Assert
+            Assert.AreEqual(validName, location.Name);
+            Assert.AreEqual(1, location.Latitude);
+            Assert.AreEqual(1, location.Longitude);
+            Assert.AreEqual(validInfo, location.Info);
         }
     }
 }
