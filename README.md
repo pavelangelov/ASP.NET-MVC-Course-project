@@ -1,2 +1,2 @@
 # ASP.NET-MVC-Course-project
-![alt tag](https://ci.appveyor.com/project/pavelangelov/asp-net-mvc-course-project)
+[![Build status](https://ci.appveyor.com/api/projects/status/4edu429qor0tix61?svg=true)](https://ci.appveyor.com/project/pavelangelov/asp-net-mvc-course-project)
