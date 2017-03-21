@@ -34,6 +34,7 @@ namespace Bg_Fishing.Models
         /// <summary>
         /// Get or Set user age.
         /// </summary>
+        [Range(Constants.AgeMinValue, Constants.AgeMaxValue)]
         public int Age
         {
             get
@@ -44,7 +45,7 @@ namespace Bg_Fishing.Models
             set
             {
                 var maxValue = Constants.AgeMaxValue;
-                var minValue = 0;
+                var minValue = Constants.AgeMinValue;
                 var errorMessage = string.Format(GlobalMessages.AgeErrorMessage, minValue, maxValue);
                 Utils.Validator.ValidateInteger(value, maxValue, minValue, paramName: "Age", errorMessage: errorMessage);
 
@@ -56,6 +57,7 @@ namespace Bg_Fishing.Models
         /// Get or Set first name.
         /// </summary>
         [Required]
+        [StringLength(Constants.NameMaxLength, MinimumLength = Constants.NameMinLength)]   
         public string FirstName
         {
             get
@@ -77,6 +79,7 @@ namespace Bg_Fishing.Models
         /// <summary>
         /// Get or Set middle name.
         /// </summary>
+        [StringLength(Constants.NameMaxLength, MinimumLength = 0)]
         public string MiddleName
         {
             get
@@ -87,7 +90,7 @@ namespace Bg_Fishing.Models
             set
             {
                 var maxLength = Constants.NameMaxLength;
-                var minLength = Constants.NameMinLength;
+                var minLength = 0;
                 var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Презимето", minLength, maxLength);
                 Utils.Validator.ValidateStringLength(value, maxLength, minLength, paramName: "MiddleName", errorMessage: errorMessage);
 
@@ -99,6 +102,7 @@ namespace Bg_Fishing.Models
         /// Get or Set last name.
         /// </summary>
         [Required]
+        [StringLength(Constants.NameMaxLength, MinimumLength = Constants.NameMinLength)]
         public string LastName
         {
             get

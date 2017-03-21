@@ -94,6 +94,10 @@
     <Compile Include="Migrations\201703051426307_Init.Designer.cs">
       <DependentUpon>201703051426307_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703211703051_Added_Users_Constraints.cs" />
+    <Compile Include="Migrations\201703211703051_Added_Users_Constraints.Designer.cs">
+      <DependentUpon>201703211703051_Added_Users_Constraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmsService.cs" />
@@ -111,6 +115,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703051426307_Init.resx">
       <DependentUpon>201703051426307_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211703051_Added_Users_Constraints.resx">
+      <DependentUpon>201703211703051_Added_Users_Constraints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
