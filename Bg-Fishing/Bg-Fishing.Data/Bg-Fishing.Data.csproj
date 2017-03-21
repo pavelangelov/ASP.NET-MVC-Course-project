@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201703211729006_Added_Lake_COnstraints.Designer.cs">
       <DependentUpon>201703211729006_Added_Lake_COnstraints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703211745086_Added_Location_Constraints.cs" />
+    <Compile Include="Migrations\201703211745086_Added_Location_Constraints.Designer.cs">
+      <DependentUpon>201703211745086_Added_Location_Constraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703211729006_Added_Lake_COnstraints.resx">
       <DependentUpon>201703211729006_Added_Lake_COnstraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211745086_Added_Location_Constraints.resx">
+      <DependentUpon>201703211745086_Added_Location_Constraints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
