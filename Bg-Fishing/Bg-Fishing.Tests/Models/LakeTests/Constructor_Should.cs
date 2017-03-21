@@ -69,13 +69,22 @@ namespace Bg_Fishing.Tests.Models.LakeTests
         [Test]
         public void NotThrow_IfInfoIsValid()
         {
-            // Arrange, Act & Assert
+            // Arrange, Act
             var validInfo = new string('a', Constants.InfoMaxLEngth);
             var validName = "Valid";
             var validLocation = new Location();
 
-            Assert.DoesNotThrow(() => new Lake(validName, validLocation, validInfo));
-            Assert.DoesNotThrow(() => new Lake(validName, validLocation, ""));
+            var lake =  new Lake(validName, validLocation, validInfo);
+
+            // Assert
+            Assert.AreEqual(validName, lake.Name);
+            Assert.AreEqual(validLocation, lake.Location);
+            Assert.AreEqual(validInfo, lake.Info);
+
+            lake = new Lake(validName, validLocation, "");
+            Assert.AreEqual(validName, lake.Name);
+            Assert.AreEqual(validLocation, lake.Location);
+            Assert.AreEqual("", lake.Info);
         }
     }
 }
