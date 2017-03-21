@@ -110,7 +110,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                     return Json(new { status = "error", message = "Възникна грешка при добавянето на на избраните риби." });
                 }
 
-                return Json(new { status = "success", message = string.Format("Рибата е добавена във {1}.", model.SelectedFish, model.SelectedLake) });
+                return Json(new { status = "success", message = string.Format("Рибата е добавена във {0}.",model.SelectedLake) });
             }
             else
             {
