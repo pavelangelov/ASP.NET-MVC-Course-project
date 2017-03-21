@@ -122,6 +122,15 @@ namespace Bg_Fishing.MvcClient.Models
             ErrorMessageResourceName = "StringLengthErrorMessage")]
         [Display(Name = ViewModelsDisplayNames.LastName_DisplayName)]
         public string LastName { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [Range(
+            Constants.AgeMinValue, 
+            Constants.AgeMaxValue, 
+            ErrorMessage = "Годините на потребителя трябва да са в интервал 6 - 125")]
+        [Display(Name = "Години")]
+        public int Age { get; set; }
     }
 
     public class ResetPasswordViewModel

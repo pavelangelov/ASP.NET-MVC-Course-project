@@ -14,6 +14,11 @@
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "email" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.Age, new { @class = "label label-default", @for = "age" })
+                @Html.TextBoxFor(m => m.Age, new { @class = "form-control", @id = "age" })
+                @Html.ValidationMessageFor(m => m.Age)
+            </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-4">
