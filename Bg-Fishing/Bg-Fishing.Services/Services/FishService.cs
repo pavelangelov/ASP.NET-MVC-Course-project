@@ -63,12 +63,7 @@ namespace Bg_Fishing.Services
                 return allFish.Select(f => new FishDTO
                 {
                     Name = f.Name,
-                    ImageUrl = f.ImageUrl,
-                    Lakes = f.Lakes.Select(l => new LakeDTO
-                    {
-                        Name = l.Name,
-                        Id = l.Id
-                    })
+                    ImageUrl = f.ImageUrl
                 });
             }
 
@@ -84,12 +79,7 @@ namespace Bg_Fishing.Services
                 return allFish.Select(f => new FishDTO
                 {
                     Name = f.Name,
-                    ImageUrl = f.ImageUrl,
-                    Lakes = f.Lakes.Select(l => new LakeDTO
-                    {
-                        Name = l.Name,
-                        Id = l.Id
-                    })
+                    ImageUrl = f.ImageUrl
                 });
             }
 
