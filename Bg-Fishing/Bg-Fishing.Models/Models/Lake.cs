@@ -101,7 +101,8 @@ namespace Bg_Fishing.Models
 
             private set
             {
-                // TODO: Validate
+                Utils.Validator.ValidateForNull(value, "Location");
+
                 this.location = value;
             }
         }

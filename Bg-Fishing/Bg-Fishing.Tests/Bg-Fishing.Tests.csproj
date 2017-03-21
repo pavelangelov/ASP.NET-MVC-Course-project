@@ -70,6 +70,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Models\LakeTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\LakeControllerClass_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\GetAdd_Should.cs" />
