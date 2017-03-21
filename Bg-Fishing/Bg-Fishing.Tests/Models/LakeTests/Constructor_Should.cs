@@ -61,5 +61,17 @@ namespace Bg_Fishing.Tests.Models.LakeTests
             var message = Assert.Throws<ArgumentException>(() => new Lake(validName, validlocation, invalidInfo)).Message;
             StringAssert.Contains("Info", message);
         }
+
+        [Test]
+        public void NotThrow_IfInfoIsValid()
+        {
+            // Arrange, Act & Assert
+            var validInfo = new string('a', Constants.InfoMaxLEngth);
+            var validName = "Valid";
+            var validLocation = new Location();
+
+            Assert.DoesNotThrow(() => new Lake(validName, validLocation, validInfo));
+            Assert.DoesNotThrow(() => new Lake(validName, validLocation, ""));
+        }
     }
 }
