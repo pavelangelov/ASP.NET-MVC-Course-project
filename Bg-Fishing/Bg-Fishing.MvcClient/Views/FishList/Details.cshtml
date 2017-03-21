@@ -16,10 +16,12 @@
             <h2 class="media-heading">@Model.SelectedFish.Name</h2>
             <div class="btn-toolbar card-body-social" role="toolbar">
                 <h4>Налична в язовири: </h4>
-                @foreach (var lake in Model.SelectedFish.Lakes)
-                {
-                    @Html.ActionLink(@lake.Name, "Details", "LakeList", new { Area = "", name = lake.Name }, null)
-                }
+                <ul class="list-inline">
+                    @foreach (var lake in Model.SelectedFish.Lakes)
+                    {
+                        <li>@Html.ActionLink(@lake.Name, "Details", "LakeList", new { Area = "", name = lake.Name }, null)</li>
+                    }
+                </ul>
             </div>
         </div>
         <div class="block-update-card status">
