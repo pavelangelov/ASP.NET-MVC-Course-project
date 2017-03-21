@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Models
 {
@@ -42,7 +43,11 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: Validate
+                var maxValue = Constants.AgeMaxValue;
+                var minValue = 0;
+                var errorMessage = string.Format(GlobalMessages.AgeErrorMessage, minValue, maxValue);
+                Utils.Validator.ValidateInteger(value, maxValue, minValue, paramName: "Age", errorMessage: errorMessage);
+
                 this.age = value;
             }
         }
@@ -60,7 +65,10 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: Validate
+                var maxLength = Constants.NameMaxLength;
+                var minLength = Constants.NameMinLength;
+                var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Името", minLength, maxLength);
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, paramName: "FirstName", errorMessage: errorMessage);
 
                 this.firstName = value;
             }
@@ -73,14 +81,17 @@ namespace Bg_Fishing.Models
         {
             get
             {
-                return this.firstName;
+                return this.middleName;
             }
 
             set
             {
-                // TODO: Validate for max length
+                var maxLength = Constants.NameMaxLength;
+                var minLength = Constants.NameMinLength;
+                var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Презимето", minLength, maxLength);
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, paramName: "MiddleName", errorMessage: errorMessage);
 
-                this.firstName = value;
+                this.middleName = value;
             }
         }
 
@@ -97,7 +108,10 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: Validate
+                var maxLength = Constants.NameMaxLength;
+                var minLength = Constants.NameMinLength;
+                var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Фамилията", minLength, maxLength);
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, paramName: "LastName", errorMessage: errorMessage);
 
                 this.lastName = value;
             }

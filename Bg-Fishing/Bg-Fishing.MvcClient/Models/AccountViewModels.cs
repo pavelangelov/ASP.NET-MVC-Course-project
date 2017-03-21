@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Bg_Fishing.Utils;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bg_Fishing.MvcClient.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [Display(Name = ViewModelsDisplayNames.Email_DisplayName)]
         public string Email { get; set; }
     }
 
@@ -25,10 +27,12 @@ namespace Bg_Fishing.MvcClient.Models
 
     public class VerifyCodeViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         public string Provider { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [Display(Name = "Code")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
@@ -41,76 +45,109 @@ namespace Bg_Fishing.MvcClient.Models
 
     public class ForgotViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [Display(Name = ViewModelsDisplayNames.Email_DisplayName)]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [Display(Name = ViewModelsDisplayNames.Email_DisplayName)]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = ViewModelsDisplayNames.Password_DisplayName)]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запомни?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = ViewModelsDisplayNames.Email_DisplayName)]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [StringLength(
+            Constants.PasswordMaxLength,
+            MinimumLength = Constants.PasswordMinLength,
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+            ErrorMessageResourceName = "StringLengthErrorMessage")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = ViewModelsDisplayNames.Password_DisplayName)]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = ViewModelsDisplayNames.ConfirmPassword_DisplayName)]
+        [Compare("Password", 
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+            ErrorMessageResourceName = "ConfirmPasswordErrorMessage")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [StringLength(25, ErrorMessage = "First name must be between 2 and 25 symbols.", MinimumLength = 2)]
-        [Display(Name = "First name")]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [StringLength(
+            Constants.NameMaxLength, 
+            MinimumLength = Constants.NameMinLength, 
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages), 
+            ErrorMessageResourceName = "StringLengthErrorMessage")]
+        [Display(Name = ViewModelsDisplayNames.FirstName_DisplayName)]
         public string FirstName { get; set; }
         
-        [StringLength(25, ErrorMessage = "Middle name must be less than 25 symbols.")]
-        [Display(Name = "Middle name")]
+        [StringLength(
+            Constants.NameMaxLength, 
+            MinimumLength = 0,
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages), 
+            ErrorMessageResourceName = "StringLengthErrorMessage")]
+        [Display(Name = ViewModelsDisplayNames.MiddleName_DisplayName)]
         public string MiddleName { get; set; }
 
-        [Required]
-        [StringLength(25, ErrorMessage = "Last name must be between 2 and 25 symbols.", MinimumLength = 2)]
-        [Display(Name = "Last name")]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [StringLength(
+            Constants.NameMaxLength,
+            MinimumLength = Constants.NameMinLength,
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+            ErrorMessageResourceName = "StringLengthErrorMessage")]
+        [Display(Name = ViewModelsDisplayNames.LastName_DisplayName)]
         public string LastName { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = ViewModelsDisplayNames.Email_DisplayName)]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
+        [StringLength(
+            Constants.PasswordMaxLength,
+            MinimumLength = Constants.PasswordMinLength,
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+            ErrorMessageResourceName = "StringLengthErrorMessage")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = ViewModelsDisplayNames.Password_DisplayName)]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = ViewModelsDisplayNames.ConfirmPassword_DisplayName)]
+        [Compare("Password",
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+            ErrorMessageResourceName = "ConfirmPasswordErrorMessage")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -118,9 +155,10 @@ namespace Bg_Fishing.MvcClient.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+                    ErrorMessageResourceName = "PropertyValueRequired")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = ViewModelsDisplayNames.Email_DisplayName)]
         public string Email { get; set; }
     }
 }

@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmPasswordErrorMessage" xml:space="preserve">
+    <value>Полето за потвърждение не съвпада с полето за парола.</value>
+  </data>
   <data name="PropertyValueRequired" xml:space="preserve">
     <value>Полето - "{0}" е задължително!</value>
+  </data>
+  <data name="StringLengthErrorMessage" xml:space="preserve">
+    <value>{0} на потребителя трябва да е между {1} и {2} символа.</value>
   </data>
 </root>

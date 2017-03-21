@@ -62,7 +62,7 @@ namespace Bg_Fishing.Utils
         /// <param name="paramName">Parameter name.</param>
         /// <param name="errorMessage">Error message.</param>
         /// <exception cref="ArgumentException"></exception>
-        public static void ValidateInteger(int value, double maxValue, double minValue = 0, string paramName = null, string errorMessage = null)
+        public static void ValidateInteger(int value, int maxValue, int minValue = 0, string paramName = null, string errorMessage = null)
         {
             if (value < minValue || maxValue < value)
             {

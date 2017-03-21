@@ -61,11 +61,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Полето за потвърждение не съвпада с полето за парола..
+        /// </summary>
+        internal static string ConfirmPasswordErrorMessage {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Полето - &quot;{0}&quot; е задължително!.
         /// </summary>
         internal static string PropertyValueRequired {
             get {
                 return ResourceManager.GetString("PropertyValueRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} на потребителя трябва да е между {1} и {2} символа..
+        /// </summary>
+        internal static string StringLengthErrorMessage {
+            get {
+                return ResourceManager.GetString("StringLengthErrorMessage", resourceCulture);
             }
         }
     }

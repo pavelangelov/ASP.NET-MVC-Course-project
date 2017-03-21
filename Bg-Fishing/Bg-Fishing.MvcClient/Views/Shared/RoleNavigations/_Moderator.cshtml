@@ -14,13 +14,13 @@
                         @Html.ActionLink("Ново видео", "Add", "Video", new { Area = "Moderator" }, new { })
                     </div>
                     <div>
-                        @Html.ActionLink("Премахване на видео", "Video", "Remove")
+                        @Html.ActionLink("Премахване на видео", "Remove", "Video", new { Area = "Moderator" }, new { })
                     </div>
                     <div>
-                        @Html.ActionLink("Нова снимка", "Index", "AddImage")
+                        @Html.ActionLink("Нова снимка", "Add", "Image", new { Area = "Moderator" }, new { })
                     </div>
                     <div>
-                        @Html.ActionLink("Премахване на снимка", "Image", "Remove")
+                        @Html.ActionLink("Премахване на снимка", "Remove", "Image", new { Area = "Moderator" }, new { })
                     </div>
                 </div>
             </div>
@@ -60,14 +60,14 @@
                 <div id="collapseThird" class="panel-collapse collapse">
                     <div class="panel-body">
                         <div>
-                            @Html.ActionLink("Добавяне на риба", "Add", "Fish")
+                            @Html.ActionLink("Добавяне на риба", "Add", "Fish", new { Area = "Moderator" }, new { })
                         </div>
                         <div>
-                            @Html.ActionLink("Премахване на риба", "Remove", "Fish")
+                            @Html.ActionLink("Премахване на риба", "Remove", "Fish", new { Area = "Moderator" }, new { })
                         </div>
                         <div>
                         </div>
-                        @Html.ActionLink("Обновяване на риба", "Edit", "Fish")
+                        @Html.ActionLink("Обновяване на риба", "Edit", "Fish", new { Area = "Moderator" }, new { })
                     </div>
                 </div>
             </div>
@@ -83,15 +83,11 @@
             <div id="collapseForth" class="panel-collapse collapse">
                 <div class="panel-body">
                     <div>
-                        @Html.ActionLink("Добавяне на локация", "Add", "Location", new { Area = "Moderator" })
+                        @Html.ActionLink("Добавяне на локация", "Add", "Location", new { Area = "Moderator" }, new { })
                     </div>
                     <div>
-                        @Html.ActionLink("Премахване на локация", "Remove", "Fish", new { Area = "Moderator" })
+                        @Html.ActionLink("Премахване на локация", "Remove", "Location", new { Area = "Moderator" }, new { })
                     </div>
-                    <div>
-                        @Html.ActionLink("Всички локации", "Edit", "Fish", new { Area = "Moderator" })
-                    </div>
-
                 </div>
             </div>
         </div>

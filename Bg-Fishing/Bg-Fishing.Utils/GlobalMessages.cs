@@ -26,5 +26,12 @@
         public const string AddLakeErrorMessage = "Визникна грешка при добавянето на язовира. Проверете дали вече няма добавен язовир с това име.";
 
         #endregion
+
+        #region ModelsErrorMessages
+
+        public const string AgeErrorMessage = "Годините на потребителя трябва да са в интервал {0} - {1}";
+        public const string NameErrorMessage = "{0} на потребителя трябва да е между {1} и {2} символа.";
+
+        #endregion
     }
 }
