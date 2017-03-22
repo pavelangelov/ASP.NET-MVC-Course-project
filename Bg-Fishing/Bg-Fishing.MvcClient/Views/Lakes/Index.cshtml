@@ -1,7 +1,38 @@
-﻿@model String
+﻿@model Bg_Fishing.Models.Lake
 @{
-    ViewBag.Title = "Язовир - " + @Model;
+    ViewBag.Title = "Язовир - " + @Model.Name;
 }
 
-<h2>Информация за @Model</h2>
+<div class="container">
+    <h3 class="text-center">Язовир - @Model.Name</h3>
+    <div class="col-sm-5">
+        <h5 class="text-center">Местоположение</h5>
+        <div id="map" style="width:400px;height:400px;background:yellow"></div>
+    </div>
+    <div class="col-sm-6">
+        <h5 class="text-center">Информация</h5>
+        <p>@Model.Info</p>
+        <hr />
+        <h5 class="text-center">Налична риба в язовира</h5>
+        <p>
+            @foreach (var fish in Model.Fish)
+            {
+                <div>
+                    <a href="/fish/details/@fish.Name">@fish.Name</a>
+                </div>
+            }
 
+        </p>
+    </div>
+</div>
+<script>
+    function myMap() {
+        var mapOptions = {
+            center: new google.maps.LatLng(@Model.Location.Latitude,@Model.Location.Longitude),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+        }
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>

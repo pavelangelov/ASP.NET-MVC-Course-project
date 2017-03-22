@@ -6,6 +6,7 @@ using Bg_Fishing.DTOs.LakeDTOs;
 using Bg_Fishing.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using System.Data.Entity;
 
 namespace Bg_Fishing.Services
 {
@@ -39,7 +40,7 @@ namespace Bg_Fishing.Services
 
         public Lake FindByName(string name)
         {
-            var lake = this.dbContext.Lakes.FirstOrDefault(l => l.Name == name);
+            var lake = this.dbContext.Lakes.Include(l => l.Location).FirstOrDefault(l => l.Name == name);
 
             return lake;
         }

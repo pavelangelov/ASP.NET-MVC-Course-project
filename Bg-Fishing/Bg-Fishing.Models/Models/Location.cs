@@ -71,6 +71,12 @@ namespace Bg_Fishing.Models
 
             set
             {
+                if (value == null)
+                {
+                    this.info = string.Empty;
+                    return;
+                }
+
                 var minLength = 0;
                 var maxLength = Constants.InfoMaxLEngth;
                 var errorMessage = GlobalMessages.InfoErrorMessage;
