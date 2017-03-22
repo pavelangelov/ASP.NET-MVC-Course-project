@@ -1,12 +1,7 @@
-﻿using Bg_Fishing.DTOs.LakeDTOs;
+﻿using System.Web.Http;
+
+using Bg_Fishing.MvcClient.WebApiModels;
 using Bg_Fishing.Services.Contracts;
-using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 
 namespace Bg_Fishing.MvcClient.ApiControllers
 {
@@ -16,21 +11,19 @@ namespace Bg_Fishing.MvcClient.ApiControllers
 
         public SearchController(ILakeService lakeService)
         {
-            Validator.ValidateForNull(lakeService, paramName: "lakeService");
+            Utils.Validator.ValidateForNull(lakeService, paramName: "lakeService");
 
             this.lakeService = lakeService;
         }
-
-        public IEnumerable<LakeDTO> Get()
-        {
-            var lakes = this.lakeService.GetAll();
-
-            return lakes;
-        }
         
         [HttpPost]
-        public IHttpActionResult Lakes(GetResult model)
+        public IHttpActionResult Lakes(SearchModel model)
         {
+            if (model.Name == null || model.Name.Length < 3)
+            {
+                return NotFound();
+            }
+
             var lakes = this.lakeService.FindByLocation(model.Name);
             if (lakes == null)
             {
@@ -39,10 +32,5 @@ namespace Bg_Fishing.MvcClient.ApiControllers
 
             return Ok(lakes);
         }
-    }
-
-    public class GetResult
-    {
-        public string Name { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿$('#search-btn').on('click', (ev) => {
     ev.preventDefault();
     let value = $('#search-value').val();
-    if (value !== undefined && value.length) {
+    if (value !== undefined && value.length > 2) {
         $.ajax({
             method: 'POST',
             url: '/api/search/lakes',
@@ -10,7 +10,7 @@
                 ShowLakes(data);
             },
             error: (err) => {
-                console.log(err);
+                console.log(err.statusText);
             }
         })
     }
@@ -35,3 +35,7 @@ function ShowLakes(lakesArr) {
         container.append(lakeContainer);
     })
 }
+
+$(document).on('click', () => {
+    $('#lakes-result').hide();
+})
