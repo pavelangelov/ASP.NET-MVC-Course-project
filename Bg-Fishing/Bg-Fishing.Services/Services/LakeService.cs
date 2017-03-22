@@ -27,7 +27,7 @@ namespace Bg_Fishing.Services
 
         public IEnumerable<LakeDTO> FindByLocation(string locationName)
         {
-            var lakes = this.dbContext.Lakes.Where(l => l.Location.Name == locationName)
+            var lakes = this.dbContext.Lakes.Where(l => l.Location.Name.Contains(locationName))
                                             .Select(l => new LakeDTO
                                             {
                                                 Name = l.Name,

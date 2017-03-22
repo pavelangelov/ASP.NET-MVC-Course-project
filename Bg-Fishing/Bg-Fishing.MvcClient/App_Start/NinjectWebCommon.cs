@@ -51,6 +51,7 @@ namespace Bg_Fishing.MvcClient.App_Start
 
                 RegisterSignalrResolver(kernel);
                 RegisterServices(kernel);
+                RegisterWebApiResolver(kernel);
                 return kernel;
             }
             catch

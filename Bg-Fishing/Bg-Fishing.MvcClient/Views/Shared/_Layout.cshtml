@@ -26,6 +26,7 @@
                     <li>@Html.ActionLink("Начало", "Index", "Home", new { Area = "" }, null)</li>
                     @Html.Partial("_NavPartial")
                 </ul>
+                @Html.Partial("_SearchPartial")
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -39,6 +40,7 @@
     @RenderSection("scripts", required: false)
     <!-- Site scripts-->
     <script src="/Scripts/page-scripts/nav-partial-script.js"></script>
+    <script src="~/Scripts/page-scripts/search.js"></script>
     @RenderSection("PageScripts", required: false)
 
 </body>

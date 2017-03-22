@@ -208,6 +208,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\SearchController.cs" />
     <Compile Include="App_GlobalResources\ValidationMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -262,6 +263,7 @@
     <Content Include="Content\page-styles\details.css" />
     <Content Include="Content\page-styles\fish-list-index.css" />
     <Content Include="Content\page-styles\nav-bar-styles.css" />
+    <Content Include="Content\page-styles\search-result-style.css" />
     <Content Include="Content\solar-theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -357,6 +359,7 @@
     <Content Include="Scripts\page-scripts\add-location.js" />
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />
+    <Content Include="Scripts\page-scripts\search.js" />
     <Content Include="Scripts\page-scripts\show-videos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -406,9 +409,9 @@
     <Content Include="Views\FishList\Index.cshtml" />
     <Content Include="Views\FishList\Details.cshtml" />
     <Content Include="Views\Lakes\Index.cshtml" />
+    <Content Include="Views\Shared\_SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ApiControllers\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />

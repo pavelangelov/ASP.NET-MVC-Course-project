@@ -1,0 +1,18 @@
+﻿ul#lakes-result {
+    display: none;
+    padding: 5px 10px;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    list-style-type: none;
+    width: 70%;
+}
+
+div#search-container {
+    padding-top: 10px;
+}
+
+input#search-value {
+    width: 70%;
+}

@@ -26,7 +26,8 @@ namespace Bg_Fishing.MvcClient
                       "~/Content/solar-theme.min.css",
                       "~/Content/font-awesome-4.7.0/css/font-awesome.min.css",
                       "~/Content/Site.css",
-                      "~/Content/page-styles/nav-bar-styles.css"));
+                      "~/Content/page-styles/nav-bar-styles.css",
+                      "~/Content/page-styles/search-result-style.css"));
         }
     }
 }
