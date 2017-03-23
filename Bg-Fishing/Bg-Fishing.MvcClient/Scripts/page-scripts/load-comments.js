@@ -27,6 +27,7 @@ function loadComments(commetnsArr) {
 
         let commentSeparator = $('<hr />').appendTo(commentContainer);
         let commentContent = $('<div />').html(c.Content).appendTo(commentContainer);
+        let date = $('<div />').addClass('text-success').html('Дата: ' + new Date(parseInt(c.PostedDate.substr(6))).toLocaleDateString()).appendTo(commentContainer);
 
         commentContainer.appendTo(container);
     })
