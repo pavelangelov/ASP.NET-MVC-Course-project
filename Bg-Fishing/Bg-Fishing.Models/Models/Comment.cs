@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Models
 {
@@ -36,7 +37,10 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: validate value
+                var maxLength = Constants.NameMaxLength;
+                var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Content", 1, maxLength);
+
+                Utils.Validator.ValidateStringLength(value, maxLength, paramName: "Content", errorMessage: errorMessage);
 
                 this.content = value;
             }
@@ -51,7 +55,11 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: validate value
+                var minLength = Constants.NameMinLength;
+                var maxLength = Constants.NameMaxLength;
+                var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "LakeName", minLength, maxLength);
+
+                Utils.Validator.ValidateStringLength(value, maxLength, minLength, "LakeName", errorMessage);
 
                 this.lakeName = value;
             }
@@ -68,7 +76,8 @@ namespace Bg_Fishing.Models
 
             set
             {
-                // TODO: validate value
+
+                Utils.Validator.ValidateForNull(value, paramName: "Name");
 
                 this.username = value;
             }
