@@ -16,6 +16,7 @@ namespace Bg_Fishing.Models
         public Comment()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Comments = new HashSet<Comment>();
         }
 
         public Comment(string lakeName, string username, string content, DateTime postedDate)
@@ -83,7 +84,7 @@ namespace Bg_Fishing.Models
             set
             {
 
-                Utils.Validator.ValidateForNull(value, paramName: "Name");
+                Utils.Validator.ValidateForNull(value, paramName: "Username");
 
                 this.username = value;
             }
