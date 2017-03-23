@@ -35,5 +35,13 @@
         public const string InfoErrorMessage = "Допълнителната информация не може да е с дължина над 3500 символа";
 
         #endregion
+
+        #region AddComment
+
+        public const string AddCommentSuccessMessage = "Вашето мнение е добавено";
+        public const string AddCommentErrorMessage = "Мнението не може да бъде добавено";
+        public const string AddCOmentInvalidModelStateErrorMessage = "Съдържанието не може да е празно.";
+
+        #endregion
     }
 }

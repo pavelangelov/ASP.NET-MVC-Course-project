@@ -18,6 +18,7 @@ namespace Bg_Fishing.Models
         {
             this.Id = Guid.NewGuid().ToString();
             this.Fish = new HashSet<Fish>();
+            this.Comments = new HashSet<Comment>();
         }
 
         public Lake(string name, Location location)

@@ -61,16 +61,16 @@ namespace Bg_Fishing.MvcClient.Controllers
                     var lake = this.lakeService.FindByName(model.LakeName);
                     lake.Comments.Add(comment);
                     this.lakeService.Save();
-                    return Json(new { status = "success", message = "Вашето мнение е добавено" });
+                    return Json(new { status = "success", message = GlobalMessages.AddCommentSuccessMessage });
                 }
-                catch (System.Exception)
+                catch (System.Exception ex)
                 {
-                    return Json(new { status = "error", message = "Мнението не може да бъде добавено" });
+                    return Json(new { status = "error", message = GlobalMessages.AddCommentErrorMessage });
                 }
             }
 
             // TODO: Show model errors
-            return Json(new { status = "error", message = "Съдържанието не може да е празно." });
+            return Json(new { status = "error", message = GlobalMessages.AddCOmentInvalidModelStateErrorMessage });
         }
     }
 }
