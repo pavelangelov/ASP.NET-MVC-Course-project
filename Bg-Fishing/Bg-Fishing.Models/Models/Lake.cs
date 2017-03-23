@@ -111,5 +111,7 @@ namespace Bg_Fishing.Models
         /// Get collection of available fish in the lake.
         /// </summary>
         public virtual ICollection<Fish> Fish { get; private set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

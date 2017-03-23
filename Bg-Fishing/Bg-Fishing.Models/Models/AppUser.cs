@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 using Bg_Fishing.Models.Contracts;
 using Bg_Fishing.Utils;
+using System.Collections.Generic;
 
 namespace Bg_Fishing.Models
 {
@@ -125,5 +126,7 @@ namespace Bg_Fishing.Models
         /// Get or Set avatar.
         /// </summary>
         public string AvatarUrl { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
