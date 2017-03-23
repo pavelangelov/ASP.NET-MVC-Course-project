@@ -6,9 +6,9 @@
 
     $.ajax({
         method: 'GET',
-        url: '/lakes/' + name + '/comments?page=' + page,
+        url: '/api/comments?name=' + name + '&page=' + page,
         success: (data) => {
-            loadComments(data.comments);
+            loadComments(data);
         },
         error: (err) => {
             console.log(err);

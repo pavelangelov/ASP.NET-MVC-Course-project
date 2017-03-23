@@ -208,6 +208,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\CommentsController.cs" />
     <Compile Include="ApiControllers\SearchController.cs" />
     <Compile Include="App_GlobalResources\ValidationMessages.Designer.cs">
       <AutoGen>True</AutoGen>
