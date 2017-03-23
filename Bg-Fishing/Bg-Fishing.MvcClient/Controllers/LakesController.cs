@@ -11,23 +11,19 @@ namespace Bg_Fishing.MvcClient.Controllers
     public class LakesController : Controller
     {
         private ILakeService lakeService;
-        private ICommentService commentService;
         private ICommentFactory commentFactory;
         private IDateProvider dateProvider;
 
         public LakesController(
             ILakeService lakeService,
-            ICommentService commentService,
             ICommentFactory commentFactory,
             IDateProvider dateProvider)
         {
             Validator.ValidateForNull(lakeService, paramName: "lakeService");
-            Validator.ValidateForNull(commentService, paramName: "commentService");
             Validator.ValidateForNull(commentFactory, paramName: "commentFactory");
             Validator.ValidateForNull(dateProvider, paramName: "dateProvider");
 
             this.lakeService = lakeService;
-            this.commentService = commentService;
             this.commentFactory = commentFactory;
             this.dateProvider = dateProvider;
         }
@@ -38,14 +34,6 @@ namespace Bg_Fishing.MvcClient.Controllers
             var lake = this.lakeService.FindByName(name);
 
             return View("Index", model: lake);
-        }
-
-        [HttpGet]
-        public ActionResult Comments(string name, int page)
-        {
-            var comments = this.commentService.GetAllByLakeName(name);
-
-            return Json(new { comments = comments }, JsonRequestBehavior.AllowGet);
         }
         
         [HttpPost]

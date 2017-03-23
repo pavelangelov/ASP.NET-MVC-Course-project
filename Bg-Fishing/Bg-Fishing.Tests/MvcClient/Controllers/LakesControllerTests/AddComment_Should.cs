@@ -15,7 +15,7 @@ using Bg_Fishing.Models;
 namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 {
     [TestFixture]
-    public class AddCommetn_Should
+    public class AddComment_Should
     {
         [Test]
         public void ReturnJsonWithCorrectErrorMessage_IfModelStateIsNotValid()
@@ -25,15 +25,13 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             mockedLakeService.Setup(s => s.FindByName(It.IsAny<string>())).Verifiable();
             mockedLakeService.Setup(s => s.Save()).Verifiable();
 
-            var mockedCommentService = new Mock<ICommentService>();
-
             var mockedCommentFactory = new Mock<ICommentFactory>();
             mockedCommentFactory.Setup(f => f.CreateComment(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>())).Verifiable();
 
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(p => p.GetDate()).Verifiable();
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
             controller.ModelState.AddModelError("Content", "Error");
 
             // Act
@@ -60,8 +58,6 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             mockedLakeService.Setup(s => s.FindByName(It.IsAny<string>())).Verifiable();
             mockedLakeService.Setup(s => s.Save()).Throws<Exception>();
 
-            var mockedCommentService = new Mock<ICommentService>();
-
             var mockedCommentFactory = new Mock<ICommentFactory>();
             mockedCommentFactory.Setup(f => f.CreateComment(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>())).Verifiable();
 
@@ -71,7 +67,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedContext = new Mock<ControllerContext>();
             mockedContext.Setup(c => c.HttpContext.User.Identity.Name).Returns("test");
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
             controller.ControllerContext = mockedContext.Object;
 
             var model = new AddCommentViewModel() { Content = "test content", LakeName = "test lake" };
@@ -101,8 +97,6 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             mockedLakeService.Setup(s => s.FindByName(It.IsAny<string>())).Returns(mockedLake).Verifiable();
             mockedLakeService.Setup(s => s.Save()).Verifiable();
 
-            var mockedCommentService = new Mock<ICommentService>();
-
             var mockedCommentFactory = new Mock<ICommentFactory>();
             mockedCommentFactory.Setup(f => f.CreateComment(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>())).Verifiable();
 
@@ -112,7 +106,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedContext = new Mock<ControllerContext>();
             mockedContext.Setup(c => c.HttpContext.User.Identity.Name).Returns("test");
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
             controller.ControllerContext = mockedContext.Object;
 
             var model = new AddCommentViewModel() { Content = "test content", LakeName = "test lake" };

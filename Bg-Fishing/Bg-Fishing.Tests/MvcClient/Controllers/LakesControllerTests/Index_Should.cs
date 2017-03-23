@@ -21,12 +21,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedLake = new Lake();
             var mockedLakeService = new Mock<ILakeService>();
             mockedLakeService.Setup(s => s.FindByName(It.IsAny<string>())).Returns(mockedLake).Verifiable();
-
-            var mockedCommentService = new Mock<ICommentService>();
+            
             var mockedCommentFactory = new Mock<ICommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
 
             // Act
             var view = controller.Index(null) as ViewResult;
