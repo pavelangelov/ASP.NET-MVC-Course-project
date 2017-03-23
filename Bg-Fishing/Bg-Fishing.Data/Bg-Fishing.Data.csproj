@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201703231018273_Added_Comment.Designer.cs">
       <DependentUpon>201703231018273_Added_Comment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703231334566_Added_Comment_Constraints.cs" />
+    <Compile Include="Migrations\201703231334566_Added_Comment_Constraints.Designer.cs">
+      <DependentUpon>201703231334566_Added_Comment_Constraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703231018273_Added_Comment.resx">
       <DependentUpon>201703231018273_Added_Comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703231334566_Added_Comment_Constraints.resx">
+      <DependentUpon>201703231334566_Added_Comment_Constraints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

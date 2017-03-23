@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using Bg_Fishing.Models.Contracts;
 using Bg_Fishing.Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bg_Fishing.Models
 {
@@ -28,6 +29,9 @@ namespace Bg_Fishing.Models
 
         public string Id { get; private set; }
 
+        [Required]
+        [MinLength(1)]
+        [MaxLength(Constants.CommentContentMaxLength)]
         public string Content
         {
             get
@@ -37,7 +41,7 @@ namespace Bg_Fishing.Models
 
             set
             {
-                var maxLength = Constants.NameMaxLength;
+                var maxLength = Constants.CommentContentMaxLength;
                 var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Content", 1, maxLength);
 
                 Utils.Validator.ValidateStringLength(value, maxLength, paramName: "Content", errorMessage: errorMessage);
@@ -46,6 +50,7 @@ namespace Bg_Fishing.Models
             }
         }
 
+        [Required]
         public string LakeName
         {
             get
@@ -67,6 +72,7 @@ namespace Bg_Fishing.Models
 
         public DateTime PostedDate { get; private set; }
 
+        [Required]
         public string Username
         {
             get
