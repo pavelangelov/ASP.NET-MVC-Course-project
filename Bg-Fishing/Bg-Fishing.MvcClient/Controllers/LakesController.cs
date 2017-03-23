@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
@@ -52,13 +53,12 @@ namespace Bg_Fishing.MvcClient.Controllers
                     this.lakeService.Save();
                     return Json(new { status = "success", message = GlobalMessages.AddCommentSuccessMessage });
                 }
-                catch (System.Exception ex)
+                catch (Exception)
                 {
                     return Json(new { status = "error", message = GlobalMessages.AddCommentErrorMessage });
                 }
             }
 
-            // TODO: Show model errors
             return Json(new { status = "error", message = GlobalMessages.AddCOmentInvalidModelStateErrorMessage });
         }
     }
