@@ -38,6 +38,7 @@ namespace Bg_Fishing.MvcClient.Controllers
         
         [HttpPost]
         [Authorize]
+        [ValidateInput(false)]
         public ActionResult AddComment(AddCommentViewModel model)
         {
             if (ModelState.IsValid)

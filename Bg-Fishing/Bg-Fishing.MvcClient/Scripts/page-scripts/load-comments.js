@@ -22,12 +22,13 @@ function loadComments(commetnsArr) {
     commetnsArr.forEach((c) => {
         let commentContainer = $('<li />').addClass('list-group-item');
         let user = $('<div />').addClass('text-primary')
-                                .html('Изпратено от: ' + c.Username)
+                                .text('Изпратено от: ' + c.Username)
                                 .appendTo(commentContainer);
 
         let commentSeparator = $('<hr />').appendTo(commentContainer);
-        let commentContent = $('<div />').html(c.Content).appendTo(commentContainer);
-        let date = $('<div />').addClass('text-success').html('Дата: ' + new Date(parseInt(c.PostedDate.substr(6))).toLocaleDateString()).appendTo(commentContainer);
+        let commentContent = $('<div />').text(c.Content).appendTo(commentContainer);
+        let date = $('<div />').addClass('text-success')
+                                .text('Дата: ' + new Date(parseInt(c.PostedDate.substr(6))).toLocaleDateString()).appendTo(commentContainer);
 
         commentContainer.appendTo(container);
     })
