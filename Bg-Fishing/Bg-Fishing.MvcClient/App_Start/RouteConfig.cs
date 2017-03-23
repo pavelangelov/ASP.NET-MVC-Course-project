@@ -17,7 +17,7 @@ namespace Bg_Fishing.MvcClient
 
             routes.MapRoute(
                 name: "Lakes",
-                url: "lakes/{name}",
+                url: "lakes/{name}/{action}",
                 defaults: new { controller = "Lakes", action = "Index" }
             );
 

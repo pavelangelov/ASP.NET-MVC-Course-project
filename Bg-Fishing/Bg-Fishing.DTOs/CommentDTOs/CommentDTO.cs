@@ -9,6 +9,8 @@ namespace Bg_Fishing.DTOs.CommentDTOs
 
         public string Username { get; set; }
 
+        public string Content { get; set; }
+
         public DateTime PostedDate { get; set; }
 
         public IEnumerable<InnerCommentDTO> Comments { get; set; }

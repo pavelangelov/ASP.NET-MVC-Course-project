@@ -3,18 +3,33 @@
 using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
     public class LakesController : Controller
     {
         private ILakeService lakeService;
+        private ICommentService commentService;
+        private ICommentFactory commentFactory;
+        private IDateProvider dateProvider;
 
-        public LakesController(ILakeService lakeService)
+        public LakesController(
+            ILakeService lakeService,
+            ICommentService commentService,
+            ICommentFactory commentFactory,
+            IDateProvider dateProvider)
         {
             Validator.ValidateForNull(lakeService, paramName: "lakeService");
+            Validator.ValidateForNull(commentService, paramName: "commentService");
+            Validator.ValidateForNull(commentFactory, paramName: "commentFactory");
+            Validator.ValidateForNull(dateProvider, paramName: "dateProvider");
 
             this.lakeService = lakeService;
+            this.commentService = commentService;
+            this.commentFactory = commentFactory;
+            this.dateProvider = dateProvider;
         }
 
         [HttpGet]
@@ -26,23 +41,36 @@ namespace Bg_Fishing.MvcClient.Controllers
         }
 
         [HttpGet]
-        public ActionResult Comments(string lakeName, int page)
+        public ActionResult Comments(string name, int page)
         {
-            var lake = this.lakeService.FindByName(lakeName);
+            var comments = this.commentService.GetAllByLakeName(name);
 
-            return View(model: lake);
+            return Json(new { comments = comments }, JsonRequestBehavior.AllowGet);
         }
-
+        
         [HttpPost]
+        [Authorize]
         public ActionResult AddComment(AddCommentViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // TODO: Add new comment
+                try
+                {
+                    var date = this.dateProvider.GetDate();
+                    var comment = this.commentFactory.CreateComment(model.LakeName, User.Identity.Name, model.Content, date);
+                    var lake = this.lakeService.FindByName(model.LakeName);
+                    lake.Comments.Add(comment);
+                    this.lakeService.Save();
+                    return Json(new { status = "success", message = "Вашето мнение е добавено" });
+                }
+                catch (System.Exception)
+                {
+                    return Json(new { status = "error", message = "Мнението не може да бъде добавено" });
+                }
             }
 
             // TODO: Show model errors
-            return View();
+            return Json(new { status = "error", message = "Съдържанието не може да е празно." });
         }
     }
 }

@@ -6,11 +6,11 @@
 <div class="container">
     <h3 class="text-center">Язовир - @Model.Name</h3>
     <div class="col-sm-5">
-        <h5 class="text-center">Местоположение</h5>
+        <h4 class="text-center"><span class="glyphicon glyphicon-map-marker" style="color: red"></span> Местоположение</h4>
         <div id="map" style="width:400px;height:400px;background:yellow"></div>
     </div>
     <div class="col-sm-6">
-        <h5 class="text-center">Информация</h5>
+        <h4 class="text-center"><span class="glyphicon glyphicon-info-sign" style="color: darkturquoise"></span> Информация</h4>
         <p>@Model.Info</p>
         <hr />
         <h5 class="text-center">Налична риба в язовира</h5>
@@ -18,7 +18,7 @@
             @foreach (var fish in Model.Fish)
             {
                 <div>
-                    <a href="/fish/details/@fish.Name">@fish.Name</a>
+                    <a href="/fish/details/@fish.Name"><span class="glyphicon glyphicon-ok"></span> @fish.Name</a>
                 </div>
             }
 
@@ -27,14 +27,22 @@
 
     <div class="col-sm-11">
         <h4 class="text-center">
-            <a id="load-comments" class="btn" data-page="1">Зареди последни мнения за този язовир</a>
+            <a id="load-comments" class="btn" data-name="@Model.Name" data-page="1">Зареди последни мнения за този язовир</a>
             @if (User.Identity.IsAuthenticated)
             {
                 <span> или </span>
-                <a id="load-comment-add" class="btn">Добави ново мнение</a>
+                <a id="show-comment-form" class="btn">Добави ново мнение</a>
             }
         </h4>
-        <ul id="comments"></ul>
+            <ul id="comments" class="list-group"></ul>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div id="comment-form" hidden>
+                <label for="comment-content" class="label">Съдържание</label>
+                <textarea id="comment-content" class="form-control"></textarea>
+                <input type="submit" id="submit-btn" data-name="@Model.Name" class="btn-default" value="Добави" />
+            </div>
+        }
     </div>
 </div>
 
@@ -44,5 +52,10 @@
             long = @Model.Location.Longitude;
     </script>
     <script src="~/Scripts/page-scripts/show-location.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>
+    <script src="~/Scripts/page-scripts/load-comments.js"></script>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <script src="~/Scripts/page-scripts/add-comment.js"></script>
     }
+}

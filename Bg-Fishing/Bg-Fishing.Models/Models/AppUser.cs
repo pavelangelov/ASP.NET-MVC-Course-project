@@ -5,7 +5,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 using Bg_Fishing.Models.Contracts;
 using Bg_Fishing.Utils;
-using System.Collections.Generic;
 
 namespace Bg_Fishing.Models
 {
@@ -90,6 +89,12 @@ namespace Bg_Fishing.Models
 
             set
             {
+                if (value == null)
+                {
+                    this.middleName = value;
+                    return;
+                }
+
                 var maxLength = Constants.NameMaxLength;
                 var minLength = 0;
                 var errorMessage = string.Format(GlobalMessages.NameErrorMessage, "Презимето", minLength, maxLength);
@@ -126,7 +131,5 @@ namespace Bg_Fishing.Models
         /// Get or Set avatar.
         /// </summary>
         public string AvatarUrl { get; set; }
-
-        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

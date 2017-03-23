@@ -9,8 +9,6 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels
     {
         public string LakeName { get; set; }
 
-        public string Username { get; set; }
-
         public string Content { get; set; }
     }
 }

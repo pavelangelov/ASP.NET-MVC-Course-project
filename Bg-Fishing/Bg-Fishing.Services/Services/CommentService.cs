@@ -17,6 +17,8 @@ namespace Bg_Fishing.Services
         public CommentService(IDatabaseContext dbContext)
         {
             Validator.ValidateForNull(dbContext, paramName: "dbContext");
+
+            this.dbContext = dbContext;
         }
 
         public Comment FindById(string id)
@@ -35,6 +37,7 @@ namespace Bg_Fishing.Services
                                                             LakeName = l.LakeName,
                                                             Username = l.Username,
                                                             PostedDate = l.PostedDate,
+                                                            Content = l.Content,
                                                             Comments = l.Comments.Select(x => new InnerCommentDTO
                                                             {
                                                                 Username = x.Username,
