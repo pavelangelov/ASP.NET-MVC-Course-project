@@ -361,6 +361,7 @@
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />
     <Content Include="Scripts\page-scripts\search.js" />
+    <Content Include="Scripts\page-scripts\show-location.js" />
     <Content Include="Scripts\page-scripts\show-videos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />

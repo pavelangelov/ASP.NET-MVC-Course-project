@@ -37,14 +37,12 @@
         <ul id="comments"></ul>
     </div>
 </div>
-<script>
-    function myMap() {
-        var mapOptions = {
-            center: new google.maps.LatLng(@Model.Location.Latitude,@Model.Location.Longitude),
-            zoom: 15,
-            mapTypeId: google.maps.MapTypeId.HYBRID
-        }
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    }
-</script>
+
+@section PageScripts {
+    <script>
+        let lat = @Model.Location.Latitude,
+            long = @Model.Location.Longitude;
+    </script>
+    <script src="~/Scripts/page-scripts/show-location.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>
+    }
