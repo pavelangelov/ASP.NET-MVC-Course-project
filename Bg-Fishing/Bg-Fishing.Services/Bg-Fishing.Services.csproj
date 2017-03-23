@@ -49,12 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ICommentService.cs" />
     <Compile Include="Contracts\IFishService.cs" />
     <Compile Include="Contracts\ILakeService.cs" />
     <Compile Include="Contracts\ILocationService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IVideoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\FishService.cs" />
     <Compile Include="Services\LakeService.cs" />
     <Compile Include="Services\LocationService.cs" />

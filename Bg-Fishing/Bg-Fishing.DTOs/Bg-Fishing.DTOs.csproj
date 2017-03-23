@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentDTOs\CommentDTO.cs" />
+    <Compile Include="CommentDTOs\InnerCommentDTO.cs" />
     <Compile Include="FishDTOs\AllFishPropsDTO.cs" />
     <Compile Include="GalleryDTO.cs" />
     <Compile Include="LakeDTOs\LakeDTO.cs" />
