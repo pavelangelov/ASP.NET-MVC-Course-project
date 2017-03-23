@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201703211745086_Added_Location_Constraints.Designer.cs">
       <DependentUpon>201703211745086_Added_Location_Constraints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703231018273_Added_Comment.cs" />
+    <Compile Include="Migrations\201703231018273_Added_Comment.Designer.cs">
+      <DependentUpon>201703231018273_Added_Comment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703211745086_Added_Location_Constraints.resx">
       <DependentUpon>201703211745086_Added_Location_Constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703231018273_Added_Comment.resx">
+      <DependentUpon>201703231018273_Added_Comment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
