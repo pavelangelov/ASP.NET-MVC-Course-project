@@ -51,7 +51,7 @@ namespace Bg_Fishing.Services
         public IEnumerable<CommentDTO> GetAllByUsername(string username)
         {
             var allComments = this.dbContext.Comments.Include(c => c.Comments)
-                                                        .Where(c => c.LakeName == username)
+                                                        .Where(c => c.Username == username)
                                                         .Select(l => new CommentDTO
                                                         {
                                                             LakeName = l.LakeName,

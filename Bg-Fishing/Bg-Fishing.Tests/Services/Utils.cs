@@ -61,5 +61,17 @@ namespace Bg_Fishing.Tests.Services
 
             return collection;
         }
+
+        public static IList<Comment> GetCommentsCollection()
+        {
+            var collection = new List<Comment>
+            {
+                new Comment() { LakeName =  "First lake", Username = "First user" },
+                new Comment() { LakeName =  "Second lake", Username = "Second user" },
+                new Comment() { LakeName =  "Third lake", Username = "Third user" }
+            };
+
+            return collection;
+        }
     }
 }
