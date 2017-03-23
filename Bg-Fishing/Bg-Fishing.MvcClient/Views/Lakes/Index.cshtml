@@ -38,6 +38,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div id="comment-form" hidden>
+                <p id="result"></p>
                 <label for="comment-content" class="label">Съдържание</label>
                 <textarea id="comment-content" class="form-control"></textarea>
                 <input type="submit" id="submit-btn" data-name="@Model.Name" class="btn-default" value="Добави" />

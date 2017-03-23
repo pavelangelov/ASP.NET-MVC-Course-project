@@ -23,6 +23,12 @@
                        .removeClass('text-success')
                        .html(response.message);
             }
+
+            $('#result').show();
+            setTimeout(() => {
+
+                $('#result').hide();
+            }, 3000);
         },
         error: (err) => {
             console.log('Error: ' + error.message);

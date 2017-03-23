@@ -11,7 +11,21 @@
             content: content
         },
         success: (response) => {
-            console.log(response.message);
+            if (response.status === "success") {
+                $('#result').addClass('text-success')
+                            .removeClass('text-danger')
+                            .text(response.message);
+            } else {
+                $('#result').addClass('text-danger')
+                            .removeClass('text-success')
+                            .text(response.message);
+            }
+            $('#result').show();
+
+            setTimeout(() => {
+
+                $('#result').hide();
+            }, 3000);
         },
         error: (err) => {
             console.log(err);
