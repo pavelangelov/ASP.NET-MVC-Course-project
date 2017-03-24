@@ -112,6 +112,7 @@
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Index_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\AddComment_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Constructor_Should.cs" />
+    <Compile Include="MvcClient\Controllers\LakesControllerTests\Details_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Index_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommentServiceTests\Constructor_Should.cs" />
