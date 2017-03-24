@@ -33,7 +33,7 @@ namespace Bg_Fishing.MvcClient.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var lakes = this.lakeService.GetAll().GroupBy(l => l.Name[0]);
+            var lakes = this.lakeService.GetAll().GroupBy(l => l.Name.ToLower()[0]);
 
             return View(lakes);
         }

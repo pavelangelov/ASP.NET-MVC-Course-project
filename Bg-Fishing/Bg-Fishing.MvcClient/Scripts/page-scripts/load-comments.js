@@ -16,10 +16,20 @@
     })
 })
 
-function loadComments(commetnsArr) {
+function loadComments(commentsArr) {
     let container = $('#comments');
     container.html('');
-    commetnsArr.forEach((c) => {
+    if (commentsArr === undefined || !commentsArr.length) {
+        let message = $('<li />').addClass('list-group-item')
+                                    .addClass('text-danger')
+                                    .addClass('text-center')
+                                    .html('Все още няма изпратени мнения за този язовир.')
+                                    .appendTo(container);
+
+        return;
+    }
+
+    commentsArr.forEach((c) => {
         let commentContainer = $('<li />').addClass('list-group-item');
         let user = $('<div />').addClass('text-primary')
                                 .text('Изпратено от: ' + c.Username)

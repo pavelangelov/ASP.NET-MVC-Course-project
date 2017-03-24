@@ -1,0 +1,23 @@
+﻿@model IEnumerable<IGrouping<char, Bg_Fishing.DTOs.LakeDTOs.LakeDTO>>
+@{
+    ViewBag.Title = "Язовири";
+}
+<div class="container">
+    <h3 class="text-center text-primary">Списък с язовирите</h3>
+    <div class="panel-group col-sm-8 col-sm-offset-2">
+        @foreach (var key in Model)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5>@key.Key</h5>
+                </div>
+                <div class="panel-body">
+                    @foreach (var lake in key)
+                {
+                        <a href="/lakes/details/@lake.Name" style="margin-left: 10px">яз. @lake.Name</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

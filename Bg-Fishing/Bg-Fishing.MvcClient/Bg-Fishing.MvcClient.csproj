@@ -414,6 +414,7 @@
     <Content Include="Views\FishList\Details.cshtml" />
     <Content Include="Views\Lakes\Details.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Lakes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

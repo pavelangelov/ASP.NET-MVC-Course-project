@@ -6,6 +6,7 @@
     <ul class="dropdown-menu" aria-labelledby="options-dropdown">
         <li>
             @Html.ActionLink("Видео галерии", "Videos", "Galleries", new { Area = "" }, null)
+            @Html.ActionLink("Язовири", "Index", "Lakes", new { Area = "" }, null)
             @Html.ActionLink("Риби", "Index", "FishList", new { Area = "" }, null)
         </li>
     </ul>
@@ -16,13 +17,13 @@
     if (Context.User.IsInRole("Moderator"))
     {
         <li class="dropdown dropdown-accordion" data-accordion="#accordion">
-        <a id="options-dropdown2" class="dropdown-toggle" role="button" data-toggle="dropdown">
-            Модератор
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-        <ul class="dropdown-menu" id="moderator-dropdown" aria-labelledby="options-dropdown">
-            @Html.Partial("RoleNavigations/_Moderator")
-        </ul>
-    </li>
+            <a id="options-dropdown2" class="dropdown-toggle" role="button" data-toggle="dropdown">
+                Модератор
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+            <ul class="dropdown-menu" id="moderator-dropdown" aria-labelledby="options-dropdown">
+                @Html.Partial("RoleNavigations/_Moderator")
+            </ul>
+        </li>
     }
 }
