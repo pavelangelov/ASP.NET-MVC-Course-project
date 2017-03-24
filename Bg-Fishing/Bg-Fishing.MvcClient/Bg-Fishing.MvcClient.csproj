@@ -210,6 +210,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\CommentsController.cs" />
     <Compile Include="ApiControllers\SearchController.cs" />
+    <Compile Include="ApiControllers\VideosController.cs" />
     <Compile Include="App_GlobalResources\ValidationMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -234,6 +235,7 @@
     <Compile Include="Areas\Moderator\Models\AddVideoViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\LakeViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\LocationViewModel.cs" />
+    <Compile Include="Areas\Moderator\Models\RemoveVideoViewModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\ModeratorBaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -267,6 +269,7 @@
     <Content Include="Content\page-styles\fish-list-index.css" />
     <Content Include="Content\page-styles\nav-bar-styles.css" />
     <Content Include="Content\page-styles\search-result-style.css" />
+    <Content Include="Content\page-styles\videos-styles.css" />
     <Content Include="Content\solar-theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -327,6 +330,7 @@
     <Content Include="Areas\Moderator\Views\Location\Add.cshtml" />
     <Content Include="Areas\Moderator\Views\Lake\Add.cshtml" />
     <Content Include="Areas\Moderator\Views\Lake\AddFish.cshtml" />
+    <Content Include="Areas\Moderator\Views\Video\Remove.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

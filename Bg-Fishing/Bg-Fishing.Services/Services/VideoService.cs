@@ -37,7 +37,8 @@ namespace Bg_Fishing.Services
                 return gallery.Videos.Select(v => new VideoDTO
                 {
                     Title = v.Title,
-                    Url = v.Url
+                    Url = v.Url,
+                    Id = v.Id
                 });
             }
             else

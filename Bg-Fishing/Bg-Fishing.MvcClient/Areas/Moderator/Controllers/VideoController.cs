@@ -81,6 +81,29 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Remove()
+        {
+            var allGalleries = this.videoService.GetAll();
+            var model = new RemoveVideoViewModel();
+            model.Galleries = allGalleries;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Remove(string videoId, string galleryName)
+        {
+            var result = this.videoService.RemoveVideoFromGallery(galleryName, videoId);
+            this.videoService.Save();
+            if (result)
+            {
+                return Json(new { status = "success", message = "Видеото е премахнато" });
+            }
+
+            return Json(new { status = "error", message = "Визникна грешка при премахването на видеото" });
+        }
+
         private void SetGalleryNames(AddVideoViewModel model)
         {
             var names = this.videoService.GetAll().ToList();
