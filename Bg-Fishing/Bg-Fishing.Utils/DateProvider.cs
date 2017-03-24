@@ -8,7 +8,7 @@ namespace Bg_Fishing.Utils
     {
         public DateTime GetDate()
         {
-            return DateTime.Now;
+            return DateTime.UtcNow;
         }
     }
 }

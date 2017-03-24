@@ -38,8 +38,15 @@ function loadComments(commentsArr) {
         let commentSeparator = $('<hr />').appendTo(commentContainer);
         let commentContent = $('<div />').text(c.Content).appendTo(commentContainer);
         let date = $('<div />').addClass('text-success')
-                                .text('Дата: ' + new Date(parseInt(c.PostedDate.substr(6))).toLocaleDateString()).appendTo(commentContainer);
+                                .text('Дата: ' + extractDate(c.PostedDate)).appendTo(commentContainer);
 
         commentContainer.appendTo(container);
     })
+}
+
+function extractDate(date) {
+    let parsedDate = new Date(Date.parse(date)).toLocaleDateString(),
+        parsedTime = new Date(Date.parse(date)).toLocaleTimeString();
+
+    return parsedDate + ' ' + parsedTime;
 }

@@ -29,7 +29,7 @@ namespace Bg_Fishing.Tests.Models.CommentTests
             // Arrange
             var validUsername = "test user";
             var validContent = "test content";
-            var validDate = DateTime.Now;
+            var validDate = DateTime.UtcNow;
 
             // Act & Assert
             var message = Assert.Throws<ArgumentException>(() => new Comment(invalidLakeName, validUsername, validContent, validDate)).Message;
@@ -43,7 +43,7 @@ namespace Bg_Fishing.Tests.Models.CommentTests
             string invalidUserame = null;
             var validLakeName = "test lake";
             var validContent = "test content";
-            var validDate = DateTime.Now;
+            var validDate = DateTime.UtcNow;
 
             // Act & Assert
             var message = Assert.Throws<ArgumentNullException>(() => new Comment(validLakeName, invalidUserame, validContent, validDate)).Message;
@@ -57,7 +57,7 @@ namespace Bg_Fishing.Tests.Models.CommentTests
             var validLakeName = "test lake";
             var validUserame = "test user";
             var invalidContent = new string('a', Constants.CommentContentMaxLength + 1);
-            var validDate = DateTime.Now;
+            var validDate = DateTime.UtcNow;
 
             // Act & Assert
             var message = Assert.Throws<ArgumentException>(() => new Comment(validLakeName, validUserame, invalidContent, validDate)).Message;
@@ -71,7 +71,7 @@ namespace Bg_Fishing.Tests.Models.CommentTests
             var validLakeName = "test lake";
             var validUserame = "test user";
             var validContent = new string('a', Constants.CommentContentMaxLength);
-            var validDate = DateTime.Now;
+            var validDate = DateTime.UtcNow;
 
             // Act
             var comment =  new Comment(validLakeName, validUserame, validContent, validDate);

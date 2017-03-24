@@ -5,7 +5,7 @@
         name = $(ev.target).attr('data-name');
     $.ajax({
         method: 'POST',
-        url: '/lakes/' + name + '/addComment',
+        url: '/lakes/addComment/' + name,
         data: {
             lakeName: name,
             content: content

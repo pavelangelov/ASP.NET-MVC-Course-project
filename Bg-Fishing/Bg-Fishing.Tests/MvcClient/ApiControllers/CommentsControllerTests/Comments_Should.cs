@@ -18,7 +18,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
         public void ReturnCorrectResult()
         {
             // Arrange
-            var date = DateTime.Now;
+            var date = DateTime.UtcNow;
             var mockedCollection = new List<CommentDTO>()
             {
                 new CommentDTO {LakeName = "First", PostedDate = date.AddHours(1) },
