@@ -6,6 +6,7 @@ using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Utils.Contracts;
+using System.Linq;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
@@ -30,11 +31,19 @@ namespace Bg_Fishing.MvcClient.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(string name)
+        public ActionResult Index()
+        {
+            var lakes = this.lakeService.GetAll().GroupBy(l => l.Name[0]);
+
+            return View(lakes);
+        }
+
+        [HttpGet]
+        public ActionResult Details(string name)
         {
             var lake = this.lakeService.FindByName(name);
 
-            return View("Index", model: lake);
+            return View(lake);
         }
         
         [HttpPost]

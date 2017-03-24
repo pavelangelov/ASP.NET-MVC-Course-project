@@ -412,7 +412,7 @@
     <Content Include="Views\Galleries\Videos.cshtml" />
     <Content Include="Views\FishList\Index.cshtml" />
     <Content Include="Views\FishList\Details.cshtml" />
-    <Content Include="Views\Lakes\Index.cshtml" />
+    <Content Include="Views\Lakes\Details.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

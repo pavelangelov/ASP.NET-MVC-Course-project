@@ -28,11 +28,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
 
             // Act
-            var view = controller.Index(null) as ViewResult;
+            var view = controller.Details(null) as ViewResult;
             var model = view.ViewData.Model as Lake;
 
             // Assert
-            Assert.AreEqual("Index", view.ViewName);
+            Assert.AreEqual("", view.ViewName);
             Assert.AreEqual(mockedLake, model);
         }
     }

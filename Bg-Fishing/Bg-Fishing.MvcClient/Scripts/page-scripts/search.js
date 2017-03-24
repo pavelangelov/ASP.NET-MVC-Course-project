@@ -28,8 +28,8 @@ function ShowLakes(lakesArr) {
 
     lakesArr.forEach((lake) => {
         let lakeContainer = $('<li />'),
-            link = $('<a />').attr('href', '/lakes/' + lake.Name)
-                                .html('яз. ' + lake.Name)
+            link = $('<a />').attr('href', '/lakes/details/' + lake.Name)
+                                .text('яз. ' + lake.Name)
                                 .appendTo(lakeContainer);
 
         container.append(lakeContainer);
