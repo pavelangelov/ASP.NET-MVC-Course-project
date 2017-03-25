@@ -30,16 +30,33 @@ function updateFish(updateMethod) {
                 if (response.status === "success") {
                     $('#result').addClass('text-success')
                                 .removeClass('text-danger')
-                                .html(response.message)
+                                .text(response.message);
                 } else {
                     $('#result').removeClass('text-success')
                             .addClass('text-danger')
-                            .html(response.message)
+                            .text(response.message);
                 }
+
+                $('#result').show();
+
+                hideResult();
             },
             error: (err) => {
                 console.log(err.message);
             }
         })
+    } else {
+        $('#result').removeClass('text-success')
+                            .addClass('text-danger')
+                            .text('Не е избран язовир.');
+        $('#result').show();
+
+        hideResult();
     }
+}
+
+function hideResult() {
+    setTimeout(() => {
+        $('#result').hide();
+    }, 3000);
 }

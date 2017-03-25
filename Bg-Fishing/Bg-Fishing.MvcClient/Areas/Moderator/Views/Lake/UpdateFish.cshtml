@@ -16,7 +16,6 @@
                     <option value="@lake.Name">@lake.Name</option>
                 }
             </select>
-            @Html.ValidationMessageFor(m => m.SelectedLake)
         </div>
         <div class="col-sm-5 col-sm-offset-1">
             @Html.LabelFor(m => m.SelectedFish, new { @class = "label label-warning" })
@@ -34,8 +33,6 @@
        </div>
     }
 </div>
-
-@Scripts.Render("~/bundles/jqueryval")
 
 @section PageScripts {
     <script src="~/Scripts/page-scripts/update-fish.js"></script>
