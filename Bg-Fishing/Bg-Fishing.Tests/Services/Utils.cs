@@ -86,5 +86,17 @@ namespace Bg_Fishing.Tests.Services
 
             return collection;
         }
+
+        public static IList<News> GetNewsCollection()
+        {
+            var collection = new List<News>
+            {
+                new News() { Title = "First" },
+                new News() { Title = "Second" },
+                new News() { Title = "Third" }
+            };
+
+            return collection;
+        }
     }
 }

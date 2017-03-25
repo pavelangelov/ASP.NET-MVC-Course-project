@@ -145,6 +145,10 @@
     <Compile Include="Services\LocationServiceTests\GetAll_Should.cs" />
     <Compile Include="Services\LocationServiceTests\Save_Should.cs" />
     <Compile Include="Services\Mocks\MockDbSet.cs" />
+    <Compile Include="Services\NewsServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\NewsServiceTests\FindById_Should.cs" />
+    <Compile Include="Services\NewsServiceTests\GetNews_Should.cs" />
+    <Compile Include="Services\NewsServiceTests\Save_Should.cs" />
     <Compile Include="Services\VideoServiceTests\AddVideoToGallery_Should.cs" />
     <Compile Include="Services\VideoServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\VideoServiceTests\GetAll_Should.cs" />
