@@ -86,6 +86,7 @@
     <Compile Include="Models\FishTests\Constructor_Should.cs" />
     <Compile Include="Models\LakeTests\Constructor_Should.cs" />
     <Compile Include="Models\LocationTests\Constructor_Should.cs" />
+    <Compile Include="Models\NewsCommentTests\Constructor_Should.cs" />
     <Compile Include="Models\NewsTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\CommentsControllerTests\Comments_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\CommentsControllerTests\Constructor_Should.cs" />
