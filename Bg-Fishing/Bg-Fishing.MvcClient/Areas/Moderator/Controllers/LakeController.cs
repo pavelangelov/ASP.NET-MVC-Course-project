@@ -121,5 +121,37 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                 return Json(new { status = "error", message = errors });
             }
         }
+
+        [HttpPost]
+        public ActionResult RemoveFish(UpdateFishViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var lake = this.lakeService.FindByName(model.SelectedLake);
+                    foreach (var fishName in model.SelectedFish)
+                    {
+                        var fish = this.fishService.FindByName(fishName);
+                        lake.Fish.Remove(fish);
+                    }
+
+                    this.lakeService.Save();
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { status = "error", message = "Възникна грешка при премахването на избраните риби." });
+                }
+
+                return Json(new { status = "success", message = string.Format("Рибата е премахната успешно") });
+            }
+            else
+            {
+                var errors = string.Join("<br/>", ModelState.Values
+                                                        .SelectMany(v => v.Errors
+                                                                          .Select(e => e.ErrorMessage)));
+                return Json(new { status = "error", message = errors });
+            }
+        }
     }
 }

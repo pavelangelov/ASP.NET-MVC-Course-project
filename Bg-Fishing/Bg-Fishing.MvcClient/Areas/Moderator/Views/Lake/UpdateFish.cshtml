@@ -16,6 +16,7 @@
                     <option value="@lake.Name">@lake.Name</option>
                 }
             </select>
+            @Html.ValidationMessageFor(m => m.SelectedLake)
         </div>
         <div class="col-sm-5 col-sm-offset-1">
             @Html.LabelFor(m => m.SelectedFish, new { @class = "label label-warning" })
@@ -29,44 +30,13 @@
         <br />
        <div class="col-sm-10 text-center">
            <input type="submit" id="add" class="btn btn-primary" value="Добави" />
+           <input type="submit" id="remove" class="btn btn-danger" value="Премахни" />
        </div>
     }
 </div>
 
-<script>
-    $('#add').on('click', (ev) => {
-        ev.preventDefault();
-        var selectedLake = $('#SelectedLake').val();
+@Scripts.Render("~/bundles/jqueryval")
 
-        var selectedFish = [];
-        $('#SelectedFish :selected').each((i, selected) => {
-            selectedFish[i] = $(selected).text();
-        });
-
-        if (selectedLake.length && selectedFish.length > 0) {
-            $.ajax({
-                method: 'POST',
-                url: '/moderator/lake/addFish',
-                data: {
-                    selectedLake,
-                    selectedFish
-                },
-                success: (response) => {
-                    if (response.status === "success") {
-                        $('#result').addClass('text-success')
-                                    .removeClass('text-danger')
-                                    .html(response.message)
-                    } else {
-                        $('#result').removeClass('text-success')
-                                .addClass('text-danger')
-                                .html(response.message)
-                    }
-                },
-                error: (err) => {
-                    console.log(err.message);
-                }
-            })
-        }
-
-    })
-</script>
+@section PageScripts {
+    <script src="~/Scripts/page-scripts/update-fish.js"></script>
+    }
