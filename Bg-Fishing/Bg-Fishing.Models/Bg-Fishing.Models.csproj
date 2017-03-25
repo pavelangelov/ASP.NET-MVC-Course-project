@@ -91,6 +91,7 @@
     <Compile Include="Contracts\Galleries\IImage.cs" />
     <Compile Include="Contracts\ILake.cs" />
     <Compile Include="Contracts\ILocation.cs" />
+    <Compile Include="Contracts\INews.cs" />
     <Compile Include="Enums\FishType.cs" />
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Models\AppUser.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Models\Lake.cs" />
     <Compile Include="Models\Galleries\VideoGallery.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

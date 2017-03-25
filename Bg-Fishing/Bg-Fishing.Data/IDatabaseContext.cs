@@ -15,6 +15,7 @@ namespace Bg_Fishing.Data
         IDbSet<ImageGallery> ImageGalleries { get; }
         IDbSet<VideoGallery> VideoGalleries { get; }
         IDbSet<Comment> Comments { get; }
+        IDbSet<News> News { get; }
 
         int Save();
     }
