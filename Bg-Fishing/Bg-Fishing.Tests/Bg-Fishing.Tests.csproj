@@ -146,6 +146,7 @@
     <Compile Include="Services\VideoServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\VideoServiceTests\GetAll_Should.cs" />
     <Compile Include="Services\VideoServiceTests\GetGalleryNameById_Should.cs" />
+    <Compile Include="Services\VideoServiceTests\GetVideoById_Should.cs" />
     <Compile Include="Services\VideoServiceTests\GetVideosFromGallery_Should.cs" />
     <Compile Include="Services\VideoServiceTests\RemoveVideoFromGallery_Should.cs" />
     <Compile Include="Services\VideoServiceTests\Save_Should.cs" />

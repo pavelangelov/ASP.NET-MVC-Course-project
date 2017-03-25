@@ -3,6 +3,7 @@
 using Bg_Fishing.Models;
 using Bg_Fishing.Models.Enums;
 using Bg_Fishing.Models.Galleries;
+using System;
 
 namespace Bg_Fishing.Tests.Services
 {
@@ -69,6 +70,18 @@ namespace Bg_Fishing.Tests.Services
                 new Comment() { LakeName =  "First lake", Username = "First user" },
                 new Comment() { LakeName =  "Second lake", Username = "Second user" },
                 new Comment() { LakeName =  "Third lake", Username = "Third user" }
+            };
+
+            return collection;
+        }
+
+        public static IList<Video> GetVideoCollection()
+        {
+            var collection = new List<Video>
+            {
+                new Video("first", "firstUrl", DateTime.Now),
+                new Video("second", "secondUrl", DateTime.Now),
+                new Video("third", "thirdUrl", DateTime.Now)
             };
 
             return collection;
