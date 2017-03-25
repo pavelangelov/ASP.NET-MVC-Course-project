@@ -1,20 +1,21 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-
-using Moq;
-using NUnit.Framework;
-
-using Bg_Fishing.Factories.Contracts;
+﻿using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Models;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
-using Bg_Fishing.Models;
+using Moq;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerTests
 {
     [TestFixture]
-    public class AddFish_Should
+    public class RemoveFish_Should
     {
         [Test]
         public void ReturnJsonWithAllModelErrors_IfModelStateIsNotValid()
@@ -37,7 +38,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             controller.ModelState.AddModelError("Name", "Test error!");
 
             // Act
-            var result = controller.AddFish(new UpdateFishViewModel()) as JsonResult;
+            var result = controller.RemoveFish(new UpdateFishViewModel()) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
@@ -51,7 +52,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
         }
 
         [Test]
-        public void ReturnJsonWithCorrectErrorMessage_IfAddingFishFailed()
+        public void ReturnJsonWithCorrectErrorMessage_IfRemovingFishFailed()
         {
             // Arrange
             var mockedLakeFactory = new Mock<ILakeFactory>();
@@ -71,12 +72,12 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
 
             // Act
             var selectedFish = Enumerable.Empty<string>();
-            var result = controller.AddFish(new UpdateFishViewModel() { SelectedFish = selectedFish }) as JsonResult;
+            var result = controller.RemoveFish(new UpdateFishViewModel() { SelectedFish = selectedFish }) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
             Assert.AreEqual("error", dResult.status);
-            Assert.AreEqual("Възникна грешка при добавянето на на избраните риби.", dResult.message);
+            Assert.AreEqual("Възникна грешка при премахването на избраните риби.", dResult.message);
 
             mockedLakeService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);
 
@@ -84,16 +85,17 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
         }
 
         [Test]
-        public void ReturnJsonWithCorrectSuccessMessage_IfAddingFishNotFailed_AndAddFishToLake()
+        public void ReturnJsonWithCorrectSuccessMessage_IfRemovingFishNotFailed_AndRemoveFishFromLake()
         {
             // Arrange
             var lakeName = "Lake";
-            var expectedMessage = string.Format("Рибата е добавена във {0}.", lakeName);
+            var expectedMessage = "Рибата е премахната успешно";
             var mockedLakeFactory = new Mock<ILakeFactory>();
             var mockedLocationFactory = new Mock<ILocationFactory>();
 
             var mockedFish = new Fish();
             var mockedLake = new Lake();
+            mockedLake.Fish.Add(mockedFish);
             var mockedLakeService = new Mock<ILakeService>();
             mockedLakeService.Setup(s => s.FindByName(It.IsAny<string>())).Returns(mockedLake).Verifiable();
             mockedLakeService.Setup(s => s.Save()).Verifiable();
@@ -110,18 +112,19 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var model = new UpdateFishViewModel() { SelectedFish = selectedFish, SelectedLake = lakeName };
 
             // Act
-            var result = controller.AddFish(model) as JsonResult;
+            var result = controller.RemoveFish(model) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
             Assert.AreEqual("success", dResult.status);
             Assert.AreEqual(expectedMessage, dResult.message);
-            Assert.IsTrue(mockedLake.Fish.Contains(mockedFish));
+            Assert.IsFalse(mockedLake.Fish.Contains(mockedFish));
 
             mockedLakeService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);
             mockedLakeService.Verify(s => s.Save(), Times.Once);
 
             mockedFishService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);
+
         }
     }
 }
