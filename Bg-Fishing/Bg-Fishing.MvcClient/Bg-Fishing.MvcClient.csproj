@@ -267,6 +267,7 @@
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
     <Content Include="Content\page-styles\details.css" />
     <Content Include="Content\page-styles\fish-list-index.css" />
+    <Content Include="Content\page-styles\home-style.css" />
     <Content Include="Content\page-styles\nav-bar-styles.css" />
     <Content Include="Content\page-styles\search-result-style.css" />
     <Content Include="Content\page-styles\videos-styles.css" />
@@ -338,7 +339,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\Backgrounds\common-bg.jpg" />
-    <Content Include="Images\Backgrounds\contact-bg.jpg" />
+    <Content Include="Images\news-default.jpg" />
     <Content Include="Images\Backgrounds\not-set-bg.jpg" />
     <Content Include="Images\Backgrounds\home-bg.jpg" />
     <Content Include="Images\Fish\balkan-trout.jpg" />
@@ -366,6 +367,7 @@
     <Content Include="Scripts\page-scripts\add-lake.js" />
     <Content Include="Scripts\page-scripts\add-location.js" />
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
+    <Content Include="Scripts\page-scripts\home.js" />
     <Content Include="Scripts\page-scripts\load-comments.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />
     <Content Include="Scripts\page-scripts\remove-video.js" />

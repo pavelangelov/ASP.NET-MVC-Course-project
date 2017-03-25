@@ -31,6 +31,7 @@ namespace Bg_Fishing.Services
         public IEnumerable<NewsDTO> GetNews(int skip, int take)
         {
             var news = this.dbContext.News.Include(n => n.Comments)
+                                            .OrderByDescending(n => n.PostedOn)
                                             .Skip(skip)
                                             .Take(take);
 
