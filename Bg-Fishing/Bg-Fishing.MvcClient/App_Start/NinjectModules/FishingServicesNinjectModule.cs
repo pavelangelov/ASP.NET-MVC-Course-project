@@ -18,6 +18,7 @@ namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
             this.Bind<ILocationService>().To<LocationService>();
             this.Bind<ILakeService>().To<LakeService>();
             this.Bind<ICommentService>().To<CommentService>();
+            this.Bind<INewsService>().To<NewsService>();
         }
     }
 }

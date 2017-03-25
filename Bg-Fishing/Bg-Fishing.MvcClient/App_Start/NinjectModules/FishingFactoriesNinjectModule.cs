@@ -17,6 +17,8 @@ namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
             this.Bind<ILakeFactory>().ToFactory();
             this.Bind<ILocationFactory>().ToFactory();
             this.Bind<ICommentFactory>().ToFactory();
+            this.Bind<INewsFactory>().ToFactory();
+            this.Bind<INewsCommentFactory>().ToFactory();
         }
     }
 }

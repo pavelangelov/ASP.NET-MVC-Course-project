@@ -46,6 +46,7 @@
     <Compile Include="Contracts\IImageGalleryFactory.cs" />
     <Compile Include="Contracts\ILakeFactory.cs" />
     <Compile Include="Contracts\ILocationFactory.cs" />
+    <Compile Include="Contracts\INewsCommentFactory.cs" />
     <Compile Include="Contracts\INewsFactory.cs" />
     <Compile Include="Contracts\IVideoFactory.cs" />
     <Compile Include="Contracts\IVideoGalleryFactory.cs" />
