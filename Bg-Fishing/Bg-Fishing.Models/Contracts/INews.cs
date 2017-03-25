@@ -11,6 +11,8 @@ namespace Bg_Fishing.Models.Contracts
 
         DateTime PostedOn { get; }
 
+        string ImageUrl { get; }
+
         ICollection<Comment> Comments { get; }
     }
 }
