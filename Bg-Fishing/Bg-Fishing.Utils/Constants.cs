@@ -16,5 +16,7 @@
         public const int LocationNameMaxLength = 50;
 
         public const int CommentContentMaxLength = 250;
+
+        public const string NewsDefaultImage = "";
     }
 }

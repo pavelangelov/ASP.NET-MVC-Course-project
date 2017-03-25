@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Models
 {
@@ -93,7 +94,7 @@ namespace Bg_Fishing.Models
             {
                 if (value == null)
                 {
-                    this.imageUrl = ""; // TODO: Add default image
+                    this.imageUrl = Constants.NewsDefaultImage;
                 }
                 else
                 {
