@@ -1,0 +1,12 @@
+﻿@model Bg_Fishing.DTOs.VideoDTO
+
+@{
+    ViewBag.Title = "Watch";
+}
+
+<div class="container">
+    <h3 class="text-center">видео: @Model.Title</h3>
+    <div class="col-sm-10 col-sm-offset-1">
+        <iframe src="@Model.Url" style="width: 100%; height: 30em;" allowfullscreen frameborder="0"></iframe>
+    </div>
+</div>

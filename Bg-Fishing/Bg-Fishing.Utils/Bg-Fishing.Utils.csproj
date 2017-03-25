@@ -46,6 +46,7 @@
     <Compile Include="GlobalMessages.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoHelper.cs" />
     <Compile Include="ViewModelsDisplayNames.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,6 +12,8 @@ namespace Bg_Fishing.Services.Contracts
     {
         IEnumerable<GalleryDTO> GetAll();
 
+        VideoDTO GetVideoById(string id);
+
         string GetGalleryNameById(string galleryId);
 
         IEnumerable<VideoDTO> GetVideosFromGallery(string galleryId);

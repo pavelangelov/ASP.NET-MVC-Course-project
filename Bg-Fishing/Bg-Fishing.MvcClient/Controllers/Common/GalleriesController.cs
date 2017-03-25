@@ -40,5 +40,15 @@ namespace Bg_Fishing.MvcClient.Controllers.Common
 
             return videosArr;
         }
+
+        [HttpGet]
+        public ActionResult Watch(string id)
+        {
+            var video = this.videoService.GetVideoById(id);
+
+            video.Url = VideoHelper.FixUrl(video.Url);
+
+            return View(video);
+        }
     }
 }

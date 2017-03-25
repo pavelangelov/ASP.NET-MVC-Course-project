@@ -21,6 +21,23 @@ namespace Bg_Fishing.Services
             this.dbContext = dbContext;
         }
 
+        public VideoDTO GetVideoById(string id)
+        {
+            var video = this.dbContext.Videos.FirstOrDefault(v => v.Id == id);
+
+            if (video != null)
+            {
+                return new VideoDTO
+                {
+                    Id = video.Id,
+                    Title = video.Title,
+                    Url = video.Url
+                };
+            }
+
+            return null;
+        }
+
         public string GetGalleryNameById(string galleryId)
         {
             var gallery =  this.dbContext.VideoGalleries.FirstOrDefault( g => g.Id == galleryId);

@@ -2,15 +2,15 @@
 
 $('#galleries').on('change', () => {
     var selectedValue = $('#galleries').val();
-    var selectedTitle = $('#galleries option[value=' + selectedValue + ']').text();
 
     if (selectedValue !== undefined && selectedValue !== "") {
+        let selectedTitle = $('#galleries option[value=' + selectedValue + ']').text();
         $.ajax({
             method: 'GET',
             url: `/Galleries/GetVideos?galleryId=${selectedValue}`,
             success: (data) => {
                 if (data !== null) {
-                    var videos = JSON.parse(data);
+                    let videos = JSON.parse(data);
                     $('#gallery-name').text(selectedTitle);
                     dispalyVideos(videos);
                 }
@@ -19,26 +19,40 @@ $('#galleries').on('change', () => {
                 console.log(err);
             }
         })
+    } else {
+        let container = $('#videos-container');
+        container.html('');
+
+        $('<li />').addClass('list-group-item')
+                    .addClass('text-danger')
+                    .addClass('text-center')
+                    .text('В тази категория няма видеа!')
+                    .appendTo(container);
+
+        $('#gallery-name').text('');
     }
 })
 
 function dispalyVideos(videosArr) {
-    var len = videosArr.length;
-    var container = $('#videos-container');
+    let len = videosArr.length;
+    let container = $('#videos-container');
     container.html('');
-    var videosFragment = $('<div />');
+    let videosFragment = $('<div />');
 
-    for (var i = 0; i < len; i += 1) {
-        var video = videosArr[i];
-        var videoContainer = $('<div />').addClass('col-sm-4');
+    for (let i = 0; i < len; i += 1) {
+        let video = videosArr[i];
+        let videoContainer = $('<div />').addClass('col-sm-4');
 
-        var title = $('<h4 />').addClass('text-warning').html(video.Title);
-        var frame = $('<iframe />');
-        var url = video.Url.replace("watch?v=", "embed/");
-        frame.attr('src', url);
+        let id = video.Id;
+        let videoLink = $('<a />').attr('href', '/galleries/watch?id=' + id).text(video.Title);
+        let title = $('<h4 />').addClass('text-warning').append(videoLink);
+
+        let url = video.Url.replace("watch?v=", "embed/");
+        let videoId = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+        let thumb = $('<img class="thumb" src="//img.youtube.com/vi/' + videoId + '/0.jpg">').appendTo(videoContainer);
 
         videoContainer.append(title);
-        videoContainer.append(frame);
+        videoContainer.append(thumb);
 
         videoContainer.appendTo(videosFragment);
     }
