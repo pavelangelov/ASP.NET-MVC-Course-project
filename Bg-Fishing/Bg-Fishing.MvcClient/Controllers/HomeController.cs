@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using Bg_Fishing.MvcClient.Models;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
@@ -23,8 +24,17 @@ namespace Bg_Fishing.MvcClient.Controllers
         {
             var skip = page * NewsCount;
             var news = this.newsService.GetNews(skip, NewsCount).ToList();
+            var model = new HomeViewModel();
+            model.News = news;
 
-            return View(news);
+            var allNewsCount = this.newsService.GetNewsCount();
+            if (allNewsCount - (skip + NewsCount) > 0)
+            {
+                model.HasMoreNews = true;
+                model.NextPage = page + 1;
+            }
+
+            return View(model);
         }
     }
 }

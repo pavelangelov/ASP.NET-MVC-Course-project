@@ -228,9 +228,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Moderator\Controllers\CommentController.cs" />
     <Compile Include="Areas\Moderator\Controllers\LakeController.cs" />
     <Compile Include="Areas\Moderator\Controllers\LocationController.cs" />
     <Compile Include="Areas\Moderator\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Moderator\Models\AddNewsViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\UpdateFishViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\AddVideoViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\LakeViewModel.cs" />
@@ -248,6 +250,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\AddCommentViewModel.cs" />
     <Compile Include="Models\ViewModels\Common\VideoGalleriesViewModel.cs" />
@@ -332,6 +335,7 @@
     <Content Include="Areas\Moderator\Views\Lake\Add.cshtml" />
     <Content Include="Areas\Moderator\Views\Lake\UpdateFish.cshtml" />
     <Content Include="Areas\Moderator\Views\Video\Remove.cshtml" />
+    <Content Include="Areas\Moderator\Views\Comment\Index.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

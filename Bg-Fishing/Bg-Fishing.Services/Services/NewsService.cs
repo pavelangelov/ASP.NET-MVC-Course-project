@@ -21,6 +21,11 @@ namespace Bg_Fishing.Services
             this.dbContext = dbContext;
         }
 
+        public void Add(News news)
+        {
+            this.dbContext.News.Add(news);
+        }
+
         public News FindById(string id)
         {
             var news = this.dbContext.News.Find(id);
@@ -54,6 +59,11 @@ namespace Bg_Fishing.Services
             }
 
             return Enumerable.Empty<NewsDTO>();
+        }
+
+        public int GetNewsCount()
+        {
+            return this.dbContext.News.Count();
         }
 
         public int Save()

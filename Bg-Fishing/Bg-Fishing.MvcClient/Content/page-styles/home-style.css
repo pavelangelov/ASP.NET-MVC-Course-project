@@ -43,11 +43,19 @@ a.show-more-btn {
     margin: 2px;
     width: 200px;
     background: #fff;
-    border: 1px solid #8EE3FA;
-    color: #8EE3FA;
+    border: 1px solid #002B36;
+    color: #002B36;
 }
 
 a.show-more-btn:hover {
     color: #fff;
-    background: #8EE3FA;
+    background: #002B36;
+}
+
+a.load-more-btn {
+    border: 1px solid #2AA198;
+}
+
+a.load-more-btn:hover {
+    background: #2AA198;
 }

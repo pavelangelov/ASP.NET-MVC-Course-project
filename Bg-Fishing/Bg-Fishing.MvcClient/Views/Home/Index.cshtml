@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bg_Fishing.DTOs.NewsDTO>
+﻿@model Bg_Fishing.MvcClient.Models.HomeViewModel
 
 @{
     ViewBag.Title = "Bg-Fishing";
@@ -6,33 +6,41 @@
 
 @section PageStyles {
     <link href="~/Content/page-styles/home-style.css" rel="stylesheet" />
-    }
+}
 
 <div class="container">
     <h3 class="text-center text-default">Последни новини и събития</h3>
-
-    @foreach (var news in Model)
-    {
-        <div class="col-sm-10 col-sm-offset-1">
-            <article class="post">
-                <div class="post-thumb">
-                    <img src="@news.ImageUrl" alt="News-Image" />
-                </div>
-                <div class="post-content">
-                    <header class="entry-header text-center text-uppercase">
-                        <h1 class="entry-title">@news.Title</h1>
-                    </header>
-                    <div class="entry-content">
-                        <p>@news.Content</p>
-                        <div class="date">Публикувано на: @news.PostedOn</div>
+    <div id="news-container">
+        @foreach (var news in Model.News)
+        {
+            <div class="col-sm-10 col-sm-offset-1">
+                <article class="post">
+                    <div class="post-thumb">
+                        <img src="@news.ImageUrl" alt="News-Image" />
                     </div>
-                    <div class="show-more"><a class="btn show-more-btn">Виж повече...</a></div>
-                </div>
-            </article>
+                    <div class="post-content">
+                        <header class="entry-header text-center text-uppercase">
+                            <h1 class="entry-title">@news.Title</h1>
+                        </header>
+                        <div class="entry-content">
+                            <p>@news.Content</p>
+                            <div class="date">Публикувано на: @news.PostedOn</div>
+                        </div>
+                        <div class="show-more"><a class="btn show-more-btn">Виж повече...</a></div>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+
+    @if (Model.HasMoreNews)
+    {
+        <div id="load-more" class="text-center">
+            <a class="btn load-more-btn">Виж още новини</a>
         </div>
     }
 </div>
 
 @section PageScripts {
     <script src="~/Scripts/page-scripts/home.js"></script>
-    }
+}
