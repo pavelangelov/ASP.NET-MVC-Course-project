@@ -10,7 +10,7 @@ using Bg_Fishing.Services.Contracts;
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerTests
 {
     [TestFixture]
-    public class GetAddFish_Should
+    public class UpdateFish_Should
     {
         [Test]
         public void GetFishAndLakesFromServices_AndCallDefault()
@@ -29,7 +29,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object);
 
             // Act
-            var view = controller.AddFish() as ViewResult;
+            var view = controller.UpdateFish() as ViewResult;
 
             // Assert
             Assert.IsNotNull(view.ViewData.Model);

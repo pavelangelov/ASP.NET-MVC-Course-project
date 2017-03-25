@@ -7,7 +7,7 @@ using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
-    public class AddFishViewModel
+    public class UpdateFishViewModel
     {
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages), 

@@ -92,11 +92,11 @@
     <Compile Include="MvcClient\ApiControllers\SearchControllerTests\Lakes_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\GetVideos_Should.cs" />
-    <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\GetAddFish_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\UpdateFish_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\LakeControllerClass_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\GetAdd_Should.cs" />
-    <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\PostAddFish_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\AddFish_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LocationControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LocationControllerTests\GetAdd_Should.cs" />

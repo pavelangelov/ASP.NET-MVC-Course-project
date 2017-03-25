@@ -13,7 +13,7 @@ using Bg_Fishing.Services.Contracts;
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerTests
 {
     [TestFixture]
-    public class PostAddFish_Should
+    public class AddFish_Should
     {
         [Test]
         public void ReturnJsonWithAllModelErrors_IfModelStateIsNotValid()
@@ -36,7 +36,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             controller.ModelState.AddModelError("Name", "Test error!");
 
             // Act
-            var result = controller.AddFish(new AddFishViewModel()) as JsonResult;
+            var result = controller.AddFish(new UpdateFishViewModel()) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
@@ -70,7 +70,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
 
             // Act
             var selectedFish = Enumerable.Empty<string>();
-            var result = controller.AddFish(new AddFishViewModel() { SelectedFish = selectedFish }) as JsonResult;
+            var result = controller.AddFish(new UpdateFishViewModel() { SelectedFish = selectedFish }) as JsonResult;
             dynamic dResult = result.Data;
 
             // Assert
@@ -104,7 +104,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var controller = new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object);
 
             var selectedFish = Enumerable.Empty<string>();
-            var model = new AddFishViewModel() { SelectedFish = selectedFish, SelectedLake = lakeName };
+            var model = new UpdateFishViewModel() { SelectedFish = selectedFish, SelectedLake = lakeName };
 
             // Act
             var result = controller.AddFish(model) as JsonResult;

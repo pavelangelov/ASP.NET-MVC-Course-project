@@ -78,9 +78,9 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddFish()
+        public ActionResult UpdateFish()
         {
-            var model = new AddFishViewModel();
+            var model = new UpdateFishViewModel();
             var fish = this.fishService.GetAll();
             model.Fish = fish;
 
@@ -90,7 +90,8 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
             return View(model);
         }
 
-        public ActionResult AddFish(AddFishViewModel model)
+        [HttpPost]
+        public ActionResult AddFish(UpdateFishViewModel model)
         {
             if (ModelState.IsValid)
             {
