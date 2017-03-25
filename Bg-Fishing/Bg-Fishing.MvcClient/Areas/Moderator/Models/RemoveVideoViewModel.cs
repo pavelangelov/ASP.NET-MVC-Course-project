@@ -17,7 +17,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
         {
             get
             {
-                var defaultItem = Enumerable.Repeat<SelectListItem>(new SelectListItem{ Text = "-----" }, 1);
+                var defaultItem = Enumerable.Repeat<SelectListItem>(new SelectListItem{ Text = "-----", Value = "" }, 1);
                 if (this.Galleries != null)
                 {
                     var galleriesList = this.Galleries.Select(g => new SelectListItem

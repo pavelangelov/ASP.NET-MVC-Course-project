@@ -9,6 +9,7 @@
 
 <div class="container">
     <div class="col-sm-5 col-sm-offset-3">
+        <p id="result"></p>
         @Html.LabelFor(m => m.GalleriesSelect, new { @class = "label label-success" })
         <select id="GalleriesSelect" class='form-control'>
             @foreach (var item in Model.GalleriesSelect)
@@ -19,87 +20,10 @@
     </div>
     <div class="col-sm-12">
         <hr />
-        <ul id="videos-container" class="list-group"></ul>
+        <ul id="videos-container" class="list-group row"></ul>
     </div>
 </div>
 
-<script>
-    $('#GalleriesSelect').on('change', () => {
-        var selectedValue = $('#GalleriesSelect').val();
-        var selectedTitle = $('#GalleriesSelect option[value=' + selectedValue + ']').text();
-
-        if (selectedValue !== undefined && selectedValue !== "") {
-            $.ajax({
-                method: 'GET',
-                url: `/api/Videos?galleryId=${selectedValue}`,
-                success: (data) => {
-                    if (data !== null && data.length) {
-                        $('#gallery-name').text(selectedTitle);
-                        loadVideos(data, selectedTitle);
-                    } else {
-                        showNoVideos();
-                    }
-                },
-                error: (err) => {
-                    console.log(err);
-                }
-            })
-        }
-    })
-
-    $('#videos-container').on('click', 'a.delete-btn', (ev) => {
-        let galleryName = $(ev.target).attr('data-galleryName'),
-            videoId = $(ev.target).attr('data-videoId'),
-            url = '/video/remove';
-
-        $.ajax({
-            method: 'POST',
-            url: url,
-            data: {
-                galleryName,
-                videoId
-            },
-            success: (response) => {
-                // TODO: show success to user and reload videos
-                $('#GalleriesSelect').trigger('change');
-                console.log('success');
-            },
-            error: (err) => {
-                console.log(err);
-            }
-        })
-    })
-
-    function loadVideos(videosArr, galleryName) {
-        let container = $('#videos-container');
-        container.html('');
-
-        videosArr.forEach((video) => {
-            let videoContainer = $('<li />').addClass('list-group-item');
-
-            let url = video.Url.replace("watch?v=", "embed/");
-            let videoId = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
-
-            let thumb = $('<img class="thumb" src="//img.youtube.com/vi/' + videoId + '/0.jpg">').appendTo(videoContainer);
-            let title = $('<h5 />').text(video.Title).appendTo(videoContainer);
-
-            let deleteBtn = $('<a />').addClass('btn')
-                                       .addClass('delete-btn')
-                                       .attr('data-videoId', video.Id)
-                                       .attr('data-galleryName', galleryName)
-                                       .text('Премахни')
-                                       .appendTo(videoContainer);
-
-            container.append(videoContainer);
-        })
+@section PageScripts {
+    <script src="~/Scripts/page-scripts/remove-video.js"></script>
     }
-
-    function showNoVideos() {
-        let message = $('<li />').addClass('text-center')
-                                    .addClass('list-group-item')
-                                    .addClass('text-danger')
-                                    .text('В тази категория няма видеа');
-
-        let container = $('#videos-container').append(message);
-    }
-</script>
