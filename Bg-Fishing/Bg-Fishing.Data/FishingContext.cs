@@ -22,6 +22,7 @@ namespace Bg_Fishing.Data
         public virtual IDbSet<VideoGallery> VideoGalleries { get; set; }
         public virtual IDbSet<Comment> Comments { get; set; }
         public virtual IDbSet<News> News { get; set; }
+        public virtual IDbSet<NewsComment> NewsComments { get; set; }
 
         public int Save()
         {

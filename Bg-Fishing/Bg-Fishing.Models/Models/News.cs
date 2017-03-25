@@ -20,7 +20,7 @@ namespace Bg_Fishing.Models
         public News()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Comments = new HashSet<Comment>();
+            this.Comments = new HashSet<NewsComment>();
         }
 
         public News(string title, string content, string imageUrl, DateTime postedOn)
@@ -110,6 +110,6 @@ namespace Bg_Fishing.Models
         /// <summary>
         /// Gets Comments.
         /// </summary>
-        public virtual ICollection<Comment> Comments { get; private set; }
+        public virtual ICollection<NewsComment> Comments { get; private set; }
     }
 }

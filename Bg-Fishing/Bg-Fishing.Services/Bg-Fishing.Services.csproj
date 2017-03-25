@@ -53,6 +53,7 @@
     <Compile Include="Contracts\IFishService.cs" />
     <Compile Include="Contracts\ILakeService.cs" />
     <Compile Include="Contracts\ILocationService.cs" />
+    <Compile Include="Contracts\INewsService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IVideoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

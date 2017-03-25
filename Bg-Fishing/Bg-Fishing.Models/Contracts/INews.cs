@@ -13,6 +13,6 @@ namespace Bg_Fishing.Models.Contracts
 
         string ImageUrl { get; }
 
-        ICollection<Comment> Comments { get; }
+        ICollection<NewsComment> Comments { get; }
     }
 }
