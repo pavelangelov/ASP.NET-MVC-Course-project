@@ -1,4 +1,5 @@
-﻿using Bg_Fishing.Models;
+﻿using Bg_Fishing.DTOs;
+using Bg_Fishing.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Bg_Fishing.Services.Contracts
     {
         News FindById(string id);
 
+        IEnumerable<NewsDTO> GetNews(int skip, int take);
 
+        int Save();
     }
 }

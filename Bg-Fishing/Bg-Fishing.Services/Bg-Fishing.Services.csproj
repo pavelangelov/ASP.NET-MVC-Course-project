@@ -61,6 +61,7 @@
     <Compile Include="Services\FishService.cs" />
     <Compile Include="Services\LakeService.cs" />
     <Compile Include="Services\LocationService.cs" />
+    <Compile Include="Services\NewsService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\VideoService.cs" />
   </ItemGroup>
