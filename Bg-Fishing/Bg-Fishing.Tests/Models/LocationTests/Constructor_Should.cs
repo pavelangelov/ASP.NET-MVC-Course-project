@@ -53,5 +53,18 @@ namespace Bg_Fishing.Tests.Models.LocationTests
             Assert.AreEqual(1, location.Longitude);
             Assert.AreEqual(validInfo, location.Info);
         }
+
+        [Test]
+        public void NotThrow_IfInfoIsNull()
+        {
+            // Arrange, Act
+            var name = "Test";
+            var location = new Location(1, 1, name, null);
+
+            // Assert
+            Assert.AreEqual(name, location.Name);
+            Assert.AreEqual(1, location.Latitude);
+            Assert.AreEqual(1, location.Longitude);
+        }
     }
 }

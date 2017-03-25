@@ -40,6 +40,13 @@ namespace Bg_Fishing.Tests.Models.AppUserTests
             StringAssert.Contains("MiddleName", message);
         }
 
+        [Test]
+        public void NotThrow_IfMiddleNameIsNull()
+        {
+            // Arrange, Act & Assert
+            Assert.DoesNotThrow(() => new AppUser() { MiddleName = null });
+        }
+
         [TestCase("")]
         [TestCase("a")]
         [TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
