@@ -65,7 +65,8 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                 try
                 {
                     var date = this.dateProvider.GetDate();
-                    var video = this.videoFactory.CreateVideo(model.VideoTitle, model.VideoUrl, date);
+                    var url = model.VideoUrl.Replace("watch?v=", "embed/");
+                    var video = this.videoFactory.CreateVideo(model.VideoTitle, url, date);
                     this.videoService.AddVideoToGallery(galleryName, video);
                     this.videoService.Save();
                     return Json(new { status = "success", message = GlobalMessages.AddVideoSuccessMessage });

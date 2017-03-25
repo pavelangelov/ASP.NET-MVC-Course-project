@@ -35,12 +35,7 @@ namespace Bg_Fishing.MvcClient.Controllers.Common
         public string GetVideos(string galleryId)
         {
             var videos = this.videoService.GetVideosFromGallery(galleryId);
-
-            foreach (var video in videos)
-            {
-                video.Url = VideoHelper.FixUrl(video.Url);
-            }
-
+            
             var videosArr = JsonConvert.SerializeObject(videos);
 
             return videosArr;
@@ -50,8 +45,6 @@ namespace Bg_Fishing.MvcClient.Controllers.Common
         public ActionResult Watch(string id)
         {
             var video = this.videoService.GetVideoById(id);
-
-            video.Url = VideoHelper.FixUrl(video.Url);
 
             return View(video);
         }
