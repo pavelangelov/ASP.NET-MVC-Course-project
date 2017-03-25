@@ -65,8 +65,7 @@ function loadVideos(videosArr, galleryName) {
 
         let imageContainer = $('<div />').addClass('col-sm-7');
 
-        let url = video.Url.replace("watch?v=", "embed/");
-        let videoId = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+        let videoId = video.Url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
         let thumb = $('<img class="thumb" src="//img.youtube.com/vi/' + videoId + '/0.jpg">').appendTo(imageContainer);
 
         let contentContainer = $('<div />').addClass('col-sm-5')

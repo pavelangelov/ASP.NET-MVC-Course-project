@@ -47,8 +47,7 @@ function dispalyVideos(videosArr) {
         let videoLink = $('<a />').attr('href', '/galleries/watch?id=' + id).text(video.Title);
         let title = $('<h4 />').addClass('text-warning').append(videoLink);
 
-        let url = video.Url.replace("watch?v=", "embed/");
-        let videoId = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+        let videoId = video.Url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
         let thumb = $('<img class="thumb" src="//img.youtube.com/vi/' + videoId + '/0.jpg">').appendTo(videoContainer);
 
         videoContainer.append(title);

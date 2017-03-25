@@ -36,6 +36,11 @@ namespace Bg_Fishing.MvcClient.Controllers.Common
         {
             var videos = this.videoService.GetVideosFromGallery(galleryId);
 
+            foreach (var video in videos)
+            {
+                video.Url = VideoHelper.FixUrl(video.Url);
+            }
+
             var videosArr = JsonConvert.SerializeObject(videos);
 
             return videosArr;

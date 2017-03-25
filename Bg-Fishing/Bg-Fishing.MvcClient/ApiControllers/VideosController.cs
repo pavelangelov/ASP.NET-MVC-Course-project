@@ -30,6 +30,11 @@ namespace Bg_Fishing.MvcClient.ApiControllers
                 return Enumerable.Empty<VideoDTO>();
             }
 
+            foreach (var video in videos)
+            {
+                video.Url = VideoHelper.FixUrl(video.Url);
+            }
+
             return videos;
         }
     }
