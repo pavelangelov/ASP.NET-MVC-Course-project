@@ -102,7 +102,9 @@
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LocationControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\GetAdd_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\GetRemove_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\PostAdd_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\PostRemove_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\VideoControllerTests\VieoControllerClass_Should.cs" />
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\Common\GalleriesControllerTests\Videos_Should.cs" />

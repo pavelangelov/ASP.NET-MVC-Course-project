@@ -94,14 +94,23 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         [HttpPost]
         public ActionResult Remove(string videoId, string galleryName)
         {
-            var result = this.videoService.RemoveVideoFromGallery(galleryName, videoId);
-            this.videoService.Save();
+            bool result;
+            try
+            {
+                result = this.videoService.RemoveVideoFromGallery(galleryName, videoId);
+                this.videoService.Save();
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            
             if (result)
             {
-                return Json(new { status = "success", message = "Видеото е премахнато" });
+                return Json(new { status = "success", message = GlobalMessages.RemoveVideoSuccessMessage });
             }
 
-            return Json(new { status = "error", message = "Визникна грешка при премахването на видеото" });
+            return Json(new { status = "error", message = GlobalMessages.RemoveVideoErroMessage });
         }
 
         private void SetGalleryNames(AddVideoViewModel model)

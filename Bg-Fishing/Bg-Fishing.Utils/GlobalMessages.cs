@@ -43,5 +43,12 @@
         public const string AddCOmentInvalidModelStateErrorMessage = "Съдържанието не може да е празно.";
 
         #endregion
+
+        #region RemoveVideo
+
+        public const string RemoveVideoSuccessMessage = "Видеото е премахнато";
+        public const string RemoveVideoErroMessage = "Визникна грешка при премахването на видеото";
+
+        #endregion
     }
 }
