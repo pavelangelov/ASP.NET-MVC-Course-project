@@ -1,0 +1,27 @@
+﻿body { 
+  background: url("/Images/Backgrounds/500.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+div.navbar.navbar-default, footer#footer {
+    background-color: transparent !important;
+}
+
+div.navbar div.container a {
+    color: #fff;
+}
+
+footer#footer {
+    color: #fff;
+}
+
+footer#footer center p {
+    color: #000;
+}
+
+footer#footer center p strong {
+    color: #fff;
+}
