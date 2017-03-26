@@ -12,7 +12,7 @@ using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerTests
 {
     [TestFixture]
     public class PostIndex_Should
@@ -31,7 +31,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControll
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
-            var controller = new CommentController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
+            var controller = new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
 
             var expextedError = "test error";
             var expectedErrorMessage = "Test";
@@ -72,7 +72,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControll
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
-            var controller = new CommentController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
+            var controller = new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
             
             var model = new AddNewsViewModel();
 
@@ -108,7 +108,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControll
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
-            var controller = new CommentController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
+            var controller = new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
 
             var model = new AddNewsViewModel();
 

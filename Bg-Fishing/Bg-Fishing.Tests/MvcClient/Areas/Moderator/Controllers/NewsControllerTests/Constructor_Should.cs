@@ -8,7 +8,7 @@ using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerTests
 {
     [TestFixture]
     public class Constructor_Should
@@ -21,7 +21,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControll
             var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentController(null, mockedNewsService.Object, mockedDateProvider.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new NewsController(null, mockedNewsService.Object, mockedDateProvider.Object)).Message;
             StringAssert.Contains("newsFactory", message);
         }
 
@@ -33,7 +33,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControll
             var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentController(mockedNewsFactory.Object, null, mockedDateProvider.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new NewsController(mockedNewsFactory.Object, null, mockedDateProvider.Object)).Message;
             StringAssert.Contains("newsService", message);
         }
 
@@ -45,7 +45,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControll
             var mockedNewsService = new Mock<INewsService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentController(mockedNewsFactory.Object, mockedNewsService.Object, null)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, null)).Message;
             StringAssert.Contains("dateProvider", message);
         }
 
@@ -58,7 +58,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.CommentControll
             var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new CommentController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object));
+            Assert.DoesNotThrow(() => new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object));
         }
     }
 }

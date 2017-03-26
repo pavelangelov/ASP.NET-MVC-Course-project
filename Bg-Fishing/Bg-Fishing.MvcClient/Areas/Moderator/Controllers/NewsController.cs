@@ -9,13 +9,13 @@ using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
-    public class CommentController : ModeratorBaseController
+    public class NewsController : ModeratorBaseController
     {
         private INewsFactory newsFactory;
         private INewsService newsService;
         private IDateProvider dateProvider;
 
-        public CommentController(INewsFactory newsFactory, INewsService newsService, IDateProvider dateProvider)
+        public NewsController(INewsFactory newsFactory, INewsService newsService, IDateProvider dateProvider)
         {
             Validator.ValidateForNull(newsFactory, paramName: "newsFactory");
             Validator.ValidateForNull(newsService, paramName: "newsService");

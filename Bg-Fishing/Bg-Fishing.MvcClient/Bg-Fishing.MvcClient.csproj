@@ -228,7 +228,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Moderator\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\NewsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\LakeController.cs" />
     <Compile Include="Areas\Moderator\Controllers\LocationController.cs" />
     <Compile Include="Areas\Moderator\Controllers\VideoController.cs" />
@@ -335,7 +335,7 @@
     <Content Include="Areas\Moderator\Views\Lake\Add.cshtml" />
     <Content Include="Areas\Moderator\Views\Lake\UpdateFish.cshtml" />
     <Content Include="Areas\Moderator\Views\Video\Remove.cshtml" />
-    <Content Include="Areas\Moderator\Views\Comment\Index.cshtml" />
+    <Content Include="Areas\Moderator\Views\News\Index.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
