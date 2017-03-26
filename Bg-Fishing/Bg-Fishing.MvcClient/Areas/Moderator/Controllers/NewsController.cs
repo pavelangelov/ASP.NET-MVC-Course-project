@@ -31,7 +31,9 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         {
             return View();
         }
+
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Index(AddNewsViewModel model)
         {
             if (ModelState.IsValid)
