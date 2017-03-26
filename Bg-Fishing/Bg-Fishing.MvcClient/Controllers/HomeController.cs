@@ -20,8 +20,9 @@ namespace Bg_Fishing.MvcClient.Controllers
             this.newsService = newsService;
         }
 
-        public ActionResult Index(int page = 0)
+        public ActionResult Index()
         {
+            var page = 0;
             var skip = page * NewsCount;
             var news = this.newsService.GetNews(skip, NewsCount).ToList();
             var model = new HomeViewModel();

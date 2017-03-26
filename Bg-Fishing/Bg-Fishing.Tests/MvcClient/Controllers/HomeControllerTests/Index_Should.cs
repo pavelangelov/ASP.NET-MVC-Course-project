@@ -61,7 +61,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
             var controller = new HomeController(mockedNewsService.Object);
 
             // Act
-            var result = controller.Index(0) as ViewResult;
+            var result = controller.Index() as ViewResult;
             var model = result.ViewData.Model as HomeViewModel;
 
             // Assert
