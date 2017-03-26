@@ -43,13 +43,13 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 
                     this.newsService.Add(news);
                     this.newsService.Save();
+                    TempData["AddNewsSuccess"] = "Новината е добавена";
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                 }
 
-                TempData["AddNewsSuccess"] = "Новината е добавена";
                 return View(model);
             }
 

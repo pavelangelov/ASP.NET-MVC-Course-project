@@ -96,6 +96,9 @@
     <Compile Include="MvcClient\ApiControllers\SearchControllerTests\Lakes_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\GetVideos_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\CommentControllerTests\Constructor_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\CommentControllerTests\GetIndex_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\CommentControllerTests\PostIndex_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\RemoveFish_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\UpdateFish_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\LakeControllerClass_Should.cs" />
