@@ -36,6 +36,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Add(AddVideoViewModel model)
         {
@@ -93,6 +94,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Remove(string videoId, string galleryName)
         {
             bool result;

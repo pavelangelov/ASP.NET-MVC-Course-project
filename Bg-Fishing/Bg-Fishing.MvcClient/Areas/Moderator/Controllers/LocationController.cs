@@ -29,6 +29,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(LocationViewModel model)
         {
             if (ModelState.IsValid)
