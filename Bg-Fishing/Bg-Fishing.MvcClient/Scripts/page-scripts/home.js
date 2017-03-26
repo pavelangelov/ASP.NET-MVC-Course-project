@@ -9,10 +9,10 @@
 $(function () {
     var news = $.connection.newsHub;
 
-    news.client.loadNews = function (response) {
+    news.client.loadNews = function (news, hasMore, nextPage) {
         let container = $('#news-container');
 
-        response.news.forEach((n) => {
+        news.forEach((n) => {
             let newsContainer = $('<div />').addClass('col-sm-10')
                                             .addClass('col-sm-offset-1');
             let article = $('<article />').addClass('post');
@@ -48,8 +48,8 @@ $(function () {
             newsContainer.appendTo(container);
         })
 
-        if (response.hasMore) {
-            $('a.load-more-btn').attr('data-next-page', response.nextPage);
+        if (hasMore) {
+            $('a.load-more-btn').attr('data-next-page', nextPage);
         } else {
             $('div#load-more').html('');
         }

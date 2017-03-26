@@ -18,5 +18,7 @@
         public const int CommentContentMaxLength = 250;
 
         public const string NewsDefaultImage = "";
+
+        public const int ShowedNewsCount = 5;
     }
 }
