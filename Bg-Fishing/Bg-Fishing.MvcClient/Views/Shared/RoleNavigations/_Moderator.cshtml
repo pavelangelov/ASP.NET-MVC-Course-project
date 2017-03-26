@@ -76,12 +76,15 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseForth">
-                        Локации
+                        Други
                     </a>
                 </h4>
             </div>
             <div id="collapseForth" class="panel-collapse collapse">
                 <div class="panel-body">
+                    <div>
+                        @Html.ActionLink("Добавяне на новина", "Index", "News", new { Area = "Moderator" }, new { })
+                    </div>
                     <div>
                         @Html.ActionLink("Добавяне на локация", "Add", "Location", new { Area = "Moderator" }, new { })
                     </div>
