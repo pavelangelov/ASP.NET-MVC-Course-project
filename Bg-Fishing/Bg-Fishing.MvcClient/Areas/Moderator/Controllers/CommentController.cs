@@ -1,13 +1,11 @@
-﻿using Bg_Fishing.Factories.Contracts;
+﻿using System;
+using System.Web.Mvc;
+
+using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
