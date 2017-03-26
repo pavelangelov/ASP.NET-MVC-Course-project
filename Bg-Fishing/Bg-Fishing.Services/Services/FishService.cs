@@ -24,6 +24,11 @@ namespace Bg_Fishing.Services
             this.dbContext = dbContext;
         }
 
+        public void Add(Fish fish)
+        {
+            this.dbContext.Fish.Add(fish);
+        }
+
         public Fish FindByName(string name)
         {
             var fish = this.dbContext.Fish.FirstOrDefault(f => f.Name == name);

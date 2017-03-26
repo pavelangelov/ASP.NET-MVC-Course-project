@@ -8,6 +8,8 @@ namespace Bg_Fishing.Services.Contracts
 {
     public interface IFishService
     {
+        void Add(Fish fish);
+
         Fish FindByName(string name);
 
         AllFishPropsDTO GetFishDTOByName(string name);

@@ -1,0 +1,39 @@
+﻿@model Bg_Fishing.MvcClient.Areas.Moderator.Models.AddFishViewModel
+@{
+    ViewBag.Title = "Добавяне на нова риба";
+}
+
+<div class="container">
+    @using (@Html.BeginForm("Add", "Fish", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row col-sm-8 col-sm-offset-2">
+            @if (TempData["FishAddedSuccess"] != null)
+            {
+                <p class="text-success">@TempData["FishAddedSuccess"]</p>
+            }
+
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.FishName, new { @class = "label label-success" })
+                @Html.TextBoxFor(m => m.FishName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Info, new { @class = "label label-success" })
+                @Html.TextAreaFor(m => m.Info, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.FishType, new { @class = "label label-success" })
+                    @Html.EnumDropDownListFor(m => m.FishType, new { @class = "form-control" })
+                </div>
+                <div class="col-sm-6">
+                    <label for="file-value" class="label label-success">Изберете снимка</label>
+                    <input type="file" id="file-value" class="btn" name="file" />
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success" value="Добави" />
+        </div>
+    }
+</div>
+
+@Scripts.Render("~/bundles/jqueryval")
