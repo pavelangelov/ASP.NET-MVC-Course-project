@@ -44,6 +44,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(LakeViewModel model)
         {
             if (ModelState.IsValid)
@@ -91,6 +92,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddFish(UpdateFishViewModel model)
         {
             if (ModelState.IsValid)
@@ -123,6 +125,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult RemoveFish(UpdateFishViewModel model)
         {
             if (ModelState.IsValid)
