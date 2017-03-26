@@ -14,6 +14,7 @@ namespace Bg_Fishing.Tests.Services.NewsServiceTests
     [TestFixture]
     public class Add_Should
     {
+        [Test]
         public void AddNewsToDbContext()
         {
             // Arrange
