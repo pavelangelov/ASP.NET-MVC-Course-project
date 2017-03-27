@@ -35,7 +35,7 @@ namespace Bg_Fishing.MvcClient.Hubs
                 nextPage = page + 1;
             }
 
-            Clients.All.loadNews(news, hasMore, nextPage );
+            Clients.Caller.loadNews(news, hasMore, nextPage );
         }
     }
 }

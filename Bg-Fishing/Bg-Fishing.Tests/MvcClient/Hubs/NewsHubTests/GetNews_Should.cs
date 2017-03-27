@@ -35,8 +35,8 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
             bool hasMoreSended = false;
             int nextPageSended = 0;
 
-            dynamic all = new ExpandoObject();
-            all.loadNews = new Action<IEnumerable<NewsDTO>, bool, int>((news, hasMore, nextPage) =>
+            dynamic caller = new ExpandoObject();
+            caller.loadNews = new Action<IEnumerable<NewsDTO>, bool, int>((news, hasMore, nextPage) =>
             {
                 loadNewsCalled = true;
                 sendedNews = news;
@@ -44,7 +44,7 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
                 nextPageSended = nextPage;
             });
 
-            mockClients.Setup(m => m.All).Returns((ExpandoObject)all);
+            mockClients.Setup(m => m.Caller).Returns((ExpandoObject)caller);
 
             // Act
             hub.GetNews(It.IsAny<int>());
@@ -74,8 +74,8 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
             bool hasMoreSended = false;
             int nextPageSended = 0;
 
-            dynamic all = new ExpandoObject();
-            all.loadNews = new Action<IEnumerable<NewsDTO>, bool, int>((news, hasMore, nextPage) =>
+            dynamic caller = new ExpandoObject();
+            caller.loadNews = new Action<IEnumerable<NewsDTO>, bool, int>((news, hasMore, nextPage) =>
             {
                 loadNewsCalled = true;
                 sendedNews = news;
@@ -83,7 +83,7 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
                 nextPageSended = nextPage;
             });
 
-            mockClients.Setup(m => m.All).Returns((ExpandoObject)all);
+            mockClients.Setup(m => m.Caller).Returns((ExpandoObject)caller);
 
             // Act
             hub.GetNews(It.IsAny<int>());
