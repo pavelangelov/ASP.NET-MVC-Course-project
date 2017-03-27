@@ -124,6 +124,7 @@
     <Compile Include="MvcClient\ApiControllers\SearchControllerTests\Lakes_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\GetVideos_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\FishControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\GetIndex_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\PostIndex_Should.cs" />
@@ -159,12 +160,14 @@
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Index_Should.cs" />
     <Compile Include="MvcClient\Hubs\NewsHubTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Hubs\NewsHubTests\GetNews_Should.cs" />
+    <Compile Include="MvcClient\Mocks\MockHttpPostedFileBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommentServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\CommentServiceTests\FindById_Should.cs" />
     <Compile Include="Services\CommentServiceTests\GetAllByLakeName_Should.cs" />
     <Compile Include="Services\CommentServiceTests\GetAllByUsername_Should.cs" />
     <Compile Include="Services\CommentServiceTests\Save_Should.cs" />
+    <Compile Include="Services\FishServiceTests\Add_Should.cs" />
     <Compile Include="Services\FishServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\FishServiceTests\FindByName_Should.cs" />
     <Compile Include="Services\FishServiceTests\GetFishDTOByName_Should.cs" />
