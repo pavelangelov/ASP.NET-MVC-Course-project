@@ -2,13 +2,13 @@
     ev.preventDefault();
 
     updateFish('addFish');
-})
+});
 
 $('#remove').on('click', (ev) => {
     ev.preventDefault();
 
     updateFish('removeFish');
-})
+});
 
 function updateFish(updateMethod) {
     var selectedLake = $('#SelectedLake').val();
@@ -44,7 +44,7 @@ function updateFish(updateMethod) {
             error: (err) => {
                 console.log(err.message);
             }
-        })
+        });
     } else {
         $('#result').removeClass('text-success')
                             .addClass('text-danger')

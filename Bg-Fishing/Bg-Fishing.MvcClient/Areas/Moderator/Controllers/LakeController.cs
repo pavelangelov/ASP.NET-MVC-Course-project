@@ -108,7 +108,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 
                     this.lakeService.Save();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Json(new { status = "error", message = "Възникна грешка при добавянето на на избраните риби." });
                 }
@@ -141,7 +141,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 
                     this.lakeService.Save();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Json(new { status = "error", message = "Възникна грешка при премахването на избраните риби." });
                 }
