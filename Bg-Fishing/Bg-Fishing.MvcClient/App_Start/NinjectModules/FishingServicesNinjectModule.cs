@@ -24,8 +24,7 @@ namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
              .ForEach(serviceInterface =>
              {
                  var serviceClass = a.GetTypes()
-                                     .Where(t => t.IsClass && serviceInterface.IsAssignableFrom(t))
-                                     .First();
+                                     .First(t => t.IsClass && serviceInterface.IsAssignableFrom(t));
 
                  kernel.Bind(serviceInterface).To(serviceClass);
              });
