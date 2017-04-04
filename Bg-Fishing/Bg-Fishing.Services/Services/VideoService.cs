@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Linq;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Models.Galleries;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
@@ -55,18 +54,12 @@ namespace Bg_Fishing.Services
             }
         }
 
-        public IEnumerable<GalleryDTO> GetAll()
+        public IEnumerable<VideoGalleryModel> GetAll()
         {
             var galleries = this.dbContext.VideoGalleries;
             if (galleries != null)
             {
-                var galleryDTOs = galleries.Select(g => new GalleryDTO
-                {
-                    GalleryId = g.Id,
-                    Name = g.Name
-                });
-
-                return galleryDTOs;
+                return galleries.Select(VideoGalleryModel.Cast);
             }
 
             return null;

@@ -33,7 +33,7 @@ namespace Bg_Fishing.Tests.Services.VideoServiceTests
             foreach (var gallery in galleries)
             {
                 Assert.AreEqual(mockedGalleriesCollection[index].Name, gallery.Name);
-                Assert.AreEqual(mockedGalleriesCollection[index].Id, gallery.GalleryId);
+                Assert.AreEqual(mockedGalleriesCollection[index].Id, gallery.Id);
                 index++;
             }
         }

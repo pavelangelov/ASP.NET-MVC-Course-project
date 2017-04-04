@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Models.Galleries;
 using Bg_Fishing.Services.Models;
 
@@ -8,7 +7,7 @@ namespace Bg_Fishing.Services.Contracts
 {
     public interface IVideoService
     {
-        IEnumerable<GalleryDTO> GetAll();
+        IEnumerable<VideoGalleryModel> GetAll();
 
         VideoModel GetVideoById(string id);
 

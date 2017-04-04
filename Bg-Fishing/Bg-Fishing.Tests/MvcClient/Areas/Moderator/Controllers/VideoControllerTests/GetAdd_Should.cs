@@ -4,11 +4,11 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.VideoControllerTests
@@ -20,7 +20,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.VideoController
         public void GetAllGalleryNames_AndStoreItToViewModel()
         {
             // Arrange
-            var galleryNames = new GalleryDTO[] { new GalleryDTO { Name = "Test" }, new GalleryDTO { Name = "Test2" } };
+            var galleryNames = new VideoGalleryModel[] { new VideoGalleryModel { Name = "Test" }, new VideoGalleryModel { Name = "Test2" } };
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetAll()).Returns(galleryNames).Verifiable();
             var mockedVideoFactory = new Mock<IVideoFactory>();

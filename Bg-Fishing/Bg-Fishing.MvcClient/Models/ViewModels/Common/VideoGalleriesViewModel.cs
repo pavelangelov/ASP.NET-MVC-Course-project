@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.MvcClient.Models.ViewModels.Common
 {
     public class VideoGalleriesViewModel
     {
-        private IEnumerable<GalleryDTO> galleries;
+        private IEnumerable<VideoGalleryModel> galleries;
 
         public string GalleryName { get; set; }
 
@@ -27,7 +27,7 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Common
                 var all = this.galleries.Select(g => new SelectListItem
                 {
                     Text = g.Name,
-                    Value = g.GalleryId
+                    Value = g.Id
                 });
 
                 return this.Default.Concat(all);
@@ -42,7 +42,7 @@ namespace Bg_Fishing.MvcClient.Models.ViewModels.Common
             }
         }
 
-        public void SetGalleries(IEnumerable<GalleryDTO> galleriesDTO)
+        public void SetGalleries(IEnumerable<VideoGalleryModel> galleriesDTO)
         {
             this.galleries = galleriesDTO;
         }

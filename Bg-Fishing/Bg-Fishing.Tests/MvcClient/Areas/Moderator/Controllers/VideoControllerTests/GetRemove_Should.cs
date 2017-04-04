@@ -4,12 +4,12 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.VideoControllerTests
 {
@@ -20,9 +20,9 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.VideoController
         public void GetAllVideoGalleriesFromService_AndRenderDefaultView()
         {
             // Arrange
-            var mockedCollection = new List<GalleryDTO>
+            var mockedCollection = new List<VideoGalleryModel>
             {
-                new GalleryDTO { Name = "Test" }
+                new VideoGalleryModel { Name = "Test" }
             };
 
             var mockedVideoService = new Mock<IVideoService>();

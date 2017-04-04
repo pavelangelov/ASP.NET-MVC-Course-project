@@ -1,17 +1,16 @@
-﻿using Bg_Fishing.DTOs;
-using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using Bg_Fishing.Services.Models;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
     public class AddVideoViewModel
     {
-        private IEnumerable<GalleryDTO> galleryNames;
+        private IEnumerable<VideoGalleryModel> galleryNames;
 
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
@@ -42,7 +41,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 
                 var allNames = this.galleryNames.Select(n => new SelectListItem
                 {
-                    Value = n.GalleryId,
+                    Value = n.Id,
                     Text = n.Name
                 });
 
@@ -62,7 +61,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
             }
         }
 
-        public void SetNames(IEnumerable<GalleryDTO> names)
+        public void SetNames(IEnumerable<VideoGalleryModel> names)
         {
             this.galleryNames = names;
         }

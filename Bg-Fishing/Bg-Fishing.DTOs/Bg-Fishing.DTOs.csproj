@@ -43,7 +43,6 @@
     <Compile Include="CommentDTOs\CommentDTO.cs" />
     <Compile Include="CommentDTOs\InnerCommentDTO.cs" />
     <Compile Include="FishDTOs\AllFishPropsDTO.cs" />
-    <Compile Include="GalleryDTO.cs" />
     <Compile Include="LakeDTOs\LakeDTO.cs" />
     <Compile Include="FishDTOs\FishDTO.cs" />
     <Compile Include="LocationDTOs\AllLocationPropsDTO.cs" />
