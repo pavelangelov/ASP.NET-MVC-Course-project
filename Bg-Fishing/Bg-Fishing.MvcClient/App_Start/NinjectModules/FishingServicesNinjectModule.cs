@@ -1,9 +1,11 @@
-﻿using Ninject.Modules;
+﻿using System.Linq;
+using System.Reflection;
+
+using Ninject.Modules;
+using Ninject.Web.Common;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.Services;
 using Bg_Fishing.Services.Contracts;
-using Ninject.Web.Common;
 
 namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
 {
@@ -12,13 +14,21 @@ namespace Bg_Fishing.MvcClient.App_Start.NinjectModules
         public override void Load()
         {
             this.Bind<IDatabaseContext>().To<FishingContext>().InRequestScope();
+            
+            var kernel = this;
+            var a = Assembly.GetAssembly(typeof(IVideoService));
 
-            this.Bind<IVideoService>().To<VideoService>();
-            this.Bind<IFishService>().To<FishService>();
-            this.Bind<ILocationService>().To<LocationService>();
-            this.Bind<ILakeService>().To<LakeService>();
-            this.Bind<ICommentService>().To<CommentService>();
-            this.Bind<INewsService>().To<NewsService>();
+            a.GetTypes()
+             .Where(type => type.IsInterface && type.Name.EndsWith("Service"))
+             .ToList()
+             .ForEach(serviceInterface =>
+             {
+                 var serviceClass = a.GetTypes()
+                                     .Where(t => t.IsClass && serviceInterface.IsAssignableFrom(t))
+                                     .First();
+
+                 kernel.Bind(serviceInterface).To(serviceClass);
+             });
         }
     }
 }
