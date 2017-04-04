@@ -4,9 +4,9 @@ using System.Linq;
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
 {
@@ -34,7 +34,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
         public void ReturnCorrectResult_IfGalleryIdMatch()
         {
             // Arrange
-            var mockedCollection = new List<VideoDTO> { new VideoDTO { Title = "Test", Url = "Test" } };
+            var mockedCollection = new List<VideoModel> { new VideoModel { Title = "Test", Url = "Test" } };
             var mockedVideoService = new Mock<IVideoService>();
             mockedVideoService.Setup(s => s.GetVideosFromGallery(It.IsAny<string>())).Returns(mockedCollection).Verifiable();
 

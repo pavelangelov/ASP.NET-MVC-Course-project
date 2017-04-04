@@ -7,6 +7,7 @@ using Bg_Fishing.DTOs;
 using Bg_Fishing.Models.Galleries;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Services
 {
@@ -21,18 +22,13 @@ namespace Bg_Fishing.Services
             this.dbContext = dbContext;
         }
 
-        public VideoDTO GetVideoById(string id)
+        public VideoModel GetVideoById(string id)
         {
             var video = this.dbContext.Videos.FirstOrDefault(v => v.Id == id);
 
             if (video != null)
             {
-                return new VideoDTO
-                {
-                    Id = video.Id,
-                    Title = video.Title,
-                    Url = video.Url
-                };
+                return VideoModel.Cast(video);
             }
 
             return null;
@@ -45,18 +41,13 @@ namespace Bg_Fishing.Services
             return gallery != null ? gallery.Name : null;
         }
 
-        public IEnumerable<VideoDTO> GetVideosFromGallery(string galleryId)
+        public IEnumerable<VideoModel> GetVideosFromGallery(string galleryId)
         {
             var gallery = this.dbContext.VideoGalleries.Include(g => g.Videos).FirstOrDefault(g => g.Id == galleryId);
 
             if (gallery != null)
             {
-                return gallery.Videos.Select(v => new VideoDTO
-                {
-                    Title = v.Title,
-                    Url = v.Url,
-                    Id = v.Id
-                });
+                return gallery.Videos.Select(VideoModel.Cast);
             }
             else
             {

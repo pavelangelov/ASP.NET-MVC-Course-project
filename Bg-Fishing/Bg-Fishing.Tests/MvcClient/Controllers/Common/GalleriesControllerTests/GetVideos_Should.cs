@@ -1,9 +1,9 @@
 ﻿using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.MvcClient.Controllers.Common;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
 {
@@ -14,10 +14,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
         public void GetVideosFromService()
         {
             // Arrange
-            var mockedVideos = new VideoDTO[]
+            var mockedVideos = new VideoModel[]
             {
-                new VideoDTO { Title = "First", Url = "FirstUrl" },
-                new VideoDTO { Title = "Second", Url = "SecondUrl" }
+                new VideoModel { Title = "First", Url = "FirstUrl" },
+                new VideoModel { Title = "Second", Url = "SecondUrl" }
             };
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetVideosFromGallery(It.IsAny<string>())).Returns(mockedVideos).Verifiable();

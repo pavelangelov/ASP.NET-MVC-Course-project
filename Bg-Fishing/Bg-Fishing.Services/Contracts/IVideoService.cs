@@ -1,10 +1,8 @@
-﻿using Bg_Fishing.DTOs;
+﻿using System.Collections.Generic;
+
+using Bg_Fishing.DTOs;
 using Bg_Fishing.Models.Galleries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Services.Contracts
 {
@@ -12,11 +10,11 @@ namespace Bg_Fishing.Services.Contracts
     {
         IEnumerable<GalleryDTO> GetAll();
 
-        VideoDTO GetVideoById(string id);
+        VideoModel GetVideoById(string id);
 
         string GetGalleryNameById(string galleryId);
 
-        IEnumerable<VideoDTO> GetVideosFromGallery(string galleryId);
+        IEnumerable<VideoModel> GetVideosFromGallery(string galleryId);
 
         void AddVideoToGallery(string galleryName, Video video);
 

@@ -3,9 +3,9 @@
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.MvcClient.Controllers.Common;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
 {
@@ -16,7 +16,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
         public void ReturnDefaultView_WithGettedVideoFromService()
         {
             // Arrange
-            var mockedVideo = new VideoDTO { Title = "Test video" };
+            var mockedVideo = new VideoModel { Title = "Test video" };
             var mockedVideoService = new Mock<IVideoService>();
             mockedVideoService.Setup(s => s.GetVideoById(It.IsAny<string>())).Returns(mockedVideo).Verifiable();
 
@@ -24,7 +24,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
 
             // Act
             var result = controller.Watch("some id") as ViewResult;
-            var model = result.ViewData.Model as VideoDTO;
+            var model = result.ViewData.Model as VideoModel;
 
             // Assert
             Assert.AreEqual("", result.ViewName);

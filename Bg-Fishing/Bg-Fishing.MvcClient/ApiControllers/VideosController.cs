@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Web.Http;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.ApiControllers
@@ -19,13 +19,13 @@ namespace Bg_Fishing.MvcClient.ApiControllers
             this.videoService = videoService;
         }
 
-        public IEnumerable<VideoDTO> GetVideos(string galleryId)
+        public IEnumerable<VideoModel> GetVideos(string galleryId)
         {
             var videos = this.videoService.GetVideosFromGallery(galleryId);
 
             if (videos == null)
             {
-                return Enumerable.Empty<VideoDTO>();
+                return Enumerable.Empty<VideoModel>();
             }
 
             return videos;
