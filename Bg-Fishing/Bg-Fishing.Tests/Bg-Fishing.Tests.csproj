@@ -170,7 +170,7 @@
     <Compile Include="Services\FishServiceTests\Add_Should.cs" />
     <Compile Include="Services\FishServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\FishServiceTests\FindByName_Should.cs" />
-    <Compile Include="Services\FishServiceTests\GetFishDTOByName_Should.cs" />
+    <Compile Include="Services\FishServiceTests\GetFishByName_Should.cs" />
     <Compile Include="Services\FishServiceTests\GetAllByType_Should.cs" />
     <Compile Include="Services\FishServiceTests\GetAll_Should.cs" />
     <Compile Include="Services\FishServiceTests\Save_Should.cs" />

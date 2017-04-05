@@ -29,7 +29,7 @@ namespace Bg_Fishing.MvcClient.Controllers
         [HttpGet]
         public ActionResult Details(string name)
         {
-            var fish = this.fishService.GetFishDTOByName(name);
+            var fish = this.fishService.GetFishByName(name);
             var model = new FishListViewModel() { SelectedFish = fish };
 
             return View(model);

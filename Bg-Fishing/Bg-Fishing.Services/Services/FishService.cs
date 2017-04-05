@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.DTOs.FishDTOs;
-using Bg_Fishing.DTOs.LakeDTOs;
 using Bg_Fishing.Models;
 using Bg_Fishing.Models.Enums;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Services
@@ -36,56 +34,37 @@ namespace Bg_Fishing.Services
             return fish;
         }
 
-        public AllFishPropsDTO GetFishDTOByName(string name)
+        public FishModel GetFishByName(string name)
         {
             var fish = this.dbContext.Fish.Include(f => f.Lakes).FirstOrDefault(f => f.Name == name);
 
             if (fish != null)
             {
-                return new AllFishPropsDTO
-                {
-                    Id = fish.Id,
-                    Name = fish.Name,
-                    ImageUrl = fish.ImageUrl,
-                    Info = fish.Info,
-                    Lakes = fish.Lakes.Select(l => new LakeDTO
-                    {
-                        Name = l.Name,
-                        Id = l.Id
-                    })
-                };
+                return FishModel.CastWithIncludedLakes(fish);
             }
 
             return null;
         }
 
-        public IEnumerable<FishDTO> GetAll()
+        public IEnumerable<FishModel> GetAll()
         {
             var allFish = this.dbContext.Fish;
 
             if (allFish != null)
             {
-                return allFish.Select(f => new FishDTO
-                {
-                    Name = f.Name,
-                    ImageUrl = f.ImageUrl
-                });
+                return allFish.Select(FishModel.CastWithoutIncludeLakes);
             }
 
             return null;
         }
 
-        public IEnumerable<FishDTO> GetAllByType(FishType fishType)
+        public IEnumerable<FishModel> GetAllByType(FishType fishType)
         {
             var allFish = this.dbContext.Fish.Where(f => f.FishType == fishType);
 
             if (allFish != null)
             {
-                return allFish.Select(f => new FishDTO
-                {
-                    Name = f.Name,
-                    ImageUrl = f.ImageUrl
-                });
+                return allFish.Select(FishModel.CastWithoutIncludeLakes);
             }
 
             return null;

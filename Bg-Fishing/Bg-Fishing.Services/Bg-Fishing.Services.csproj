@@ -56,6 +56,11 @@
     <Compile Include="Contracts\INewsService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IVideoService.cs" />
+    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\FishModel.cs" />
+    <Compile Include="Models\InnerCommentModel.cs" />
+    <Compile Include="Models\LakeModel.cs" />
+    <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\NewsCommentModel.cs" />
     <Compile Include="Models\NewsModel.cs" />
     <Compile Include="Models\VideoGalleryModel.cs" />

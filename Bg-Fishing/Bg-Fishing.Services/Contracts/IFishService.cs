@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-using Bg_Fishing.DTOs.FishDTOs;
 using Bg_Fishing.Models.Enums;
 using Bg_Fishing.Models;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Services.Contracts
 {
@@ -12,11 +12,11 @@ namespace Bg_Fishing.Services.Contracts
 
         Fish FindByName(string name);
 
-        AllFishPropsDTO GetFishDTOByName(string name);
+        FishModel GetFishByName(string name);
 
-        IEnumerable<FishDTO> GetAll();
+        IEnumerable<FishModel> GetAll();
 
-        IEnumerable<FishDTO> GetAllByType(FishType fishType);
+        IEnumerable<FishModel> GetAllByType(FishType fishType);
 
         int Save();
     }

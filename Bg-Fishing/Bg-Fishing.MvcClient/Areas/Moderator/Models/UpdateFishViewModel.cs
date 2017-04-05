@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-using Bg_Fishing.DTOs.FishDTOs;
 using Bg_Fishing.DTOs.LakeDTOs;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
@@ -20,6 +20,6 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
         [Display(Name = ViewModelsDisplayNames.Lakes_DisplayName)]
         public IEnumerable<LakeDTO> Lakes { get; set; }
         
-        public IEnumerable<FishDTO> Fish { get; set; }
+        public IEnumerable<FishModel> Fish { get; set; }
     }
 }

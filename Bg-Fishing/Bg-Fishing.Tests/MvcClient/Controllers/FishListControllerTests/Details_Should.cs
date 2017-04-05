@@ -3,10 +3,10 @@
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs.FishDTOs;
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.FishListControllerTests
 {
@@ -17,10 +17,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.FishListControllerTests
         public void CallFindByNameFromService_AndSetFishToViewModel()
         {
             // Arrange
-            var mockedFish = new AllFishPropsDTO { Name = "First" };
+            var mockedFish = new FishModel { Name = "First" };
 
             var mockedFishService = new Mock<IFishService>();
-            mockedFishService.Setup(s => s.GetFishDTOByName(It.IsAny<string>())).Returns(mockedFish).Verifiable();
+            mockedFishService.Setup(s => s.GetFishByName(It.IsAny<string>())).Returns(mockedFish).Verifiable();
 
             var controller = new FishListController(mockedFishService.Object);
 
@@ -30,7 +30,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.FishListControllerTests
 
             // Assert
             Assert.AreEqual(mockedFish, model.SelectedFish);
-            mockedFishService.Verify(s => s.GetFishDTOByName(It.IsAny<string>()), Times.Once);
+            mockedFishService.Verify(s => s.GetFishByName(It.IsAny<string>()), Times.Once);
         }
     }
 }

@@ -4,10 +4,10 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs.FishDTOs;
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.FishListControllerTests
 {
@@ -18,11 +18,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.FishListControllerTests
         public void CallGetAllFromService_AndSetFishToViewModel()
         {
             // Arrange
-            var mockedCollection = new List<FishDTO>()
+            var mockedCollection = new List<FishModel>()
             {
-                new FishDTO { Name = "First" },
-                new FishDTO { Name = "Second" },
-                new FishDTO { Name = "Third" }
+                new FishModel { Name = "First" },
+                new FishModel { Name = "Second" },
+                new FishModel { Name = "Third" }
             };
 
             var mockedFishService = new Mock<IFishService>();
