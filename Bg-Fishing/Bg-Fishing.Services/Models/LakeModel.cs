@@ -33,7 +33,22 @@ namespace Bg_Fishing.Services.Models
             }
         }
 
-        public static Func<Lake, LakeModel> Cast
+        public static Func<Lake, LakeModel> CastWithoutComments
+        {
+            get
+            {
+                return l => new LakeModel
+                {
+                    Id = l.Id,
+                    Name = l.Name,
+                    Info = l.Info,
+                    Location = LocationModel.Cast(l.Location),
+                    Fish = l.Fish.Select(FishModel.CastWithIncludedLakes)
+                };
+            }
+        }
+
+        public static Func<Lake, LakeModel> CastWithAllIncluded
         {
             get
             {

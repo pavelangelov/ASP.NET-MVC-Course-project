@@ -2,9 +2,9 @@
 using System.Linq;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.DTOs.LakeDTOs;
 using Bg_Fishing.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
 using System.Data.Entity;
 
@@ -26,14 +26,10 @@ namespace Bg_Fishing.Services
             this.dbContext.Lakes.Add(lake);
         }
 
-        public IEnumerable<LakeDTO> FindByLocation(string locationName)
+        public IEnumerable<LakeModel> FindByLocation(string locationName)
         {
             var lakes = this.dbContext.Lakes.Where(l => l.Location.Name.Contains(locationName))
-                                            .Select(l => new LakeDTO
-                                            {
-                                                Name = l.Name,
-                                                Id = l.Id
-                                            });
+                                            .Select(LakeModel.CastMinInfo);
 
             return lakes;
         }
@@ -45,13 +41,9 @@ namespace Bg_Fishing.Services
             return lake;
         }
 
-        public IEnumerable<LakeDTO> GetAll()
+        public IEnumerable<LakeModel> GetAll()
         {
-            var lakes = this.dbContext.Lakes.Select(l => new LakeDTO
-            {
-                Name = l.Name,
-                Id = l.Id
-            });
+            var lakes = this.dbContext.Lakes.Select(LakeModel.CastMinInfo);
 
             return lakes;
         }

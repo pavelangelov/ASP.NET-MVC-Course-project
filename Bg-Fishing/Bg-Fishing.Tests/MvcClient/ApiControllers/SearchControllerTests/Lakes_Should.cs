@@ -1,16 +1,13 @@
-﻿using Bg_Fishing.DTOs.LakeDTOs;
+﻿using System.Collections.Generic;
+using System.Web.Http.Results;
+
+using Moq;
+using NUnit.Framework;
+
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.MvcClient.WebApiModels;
 using Bg_Fishing.Services.Contracts;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.Results;
-using System.Web.Mvc;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
 {
@@ -59,10 +56,10 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
         public void ReturnCorrectResult_IfNameMatch()
         {
             // Arrange
-            var mockedCollection = new List<LakeDTO>()
+            var mockedCollection = new List<LakeModel>()
             {
-               new LakeDTO { Name = "First" },
-               new LakeDTO { Name = "Second" }
+               new LakeModel { Name = "First" },
+               new LakeModel { Name = "Second" }
             };
 
             var model = new SearchModel() { Name = "not match" };
@@ -73,10 +70,10 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
 
             // Act
             var result = controller.Lakes(model);
-            var content = (result as OkNegotiatedContentResult<IEnumerable<LakeDTO>>).Content;
+            var content = (result as OkNegotiatedContentResult<IEnumerable<LakeModel>>).Content;
 
             // Assert
-            Assert.IsInstanceOf<OkNegotiatedContentResult<IEnumerable<LakeDTO>>>(result);
+            Assert.IsInstanceOf<OkNegotiatedContentResult<IEnumerable<LakeModel>>>(result);
             Assert.AreEqual(content, mockedCollection);
 
             mockedLakeService.Verify(s => s.FindByLocation(It.IsAny<string>()), Times.Once);

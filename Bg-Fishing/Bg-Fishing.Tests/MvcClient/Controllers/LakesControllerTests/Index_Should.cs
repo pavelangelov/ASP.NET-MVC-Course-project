@@ -1,5 +1,4 @@
-﻿using Bg_Fishing.DTOs.LakeDTOs;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -10,6 +9,7 @@ using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 {
@@ -20,11 +20,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
         public void GetAllLakesFromService_GroupThem_AndRenderDefaultView()
         {
             // Arrange
-            var mockedCollection = new List<LakeDTO>
+            var mockedCollection = new List<LakeModel>
             {
-                new LakeDTO { Name = "First" },
-                new LakeDTO { Name = "Second" },
-                new LakeDTO { Name = "Third" }
+                new LakeModel { Name = "First" },
+                new LakeModel { Name = "Second" },
+                new LakeModel { Name = "Third" }
             };
 
             var mockedLakeService = new Mock<ILakeService>();
@@ -37,7 +37,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 
             // Act
             var view = controller.Index() as ViewResult;
-            var model = view.ViewData.Model as IEnumerable<IGrouping<char, LakeDTO>>;
+            var model = view.ViewData.Model as IEnumerable<IGrouping<char, LakeModel>>;
 
             // Assert
             var expectedResult = mockedCollection.GroupBy(l => l.Name.ToLower()[0]);

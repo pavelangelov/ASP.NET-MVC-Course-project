@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 
-using Bg_Fishing.DTOs.LakeDTOs;
 using Bg_Fishing.Models;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Services.Contracts
 {
     public interface ILakeService
     {
-        IEnumerable<LakeDTO> GetAll();
+        IEnumerable<LakeModel> GetAll();
 
         void Add(Lake lake);
 
         Lake FindByName(string name);
 
-        IEnumerable<LakeDTO> FindByLocation(string locationName);
+        IEnumerable<LakeModel> FindByLocation(string locationName);
 
         int Save();
     }
