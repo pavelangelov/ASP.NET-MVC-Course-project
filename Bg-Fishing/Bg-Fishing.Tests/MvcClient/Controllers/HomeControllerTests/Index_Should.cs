@@ -4,10 +4,10 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
 {
@@ -18,11 +18,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         public void GetLatestNewsFromService_AndRenderDefaultView()
         {
             // Arrange
-            var mockedCollection = new List<NewsDTO>
+            var mockedCollection = new List<NewsModel>
             {
-                new NewsDTO { Title = "First" },
-                new NewsDTO { Title = "Second" },
-                new NewsDTO { Title = "Third" }
+                new NewsModel { Title = "First" },
+                new NewsModel { Title = "Second" },
+                new NewsModel { Title = "Third" }
             };
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
@@ -48,11 +48,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         public void SetModel_HasMoreNewsToTrue_IfHasOtherNewsToShow()
         {
             // Arrange
-            var mockedCollection = new List<NewsDTO>
+            var mockedCollection = new List<NewsModel>
             {
-                new NewsDTO { Title = "First" },
-                new NewsDTO { Title = "Second" },
-                new NewsDTO { Title = "Third" }
+                new NewsModel { Title = "First" },
+                new NewsModel { Title = "Second" },
+                new NewsModel { Title = "Third" }
             };
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();

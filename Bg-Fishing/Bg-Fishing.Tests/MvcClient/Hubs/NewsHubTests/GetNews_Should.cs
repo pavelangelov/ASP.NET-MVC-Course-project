@@ -7,10 +7,10 @@ using Moq;
 using Microsoft.AspNet.SignalR.Hubs;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.MvcClient.Hubs;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
 {
@@ -21,7 +21,7 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
         public void ReturnCorrectResult_IfHasMoreNewsToShow()
         {
             // Arrange
-            var mockedCollection = new List<NewsDTO> { new NewsDTO { Title = "Test" } };
+            var mockedCollection = new List<NewsModel> { new NewsModel { Title = "Test" } };
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
             mockedNewsService.Setup(s => s.GetNewsCount()).Returns(mockedCollection.Count + Constants.ShowedNewsCount);
@@ -31,12 +31,12 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
             hub.Clients = mockClients.Object;
 
             var loadNewsCalled = false;
-            IEnumerable<NewsDTO> sendedNews = Enumerable.Empty<NewsDTO>();
+            IEnumerable<NewsModel> sendedNews = Enumerable.Empty<NewsModel>();
             bool hasMoreSended = false;
             int nextPageSended = 0;
 
             dynamic caller = new ExpandoObject();
-            caller.loadNews = new Action<IEnumerable<NewsDTO>, bool, int>((news, hasMore, nextPage) =>
+            caller.loadNews = new Action<IEnumerable<NewsModel>, bool, int>((news, hasMore, nextPage) =>
             {
                 loadNewsCalled = true;
                 sendedNews = news;
@@ -60,7 +60,7 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
         public void ReturnCorrectResult_IsHasNowMoreNewsToShow()
         {
             // Arrange
-            var mockedCollection = new List<NewsDTO> { new NewsDTO { Title = "Test" } };
+            var mockedCollection = new List<NewsModel> { new NewsModel { Title = "Test" } };
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
             mockedNewsService.Setup(s => s.GetNewsCount()).Returns(mockedCollection.Count);
@@ -70,12 +70,12 @@ namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
             hub.Clients = mockClients.Object;
 
             var loadNewsCalled = false;
-            IEnumerable<NewsDTO> sendedNews = Enumerable.Empty<NewsDTO>();
+            IEnumerable<NewsModel> sendedNews = Enumerable.Empty<NewsModel>();
             bool hasMoreSended = false;
             int nextPageSended = 0;
 
             dynamic caller = new ExpandoObject();
-            caller.loadNews = new Action<IEnumerable<NewsDTO>, bool, int>((news, hasMore, nextPage) =>
+            caller.loadNews = new Action<IEnumerable<NewsModel>, bool, int>((news, hasMore, nextPage) =>
             {
                 loadNewsCalled = true;
                 sendedNews = news;

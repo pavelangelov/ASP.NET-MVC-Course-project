@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Models;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Services.Contracts
 {
@@ -11,7 +11,7 @@ namespace Bg_Fishing.Services.Contracts
 
         News FindById(string id);
 
-        IEnumerable<NewsDTO> GetNews(int skip, int take);
+        IEnumerable<NewsModel> GetNews(int skip, int take);
 
         int GetNewsCount();
 

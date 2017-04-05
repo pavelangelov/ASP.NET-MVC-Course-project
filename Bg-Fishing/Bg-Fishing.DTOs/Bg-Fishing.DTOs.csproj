@@ -47,8 +47,6 @@
     <Compile Include="FishDTOs\FishDTO.cs" />
     <Compile Include="LocationDTOs\AllLocationPropsDTO.cs" />
     <Compile Include="LocationDTOs\LocationDTO.cs" />
-    <Compile Include="NewsCommentDTO.cs" />
-    <Compile Include="NewsDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

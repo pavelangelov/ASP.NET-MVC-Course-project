@@ -56,6 +56,8 @@
     <Compile Include="Contracts\INewsService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IVideoService.cs" />
+    <Compile Include="Models\NewsCommentModel.cs" />
+    <Compile Include="Models\NewsModel.cs" />
     <Compile Include="Models\VideoGalleryModel.cs" />
     <Compile Include="Models\VideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using Bg_Fishing.Models;
 using Bg_Fishing.Models.Enums;
 using Bg_Fishing.Models.Galleries;
-using System;
 
 namespace Bg_Fishing.Tests.Services
 {

@@ -3,10 +3,10 @@ using System.Data.Entity;
 using System.Linq;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.DTOs;
 using Bg_Fishing.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Services
 {
@@ -33,7 +33,7 @@ namespace Bg_Fishing.Services
             return news;
         }
 
-        public IEnumerable<NewsDTO> GetNews(int skip, int take)
+        public IEnumerable<NewsModel> GetNews(int skip, int take)
         {
             var news = this.dbContext.News.Include(n => n.Comments)
                                             .OrderByDescending(n => n.PostedOn)
@@ -42,23 +42,10 @@ namespace Bg_Fishing.Services
 
             if (news != null)
             {
-                return news.Select(n => new NewsDTO
-                {
-                    Id = n.Id,
-                    Title = n.Title,
-                    Content = n.Content,
-                    ImageUrl = n.ImageUrl,
-                    PostedOn = n.PostedOn,
-                    Comments = n.Comments.Select(c => new NewsCommentDTO
-                    {
-                        Username = c.Username,
-                        Content = c.Content,
-                        PostedOn = c.PostedOn
-                    })
-                });
+                return news.Select(NewsModel.Cast);
             }
 
-            return Enumerable.Empty<NewsDTO>();
+            return Enumerable.Empty<NewsModel>();
         }
 
         public int GetNewsCount()
