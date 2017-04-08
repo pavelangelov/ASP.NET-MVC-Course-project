@@ -8,6 +8,8 @@ using NUnit.Framework;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
 {
@@ -29,7 +31,10 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedCommentService = new Mock<ICommentService>();
             mockedCommentService.Setup(s => s.GetAllByLakeName(It.IsAny<string>())).Returns(mockedCollection).Verifiable();
 
-            var controller = new CommentsController(mockedCommentService.Object);
+            var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+
+            var controller = new CommentsController(mockedCommentService.Object, mockedInnerCommentFactory.Object, mockedDateProvider.Object);
 
             // Act
             var result = controller.Comments(null, It.IsAny<int>());

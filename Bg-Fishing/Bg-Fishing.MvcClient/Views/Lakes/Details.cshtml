@@ -3,6 +3,10 @@
     ViewBag.Title = "Язовир - " + @Model.Name;
 }
 
+@section PageStyles {
+    <link href="~/Content/page-styles/lake-page.css" rel="stylesheet" />
+    }
+
 <div class="container">
     <h3 class="text-center">Язовир - @Model.Name</h3>
     <div class="col-sm-5">
@@ -55,6 +59,7 @@
     <script src="~/Scripts/page-scripts/show-location.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>
     <script src="~/Scripts/page-scripts/load-comments.js"></script>
+<script src="~/Scripts/page-scripts/comments-signalr.js"></script>
     @if (User.Identity.IsAuthenticated)
     {
         <script src="~/Scripts/page-scripts/add-comment.js"></script>

@@ -5,6 +5,8 @@ using NUnit.Framework;
 
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
 {
@@ -15,7 +17,9 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
         public void ThrowArgumentNullException_IfCommentServiceIsNull()
         {
             // Arrange, Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(null)).Message;
+            var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(null, mockedInnerCommentFactory.Object, mockedDateProvider.Object)).Message;
             StringAssert.Contains("commentService", message);
         }
 
@@ -24,9 +28,11 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
         {
             // Arrange
             var mockedCommentService = new Mock<ICommentService>();
+            var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new CommentsController(mockedCommentService.Object));
+            Assert.DoesNotThrow(() => new CommentsController(mockedCommentService.Object, mockedInnerCommentFactory.Object, mockedDateProvider.Object));
         }
     }
 }

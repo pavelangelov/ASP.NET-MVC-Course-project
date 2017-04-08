@@ -278,6 +278,7 @@
     <Content Include="Content\page-styles\details.css" />
     <Content Include="Content\page-styles\fish-list-index.css" />
     <Content Include="Content\page-styles\home-style.css" />
+    <Content Include="Content\page-styles\lake-page.css" />
     <Content Include="Content\page-styles\nav-bar-styles.css" />
     <Content Include="Content\page-styles\search-result-style.css" />
     <Content Include="Content\page-styles\videos-styles.css" />
@@ -408,6 +409,7 @@
     <Content Include="Scripts\page-scripts\add-comment.js" />
     <Content Include="Scripts\page-scripts\add-lake.js" />
     <Content Include="Scripts\page-scripts\add-location.js" />
+    <Content Include="Scripts\page-scripts\comments-signalr.js" />
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\home.js" />
     <Content Include="Scripts\page-scripts\load-comments.js" />
@@ -472,6 +474,7 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\LakeComments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
