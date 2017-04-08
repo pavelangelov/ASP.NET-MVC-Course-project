@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using Bg_Fishing.Models;
+using Bg_Fishing.Models.Comments;
 
 namespace Bg_Fishing.Services.Models
 {

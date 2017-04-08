@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Models.Comments;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Models

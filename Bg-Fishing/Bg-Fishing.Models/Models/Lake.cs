@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using Bg_Fishing.Models.Contracts;
+using Bg_Fishing.Models.Comments;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Models

@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.Models;
+using Bg_Fishing.Models.Comments;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;

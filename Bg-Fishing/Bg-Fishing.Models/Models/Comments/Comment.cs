@@ -5,7 +5,7 @@ using Bg_Fishing.Models.Contracts;
 using Bg_Fishing.Utils;
 using System.ComponentModel.DataAnnotations;
 
-namespace Bg_Fishing.Models
+namespace Bg_Fishing.Models.Comments
 {
     public class Comment : IComment, IIdentifiable
     {
@@ -16,7 +16,7 @@ namespace Bg_Fishing.Models
         public Comment()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Comments = new HashSet<Comment>();
+            this.Comments = new HashSet<InnerComment>();
         }
 
         public Comment(string lakeName, string username, string content, DateTime postedDate)
@@ -90,6 +90,6 @@ namespace Bg_Fishing.Models
             }
         }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<InnerComment> Comments { get; set; }
     }
 }

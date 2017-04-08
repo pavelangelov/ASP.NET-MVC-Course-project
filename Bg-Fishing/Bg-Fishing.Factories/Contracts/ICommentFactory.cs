@@ -1,6 +1,6 @@
 ﻿using System;
 
-using Bg_Fishing.Models;
+using Bg_Fishing.Models.Comments;
 
 namespace Bg_Fishing.Factories.Contracts
 {

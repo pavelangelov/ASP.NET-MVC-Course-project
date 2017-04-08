@@ -96,7 +96,7 @@
     <Compile Include="Enums\FishType.cs" />
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Models\AppUser.cs" />
-    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Comments\Comment.cs" />
     <Compile Include="Models\Comments\InnerComment.cs" />
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\Galleries\ImageGallery.cs" />
@@ -106,7 +106,7 @@
     <Compile Include="Models\Galleries\VideoGallery.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\News.cs" />
-    <Compile Include="Models\NewsComment.cs" />
+    <Compile Include="Models\Comments\NewsComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

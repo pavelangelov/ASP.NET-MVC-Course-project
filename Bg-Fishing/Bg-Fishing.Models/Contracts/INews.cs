@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Bg_Fishing.Models.Comments;
+
 namespace Bg_Fishing.Models.Contracts
 {
     public interface INews

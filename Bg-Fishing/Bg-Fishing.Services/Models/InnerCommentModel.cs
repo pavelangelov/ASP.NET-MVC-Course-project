@@ -1,6 +1,6 @@
 ﻿using System;
 
-using Bg_Fishing.Models;
+using Bg_Fishing.Models.Comments;
 
 namespace Bg_Fishing.Services.Models
 {
@@ -14,7 +14,7 @@ namespace Bg_Fishing.Services.Models
 
         public string Username { get; set; }
 
-        public static Func<Comment, InnerCommentModel> Cast
+        public static Func<InnerComment, InnerCommentModel> Cast
         {
             get
             {

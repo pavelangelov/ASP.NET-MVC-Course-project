@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Bg_Fishing.Models.Comments;
 
 namespace Bg_Fishing.Models.Contracts
 {
@@ -16,6 +15,6 @@ namespace Bg_Fishing.Models.Contracts
 
         DateTime PostedDate { get; }
 
-        ICollection<Comment> Comments { get; }
+        ICollection<InnerComment> Comments { get; }
     }
 }

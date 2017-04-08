@@ -2,7 +2,7 @@
 
 using NUnit.Framework;
 
-using Bg_Fishing.Models;
+using Bg_Fishing.Models.Comments;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Tests.Models.CommentTests

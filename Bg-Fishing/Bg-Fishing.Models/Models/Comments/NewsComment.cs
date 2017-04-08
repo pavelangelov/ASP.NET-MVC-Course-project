@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bg_Fishing.Models
+namespace Bg_Fishing.Models.Comments
 {
     public class NewsComment
     {
