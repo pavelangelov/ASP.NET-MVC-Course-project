@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
-using Bg_Fishing.DTOs.CommentDTOs;
 using Bg_Fishing.Models;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Services.Contracts
 {
@@ -9,9 +9,9 @@ namespace Bg_Fishing.Services.Contracts
     {
         Comment FindById(string id);
 
-        IEnumerable<CommentDTO> GetAllByLakeName(string lakeName);
+        IEnumerable<CommentModel> GetAllByLakeName(string lakeName);
 
-        IEnumerable<CommentDTO> GetAllByUsername(string username);
+        IEnumerable<CommentModel> GetAllByUsername(string username);
 
         int Save();
     }

@@ -485,10 +485,6 @@
       <Project>{E84D8AE0-C348-4B83-8A01-9086799FF3B8}</Project>
       <Name>Bg-Fishing.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bg-Fishing.DTOs\Bg-Fishing.DTOs.csproj">
-      <Project>{4E95DC48-F55A-47B2-99D5-12D5AAE88A54}</Project>
-      <Name>Bg-Fishing.DTOs</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bg-Fishing.Factories\Bg-Fishing.Factories.csproj">
       <Project>{1594E717-D78F-4050-83D9-56CE6C5A52E9}</Project>
       <Name>Bg-Fishing.Factories</Name>

@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Web.Http;
 
-using Bg_Fishing.DTOs.CommentDTOs;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.ApiControllers
@@ -20,7 +20,7 @@ namespace Bg_Fishing.MvcClient.ApiControllers
         }
 
         [HttpGet]
-        public IEnumerable<CommentDTO> Comments(string name, int page)
+        public IEnumerable<CommentModel> Comments(string name, int page)
         {
             var comments = this.commentService.GetAllByLakeName(name).OrderByDescending(c => c.PostedDate);
 

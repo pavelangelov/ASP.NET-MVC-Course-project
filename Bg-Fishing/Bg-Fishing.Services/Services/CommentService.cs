@@ -3,9 +3,9 @@ using System.Data.Entity;
 using System.Linq;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.DTOs.CommentDTOs;
 using Bg_Fishing.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Services
@@ -28,36 +28,20 @@ namespace Bg_Fishing.Services
             return comment;
         }
 
-        public IEnumerable<CommentDTO> GetAllByLakeName(string lakeName)
+        public IEnumerable<CommentModel> GetAllByLakeName(string lakeName)
         {
             var allComments = this.dbContext.Comments.Include(c => c.Comments)
                                                         .Where(c => c.LakeName == lakeName)
-                                                        .Select(l => new CommentDTO
-                                                        {
-                                                            LakeName = l.LakeName,
-                                                            Username = l.Username,
-                                                            PostedDate = l.PostedDate,
-                                                            Content = l.Content,
-                                                            Comments = l.Comments.Select(x => new InnerCommentDTO
-                                                            {
-                                                                Username = x.Username,
-                                                                Content = x.Content
-                                                            })
-                                                        });
+                                                        .Select(CommentModel.Cast);
 
             return allComments;
         }
 
-        public IEnumerable<CommentDTO> GetAllByUsername(string username)
+        public IEnumerable<CommentModel> GetAllByUsername(string username)
         {
             var allComments = this.dbContext.Comments.Include(c => c.Comments)
                                                         .Where(c => c.Username == username)
-                                                        .Select(l => new CommentDTO
-                                                        {
-                                                            LakeName = l.LakeName,
-                                                            Username = l.Username,
-                                                            PostedDate = l.PostedDate
-                                                        });
+                                                        .Select(CommentModel.Cast);
 
             return allComments;
         }

@@ -5,9 +5,9 @@ using System.Linq;
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.DTOs.CommentDTOs;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
 {
@@ -19,11 +19,11 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
         {
             // Arrange
             var date = DateTime.UtcNow;
-            var mockedCollection = new List<CommentDTO>()
+            var mockedCollection = new List<CommentModel>()
             {
-                new CommentDTO {LakeName = "First", PostedDate = date.AddHours(1) },
-                new CommentDTO {LakeName = "Second", PostedDate = date.AddHours(2) },
-                new CommentDTO {LakeName = "Third", PostedDate = date.AddHours(3) }
+                new CommentModel {LakeName = "First", PostedDate = date.AddHours(1) },
+                new CommentModel {LakeName = "Second", PostedDate = date.AddHours(2) },
+                new CommentModel {LakeName = "Third", PostedDate = date.AddHours(3) }
             };
 
             var mockedCommentService = new Mock<ICommentService>();
