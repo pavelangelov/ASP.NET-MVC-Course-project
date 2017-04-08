@@ -2,6 +2,7 @@
 
 using Bg_Fishing.Models;
 using Bg_Fishing.Models.Galleries;
+using Bg_Fishing.Models.Comments;
 
 namespace Bg_Fishing.Data
 {
@@ -17,6 +18,7 @@ namespace Bg_Fishing.Data
         IDbSet<Comment> Comments { get; }
         IDbSet<News> News { get; }
         IDbSet<NewsComment> NewsComments { get; }
+        IDbSet<InnerComment> InnerComments { get; }
 
         int Save();
     }

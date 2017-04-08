@@ -1,6 +1,7 @@
 namespace Bg_Fishing.Data
 {
     using Models;
+    using Models.Comments;
     using Models.Galleries;
     using System;
     using System.Data.Entity;
@@ -23,6 +24,7 @@ namespace Bg_Fishing.Data
         public virtual IDbSet<Comment> Comments { get; set; }
         public virtual IDbSet<News> News { get; set; }
         public virtual IDbSet<NewsComment> NewsComments { get; set; }
+        public virtual IDbSet<InnerComment> InnerComments { get; set; }
 
         public int Save()
         {

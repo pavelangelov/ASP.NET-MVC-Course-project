@@ -89,6 +89,7 @@
     <Compile Include="Contracts\IFish.cs" />
     <Compile Include="Contracts\IIdentifiable.cs" />
     <Compile Include="Contracts\Galleries\IImage.cs" />
+    <Compile Include="Contracts\IInnerComment.cs" />
     <Compile Include="Contracts\ILake.cs" />
     <Compile Include="Contracts\ILocation.cs" />
     <Compile Include="Contracts\INews.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Comments\InnerComment.cs" />
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\Galleries\ImageGallery.cs" />
     <Compile Include="Models\Galleries\Image.cs" />

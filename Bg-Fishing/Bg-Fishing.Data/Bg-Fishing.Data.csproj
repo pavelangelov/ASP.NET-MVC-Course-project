@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201703251602525_NewsComment_Added.Designer.cs">
       <DependentUpon>201703251602525_NewsComment_Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704081116320_Added_InnerComment.cs" />
+    <Compile Include="Migrations\201704081116320_Added_InnerComment.Designer.cs">
+      <DependentUpon>201704081116320_Added_InnerComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -143,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703251602525_NewsComment_Added.resx">
       <DependentUpon>201703251602525_NewsComment_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704081116320_Added_InnerComment.resx">
+      <DependentUpon>201704081116320_Added_InnerComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
