@@ -43,8 +43,6 @@
     <Compile Include="CommentDTOs\CommentDTO.cs" />
     <Compile Include="CommentDTOs\InnerCommentDTO.cs" />
     <Compile Include="LakeDTOs\LakeDTO.cs" />
-    <Compile Include="LocationDTOs\AllLocationPropsDTO.cs" />
-    <Compile Include="LocationDTOs\LocationDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

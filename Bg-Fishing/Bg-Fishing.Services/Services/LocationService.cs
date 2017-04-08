@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 
 using Bg_Fishing.Data;
-using Bg_Fishing.DTOs.LocationDTOs;
 using Bg_Fishing.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Services
@@ -32,16 +32,13 @@ namespace Bg_Fishing.Services
             return location;
         }
 
-        public IEnumerable<LocationDTO> GetAll()
+        public IEnumerable<LocationModel> GetAll()
         {
             var allLocations = this.dbContext.Locations;
 
             if (allLocations != null)
             {
-                return allLocations.Select(l => new LocationDTO
-                {
-                    Name = l.Name
-                });
+                return allLocations.Select(LocationModel.Cast);
             }
 
             return null;
