@@ -24,8 +24,9 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             
             var mockedCommentFactory = new Mock<ICommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
+            var mockedCommentService = new Mock<ICommentService>();
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object, mockedCommentService.Object);
 
             // Act
             var view = controller.Details(null) as ViewResult;

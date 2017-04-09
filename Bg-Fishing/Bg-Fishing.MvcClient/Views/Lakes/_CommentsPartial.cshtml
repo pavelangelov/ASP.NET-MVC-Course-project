@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Bg_Fishing.Services.Models.CommentModel>
+
+@if (Model == null || Model.Count() == 0)
+{
+    <li class="list-group-item text-danger text-center">
+        Все още няма изпратени мнения за този язовир.
+    </li>
+}
+else
+{
+    foreach (var comment in Model)
+    {
+        @*Comment container*@
+        <li class="list-group-item">
+            <div class="text-primary">
+                Изпратено от : @comment.Username
+            </div>
+            <hr />
+
+            @*Comment body*@
+            <div>
+                <div>@comment.Content</div>
+
+                @*Load inner comments*@
+                <div comments-for="@comment.Id">
+                    @foreach (var innerComment in comment.Comments)
+                    {
+                        <div class="col-sm-8 col-sm-offset-4 inner-comment-container">
+                            <div class="text-success inner-username">
+                                Отговор от : @innerComment.Username
+                            </div>
+                            <hr />
+                            <div class="inner-comment-body">
+                                @innerComment.Content
+                            </div>
+                            <div class="text-success inner-comment-date">
+                                Дата:  @innerComment.PostedDate
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            @*Comment footer*@
+            <div class="row">
+                <div class="text-success col-sm-4">
+                    Дата: @comment.PostedDate
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="col-sm-8">
+                        <a class="btn btn-success show-response-form right" data-id="@comment.Id">Отговори</a>
+                        <a class="btn btn-danger hide-response-form right" data-id="@comment.Id">Скрий</a>
+                    </div>
+                }
+            </div>
+        </li>
+    }
+}

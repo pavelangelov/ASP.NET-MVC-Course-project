@@ -19,9 +19,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             // Arrange
             var mockedCommentFactory = new Mock<ICommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new LakesController(null, mockedCommentFactory.Object, mockedDateProvider.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new LakesController(null, mockedCommentFactory.Object, mockedDateProvider.Object, mockedCommentService.Object)).Message;
             StringAssert.Contains("lakeService", message);
         }
 
@@ -31,9 +32,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             // Arrange
             var mockedLakeService = new Mock<ILakeService>();
             var mockedDateProvider = new Mock<IDateProvider>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new LakesController(mockedLakeService.Object, null, mockedDateProvider.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new LakesController(mockedLakeService.Object, null, mockedDateProvider.Object, mockedCommentService.Object)).Message;
             StringAssert.Contains("commentFactory", message);
         }
 
@@ -43,9 +45,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             // Arrange
             var mockedLakeService = new Mock<ILakeService>();
             var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, null)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, null, mockedCommentService.Object)).Message;
             StringAssert.Contains("dateProvider", message);
         }
 
@@ -56,9 +59,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedLakeService = new Mock<ILakeService>();
             var mockedCommentFactory = new Mock<ICommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object));
+            Assert.DoesNotThrow(() => new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object, mockedCommentService.Object));
         }
     }
 }

@@ -31,7 +31,9 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(p => p.GetDate()).Verifiable();
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var mockedCommentService = new Mock<ICommentService>();
+
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object, mockedCommentService.Object);
             controller.ModelState.AddModelError("Content", "Error");
 
             // Act
@@ -64,10 +66,12 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(p => p.GetDate()).Verifiable();
 
+            var mockedCommentService = new Mock<ICommentService>();
+
             var mockedContext = new Mock<ControllerContext>();
             mockedContext.Setup(c => c.HttpContext.User.Identity.Name).Returns("test");
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object, mockedCommentService.Object);
             controller.ControllerContext = mockedContext.Object;
 
             var model = new AddCommentViewModel() { Content = "test content", LakeName = "test lake" };
@@ -103,10 +107,12 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(p => p.GetDate()).Verifiable();
 
+            var mockedCommentService = new Mock<ICommentService>();
+
             var mockedContext = new Mock<ControllerContext>();
             mockedContext.Setup(c => c.HttpContext.User.Identity.Name).Returns("test");
 
-            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object, mockedCommentService.Object);
             controller.ControllerContext = mockedContext.Object;
 
             var model = new AddCommentViewModel() { Content = "test content", LakeName = "test lake" };

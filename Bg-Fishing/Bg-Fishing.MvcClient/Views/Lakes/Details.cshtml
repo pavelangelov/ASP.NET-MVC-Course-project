@@ -1,6 +1,7 @@
 ﻿@model Bg_Fishing.Models.Lake
 @{
     ViewBag.Title = "Язовир - " + @Model.Name;
+    ViewBag.LakeName = Model.Name;
 }
 
 @section PageStyles {
@@ -58,7 +59,20 @@
     </script>
     <script src="~/Scripts/page-scripts/show-location.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>
-    <script src="~/Scripts/page-scripts/load-comments.js"></script>
+    @*<script src="~/Scripts/page-scripts/load-comments.js"></script>*@
+    <script>
+        $('#load-comments').on('click', (ev) => {
+            $('#comment-form').hide();
+            $('#comments').show();
+            let name = $(ev.target).attr('data-name'),
+                page = $(ev.target).attr('data-page');
+
+            let container = $('#comments');
+            container.html('');
+
+            container.load("@Url.Action("GetComments", "Lakes", new { name = ViewBag.LakeName })")
+        })
+    </script>
 <script src="~/Scripts/page-scripts/comments-signalr.js"></script>
     @if (User.Identity.IsAuthenticated)
     {

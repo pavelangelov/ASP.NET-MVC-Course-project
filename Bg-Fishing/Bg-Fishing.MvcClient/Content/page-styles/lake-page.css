@@ -3,3 +3,11 @@
     border: 1px solid #fafafa;
     border-radius: 15px;
 }
+
+a.right {
+    float: right;
+}
+
+a.hide-response-form {
+    display: none;
+}

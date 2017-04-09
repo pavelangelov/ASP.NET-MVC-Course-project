@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 
 using Bg_Fishing.MvcClient.Models.ViewModels;
@@ -6,7 +7,6 @@ using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Utils.Contracts;
-using System.Linq;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
@@ -15,19 +15,23 @@ namespace Bg_Fishing.MvcClient.Controllers
         private ILakeService lakeService;
         private ICommentFactory commentFactory;
         private IDateProvider dateProvider;
+        private ICommentService commentsService;
 
         public LakesController(
             ILakeService lakeService,
             ICommentFactory commentFactory,
-            IDateProvider dateProvider)
+            IDateProvider dateProvider,
+            ICommentService commentsService)
         {
             Validator.ValidateForNull(lakeService, paramName: "lakeService");
             Validator.ValidateForNull(commentFactory, paramName: "commentFactory");
             Validator.ValidateForNull(dateProvider, paramName: "dateProvider");
+            Validator.ValidateForNull(commentsService, paramName: "commentsService");
 
             this.lakeService = lakeService;
             this.commentFactory = commentFactory;
             this.dateProvider = dateProvider;
+            this.commentsService = commentsService;
         }
 
         [HttpGet]
@@ -69,6 +73,14 @@ namespace Bg_Fishing.MvcClient.Controllers
             }
 
             return Json(new { status = "error", message = GlobalMessages.AddCOmentInvalidModelStateErrorMessage });
+        }
+
+        [HttpGet]
+        public ActionResult GetComments(string name)
+        {
+            var comments = this.commentsService.GetAllByLakeName(name).OrderByDescending(c => c.PostedDate);
+
+            return PartialView("_CommentsPartial", comments);
         }
     }
 }
