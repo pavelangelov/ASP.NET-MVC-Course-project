@@ -53,6 +53,19 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
         }
 
         [Test]
+        public void ThrowArgumentNullException_IfCommentServiceIsNull()
+        {
+            // Arrange
+            var mockedLakeService = new Mock<ILakeService>();
+            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+
+            // Act & Assert
+            var message = Assert.Throws<ArgumentNullException>(() => new LakesController(mockedLakeService.Object, mockedCommentFactory.Object, mockedDateProvider.Object, null)).Message;
+            StringAssert.Contains("commentsService", message);
+        }
+
+        [Test]
         public void NotThrow_IfAllParametersAreValid()
         {
             // Arrange

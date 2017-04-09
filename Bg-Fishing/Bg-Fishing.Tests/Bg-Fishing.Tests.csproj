@@ -157,6 +157,7 @@
     <Compile Include="MvcClient\Controllers\LakesControllerTests\AddComment_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Details_Should.cs" />
+    <Compile Include="MvcClient\Controllers\LakesControllerTests\GetComments_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Index_Should.cs" />
     <Compile Include="MvcClient\Hubs\NewsHubTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Hubs\NewsHubTests\GetNews_Should.cs" />
