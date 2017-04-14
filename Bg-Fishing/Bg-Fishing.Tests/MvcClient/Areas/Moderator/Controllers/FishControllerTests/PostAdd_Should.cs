@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 
 using Moq;
@@ -80,39 +81,75 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.FishControllerT
             mockedFishFactory.Verify(f => f.CreateFish(It.IsAny<string>(), It.IsAny<FishType>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never);
         }
 
-        //[Test]
-        //public void ReturnCorrectErrorMessage_IfAddingFishFailed()
-        //{
-        //    // Arrange
-        //    var mockedFishService = new Mock<IFishService>();
-        //    mockedFishService.Setup(s => s.Add(It.IsAny<Fish>())).Verifiable();
-        //    mockedFishService.Setup(s => s.Save()).Throws<Exception>();
+        [Test]
+        public void ReturnCorrectErrorMessage_IfAddingFishFailed()
+        {
+            // Arrange
+            var mockedFishService = new Mock<IFishService>();
+            mockedFishService.Setup(s => s.Add(It.IsAny<Fish>())).Verifiable();
+            mockedFishService.Setup(s => s.Save()).Throws<Exception>();
 
-        //    var mockedFishFactory = new Mock<IFishFactory>();
-        //    mockedFishFactory.Setup(f => f.CreateFish(It.IsAny<string>(), It.IsAny<FishType>(), It.IsAny<string>(), It.IsAny<string>())).Verifiable();
+            var mockedFishFactory = new Mock<IFishFactory>();
+            mockedFishFactory.Setup(f => f.CreateFish(It.IsAny<string>(), It.IsAny<FishType>(), It.IsAny<string>(), It.IsAny<string>())).Verifiable();
 
-        //    var mockedFile = new MockHttpPostedFileBase();
-        //    mockedFile.SetContentLength(FishController.ImageMaxSize);
+            var mockedFile = new MockHttpPostedFileBase();
+            mockedFile.SetContentLength(FishController.ImageMaxSize);
+            
+            var mockedHttpContext = new Mock<ControllerContext>();
+            mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
 
-        //    var mockedContext = new Mock<HttpContextBase>();
-        //    mockedContext.Setup(c => c.Server.MapPath(It.IsAny<string>())).Returns("test");
+            var controller = new FishController(mockedFishFactory.Object, mockedFishService.Object);
+            controller.ControllerContext = mockedHttpContext.Object;
+            var model = new AddFishViewModel() { FishName = "Test", FishType = FishType.SeaFish, Info = "Test" };
 
-        //    var controller = new FishController(mockedFishFactory.Object, mockedFishService.Object);
-        //    var model = new AddFishViewModel() { FishName = "Test", FishType = FishType.SeaFish, Info = "Test" };
+            // Act
+            var result = controller.Add(model, mockedFile) as ViewResult;
 
-        //    // Act
-        //    var result = controller.Add(model, mockedFile) as ViewResult;
+            // Assert
+            ModelState modelError;
+            result.ViewData.ModelState.TryGetValue("", out modelError);
 
-        //    // Assert
-        //    ModelState modelError;
-        //    result.ViewData.ModelState.TryGetValue("", out modelError);
+            Assert.IsNull(result.TempData[FishController.FishAddedSuccessKey]);
+            Assert.AreEqual(FishController.FishAddingFailMessage, modelError.Errors.First().ErrorMessage);
 
-        //    Assert.IsNull(result.TempData[FishController.FishAddedSuccessKey]);
-        //    Assert.AreEqual(FishController.FishAddingFailMessage, modelError.Errors.First().ErrorMessage);
+            mockedFishService.Verify(s => s.Add(It.IsAny<Fish>()), Times.Once);
 
-        //    mockedFishService.Verify(s => s.Add(It.IsAny<Fish>()), Times.Once);
+            mockedFishFactory.Verify(f => f.CreateFish(It.IsAny<string>(), It.IsAny<FishType>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        }
 
-        //    mockedFishFactory.Verify(f => f.CreateFish(It.IsAny<string>(), It.IsAny<FishType>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
-        //}
+        [Test]
+        public void ReturnDefaultView_AndSetSuccessMessageToTempData_IfAddingFishNotFailed()
+        {
+            // Arrange
+            var mockedFishService = new Mock<IFishService>();
+            mockedFishService.Setup(s => s.Add(It.IsAny<Fish>())).Verifiable();
+            mockedFishService.Setup(s => s.Save()).Verifiable();
+
+            var mockedFishFactory = new Mock<IFishFactory>();
+            mockedFishFactory.Setup(f => f.CreateFish(It.IsAny<string>(), It.IsAny<FishType>(), It.IsAny<string>(), It.IsAny<string>())).Verifiable();
+
+            var mockedFile = new MockHttpPostedFileBase();
+            mockedFile.SetContentLength(FishController.ImageMaxSize);
+
+            var mockedHttpContext = new Mock<ControllerContext>();
+            mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
+
+            var controller = new FishController(mockedFishFactory.Object, mockedFishService.Object);
+            controller.ControllerContext = mockedHttpContext.Object;
+            var model = new AddFishViewModel() { FishName = "Test", FishType = FishType.SeaFish, Info = "Test" };
+
+            // Act
+            var result = controller.Add(model, mockedFile) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result.TempData[FishController.FishAddedSuccessKey]);
+            Assert.AreEqual("", result.ViewName);
+            Assert.AreEqual(model, result.ViewData.Model);
+
+            mockedFishService.Verify(s => s.Add(It.IsAny<Fish>()), Times.Once);
+            mockedFishService.Verify(s => s.Save(), Times.Once);
+
+            mockedFishFactory.Verify(f => f.CreateFish(It.IsAny<string>(), It.IsAny<FishType>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        }
     }
 }
