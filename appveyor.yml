@@ -8,5 +8,5 @@ build:
   project: Bg-Fishing/Bg-Fishing.sln
   verbosity: minimal
 after_test:
-- Bg-Fishing\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -target:"Bg-Fishing\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe Bg-Fishing\Bg-Fishing.Tests\bin\Debug\Bg-Fishing.Tests.dll" -filter:"+[Bg-Fishing*]* -[Bg-Fishing*]*ViewModel -[Bg-Fishing*]*Config -[Bg-Fishing*]*Module -[Bg-Fishing*]Bg_Fishing.Data.*" -register:user -output:coverage.xml
+- Bg-Fishing\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -target:"Bg-Fishing\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single Bg-Fishing\Bg-Fishing.Tests\bin\Debug\Bg-Fishing.Tests.dll" -filter:"+[Bg-Fishing*]* -[Bg-Fishing*]*ViewModel -[Bg-Fishing*]*Config -[Bg-Fishing*]*Module -[Bg-Fishing*]Bg_Fishing.Data.*" -register:user -output:coverage.xml
 - Bg-Fishing\packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover coverage.xml
