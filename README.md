@@ -1,6 +1,6 @@
 # ASP.NET-MVC-Course-project
 [![Build status](https://ci.appveyor.com/api/projects/status/4edu429qor0tix61?svg=true)](https://ci.appveyor.com/project/pavelangelov/asp-net-mvc-course-project)
-[![Coverage Status](https://coveralls.io/repos/github/pavelangelov/ASP.NET-MVC-Course-project/badge.svg?branch=master)](https://coveralls.io/github/pavelangelov/ASP.NET-MVC-Course-project?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/pavelangelov/ASP.NET-MVC-Course-project/badge.svg)](https://coveralls.io/github/pavelangelov/ASP.NET-MVC-Course-project)
 
 ## Description
 Fishing site where users can find what fish have in every registred lake, what comments have left other users of the lake and the location of the pond shown by google.maps. The site has a brief description of all uploads fish and section with different video galleries. On the home page loads the latest news that might help the fishermen in their hobby.
