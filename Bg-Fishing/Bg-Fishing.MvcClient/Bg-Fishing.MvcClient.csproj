@@ -377,6 +377,7 @@
     <Content Include="Images\favicon\ms-icon-310x310.png" />
     <Content Include="Images\favicon\ms-icon-70x70.png" />
     <Content Include="Images\Fish\perch.JPG" />
+    <Content Include="Images\News\F_51bddea69679a4ce2b7f3776ea15cdaa.jpg" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -475,7 +476,6 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Images\News\" />
     <Folder Include="Views\LakeComments\" />
   </ItemGroup>
   <ItemGroup>
