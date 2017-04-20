@@ -75,8 +75,12 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
+            var mockedHttpContext = new Mock<ControllerContext>();
+            mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
+
             var controller = new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
-            
+            controller.ControllerContext = mockedHttpContext.Object;
+
             var model = new AddNewsViewModel();
             var mockedFile = new MockHttpPostedFileBase();
             mockedFile.SetContentLength(NewsController.ImageMaxSize);
@@ -113,7 +117,11 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
+            var mockedHttpContext = new Mock<ControllerContext>();
+            mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
+
             var controller = new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
+            controller.ControllerContext = mockedHttpContext.Object;
 
             var model = new AddNewsViewModel();
             var mockedFile = new MockHttpPostedFileBase();
