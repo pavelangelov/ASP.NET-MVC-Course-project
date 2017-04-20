@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 
 using Bg_Fishing.Factories.Contracts;
@@ -11,6 +12,9 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
     public class NewsController : ModeratorBaseController
     {
+        public const int ImageMaxSize = 3 * 1024 * 1000;
+        public const string NewsImagesFolder = "/Images/News/";
+        
         private INewsFactory newsFactory;
         private INewsService newsService;
         private IDateProvider dateProvider;
@@ -34,14 +38,22 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Index(AddNewsViewModel model)
+        public ActionResult Index(AddNewsViewModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                string imageUrl = Constants.NewsDefaultImage;
+                if (file != null && file.ContentLength <= ImageMaxSize)
+                {
+                    imageUrl = NewsImagesFolder + file.FileName;
+                    file.SaveAs(HttpContext.Server.MapPath("~/Images/News/")
+                                                          + file.FileName);
+                }
+
                 try
                 {
                     var date = this.dateProvider.GetDate();
-                    var news = this.newsFactory.CreateNews(model.Title, model.Content, model.ImageUrl, date);
+                    var news = this.newsFactory.CreateNews(model.Title, model.Content, imageUrl, date);
 
                     this.newsService.Add(news);
                     this.newsService.Save();

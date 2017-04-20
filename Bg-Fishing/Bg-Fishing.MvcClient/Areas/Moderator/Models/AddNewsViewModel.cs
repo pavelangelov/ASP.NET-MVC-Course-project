@@ -29,16 +29,5 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
             ErrorMessageResourceName = "StringLengthErrorMessage")]
         public string Content { get; set; }
-
-        [Required(
-            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "PropertyValueRequired")]
-        [Display(Name = "Линк към снимката.")]
-        [StringLength(
-            100,
-            MinimumLength = 12,
-            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
-        public string ImageUrl { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using Bg_Fishing.Models;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Tests.MvcClient.Mocks;
 using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerTests
@@ -38,9 +39,11 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
             controller.ModelState.AddModelError(expextedError, expectedErrorMessage);
 
             var model = new AddNewsViewModel();
+            var mockedFile = new MockHttpPostedFileBase();
+            mockedFile.SetContentLength(NewsController.ImageMaxSize);
 
             // Act
-            var result = controller.Index(model) as ViewResult;
+            var result = controller.Index(model, mockedFile) as ViewResult;
 
             // Assert
             ModelState modelError;
@@ -75,9 +78,11 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
             var controller = new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
             
             var model = new AddNewsViewModel();
+            var mockedFile = new MockHttpPostedFileBase();
+            mockedFile.SetContentLength(NewsController.ImageMaxSize);
 
             // Act
-            var result = controller.Index(model) as ViewResult;
+            var result = controller.Index(model, mockedFile) as ViewResult;
 
             // Assert
             ModelState modelError;
@@ -111,9 +116,11 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
             var controller = new NewsController(mockedNewsFactory.Object, mockedNewsService.Object, mockedDateProvider.Object);
 
             var model = new AddNewsViewModel();
+            var mockedFile = new MockHttpPostedFileBase();
+            mockedFile.SetContentLength(NewsController.ImageMaxSize);
 
             // Act
-            var result = controller.Index(model) as ViewResult;
+            var result = controller.Index(model, mockedFile) as ViewResult;
 
             // Assert
             Assert.AreEqual("", result.ViewName);

@@ -13,7 +13,7 @@
             <p class="text-success">@TempData["AddNewsSuccess"]</p>
         }
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Index", "News", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="form-group">
@@ -22,8 +22,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.ImageUrl, new { @class = "label label-info" })
-                @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+                <label for="file-value" class="label label-success">Изберете снимка</label>
+                <input type="file" id="file-value" class="btn" name="file" />
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Content, new { @class = "label label-info" })
