@@ -1,15 +1,13 @@
-﻿using Bg_Fishing.Factories.Contracts;
+﻿using System;
+
+using Moq;
+using NUnit.Framework;
+
+using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Models.Comments;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
 {
