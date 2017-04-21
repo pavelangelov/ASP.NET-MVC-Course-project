@@ -29,7 +29,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             };
 
             var mockedCommentService = new Mock<ICommentService>();
-            mockedCommentService.Setup(s => s.GetAllByLakeName(It.IsAny<string>())).Returns(mockedCollection).Verifiable();
+            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
 
             var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();

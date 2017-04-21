@@ -10,6 +10,7 @@ using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils.Contracts;
+using Bg_Fishing.MvcClient.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 {
@@ -30,7 +31,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedCommentFactory = new Mock<ICommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
             var mockedCommentService = new Mock<ICommentService>();
-            mockedCommentService.Setup(s => s.GetAllByLakeName(It.IsAny<string>())).Returns(mockedCollection).Verifiable();
+            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
 
             var controller = new LakesController(
                 mockedLakeService.Object,
@@ -40,11 +41,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 
             // Act
             var result = controller.GetComments(It.IsAny<string>()) as PartialViewResult;
-            var model = result.ViewData.Model as IEnumerable<CommentModel>;
+            var model = result.ViewData.Model as GetCommentsViewModel;
 
             // Assert
             Assert.AreEqual("_CommentsPartial", result.ViewName);
-            CollectionAssert.AreEqual(mockedCollection, model);
+            CollectionAssert.AreEqual(mockedCollection, model.Comments);
         }
     }
 }

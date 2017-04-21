@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Bg_Fishing.Services.Models.CommentModel>
+﻿@model Bg_Fishing.MvcClient.Models.GetCommentsViewModel
 
-@if (Model == null || Model.Count() == 0)
+@if (Model.Comments == null || Model.Comments.Count() == 0)
 {
     <li class="list-group-item text-danger text-center">
         Все още няма изпратени мнения за този язовир.
@@ -8,7 +8,7 @@
 }
 else
 {
-    foreach (var comment in Model)
+    foreach (var comment in Model.Comments)
     {
         @*Comment container*@
         <li class="list-group-item">
@@ -56,4 +56,22 @@ else
             </div>
         </li>
     }
+
+    <nav aria-label="...">
+        <ul class="pager">
+            @if (Model.HasPrev)
+                {
+                <li class="previous">
+                    <a class="load-comments bolder" title="По-нови" data-name="@Model.LakeName" data-page="@Model.PrevPage">&larr;</a>
+                </li>
+            }
+
+            @if (Model.HasNext)
+                {
+                <li class="next">
+                    <a class="load-comments bolder" title="По-стари" data-name="@Model.LakeName" data-page="@Model.NextPage">&rarr;</a>
+                </li>
+            }
+        </ul>
+    </nav>
 }

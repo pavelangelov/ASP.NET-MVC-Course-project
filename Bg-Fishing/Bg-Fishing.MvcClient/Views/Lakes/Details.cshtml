@@ -32,7 +32,7 @@
 
     <div class="col-sm-11">
         <h4 class="text-center">
-            <a id="load-comments" class="btn" data-name="@Model.Name" data-page="1">Зареди последни мнения за този язовир</a>
+            <a class="load-comments btn" data-name="@Model.Name" data-page="0">Зареди последни мнения за този язовир</a>
             @if (User.Identity.IsAuthenticated)
             {
                 <span> или </span>
@@ -59,18 +59,28 @@
     </script>
     <script src="~/Scripts/page-scripts/show-location.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>
-    @*<script src="~/Scripts/page-scripts/load-comments.js"></script>*@
     <script>
-        $('#load-comments').on('click', (ev) => {
+        $('.container').on('click', '.load-comments', (ev) => {
             $('#comment-form').hide();
             $('#comments').show();
             let name = $(ev.target).attr('data-name'),
                 page = $(ev.target).attr('data-page');
 
             let container = $('#comments');
-            container.html('');
 
-            container.load("@Url.Action("GetComments", "Lakes", new { name = ViewBag.LakeName })")
+            if (name == undefined) {
+                return;
+            }
+            $.ajax({
+                method: 'GET',
+                url: `/Lakes/GetComments?name=${name}&page=${page}`,
+                success: (data) => {
+                    container.html(data);
+                },
+                error: (err) => {
+                    console.log(err.message)
+                }
+            });
         })
     </script>
 <script src="~/Scripts/page-scripts/comments-signalr.js"></script>

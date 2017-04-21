@@ -9,9 +9,11 @@ namespace Bg_Fishing.Services.Contracts
     {
         Comment FindById(string id);
 
-        IEnumerable<CommentModel> GetAllByLakeName(string lakeName);
+        IEnumerable<CommentModel> GetCommentsByLakeName(string lakeName, int skip, int take);
 
         IEnumerable<CommentModel> GetAllByUsername(string username);
+
+        int GetCommentsCount(string lakeName);
 
         int Save();
     }

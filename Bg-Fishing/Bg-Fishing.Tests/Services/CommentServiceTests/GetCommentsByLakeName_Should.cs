@@ -10,7 +10,7 @@ using Bg_Fishing.Tests.Services.Mocks;
 namespace Bg_Fishing.Tests.Services.CommentServiceTests
 {
     [TestFixture]
-    public class GetAllByLakeName_Should
+    public class GetCommentsByLakeName_Should
     {
         [Test]
         public void ReturnCorrectResult_IfLakeNameMatched()
@@ -26,7 +26,7 @@ namespace Bg_Fishing.Tests.Services.CommentServiceTests
             var searchedComment = mockedCollection[1];
 
             // Act
-            var result = commentService.GetAllByLakeName(searchedComment.LakeName);
+            var result = commentService.GetCommentsByLakeName(searchedComment.LakeName, 0, 10);
 
             // Assert
             Assert.IsTrue(result.Count() == 1);
@@ -47,7 +47,7 @@ namespace Bg_Fishing.Tests.Services.CommentServiceTests
             var commentService = new CommentService(mockedDbContext.Object);
 
             // Act
-            var result = commentService.GetAllByLakeName("invalid name");
+            var result = commentService.GetCommentsByLakeName("invalid name", 0, 10);
 
             // Assert
             Assert.IsTrue(result.Count() == 0);

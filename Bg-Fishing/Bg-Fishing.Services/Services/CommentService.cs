@@ -28,10 +28,13 @@ namespace Bg_Fishing.Services
             return comment;
         }
 
-        public IEnumerable<CommentModel> GetAllByLakeName(string lakeName)
+        public IEnumerable<CommentModel> GetCommentsByLakeName(string lakeName, int skip, int take)
         {
             var allComments = this.dbContext.Comments.Include(c => c.Comments)
                                                         .Where(c => c.LakeName == lakeName)
+                                                        .OrderByDescending(c => c.PostedDate)
+                                                        .Skip(skip)
+                                                        .Take(take)
                                                         .Select(CommentModel.Cast);
 
             return allComments;
@@ -44,6 +47,11 @@ namespace Bg_Fishing.Services
                                                         .Select(CommentModel.Cast);
 
             return allComments;
+        }
+
+        public int GetCommentsCount(string lakeName)
+        {
+            return this.dbContext.Comments.Where(c => c.LakeName == lakeName).Count();
         }
 
         public int Save()

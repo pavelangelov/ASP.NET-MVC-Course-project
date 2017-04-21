@@ -7,11 +7,14 @@ using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
+using Bg_Fishing.MvcClient.Models;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
     public class LakesController : Controller
     {
+        public const int ShowedComments = 5;
+
         private ILakeService lakeService;
         private ICommentFactory commentFactory;
         private IDateProvider dateProvider;
@@ -49,7 +52,7 @@ namespace Bg_Fishing.MvcClient.Controllers
 
             return View(lake);
         }
-        
+
         [HttpPost]
         [Authorize]
         [ValidateInput(false)]
@@ -76,11 +79,31 @@ namespace Bg_Fishing.MvcClient.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetComments(string name)
+        public ActionResult GetComments(string name, int page = 0)
         {
-            var comments = this.commentsService.GetAllByLakeName(name).OrderByDescending(c => c.PostedDate);
+            var comments = this.commentsService.GetCommentsByLakeName(name, page * ShowedComments, ShowedComments);
+            var commentsCount = this.commentsService.GetCommentsCount(name);
 
-            return PartialView("_CommentsPartial", comments);
+            var hasPrev = page > 0;
+            var hasNext = comments.Count() == ShowedComments && commentsCount > page * ShowedComments + ShowedComments;
+
+            var model = new GetCommentsViewModel();
+            model.Comments = comments;
+            model.LakeName = name;
+
+            if (hasPrev)
+            {
+                model.HasPrev = hasPrev;
+                model.PrevPage = page - 1;
+            }
+
+            if (hasNext)
+            {
+                model.HasNext = hasNext;
+                model.NextPage = page + 1;
+            }
+
+            return PartialView("_CommentsPartial", model);
         }
     }
 }

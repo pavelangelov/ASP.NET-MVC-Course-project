@@ -11,3 +11,13 @@ a.right {
 a.hide-response-form {
     display: none;
 }
+
+a.load-comments:hover {
+    cursor: pointer;
+}
+
+a.bolder {
+    font-size: 1.5em;
+    padding: 2px 40px !important;
+    color: #2aa198 !important;
+}

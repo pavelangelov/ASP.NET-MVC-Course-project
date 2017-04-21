@@ -13,6 +13,8 @@ namespace Bg_Fishing.MvcClient.ApiControllers
 {
     public class CommentsController : ApiController
     {
+        public const int ShowedComments = 10;
+
         private ICommentService commentService;
         private IInnerCommentFactory innerCommentFactory;
         private IDateProvider dateProvider;
@@ -34,7 +36,7 @@ namespace Bg_Fishing.MvcClient.ApiControllers
         [HttpGet]
         public IEnumerable<CommentModel> Comments(string name, int page)
         {
-            var comments = this.commentService.GetAllByLakeName(name).OrderByDescending(c => c.PostedDate);
+            var comments = this.commentService.GetCommentsByLakeName(name, page * ShowedComments, ShowedComments).OrderByDescending(c => c.PostedDate);
 
             return comments;
         }
