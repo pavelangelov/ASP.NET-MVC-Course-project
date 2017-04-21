@@ -235,6 +235,7 @@
     <Compile Include="Areas\Moderator\Controllers\VideoController.cs" />
     <Compile Include="Areas\Moderator\Models\AddFishViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\AddNewsViewModel.cs" />
+    <Compile Include="Areas\Moderator\Models\EditLakeViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\UpdateFishViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\AddVideoViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\LakeViewModel.cs" />
@@ -347,6 +348,7 @@
     <Content Include="Areas\Moderator\Views\News\Index.cshtml" />
     <Content Include="Areas\Moderator\Views\Fish\Add.cshtml" />
     <Content Include="Images\favicon\manifest.json" />
+    <Content Include="Areas\Moderator\Views\Lake\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Backgrounds\404.jpg" />

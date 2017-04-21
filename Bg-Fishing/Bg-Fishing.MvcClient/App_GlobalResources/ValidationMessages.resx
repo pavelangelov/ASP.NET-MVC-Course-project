@@ -124,6 +124,6 @@
     <value>Полето - "{0}" е задължително!</value>
   </data>
   <data name="StringLengthErrorMessage" xml:space="preserve">
-    <value>{0} на потребителя трябва да е между {1} и {2} символа.</value>
+    <value>{0} на потребителя трябва да е между {2} и {1} символа.</value>
   </data>
 </root>

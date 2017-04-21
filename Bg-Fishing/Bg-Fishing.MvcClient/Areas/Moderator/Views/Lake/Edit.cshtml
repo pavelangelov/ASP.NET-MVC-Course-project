@@ -1,0 +1,35 @@
+﻿@model Bg_Fishing.MvcClient.Areas.Moderator.Models.EditLakeViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h2 class="text-success text-center">Промяна на информацията за язовир @Model.OldName</h2>
+
+        @using (Html.BeginForm("Edit", "Lake", new { oldName = Model.OldName } ,FormMethod.Post))
+        {
+            if (TempData["LakeEditSuccess"] != null)
+            {
+                <p class="text-success">@TempData["LakeEditSuccess"]</p>
+            }
+            else if (TempData["LakeEditFail"] != null)
+            {
+                <p class="text-success">@TempData["LakeEditFail"]</p>
+            }
+
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            @Html.LabelFor(m => m.LakeName, new { @class = "label label-success" })
+            @Html.TextBoxFor(m => m.LakeName, new { @class = "form-control", @value = Model.LakeName })
+
+            @Html.LabelFor(m => m.LakeInfo, new { @class = "label label-success" })
+            @Html.TextAreaFor(m => m.LakeInfo, new { @class = "form-control", @value = Model.LakeInfo, @rows = 10 })
+
+            <input type="submit" class="btn btn-success" value="Submit" />
+        }
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jqueryval")

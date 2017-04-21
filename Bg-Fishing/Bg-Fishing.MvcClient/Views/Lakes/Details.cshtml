@@ -6,10 +6,18 @@
 
 @section PageStyles {
     <link href="~/Content/page-styles/lake-page.css" rel="stylesheet" />
-    }
+}
 
 <div class="container">
-    <h3 class="text-center">Язовир - @Model.Name</h3>
+    <h3 class="text-center">
+        Язовир - @Model.Name
+        <a href="/moderator/lake/edit?name=@Model.Name" title="Промяна на данните">
+            @if (User.IsInRole("Moderator"))
+            {
+                <span class="glyphicon glyphicon glyphicon-cog"></span>
+            }
+        </a>
+    </h3>
     <div class="col-sm-5">
         <h4 class="text-center"><span class="glyphicon glyphicon-map-marker" style="color: red"></span> Местоположение</h4>
         <div id="map" style="width:400px;height:400px;background:yellow"></div>
@@ -39,7 +47,7 @@
                 <a id="show-comment-form" class="btn">Добави ново мнение</a>
             }
         </h4>
-            <ul id="comments" class="list-group"></ul>
+        <ul id="comments" class="list-group"></ul>
         @if (User.Identity.IsAuthenticated)
         {
             <div id="comment-form" hidden>
@@ -83,7 +91,7 @@
             });
         })
     </script>
-<script src="~/Scripts/page-scripts/comments-signalr.js"></script>
+    <script src="~/Scripts/page-scripts/comments-signalr.js"></script>
     @if (User.Identity.IsAuthenticated)
     {
         <script src="~/Scripts/page-scripts/add-comment.js"></script>
