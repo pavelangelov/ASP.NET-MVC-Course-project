@@ -169,6 +169,7 @@
     <Compile Include="Services\CommentServiceTests\FindById_Should.cs" />
     <Compile Include="Services\CommentServiceTests\GetCommentsByLakeName_Should.cs" />
     <Compile Include="Services\CommentServiceTests\GetAllByUsername_Should.cs" />
+    <Compile Include="Services\CommentServiceTests\GetCommentsCount_Should.cs" />
     <Compile Include="Services\CommentServiceTests\Save_Should.cs" />
     <Compile Include="Services\FishServiceTests\Add_Should.cs" />
     <Compile Include="Services\FishServiceTests\Constructor_Should.cs" />
