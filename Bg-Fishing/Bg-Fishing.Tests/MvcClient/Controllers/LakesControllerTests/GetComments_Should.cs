@@ -32,6 +32,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
             var mockedCommentService = new Mock<ICommentService>();
             mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
+            mockedCommentService.Setup(s => s.GetCommentsCount(It.IsAny<string>())).Returns(mockedCollection.Count).Verifiable();
 
             var controller = new LakesController(
                 mockedLakeService.Object,
@@ -45,7 +46,92 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 
             // Assert
             Assert.AreEqual("_CommentsPartial", result.ViewName);
+            Assert.IsFalse(model.HasPrev);
+            Assert.IsTrue(model.PrevPage == 0);
             CollectionAssert.AreEqual(mockedCollection, model.Comments);
+
+            mockedCommentService.Verify(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
+            mockedCommentService.Verify(s => s.GetCommentsCount(It.IsAny<string>()), Times.Once);
+        }
+
+        [Test]
+        public void GetCommentsFromService_SetNextPageToModel_IfHaveMoreComments_AndReturnPartilaView()
+        {
+            // Arrange
+            var mockedCollection = new List<CommentModel>
+            {
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow }
+            };
+
+            var mockedLakeService = new Mock<ILakeService>();
+            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+            var mockedCommentService = new Mock<ICommentService>();
+            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection.GetRange(0, LakesController.ShowedComments)).Verifiable();
+            mockedCommentService.Setup(s => s.GetCommentsCount(It.IsAny<string>())).Returns(mockedCollection.Count).Verifiable();
+
+            var controller = new LakesController(
+                mockedLakeService.Object,
+                mockedCommentFactory.Object,
+                mockedDateProvider.Object,
+                mockedCommentService.Object);
+
+            // Act
+            var result = controller.GetComments(It.IsAny<string>()) as PartialViewResult;
+            var model = result.ViewData.Model as GetCommentsViewModel;
+
+            // Assert
+            Assert.AreEqual("_CommentsPartial", result.ViewName);
+            Assert.IsTrue(model.HasNext);
+            Assert.IsTrue(model.NextPage == 1);
+
+            mockedCommentService.Verify(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
+            mockedCommentService.Verify(s => s.GetCommentsCount(It.IsAny<string>()), Times.Once);
+        }
+
+        [Test]
+        public void GetCommentsFromService_SetPrevPageToModel_IfHavePreviousComments_AndReturnPartilaView()
+        {
+            // Arrange
+            var mockedCollection = new List<CommentModel>
+            {
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow }
+            };
+
+            var mockedLakeService = new Mock<ILakeService>();
+            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+            var mockedCommentService = new Mock<ICommentService>();
+            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection.GetRange(1, LakesController.ShowedComments)).Verifiable();
+            mockedCommentService.Setup(s => s.GetCommentsCount(It.IsAny<string>())).Returns(mockedCollection.Count).Verifiable();
+
+            var controller = new LakesController(
+                mockedLakeService.Object,
+                mockedCommentFactory.Object,
+                mockedDateProvider.Object,
+                mockedCommentService.Object);
+
+            // Act
+            var result = controller.GetComments(It.IsAny<string>(), 1) as PartialViewResult;
+            var model = result.ViewData.Model as GetCommentsViewModel;
+
+            // Assert
+            Assert.AreEqual("_CommentsPartial", result.ViewName);
+            Assert.IsTrue(model.HasPrev);
+            Assert.IsTrue(model.PrevPage == 0);
+
+            mockedCommentService.Verify(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
+            mockedCommentService.Verify(s => s.GetCommentsCount(It.IsAny<string>()), Times.Once);
         }
     }
 }
