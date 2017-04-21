@@ -13,6 +13,8 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
     {
         public const string EditLakeSuccessMessage = "Промените са направени!";
         public const string EditLakeFailMessage = "Промените не могът да бъдат направени в момента!";
+        public const string SuccessEditKey = "LakeEditSuccess";
+        public const string FailKey = "LakeEditFail";
 
         private ILakeFactory lakeFactory;
         private ILocationFactory locationFactory;
@@ -186,11 +188,11 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                     lake.Info = model.LakeInfo;
 
                     this.lakeService.Save();
-                    TempData["LakeEditSuccess"] = EditLakeSuccessMessage;
+                    TempData[SuccessEditKey] = EditLakeSuccessMessage;
                 }
                 catch (Exception )
                 {
-                    TempData["LakeEditFail"] = EditLakeFailMessage;
+                    TempData[FailKey] = EditLakeFailMessage;
                 }
             }
 

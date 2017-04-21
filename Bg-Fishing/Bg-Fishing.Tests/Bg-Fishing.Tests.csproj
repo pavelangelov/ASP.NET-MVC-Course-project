@@ -128,6 +128,7 @@
     <Compile Include="MvcClient\Areas\Moderator\Controllers\FishControllerTests\GetAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\FishControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\GetEdit_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\PostEdit_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\GetIndex_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\PostIndex_Should.cs" />
