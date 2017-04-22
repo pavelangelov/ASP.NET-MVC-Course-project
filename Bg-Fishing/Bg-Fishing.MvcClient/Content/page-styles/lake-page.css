@@ -1,8 +1,53 @@
-﻿div.inner-comment-container {
+﻿div.comment-content::before {
+    content: "\f0e5";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    /*--adjust as necessary--*/
+    color: #2AA198;
+    font-size: 18px;
+    position: absolute;
+    top: -0.1em;
+    left: -1.5em;
+}
+
+div.inner-comment-container {
     margin-top: 5px;
     border: 1px solid #fafafa;
-    border-radius: 15px;
+    border-radius: 5px;
 }
+
+    div.inner-comment-container hr {
+        margin: 5px 0;
+    }
+
+div.inner-username {
+    padding: 5px;
+}
+
+div.inner-comment-body, div.comment-content {
+    color: #fff;
+    position: relative;
+    margin-left: 2.5em;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+    div.inner-comment-body::before {
+        content: "\f086";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        /*--adjust as necessary--*/
+        color: #2AA198;
+        font-size: 18px;
+        position: absolute;
+        top: -0.1em;
+        left: -1.5em;
+    }
 
 a.right {
     float: right;
