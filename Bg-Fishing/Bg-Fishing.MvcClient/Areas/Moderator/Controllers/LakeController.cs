@@ -11,11 +11,6 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
     public class LakeController : ModeratorBaseController
     {
-        public const string EditLakeSuccessMessage = "Промените са направени!";
-        public const string EditLakeFailMessage = "Промените не могът да бъдат направени в момента!";
-        public const string SuccessEditKey = "LakeEditSuccess";
-        public const string FailKey = "LakeEditFail";
-
         private ILakeFactory lakeFactory;
         private ILocationFactory locationFactory;
         private ILakeService lakeService;
@@ -115,10 +110,10 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                 }
                 catch (Exception)
                 {
-                    return Json(new { status = "error", message = "Възникна грешка при добавянето на на избраните риби." });
+                    return Json(new { status = "error", message = GlobalMessages.AddingFishErrorMessage });
                 }
 
-                return Json(new { status = "success", message = string.Format("Рибата е добавена във {0}.", model.SelectedLake) });
+                return Json(new { status = "success", message = string.Format(GlobalMessages.AddingFishSuccessMessageFormat, model.SelectedLake) });
             }
             else
             {
@@ -148,10 +143,10 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                 }
                 catch (Exception)
                 {
-                    return Json(new { status = "error", message = "Възникна грешка при премахването на избраните риби." });
+                    return Json(new { status = "error", message = GlobalMessages.RemoveFishErroMessage });
                 }
 
-                return Json(new { status = "success", message = string.Format("Рибата е премахната успешно") });
+                return Json(new { status = "success", message = string.Format(GlobalMessages.RemoveFishSuccessMessage) });
             }
             else
             {
@@ -188,11 +183,11 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
                     lake.Info = model.LakeInfo;
 
                     this.lakeService.Save();
-                    TempData[SuccessEditKey] = EditLakeSuccessMessage;
+                    TempData[GlobalMessages.SuccessEditKey] = GlobalMessages.EditLakeSuccessMessage;
                 }
                 catch (Exception )
                 {
-                    TempData[FailKey] = EditLakeFailMessage;
+                    TempData[GlobalMessages.FailKey] = GlobalMessages.EditLakeFailMessage;
                 }
             }
 

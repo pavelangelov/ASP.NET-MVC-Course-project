@@ -9,6 +9,7 @@ using Bg_Fishing.Models;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerTests
 {
@@ -37,7 +38,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var result = controller.Edit(model, model.OldName) as ViewResult;
 
             // Assert
-            Assert.AreEqual(LakeController.EditLakeFailMessage, result.TempData[LakeController.FailKey]);
+            Assert.AreEqual(GlobalMessages.EditLakeFailMessage, result.TempData[GlobalMessages.FailKey]);
         }
 
         [Test]
@@ -64,7 +65,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             // Assert
             Assert.AreEqual(model.LakeName, mockedLake.Name);
             Assert.AreEqual(model.LakeInfo, mockedLake.Info);
-            Assert.AreEqual(LakeController.EditLakeSuccessMessage, result.TempData[LakeController.SuccessEditKey]);
+            Assert.AreEqual(GlobalMessages.EditLakeSuccessMessage, result.TempData[GlobalMessages.SuccessEditKey]);
 
             mockedLakeService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);
             mockedLakeService.Verify(s => s.Save(), Times.Once);

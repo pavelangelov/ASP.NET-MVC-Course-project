@@ -3,18 +3,16 @@ using System.Linq;
 using System.Web.Mvc;
 
 using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
-using Bg_Fishing.MvcClient.Models;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
     public class LakesController : Controller
     {
-        public const int ShowedComments = 5;
-
         private ILakeService lakeService;
         private ICommentFactory commentFactory;
         private IDateProvider dateProvider;
@@ -81,11 +79,11 @@ namespace Bg_Fishing.MvcClient.Controllers
         [HttpGet]
         public ActionResult GetComments(string name, int page = 0)
         {
-            var comments = this.commentsService.GetCommentsByLakeName(name, page * ShowedComments, ShowedComments);
+            var comments = this.commentsService.GetCommentsByLakeName(name, page * Constants.ShowedComments, Constants.ShowedComments);
             var commentsCount = this.commentsService.GetCommentsCount(name);
 
             var hasPrev = page > 0;
-            var hasNext = comments.Count() == ShowedComments && commentsCount > page * ShowedComments + ShowedComments;
+            var hasNext = comments.Count() == Constants.ShowedComments && commentsCount > page * Constants.ShowedComments + Constants.ShowedComments;
 
             var model = new GetCommentsViewModel();
             model.Comments = comments;

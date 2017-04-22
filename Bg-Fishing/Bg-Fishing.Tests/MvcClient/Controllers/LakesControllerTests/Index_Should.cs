@@ -20,12 +20,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
         public void GetAllLakesFromService_GroupThem_AndRenderDefaultView()
         {
             // Arrange
-            var mockedCollection = new List<LakeModel>
-            {
-                new LakeModel { Name = "First" },
-                new LakeModel { Name = "Second" },
-                new LakeModel { Name = "Third" }
-            };
+            var mockedCollection = this.GetLakeModelCollection();
 
             var mockedLakeService = new Mock<ILakeService>();
             mockedLakeService.Setup(s => s.GetAll()).Returns(mockedCollection).Verifiable();
@@ -46,6 +41,16 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             CollectionAssert.AreEquivalent(expectedResult, model);
 
             mockedLakeService.Verify(s => s.GetAll(), Times.Once);
+        }
+
+        private List<LakeModel> GetLakeModelCollection()
+        {
+            return new List<LakeModel>
+            {
+                new LakeModel { Name = "First" },
+                new LakeModel { Name = "Second" },
+                new LakeModel { Name = "Third" }
+            };
         }
     }
 }

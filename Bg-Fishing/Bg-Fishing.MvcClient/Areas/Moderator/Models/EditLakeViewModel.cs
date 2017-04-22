@@ -1,9 +1,6 @@
-﻿using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
+
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
@@ -11,22 +8,22 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
     {
         public string OldName { get; set; }
 
-        [Display(Name = "Промяна на името")]
+        [Display(Name = ViewModelsDisplayNames.NewLakeName_DisplayName)]
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "PropertyValueRequired")]
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
         [StringLength(
             Constants.NameMaxLength,
             MinimumLength = Constants.NameMinLength,
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
+            ErrorMessageResourceName = Constants.StringLengthResourceKey)]
         public string LakeName { get; set; }
 
         [StringLength(
             Constants.InfoMaxLEngth,
             MinimumLength = 0,
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
+            ErrorMessageResourceName = Constants.StringLengthResourceKey)]
         public string LakeInfo { get; set; }
     }
 }

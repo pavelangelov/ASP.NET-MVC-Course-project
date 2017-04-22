@@ -11,6 +11,7 @@ using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Tests.MvcClient.Mocks;
+using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerTests
@@ -40,7 +41,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
 
             var model = new AddNewsViewModel();
             var mockedFile = new MockHttpPostedFileBase();
-            mockedFile.SetContentLength(NewsController.ImageMaxSize);
+            mockedFile.SetContentLength(Constants.ImageMaxSize);
 
             // Act
             var result = controller.Index(model, mockedFile) as ViewResult;
@@ -51,7 +52,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
 
             Assert.AreEqual("", result.ViewName);
             Assert.IsTrue(modelError.Errors.First().ErrorMessage == expectedErrorMessage);
-            Assert.IsTrue(result.TempData["AddNewsSuccess"] == null);
+            Assert.IsTrue(result.TempData[GlobalMessages.AddNewsSuccessKey] == null);
 
             mockedNewsFactory.Verify(f => f.CreateNews(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>()), Times.Never);
 
@@ -83,7 +84,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
 
             var model = new AddNewsViewModel();
             var mockedFile = new MockHttpPostedFileBase();
-            mockedFile.SetContentLength(NewsController.ImageMaxSize);
+            mockedFile.SetContentLength(Constants.ImageMaxSize);
 
             // Act
             var result = controller.Index(model, mockedFile) as ViewResult;
@@ -94,7 +95,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
 
             Assert.AreEqual("", result.ViewName);
             Assert.IsTrue(modelError.Errors.First().ErrorMessage == "Test");
-            Assert.IsTrue(result.TempData["AddNewsSuccess"] == null);
+            Assert.IsTrue(result.TempData[GlobalMessages.AddNewsSuccessKey] == null);
 
             mockedNewsFactory.Verify(f => f.CreateNews(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>()), Times.Once);
 
@@ -125,7 +126,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
 
             var model = new AddNewsViewModel();
             var mockedFile = new MockHttpPostedFileBase();
-            mockedFile.SetContentLength(NewsController.ImageMaxSize);
+            mockedFile.SetContentLength(Constants.ImageMaxSize);
 
             // Act
             var result = controller.Index(model, mockedFile) as ViewResult;
@@ -133,7 +134,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
             // Assert
             Assert.AreEqual("", result.ViewName);
             Assert.IsTrue(result.ViewData.ModelState.Count == 0);
-            Assert.IsTrue(result.TempData["AddNewsSuccess"] != null);
+            Assert.IsTrue(result.TempData[GlobalMessages.AddNewsSuccessKey] != null);
 
             mockedNewsFactory.Verify(f => f.CreateNews(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>()), Times.Once);
 

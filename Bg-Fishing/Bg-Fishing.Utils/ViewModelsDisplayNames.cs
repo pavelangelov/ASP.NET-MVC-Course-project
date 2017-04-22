@@ -42,5 +42,30 @@
         public const string LocationName_DisplayName = "Местоположение";
 
         #endregion
+
+        #region AddNewsViewModel
+
+        public const string NewsTitle_DisplayName = "Заглавие";
+        public const string NewsContent_DisplayName = "Съдържание";
+
+        #endregion
+
+        #region EditLakeViewModel
+
+        public const string NewLakeName_DisplayName = "Промяна на името";
+
+        #endregion
+
+        #region LocationViewModel
+
+        public const string LocationInfo_DisplayName = "Информация";
+
+        #endregion
+
+        #region RemoveVideoViewModel
+
+        public const string GalleriesSelect_DisplayName = "Изберете категория от която да премахнете видео";
+
+        #endregion
     }
 }

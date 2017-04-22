@@ -11,13 +11,6 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
     public class FishController : ModeratorBaseController
     {
-        public const int ImageMaxSize = 3 * 1024 * 1000;
-        public const string FishImagesFolder = "/Images/Fish/";
-        public const string FishAddedSuccessKey = "FishAddedSuccess";
-        public const string FishAddedSuccessMessage = "Рибата е добавена успешно";
-        public const string FishAddingErrorMessage = "Не е избрана снимка или размера на снимката е по-голям от 3 MB!";
-        public const string FishAddingFailMessage = "Грешка при добавянето на рибата!";
-
         private IFishFactory fishFactory;
         private IFishService fishService;
 
@@ -45,26 +38,26 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
             {
                 try
                 {
-                    if (file != null && file.ContentLength <= ImageMaxSize)
+                    if (file != null && file.ContentLength <= Constants.ImageMaxSize)
                     {
-                        var filePath = FishImagesFolder + file.FileName; 
-                        file.SaveAs(HttpContext.Server.MapPath("~/Images/Fish/")
+                        var filePath = Constants.FishImagesFolder + file.FileName; 
+                        file.SaveAs(HttpContext.Server.MapPath(Constants.FishImagesServerFolder)
                                                               + file.FileName);
 
                         var fish = this.fishFactory.CreateFish(model.FishName, model.FishType, filePath, model.Info);
                         this.fishService.Add(fish);
                         this.fishService.Save();
 
-                        TempData[FishAddedSuccessKey] = FishAddedSuccessMessage;
+                        TempData[GlobalMessages.FishAddedSuccessKey] = GlobalMessages.FishAddedSuccessMessage;
                     }
                     else
                     {
-                        ModelState.AddModelError("", FishAddingErrorMessage);
+                        ModelState.AddModelError("", GlobalMessages.FishAddingErrorMessage);
                     }
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError("", FishAddingFailMessage);
+                    ModelState.AddModelError("", GlobalMessages.FishAddingFailMessage);
                 }
 
                 return View(model);

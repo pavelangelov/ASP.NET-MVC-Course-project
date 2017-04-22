@@ -12,8 +12,6 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 {
     public class NewsController : ModeratorBaseController
     {
-        public const int ImageMaxSize = 3 * 1024 * 1000;
-        public const string NewsImagesFolder = "/Images/News/";
         
         private INewsFactory newsFactory;
         private INewsService newsService;
@@ -43,10 +41,10 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
             if (ModelState.IsValid)
             {
                 string imageUrl = Constants.NewsDefaultImage;
-                if (file != null && file.ContentLength <= ImageMaxSize)
+                if (file != null && file.ContentLength <= Constants.ImageMaxSize)
                 {
-                    imageUrl = NewsImagesFolder + file.FileName;
-                    file.SaveAs(HttpContext.Server.MapPath("~/Images/News/")
+                    imageUrl = Constants.NewsImagesFolder + file.FileName;
+                    file.SaveAs(HttpContext.Server.MapPath(Constants.NewsImagesServerFolder)
                                                           + file.FileName);
                 }
 
@@ -57,7 +55,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Controllers
 
                     this.newsService.Add(news);
                     this.newsService.Save();
-                    TempData["AddNewsSuccess"] = "Новината е добавена";
+                    TempData[GlobalMessages.AddNewsSuccessKey] = GlobalMessages.AddNewsSuccessMessage;
                 }
                 catch (Exception ex)
                 {

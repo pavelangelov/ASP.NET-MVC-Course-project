@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
+
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
@@ -10,24 +8,24 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
     {
         [Required( 
             ErrorMessageResourceType = typeof(Resources.ValidationMessages), 
-            ErrorMessageResourceName = "PropertyValueRequired")]
-        [Display(Name = "Заглавие")]
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
+        [Display(Name = ViewModelsDisplayNames.NewsTitle_DisplayName)]
         [StringLength(
             100, 
             MinimumLength = 3, 
             ErrorMessageResourceType = typeof(Resources.ValidationMessages), 
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
+            ErrorMessageResourceName = Constants.StringLengthResourceKey)]
         public string Title { get; set; }
 
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "PropertyValueRequired")]
-        [Display(Name = "Съдържание")]
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
+        [Display(Name = ViewModelsDisplayNames.NewsContent_DisplayName)]
         [StringLength(
             3500,
             MinimumLength = 10,
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
+            ErrorMessageResourceName = Constants.StringLengthResourceKey)]
         public string Content { get; set; }
     }
 }

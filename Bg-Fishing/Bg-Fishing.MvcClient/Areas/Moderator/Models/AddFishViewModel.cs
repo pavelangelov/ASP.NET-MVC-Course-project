@@ -9,12 +9,12 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
     {
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "PropertyValueRequired")]
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
         [StringLength(
             Constants.NameMaxLength,
             MinimumLength = Constants.NameMinLength,
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
+            ErrorMessageResourceName = Constants.StringLengthResourceKey)]
         public string FishName { get; set; }
 
         public FishType FishType { get; set; }
@@ -23,7 +23,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
             Constants.InfoMaxLEngth,
             MinimumLength = 0,
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
+            ErrorMessageResourceName = Constants.StringLengthResourceKey)]
         public string Info { get; set; }
     }
 }

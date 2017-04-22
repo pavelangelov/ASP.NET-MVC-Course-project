@@ -1,16 +1,16 @@
-﻿using Bg_Fishing.Factories.Contracts;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
+
+using Moq;
+using NUnit.Framework;
+
+using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Models;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerTests
 {
@@ -77,7 +77,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
 
             // Assert
             Assert.AreEqual("error", dResult.status);
-            Assert.AreEqual("Възникна грешка при премахването на избраните риби.", dResult.message);
+            Assert.AreEqual(GlobalMessages.RemoveFishErroMessage, dResult.message);
 
             mockedLakeService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);
 
@@ -89,7 +89,6 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
         {
             // Arrange
             var lakeName = "Lake";
-            var expectedMessage = "Рибата е премахната успешно";
             var mockedLakeFactory = new Mock<ILakeFactory>();
             var mockedLocationFactory = new Mock<ILocationFactory>();
 
@@ -117,7 +116,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
 
             // Assert
             Assert.AreEqual("success", dResult.status);
-            Assert.AreEqual(expectedMessage, dResult.message);
+            Assert.AreEqual(GlobalMessages.RemoveFishSuccessMessage, dResult.message);
             Assert.IsFalse(mockedLake.Fish.Contains(mockedFish));
 
             mockedLakeService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);

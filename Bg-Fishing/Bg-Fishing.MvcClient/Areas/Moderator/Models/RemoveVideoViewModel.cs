@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 using Bg_Fishing.Services.Models;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 {
@@ -11,7 +12,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
     {
         public IEnumerable<VideoGalleryModel>  Galleries { get; set; }
 
-        [Display(Name = "Изберете категория от която да премахнете видео")]
+        [Display(Name = ViewModelsDisplayNames.GalleriesSelect_DisplayName)]
         public IEnumerable<SelectListItem> GalleriesSelect
         {
             get

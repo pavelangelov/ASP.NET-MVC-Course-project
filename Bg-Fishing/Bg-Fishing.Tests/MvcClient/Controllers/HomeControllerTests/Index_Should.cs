@@ -18,12 +18,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         public void GetLatestNewsFromService_AndRenderDefaultView()
         {
             // Arrange
-            var mockedCollection = new List<NewsModel>
-            {
-                new NewsModel { Title = "First" },
-                new NewsModel { Title = "Second" },
-                new NewsModel { Title = "Third" }
-            };
+            var mockedCollection = this.GetNewsModelColection();
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
             mockedNewsService.Setup(s => s.GetNewsCount()).Returns(0);
@@ -48,12 +43,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         public void SetModel_HasMoreNewsToTrue_IfHasOtherNewsToShow()
         {
             // Arrange
-            var mockedCollection = new List<NewsModel>
-            {
-                new NewsModel { Title = "First" },
-                new NewsModel { Title = "Second" },
-                new NewsModel { Title = "Third" }
-            };
+            var mockedCollection = this.GetNewsModelColection();
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
             mockedNewsService.Setup(s => s.GetNewsCount()).Returns(mockedCollection.Count * 2);
@@ -68,6 +58,16 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
             Assert.AreEqual("", result.ViewName);
             Assert.AreEqual(1, model.NextPage);
             Assert.IsTrue(model.HasMoreNews);
+        }
+
+        private List<NewsModel> GetNewsModelColection()
+        {
+            return new List<NewsModel>
+            {
+                new NewsModel { Title = "First" },
+                new NewsModel { Title = "Second" },
+                new NewsModel { Title = "Third" }
+            };
         }
     }
 }

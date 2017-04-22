@@ -6,10 +6,11 @@ using Moq;
 using NUnit.Framework;
 
 using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Models;
 using Bg_Fishing.MvcClient.Areas.Moderator.Controllers;
 using Bg_Fishing.MvcClient.Areas.Moderator.Models;
 using Bg_Fishing.Services.Contracts;
-using Bg_Fishing.Models;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerTests
 {
@@ -76,7 +77,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
 
             // Assert
             Assert.AreEqual("error", dResult.status);
-            Assert.AreEqual("Възникна грешка при добавянето на на избраните риби.", dResult.message);
+            Assert.AreEqual(GlobalMessages.AddingFishErrorMessage, dResult.message);
 
             mockedLakeService.Verify(s => s.FindByName(It.IsAny<string>()), Times.Once);
 
@@ -88,7 +89,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
         {
             // Arrange
             var lakeName = "Lake";
-            var expectedMessage = string.Format("Рибата е добавена във {0}.", lakeName);
+            var expectedMessage = string.Format(GlobalMessages.AddingFishSuccessMessageFormat, lakeName);
             var mockedLakeFactory = new Mock<ILakeFactory>();
             var mockedLocationFactory = new Mock<ILocationFactory>();
 

@@ -9,8 +9,8 @@ using NUnit.Framework;
 
 using Bg_Fishing.MvcClient.Hubs;
 using Bg_Fishing.Services.Contracts;
-using Bg_Fishing.Utils;
 using Bg_Fishing.Services.Models;
+using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.Tests.MvcClient.Hubs.NewsHubTests
 {

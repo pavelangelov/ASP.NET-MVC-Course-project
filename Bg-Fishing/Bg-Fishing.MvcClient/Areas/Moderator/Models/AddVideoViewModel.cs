@@ -14,13 +14,13 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
 
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "PropertyValueRequired")]
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
         [Display(Name = ViewModelsDisplayNames.VideoUrl_DisplayName)]
         public string VideoUrl { get; set; }
 
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "PropertyValueRequired")]
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
         [Display(Name = ViewModelsDisplayNames.VideoTitle_DisplayName)]
         public string VideoTitle { get; set; }
 

@@ -1,8 +1,6 @@
-﻿using Bg_Fishing.Services.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+
+using Bg_Fishing.Services.Models;
 
 namespace Bg_Fishing.MvcClient.Models
 {

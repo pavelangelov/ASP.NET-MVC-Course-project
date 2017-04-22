@@ -9,8 +9,6 @@ namespace Bg_Fishing.MvcClient.Hubs
 {
     public class NewsHub : Hub
     {
-        public const int NewsCount = 5;
-
         private INewsService newsService;
 
         public NewsHub(INewsService newsService)
@@ -22,13 +20,13 @@ namespace Bg_Fishing.MvcClient.Hubs
 
         public void GetNews(int page)
         {
-            var skip = page * NewsCount;
-            var news = this.newsService.GetNews(skip, NewsCount).ToList();
+            var skip = page * Constants.ShowedNewsCount;
+            var news = this.newsService.GetNews(skip, Constants.ShowedNewsCount).ToList();
             var hasMore = false;
             var nextPage = 0;
 
             var allNewsCount = this.newsService.GetNewsCount();
-            if (allNewsCount - (skip + NewsCount) > 0)
+            if (allNewsCount - (skip + Constants.ShowedNewsCount) > 0)
             {
                 hasMore = true;
                 nextPage = page + 1;

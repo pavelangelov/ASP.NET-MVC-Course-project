@@ -20,10 +20,41 @@
 
         #endregion
 
-        #region AddLake
+        #region Moderator.FishController
 
+        public const string FishAddedSuccessKey = "FishAddedSuccess";
+        public const string FishAddedSuccessMessage = "Рибата е добавена успешно";
+        public const string FishAddingErrorMessage = "Не е избрана снимка или размера на снимката е по-голям от 3 MB!";
+        public const string FishAddingFailMessage = "Грешка при добавянето на рибата!";
+
+        #endregion
+
+        #region Moderator.LakeController
+
+        // AddLake
         public const string AddLakeSuccessMessage = "Язовира е добавен успешно";
         public const string AddLakeErrorMessage = "Визникна грешка при добавянето на язовира. Проверете дали вече няма добавен язовир с това име.";
+
+        // AddFish
+        public const string AddingFishErrorMessage = "Възникна грешка при добавянето на на избраните риби.";
+        public const string AddingFishSuccessMessageFormat = "Рибата е добавена във {0}.";
+
+        // RemoveFish
+        public const string RemoveFishErroMessage = "Възникна грешка при премахването на избраните риби.";
+        public const string RemoveFishSuccessMessage = "Рибата е премахната успешно";
+
+        // EditLake
+        public const string EditLakeSuccessMessage = "Промените са направени!";
+        public const string EditLakeFailMessage = "Промените не могът да бъдат направени в момента!";
+        public const string SuccessEditKey = "LakeEditSuccess";
+        public const string FailKey = "LakeEditFail";
+
+        #endregion
+
+        #region Moderator.NewsController
+
+        public const string AddNewsSuccessMessage = "Новината е добавена";
+        public const string AddNewsSuccessKey = "AddNewsSuccess";
 
         #endregion
 

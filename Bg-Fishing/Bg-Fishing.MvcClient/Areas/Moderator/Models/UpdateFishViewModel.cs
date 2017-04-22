@@ -10,7 +10,7 @@ namespace Bg_Fishing.MvcClient.Areas.Moderator.Models
     {
         [Required(
             ErrorMessageResourceType = typeof(Resources.ValidationMessages), 
-            ErrorMessageResourceName = "PropertyValueRequired")]
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
         public string SelectedLake { get; set; }
 
         [Display(Name = ViewModelsDisplayNames.SelectedFish_DisplayName)]

@@ -6,11 +6,12 @@ using Moq;
 using NUnit.Framework;
 
 using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
+using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
-using Bg_Fishing.MvcClient.Models;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 {
@@ -21,11 +22,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
         public void GetCommentsFromService_AndReturnPartilaView()
         {
             // Arrange
-            var mockedCollection = new List<CommentModel>
-            {
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow }
-            };
+            var mockedCollection = this.GetCommentModelCollection();
 
             var mockedLakeService = new Mock<ILakeService>();
             var mockedCommentFactory = new Mock<ICommentFactory>();
@@ -58,21 +55,13 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
         public void GetCommentsFromService_SetNextPageToModel_IfHaveMoreComments_AndReturnPartilaView()
         {
             // Arrange
-            var mockedCollection = new List<CommentModel>
-            {
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow }
-            };
+            var mockedCollection = this.GetCommentModelCollection();
 
             var mockedLakeService = new Mock<ILakeService>();
             var mockedCommentFactory = new Mock<ICommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
             var mockedCommentService = new Mock<ICommentService>();
-            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection.GetRange(0, LakesController.ShowedComments)).Verifiable();
+            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection.GetRange(0, Constants.ShowedComments)).Verifiable();
             mockedCommentService.Setup(s => s.GetCommentsCount(It.IsAny<string>())).Returns(mockedCollection.Count).Verifiable();
 
             var controller = new LakesController(
@@ -98,21 +87,13 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
         public void GetCommentsFromService_SetPrevPageToModel_IfHavePreviousComments_AndReturnPartilaView()
         {
             // Arrange
-            var mockedCollection = new List<CommentModel>
-            {
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow }
-            };
+            var mockedCollection = this.GetCommentModelCollection();
 
             var mockedLakeService = new Mock<ILakeService>();
             var mockedCommentFactory = new Mock<ICommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
             var mockedCommentService = new Mock<ICommentService>();
-            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection.GetRange(1, LakesController.ShowedComments)).Verifiable();
+            mockedCommentService.Setup(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection.GetRange(1, Constants.ShowedComments)).Verifiable();
             mockedCommentService.Setup(s => s.GetCommentsCount(It.IsAny<string>())).Returns(mockedCollection.Count).Verifiable();
 
             var controller = new LakesController(
@@ -132,6 +113,19 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
 
             mockedCommentService.Verify(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
             mockedCommentService.Verify(s => s.GetCommentsCount(It.IsAny<string>()), Times.Once);
+        }
+
+        private List<CommentModel> GetCommentModelCollection()
+        {
+            return new List<CommentModel>
+            {
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow }
+            };
         }
     }
 }
