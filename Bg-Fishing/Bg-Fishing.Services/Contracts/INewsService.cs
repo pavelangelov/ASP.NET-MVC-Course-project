@@ -11,6 +11,8 @@ namespace Bg_Fishing.Services.Contracts
 
         News FindById(string id);
 
+        NewsModel GetNewsById(string id);
+
         IEnumerable<NewsModel> GetNews(int skip, int take);
 
         int GetNewsCount();

@@ -33,6 +33,13 @@ namespace Bg_Fishing.Services
             return news;
         }
 
+        public NewsModel GetNewsById(string id)
+        {
+            var news = this.dbContext.News.Find(id);
+
+            return NewsModel.Cast(news);
+        }
+
         public IEnumerable<NewsModel> GetNews(int skip, int take)
         {
             var news = this.dbContext.News.Include(n => n.Comments)

@@ -1,7 +1,74 @@
-﻿
+﻿@model Bg_Fishing.MvcClient.Models.NewsDetailsViewModel
 @{
-    ViewBag.Title = "News";
+    ViewBag.Title = Model.News.Title;
 }
 
-<h2>NewsDetails</h2>
+@section PageStyles {
+    <link href="~/Content/page-styles/news-details.css" rel="stylesheet" />
+}
 
+<div class="container">
+    <h2 class="text-center">@Model.News.Title</h2>
+    <div class="content text-success">
+        <img src="@Model.News.ImageUrl" alt="image" class="float-left" />
+        <p class="news-content">@Model.News.Content</p>
+        <div class="date" title="Дата на публикуване"><i class="fa fa-calendar" aria-hidden="true"></i>@Model.News.PostedOn</div>
+    </div>
+    <div class="clearfix"></div>
+    <h3 class="text-center"><u>Коментари</u></h3>
+
+    <div class="col-sm-8 col-sm-offset-2 response-form">
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (TempData["AddCommentSuccess"] != null)
+            {
+                <p class="result text-success">@TempData["AddCommentSuccess"]</p>
+            }
+
+            using (Html.BeginForm("AddNewsComment", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                @Html.LabelFor(m => m.Content, new { @class = "label label-success" })
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @rows = "6" })
+
+                @Html.TextBoxFor(m => m.NewsId, new { @hidden = "hidden", @value = Model.News.Id })
+
+                <input type="submit" class="btn btn-success" value="Изпрати" />
+            }
+        }
+    </div>
+
+    <div class="list-group col-sm-12">
+        @if (Model.News.Comments.Count() == 0)
+        {
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading empty"><span class="glyphicon glyphicon-info-sign"></span>Все още няма коментари</h4>
+            </div>
+        }
+        else
+        {
+            foreach (var comment in Model.News.Comments)
+            {
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading">От: <span class="comment-user">@comment.Username</span></h4>
+                    <p class="list-group-item-text@c">@comment.Content</p>
+                    <div class="date" title="Дата на публикуване">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>@comment.PostedOn
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    setTimeout(function () {
+        $('p.result').fadeOut('fast');
+    }, 3000);
+</script>

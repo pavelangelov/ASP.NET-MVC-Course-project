@@ -8,6 +8,8 @@ using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
 {
@@ -22,8 +24,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
             mockedNewsService.Setup(s => s.GetNewsCount()).Returns(0);
+            
+            var mockedNewsCommentFactory = new Mock<INewsCommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
 
-            var controller = new HomeController(mockedNewsService.Object);
+            var controller = new HomeController(mockedNewsService.Object, mockedNewsCommentFactory.Object, mockedDateProvider.Object);
 
             // Act
             var result = controller.Index() as ViewResult;
@@ -48,7 +53,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
             mockedNewsService.Setup(s => s.GetNews(It.IsAny<int>(), It.IsAny<int>())).Returns(mockedCollection).Verifiable();
             mockedNewsService.Setup(s => s.GetNewsCount()).Returns(mockedCollection.Count * 2);
 
-            var controller = new HomeController(mockedNewsService.Object);
+            var mockedNewsCommentFactory = new Mock<INewsCommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+
+            var controller = new HomeController(mockedNewsService.Object, mockedNewsCommentFactory.Object, mockedDateProvider.Object);
 
             // Act
             var result = controller.Index() as ViewResult;

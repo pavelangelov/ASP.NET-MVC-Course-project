@@ -5,6 +5,8 @@ using NUnit.Framework;
 
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Factories.Contracts;
+using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
 {
@@ -14,8 +16,12 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         [Test]
         public void ThrowArgumentNullException_IfNewsServiceIsNull()
         {
-            // Arrange, Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new HomeController(null)).Message;
+            // Arrange
+            var mockedNewsCommentFactory = new Mock<INewsCommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+
+            // Act & Assert
+            var message = Assert.Throws<ArgumentNullException>(() => new HomeController(null, mockedNewsCommentFactory.Object, mockedDateProvider.Object)).Message;
             StringAssert.Contains("newsService", message);
         }
 
@@ -24,9 +30,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         {
             // Arrange
             var mockedNewsService = new Mock<INewsService>();
+            var mockedNewsCommentFactory = new Mock<INewsCommentFactory>();
+            var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new HomeController(mockedNewsService.Object));
+            Assert.DoesNotThrow(() => new HomeController(mockedNewsService.Object, mockedNewsCommentFactory.Object, mockedDateProvider.Object));
         }
     }
 }

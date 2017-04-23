@@ -1,0 +1,23 @@
+﻿div.content {
+    margin: 10px;
+}
+
+img.float-left {
+    float: left;
+    width: 30%;
+    margin: 0 10px 10px 0;
+}
+
+i.fa-calendar {
+    margin-right: 10px;
+    color: #fff;
+}
+
+div.list-group-item:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+div.list-group > div.list-group-item > h4.empty {
+    color: #d33682;
+}
