@@ -156,8 +156,10 @@
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Details_Should.cs" />
     <Compile Include="MvcClient\Controllers\FishListControllerTests\Index_Should.cs" />
+    <Compile Include="MvcClient\Controllers\HomeControllerTests\AddNewsComment_Should.cs" />
     <Compile Include="MvcClient\Controllers\HomeControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\HomeControllerTests\Index_Should.cs" />
+    <Compile Include="MvcClient\Controllers\HomeControllerTests\News_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\AddComment_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Details_Should.cs" />
@@ -195,6 +197,7 @@
     <Compile Include="Services\NewsServiceTests\Add_Should.cs" />
     <Compile Include="Services\NewsServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\NewsServiceTests\FindById_Should.cs" />
+    <Compile Include="Services\NewsServiceTests\GetNewsById_Should.cs" />
     <Compile Include="Services\NewsServiceTests\GetNewsCount_Should.cs" />
     <Compile Include="Services\NewsServiceTests\GetNews_Should.cs" />
     <Compile Include="Services\NewsServiceTests\Save_Should.cs" />
