@@ -36,9 +36,11 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
                 mockedCommentFactory.Object, 
                 mockedDateProvider.Object,
                 mockedCommentService.Object);
+            var lakeName = "Test";
+            var expectedSkip = 0;
 
             // Act
-            var result = controller.GetComments(It.IsAny<string>()) as PartialViewResult;
+            var result = controller.GetComments(lakeName) as PartialViewResult;
             var model = result.ViewData.Model as GetCommentsViewModel;
 
             // Assert
@@ -47,8 +49,8 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
             Assert.IsTrue(model.PrevPage == 0);
             CollectionAssert.AreEqual(mockedCollection, model.Comments);
 
-            mockedCommentService.Verify(s => s.GetCommentsByLakeName(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>()), Times.Once);
-            mockedCommentService.Verify(s => s.GetCommentsCount(It.IsAny<string>()), Times.Once);
+            mockedCommentService.Verify(s => s.GetCommentsByLakeName(lakeName, expectedSkip, Constants.ShowedComments), Times.Once);
+            mockedCommentService.Verify(s => s.GetCommentsCount(lakeName), Times.Once);
         }
 
         [Test]
@@ -119,12 +121,12 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.LakesControllerTests
         {
             return new List<CommentModel>
             {
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow },
-                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow }
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow, Comments = new List<InnerCommentModel>() },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow, Comments = new List<InnerCommentModel>() },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow, Comments = new List<InnerCommentModel>() },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow, Comments = new List<InnerCommentModel>() },
+                new CommentModel() { LakeName = "Test", PostedDate = DateTime.UtcNow, Comments = new List<InnerCommentModel>() },
+                new CommentModel() { LakeName = "Test 2", PostedDate = DateTime.UtcNow, Comments = new List<InnerCommentModel>() }
             };
         }
     }

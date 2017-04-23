@@ -8,6 +8,7 @@ using Bg_Fishing.MvcClient.Models.ViewModels;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
+using System.Collections.Generic;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
@@ -79,7 +80,7 @@ namespace Bg_Fishing.MvcClient.Controllers
         [HttpGet]
         public ActionResult GetComments(string name, int page = 0)
         {
-            var comments = this.commentsService.GetCommentsByLakeName(name, page * Constants.ShowedComments, Constants.ShowedComments);
+            var comments = this.commentsService.GetCommentsByLakeName(name, page * Constants.ShowedComments, Constants.ShowedComments).ToList();
             var commentsCount = this.commentsService.GetCommentsCount(name);
 
             var hasPrev = page > 0;
@@ -99,6 +100,11 @@ namespace Bg_Fishing.MvcClient.Controllers
             {
                 model.HasNext = hasNext;
                 model.NextPage = page + 1;
+            }
+
+            foreach (var comment in model.Comments)
+            {
+                comment.Comments =  comment.Comments.OrderBy(i => i.PostedDate).ToList();
             }
 
             return PartialView("_CommentsPartial", model);
