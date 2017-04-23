@@ -35,5 +35,10 @@ namespace Bg_Fishing.MvcClient.Controllers
 
             return View(model);
         }
+
+        public ActionResult News(string newsId)
+        {
+            return View();
+        }
     }
 }

@@ -20,11 +20,28 @@
                     </div>
                     <div class="post-content">
                         <header class="entry-header text-center text-uppercase">
-                            <h1 class="entry-title">@news.Title</h1>
+                            <h1 class="entry-title">
+                                @Html.ActionLink(news.Title, "News", "Home", new { newsId = news.Id }, null)
+                                </h1>
+                            <div class="news-info">
+                                <div class="date">Публикувано на: @news.PostedOn</div>
+                                <div class="comments-count-container text-success" title="Коментари">
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                    @if (news.Comments.Count() == 0)
+                                    {
+                                        <span class="badge bg-red">@news.Comments.Count()</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-green">@news.Comments.Count()</span>
+
+                                    }
+                                </div>
+                            </div>
                         </header>
                         <div class="entry-content">
+                            <hr />
                             <p>@news.Content</p>
-                            <div class="date">Публикувано на: @news.PostedOn</div>
                         </div>
                         <div class="show-more"><a class="btn show-more-btn">Виж повече...</a></div>
                     </div>

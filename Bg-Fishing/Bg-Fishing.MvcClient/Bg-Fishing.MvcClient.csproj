@@ -473,6 +473,7 @@
     <Content Include="Views\Lakes\Index.cshtml" />
     <Content Include="Views\Galleries\Watch.cshtml" />
     <Content Include="Views\Lakes\_CommentsPartial.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

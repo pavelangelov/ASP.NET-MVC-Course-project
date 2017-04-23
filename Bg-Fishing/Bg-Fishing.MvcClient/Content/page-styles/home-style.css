@@ -34,6 +34,11 @@ div.entry-content {
     max-height: 10em;
 }
 
+div.entry-content hr {
+    background-color: #002B36;
+    margin: 5px 10px;
+    height: 2px;
+}
 div.show-more {
     width: 100%;
     text-align: center;
@@ -58,4 +63,33 @@ a.load-more-btn {
 
 a.load-more-btn:hover {
     background: #2AA198;
+}
+
+div.news-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.comments-count-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.glyphicon.glyphicon-comment {
+    font-size: 1.9em;
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    font-size: 8px;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.bg-green {
+    background-color: lawngreen;
 }
