@@ -78,6 +78,8 @@ namespace Bg_Fishing.MvcClient.Controllers
                     this.newsService.Save();
 
                     TempData["AddCommentSuccess"] = "Коментара е добавен.";
+
+                    return RedirectToAction("News", new { newsId = news.Id });
                 }
                 catch (System.Exception)
                 {

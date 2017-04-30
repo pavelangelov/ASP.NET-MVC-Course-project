@@ -88,7 +88,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         }
 
         [Test]
-        public void AddCommentToNews_AndSetSuccessMessage_InModelState_IfAddingCommentNotFailed()
+        public void AddCommentToNews_AndRedirectToNews_IfAddingCommentNotFailed()
         {
             // Arrange
             var mockedNews = new News();
@@ -111,15 +111,14 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
             var model = new NewsDetailsViewModel() { NewsId = mockedNews.Id };
 
             // Act
-            var result = controller.AddNewsComment(model) as ViewResult;
-            var viewModel = result.ViewData.Model as NewsDetailsViewModel;
+            var result = controller.AddNewsComment(model) as RedirectToRouteResult;
 
             // Assert
-            Assert.AreEqual("News", result.ViewName);
-            Assert.AreEqual(model, viewModel);
+            Assert.IsTrue(result.RouteValues.ContainsKey("newsId"));
+            Assert.AreEqual(mockedNews.Id, result.RouteValues["newsId"]);
+            Assert.AreEqual("News", result.RouteValues["action"]);
             Assert.IsTrue(mockedNews.Comments.Count == 1);
             Assert.IsTrue(mockedNews.Comments.Contains(mockedNewsComment));
-            Assert.IsNotNull(result.TempData["AddCommentSuccess"]);
 
             mockedNewsService.Verify(s => s.FindById(model.NewsId), Times.Once);
             mockedNewsService.Verify(s => s.Save(), Times.Once);

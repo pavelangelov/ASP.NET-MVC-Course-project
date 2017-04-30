@@ -13,6 +13,10 @@ i.fa-calendar {
     color: #fff;
 }
 
+div.list-group-item {
+    padding: 20px;
+}
+
 div.list-group-item:hover {
     text-decoration: none;
     cursor: default;
@@ -20,4 +24,14 @@ div.list-group-item:hover {
 
 div.list-group > div.list-group-item > h4.empty {
     color: #d33682;
+}
+
+span.comment-user {
+    color: aquamarine;
+}
+
+div.list-group-item p {
+    padding: 20px;
+    border-left: 1px solid #ccc;
+    color: darkseagreen;
 }
