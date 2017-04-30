@@ -51,6 +51,9 @@ namespace Bg_Fishing.MvcClient.Controllers
         public ActionResult News(string newsId)
         {
             var news = this.newsService.GetNewsById(newsId);
+
+            news.Comments = news.Comments.ToList().OrderByDescending(c => c.PostedOn);
+
             var model = new NewsDetailsViewModel() { News = news };
 
             return View(model);

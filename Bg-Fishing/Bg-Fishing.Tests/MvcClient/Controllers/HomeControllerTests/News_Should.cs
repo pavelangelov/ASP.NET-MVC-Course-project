@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 using Moq;
 using NUnit.Framework;
@@ -19,7 +21,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
         public void GetNewsFromService_AndRenderDefaultView()
         {
             // Arrange
-            var mockedNewsModel = new NewsModel();
+            var mockedNewsModel = new NewsModel() { Comments = new List<NewsCommentModel>() { new NewsCommentModel() { PostedOn = DateTime.Now } } };
             var mockedNewsService = new Mock<INewsService>();
             mockedNewsService.Setup(s => s.GetNewsById(It.IsAny<string>())).Returns(mockedNewsModel).Verifiable();
 

@@ -417,6 +417,7 @@
     <Content Include="Scripts\page-scripts\add-location.js" />
     <Content Include="Scripts\page-scripts\comments-signalr.js" />
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
+    <Content Include="Scripts\page-scripts\hide-result.js" />
     <Content Include="Scripts\page-scripts\home.js" />
     <Content Include="Scripts\page-scripts\load-comments.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />

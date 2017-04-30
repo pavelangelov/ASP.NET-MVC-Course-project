@@ -16,7 +16,10 @@
     </div>
     <div class="clearfix"></div>
     <h3 class="text-center"><u>Коментари</u></h3>
-    <a class="btn btn-success show-form">Добави коментар</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a class="btn btn-success show-form">Добави коментар</a>
+    }
 
     <div class="col-sm-8 col-sm-offset-2 response-form">
         @if (User.Identity.IsAuthenticated)
@@ -70,20 +73,9 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-<script>
-    setTimeout(function () {
-        $('p.result').fadeOut('fast');
-    }, 3000);
-
-    $('a.show-form').on('click', (ev) => {
-        ev.preventDefault();
-        $('form.response-form').show();
-        $('a.show-form').hide();
-    });
-
-    $('a.hide-form').on('click', (ev) => {
-        ev.preventDefault();
-        $('form.response-form').hide();
-        $('a.show-form').show();
-    })
-</script>
+@section PageScripts {
+    @if (User.Identity.IsAuthenticated)
+    {
+        <script src="~/Scripts/page-scripts/hide-result.js"></script>
+    }
+}
