@@ -19,6 +19,8 @@ namespace Bg_Fishing.Services.Contracts
 
         IEnumerable<ImageModel> GetAllImages(string galleryId);
 
+        IEnumerable<ImageModel> GetAllUnconfirmed();
+
         int Save();
     }
 }

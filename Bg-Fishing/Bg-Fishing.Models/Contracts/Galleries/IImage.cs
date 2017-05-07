@@ -8,6 +8,8 @@ namespace Bg_Fishing.Models.Contracts.Galleries
         /// Get image url.
         /// </summary>
         string ImageUrl { get; }
+        
+        bool IsConfirmed { get; }
 
         /// <summary>
         /// Get or Set image date.

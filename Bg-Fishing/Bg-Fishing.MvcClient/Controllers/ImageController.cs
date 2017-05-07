@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 
@@ -7,7 +8,6 @@ using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
-using System;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
@@ -53,10 +53,15 @@ namespace Bg_Fishing.MvcClient.Controllers
                     {
                         var date = this.dateProvider.GetDate();
                         var url = file.FileName; // TODO: fix this!!!
+                        // TODO: Save file!
                         var image = this.imageFactory.CreateImage(url, date, model.ImageInfo);
+                        if (User.IsInRole("Moderator"))
+                        {
+                            image.IsConfirmed = true;
+                        }
 
                         var gallery = this.imageGalleryService.FindById(model.SelectedImageGalleryId);
-
+                        
                         gallery.Images.Add(image);
 
                         this.imageGalleryService.Save();
@@ -81,10 +86,30 @@ namespace Bg_Fishing.MvcClient.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Moderator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Remove(string imageId)
         {
+            // TODO: Remove image from service!
+            return View();
+        }
+
+
+        [Authorize(Roles = "Moderator")]
+        [HttpGet]
+        public ActionResult Confirm()
+        {
+            // TODO: Get all unconfirmed images from service, and show it!
+            return View();
+        }
+
+        [Authorize(Roles = "Moderator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Confirm(string imageId)
+        {
+            // TODO: Get image from service and confirm it!
             return View();
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using Bg_Fishing.Data;
@@ -49,7 +48,10 @@ namespace Bg_Fishing.Services
 
         public IEnumerable<ImageModel> GetAllImages(string galleryId)
         {
-            throw new NotImplementedException();
+            return this.dbContext.ImageGalleries.Find(galleryId)
+                                                        .Images
+                                                        .Where(i => i.IsConfirmed)
+                                                        .Select(ImageModel.Cast);
         }
 
         public IEnumerable<ImageGalleryModel> GetByLake(string lakeName)
@@ -60,6 +62,12 @@ namespace Bg_Fishing.Services
             return gallery;
         }
 
+        public IEnumerable<ImageModel> GetAllUnconfirmed()
+        {
+            return this.dbContext.Images.Where(i => !i.IsConfirmed)
+                                        .Select(ImageModel.Cast);
+        }
+        
         public int Save()
         {
             return this.dbContext.Save();

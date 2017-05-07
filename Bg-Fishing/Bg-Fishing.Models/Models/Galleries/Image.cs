@@ -11,6 +11,7 @@ namespace Bg_Fishing.Models.Galleries
         public Image()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.IsConfirmed = false;
         }
 
         public Image(string imageUrl, DateTime date)
@@ -46,5 +47,7 @@ namespace Bg_Fishing.Models.Galleries
         /// Get or set info about the image.
         /// </summary>
         public string Info { get; set; }
+
+        public bool IsConfirmed { get; set; }
     }
 }
