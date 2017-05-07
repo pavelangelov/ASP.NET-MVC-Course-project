@@ -17,6 +17,8 @@ namespace Bg_Fishing.MvcClient.Models
         
         public string SelectedImageGalleryId { get; set; }
 
+        public string GalleryName { get; set; }
+
         public IEnumerable<SelectListItem> GalleryNames { get; set; }
     }
 }

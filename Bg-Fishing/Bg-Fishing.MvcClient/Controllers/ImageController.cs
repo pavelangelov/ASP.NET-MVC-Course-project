@@ -7,21 +7,25 @@ using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
+using System;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
     public class ImageController : Controller
     {
+        private IImageGalleryService imageGalleryService;
         private IImageFactory imageFactory;
         private IDateProvider dateProvider;
         private ILakeService lakeService;
 
-        public ImageController(IImageFactory imageFactory, IDateProvider dateProvider, ILakeService lakeService)
+        public ImageController(IImageGalleryService imageGalleryService, IImageFactory imageFactory, IDateProvider dateProvider, ILakeService lakeService)
         {
+            Validator.ValidateForNull(imageGalleryService, paramName: "imageGalleryService");
             Validator.ValidateForNull(imageFactory, paramName: "imageFactory");
             Validator.ValidateForNull(dateProvider, paramName: "dateProvider");
             Validator.ValidateForNull(lakeService, paramName: "lakeService");
 
+            this.imageGalleryService = imageGalleryService;
             this.imageFactory = imageFactory;
             this.dateProvider = dateProvider;
             this.lakeService = lakeService;
@@ -41,14 +45,27 @@ namespace Bg_Fishing.MvcClient.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(HttpPostedFileBase file, AddImageViewModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && file != null)
             {
-
-                if (file != null)
+                if (file.ContentLength > 0 && file.ContentLength <= Constants.ImageMaxSize)
                 {
-                    var date = this.dateProvider.GetDate();
-                    var url = file.FileName; // TODO: fix this!!!
-                    var image = this.imageFactory.CreateImage(url, date, model.ImageInfo);
+                    try
+                    {
+                        var date = this.dateProvider.GetDate();
+                        var url = file.FileName; // TODO: fix this!!!
+                        var image = this.imageFactory.CreateImage(url, date, model.ImageInfo);
+
+                        var gallery = this.imageGalleryService.FindById(model.SelectedImageGalleryId);
+
+                        gallery.Images.Add(image);
+
+                        this.imageGalleryService.Save();
+
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                    }
                 }
             }
 
