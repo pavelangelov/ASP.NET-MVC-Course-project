@@ -1,0 +1,21 @@
+﻿@model Bg_Fishing.MvcClient.Models.AddImageViewModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.LabelFor(m => m.SelectedImageGalleryId, new { @class = "label label-success" })
+        @Html.DropDownListFor(m => m.SelectedImageGalleryId, Model.GalleryNames, new { @class = "form-control" })
+
+        <input type="submit" value="Добави" class="btn btn-success" />
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

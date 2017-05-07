@@ -8,6 +8,10 @@
             @Html.ActionLink("Видео галерии", "Videos", "Galleries", new { Area = "" }, null)
             @Html.ActionLink("Язовири", "Index", "Lakes", new { Area = "" }, null)
             @Html.ActionLink("Риби", "Index", "FishList", new { Area = "" }, null)
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Качи снимка", "Add", "Image", new { Area = "" }, new { })
+            }
         </li>
     </ul>
 </li>
