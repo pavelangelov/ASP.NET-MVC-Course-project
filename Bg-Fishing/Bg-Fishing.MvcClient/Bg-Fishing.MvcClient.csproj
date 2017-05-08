@@ -280,6 +280,7 @@
     <Content Include="Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
     <Content Include="Content\page-styles\404.css" />
     <Content Include="Content\page-styles\500.css" />
+    <Content Include="Content\page-styles\add-image.css" />
     <Content Include="Content\page-styles\details.css" />
     <Content Include="Content\page-styles\fish-list-index.css" />
     <Content Include="Content\page-styles\home-style.css" />

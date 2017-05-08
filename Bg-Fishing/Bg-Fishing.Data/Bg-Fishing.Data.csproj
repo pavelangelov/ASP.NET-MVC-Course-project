@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201704081139468_Update_Comments.Designer.cs">
       <DependentUpon>201704081139468_Update_Comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705081111162_Update_Images.cs" />
+    <Compile Include="Migrations\201705081111162_Update_Images.Designer.cs">
+      <DependentUpon>201705081111162_Update_Images.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704081139468_Update_Comments.resx">
       <DependentUpon>201704081139468_Update_Comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081111162_Update_Images.resx">
+      <DependentUpon>201705081111162_Update_Images.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
