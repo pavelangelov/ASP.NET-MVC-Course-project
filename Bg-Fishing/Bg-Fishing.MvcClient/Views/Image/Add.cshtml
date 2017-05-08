@@ -1,40 +1,71 @@
 ﻿@model Bg_Fishing.MvcClient.Models.AddImageViewModel
 
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Качване на снимка";
 }
 
 @section PageStyles{
     <link href="~/Content/page-styles/add-image.css" rel="stylesheet" />
-    }
+}
 
 <div class="container">
     <div class="col-sm-8 col-sm-offset-2">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Add", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
-            @Html.LabelFor(m => m.SelectedImageGalleryId, new { @class = "label label-success" })
-            @Html.DropDownListFor(m => m.SelectedImageGalleryId, Model.GalleryNames, new { @class = "form-control" })
+            @Html.ValidationSummary("", new { @class = "text-danger" })
 
-            <div class="form-group">
-                <div class="img-container">
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-6">
+                    @{
+                        @Html.LabelFor(m => m.SelectedImageGalleryId, new { @class = "label label-success", @for = "lakes-list" })
+                        <select class="form-control" id="lakes-list">
+                            <option>-----</option>
+                            @foreach(var lake in Model.Lakes)
+                            {
+                                <option value="@lake.Id">@lake.Name</option>
+                            }
+                        </select>
+                    }
+                </div>
+
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Name, new { @class = "label label-success", @for = "galleries-list" })
+                    <select class="form-control" id="galleries-list">
+                        <option>-----</option>
+                        <option value="Test-value">Test-text</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="name-input" class="label label-success">Създай нова галерия</label>
+                    @Html.TextBoxFor(m => m.Name, new { @id = "name-input", @class = "form-control" })
+
+                    @Html.LabelFor(m => m.ImageInfo, new { @class = "label label-success" })
+                    @Html.TextAreaFor(m => m.ImageInfo, new { @class = "form-control", @rows = 6 })
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="image-upload-container" class="label label-success">Избери файл</label>
+                    <div id="image-upload-container" class="fileinput fileinput-new input-group col-sm-8" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput">
+                            <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                            <span class="fileinput-filename"></span>
+                        </div>
+                        <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">
+                                <span class="glyphicon glyphicon-level-up"></span>
+                            </span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="...">
+                        </span>
+                        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                    </div>
+                </div>
+                <div class="img-container col-sm-12">
+                    <div class="error-messages"></div>
                     <img class="img-preview" />
                 </div>
-
-                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                    <div class="form-control" data-trigger="fileinput">
-                        <i class="glyphicon glyphicon-file fileinput-exists"></i>  <span class="fileinput-filename"></span>
-
-                    </div> <span class="input-group-addon btn btn-default btn-file">
-                        <span class="fileinput-new"><span class="glyphicon glyphicon-level-up"></span></span><span class="fileinput-exists">Change</span>
-
-                        <input type="file" name="...">
-                    </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-
-                </div>
             </div>
-
             <input type="submit" value="Добави" class="btn btn-success" />
         }
     </div>
@@ -45,9 +76,45 @@
 }
 
 <script>
+    //=====================================================================================
+    //                   Load available galleries when lake is selected
+    //=====================================================================================
+    $('select#lakes-list').change((ev) => {
+        let value = $('select#lakes-list option:selected').val(),
+            text = $('select#lakes-list option:selected').text(),
+            defaultValue = $('select#lakes-list option:first').val();
+
+        if (value && value !== defaultValue) {
+            // TODO: Get galleries from server and load them in select#galleries-list !!!
+        }
+    })
+
+    //=====================================================================================
+    //                                 Set gallery name
+    //=====================================================================================
+    $('select#galleries-list').change((ev) => {
+        let value = $('select#galleries-list option:selected').val(),
+            text = $('select#galleries-list option:selected').text(),
+            defaultValue = $('select#galleries-list option:first').val();
+
+        if (text !== undefined && text.length && text !== defaultValue) {
+            $('input#name-input').val(text);
+        } else {
+            $('input#name-input').val('');
+        }
+        
+    })
+
+    //=====================================================================================
+    //                                  Validate uploaded file
+    //=====================================================================================
     $('input[type=file]').on('change', (ev) => {
         readURL(ev.target);
     })
+
+    const IMAGE_MAX_SIZE = 3 * 1024 * 1000,
+        INVALID_FILE_TYPE_ERROR_MESSAGE = 'Избраният файл не е валидно изображение!',
+        INVALID_SIZE_ERROR_MESSAGE = 'Избраният файл надхвърля разрешените 3MB!'
 
     function readURL(input) {
 
@@ -58,6 +125,22 @@
                 $('img.img-preview').attr('src', e.target.result);
             }
 
+            let errorContainer = $('div.error-messages');
+            errorContainer.html('');
+
+            if (input.files[0].type.indexOf('image/') < 0) {
+                let err = $('<span />').html(INVALID_FILE_TYPE_ERROR_MESSAGE)
+                    .addClass('text-danger')
+                    .appendTo(errorContainer);
+                return;
+            }
+
+            if (input.files[0].size > 3 * 1024 * 1000) {
+                let err = $('<span />').html(INVALID_SIZE_ERROR_MESSAGE)
+                    .addClass('text-danger')
+                    .appendTo(errorContainer);
+            }
+
             reader.readAsDataURL(input.files[0]);
         }
     }
@@ -66,7 +149,9 @@
         readURL(this);
     });
 
-    // Plugin
+    //=====================================================================================
+    //                                   Plugin for file-upload
+    //=====================================================================================
     (function ($) {
         "use strict";
 

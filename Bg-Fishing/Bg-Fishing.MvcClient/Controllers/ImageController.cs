@@ -45,9 +45,16 @@ namespace Bg_Fishing.MvcClient.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(HttpPostedFileBase file, AddImageViewModel model)
         {
-            if (ModelState.IsValid && file != null)
+            if (file == null)
             {
-                if (file.ContentLength > 0 && file.ContentLength <= Constants.ImageMaxSize)
+                ModelState.AddModelError("", "Не е избран файл!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var isValidaFIle = file.ContentLength > 0 && file.ContentLength <= Constants.ImageMaxSize;
+
+                if (isValidaFIle)
                 {
                     try
                     {
@@ -61,10 +68,10 @@ namespace Bg_Fishing.MvcClient.Controllers
                         }
 
                         var gallery = this.imageGalleryService.FindById(model.SelectedImageGalleryId);
-                        
-                        gallery.Images.Add(image);
 
-                        this.imageGalleryService.Save();
+                        //gallery.Images.Add(image);
+
+                        //this.imageGalleryService.Save();
 
                     }
                     catch (ArgumentException ex)
@@ -115,16 +122,9 @@ namespace Bg_Fishing.MvcClient.Controllers
 
         private void LoadNames(AddImageViewModel model)
         {
-            var lakeNames = this.lakeService.GetAll();
-            var list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = "-----" });
+            var lakes = this.lakeService.GetAll();
 
-            foreach (var lake in lakeNames)
-            {
-                list.Add(new SelectListItem() { Text = lake.Name, Value = lake.Id });
-            }
-
-            model.GalleryNames = list;
+            model.Lakes = lakes;
         }
     }
 }
