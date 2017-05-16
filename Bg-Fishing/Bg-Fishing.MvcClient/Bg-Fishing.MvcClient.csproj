@@ -488,6 +488,8 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Images\Galleries\" />
+    <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\LakeComments\" />
   </ItemGroup>
   <ItemGroup>

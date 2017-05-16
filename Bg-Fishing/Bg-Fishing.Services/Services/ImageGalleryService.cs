@@ -6,6 +6,7 @@ using Bg_Fishing.Models.Galleries;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
+using System.Data.Entity;
 
 namespace Bg_Fishing.Services
 {
@@ -56,7 +57,8 @@ namespace Bg_Fishing.Services
 
         public IEnumerable<ImageGalleryModel> GetByLake(string lakeName)
         {
-            var gallery = this.dbContext.ImageGalleries.Where(g => g.Lake.Name == lakeName)
+            var gallery = this.dbContext.ImageGalleries.Include(g => g.Images)
+                                                        .Where(g => g.Lake.Name == lakeName)
                                                         .Select(ImageGalleryModel.Cast);
 
             return gallery;

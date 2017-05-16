@@ -13,6 +13,8 @@ namespace Bg_Fishing.Services.Contracts
 
         Lake FindByName(string name);
 
+        string GetLakeName(string id);
+
         IEnumerable<LakeModel> FindByLocation(string locationName);
 
         int Save();

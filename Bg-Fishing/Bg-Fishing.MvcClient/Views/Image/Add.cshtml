@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="col-sm-8 col-sm-offset-2">
-        @using (Html.BeginForm("Add", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Add", "Image", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -20,7 +20,7 @@
                 <div class="col-sm-6">
                     @{
                         @Html.LabelFor(m => m.SelectedImageGalleryId, new { @class = "label label-success", @for = "lakes-list" })
-                        <select class="form-control" id="lakes-list">
+                        <select class="form-control" id="lakes-list" name="SelectedLakeId">
                             <option>-----</option>
                             @foreach(var lake in Model.Lakes)
                             {
@@ -32,14 +32,12 @@
 
                 <div class="col-sm-6">
                     @Html.LabelFor(m => m.Name, new { @class = "label label-success", @for = "galleries-list" })
-                    <select class="form-control" id="galleries-list">
-                        <option>-----</option>
-                        <option value="Test-value">Test-text</option>
+                    <select class="form-control" id="galleries-list"  name="SelectedImageGalleryId" disabled>
                     </select>
                 </div>
                 <div class="form-group col-sm-12">
                     <label for="name-input" class="label label-success">Създай нова галерия</label>
-                    @Html.TextBoxFor(m => m.Name, new { @id = "name-input", @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Name, new { @id = "name-input", @class = "form-control", @disabled = "disabled" })
 
                     @Html.LabelFor(m => m.ImageInfo, new { @class = "label label-success" })
                     @Html.TextAreaFor(m => m.ImageInfo, new { @class = "form-control", @rows = 6 })
@@ -56,7 +54,7 @@
                                 <span class="glyphicon glyphicon-level-up"></span>
                             </span>
                             <span class="fileinput-exists">Change</span>
-                            <input type="file" name="...">
+                            <input type="file" name="file">
                         </span>
                         <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                     </div>
@@ -86,6 +84,21 @@
 
         if (value && value !== defaultValue) {
             // TODO: Get galleries from server and load them in select#galleries-list !!!
+            $.get(`/Image/GetGalleries?lakeName=${text}`, (data) => {
+                let result = JSON.parse(data),
+                    options = '<option>-----</option>';
+
+                for (let i = 0, len = result.length; i < len; i += 1) {
+                    options += `<option value="${result[i]['Id']}">${result[i]['Name']}</option>`;
+                };
+
+
+                $('#galleries-list').removeAttr('disabled').html(options);
+                $('#name-input').removeAttr('disabled');
+            })
+        } else {
+            $('#galleries-list').html('').attr('disabled', '');
+            $('#name-input').val('').attr('disabled', '');
         }
     })
 

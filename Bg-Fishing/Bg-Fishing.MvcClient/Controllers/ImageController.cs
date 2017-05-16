@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+
+using Newtonsoft.Json;
 
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Models;
@@ -14,21 +15,33 @@ namespace Bg_Fishing.MvcClient.Controllers
     public class ImageController : Controller
     {
         private IImageGalleryService imageGalleryService;
-        private IImageFactory imageFactory;
-        private IDateProvider dateProvider;
         private ILakeService lakeService;
+        private IImageFactory imageFactory;
+        private IImageGalleryFactory imageGalleryFactory;
+        private IDateProvider dateProvider;
+        private IDirectoryHelper directoryHelper;
 
-        public ImageController(IImageGalleryService imageGalleryService, IImageFactory imageFactory, IDateProvider dateProvider, ILakeService lakeService)
+        public ImageController(
+            IImageGalleryService imageGalleryService, 
+            IImageFactory imageFactory, 
+            IDateProvider dateProvider, 
+            ILakeService lakeService,
+            IImageGalleryFactory imageGalleryFactory,
+            IDirectoryHelper directoryHelper)
         {
             Validator.ValidateForNull(imageGalleryService, paramName: "imageGalleryService");
             Validator.ValidateForNull(imageFactory, paramName: "imageFactory");
             Validator.ValidateForNull(dateProvider, paramName: "dateProvider");
             Validator.ValidateForNull(lakeService, paramName: "lakeService");
+            Validator.ValidateForNull(imageGalleryFactory, paramName: "imageGalleryFactory");
+            Validator.ValidateForNull(directoryHelper, paramName: "directoryHelper");
 
             this.imageGalleryService = imageGalleryService;
             this.imageFactory = imageFactory;
             this.dateProvider = dateProvider;
             this.lakeService = lakeService;
+            this.imageGalleryFactory = imageGalleryFactory;
+            this.directoryHelper = directoryHelper;
         }
 
         [Authorize]
@@ -47,20 +60,26 @@ namespace Bg_Fishing.MvcClient.Controllers
         {
             if (file == null)
             {
-                ModelState.AddModelError("", "Не е избран файл!");
+                ModelState.AddModelError("", GlobalMessages.NoFileErrorMessage);
             }
-
-            if (ModelState.IsValid)
+            else if (ModelState.IsValid)
             {
-                var isValidaFIle = file.ContentLength > 0 && file.ContentLength <= Constants.ImageMaxSize;
+                var isValidFIle = file.ContentLength > 0 && file.ContentLength <= Constants.ImageMaxSize;
 
-                if (isValidaFIle)
+                if (isValidFIle)
                 {
                     try
                     {
                         var date = this.dateProvider.GetDate();
-                        var url = file.FileName; // TODO: fix this!!!
-                        // TODO: Save file!
+                        var lakeName = this.lakeService.GetLakeName(model.SelectedLakeId);
+                        var path = Server.MapPath(
+                            $"{Constants.ImageGalleriesBaseServerFolder}/{lakeName}/");
+
+                        directoryHelper.CreateIfNotExist(path);
+
+                        var url = $"{Constants.ImageGalleriesBaseFolder}/{lakeName}/{file.FileName}"; 
+                        file.SaveAs(Server.MapPath(url));
+
                         var image = this.imageFactory.CreateImage(url, date, model.ImageInfo);
                         if (User.IsInRole("Moderator"))
                         {
@@ -68,10 +87,14 @@ namespace Bg_Fishing.MvcClient.Controllers
                         }
 
                         var gallery = this.imageGalleryService.FindById(model.SelectedImageGalleryId);
+                        if (gallery == null)
+                        {
+                            gallery = this.imageGalleryFactory.CreateImageGallery(model.Name, model.SelectedLakeId);
+                        }
 
-                        //gallery.Images.Add(image);
+                        gallery.Images.Add(image);
 
-                        //this.imageGalleryService.Save();
+                        this.imageGalleryService.Save();
 
                     }
                     catch (ArgumentException ex)
@@ -82,6 +105,8 @@ namespace Bg_Fishing.MvcClient.Controllers
             }
 
             this.LoadNames(model);
+            model.SelectedImageGalleryId = null;
+            model.Name = null;
 
             return View(model);
         }
@@ -118,6 +143,15 @@ namespace Bg_Fishing.MvcClient.Controllers
         {
             // TODO: Get image from service and confirm it!
             return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public string GetGalleries(string lakeName)
+        {
+            var galleries = this.imageGalleryService.GetByLake(lakeName);
+
+            return JsonConvert.SerializeObject(galleries);
         }
 
         private void LoadNames(AddImageViewModel model)

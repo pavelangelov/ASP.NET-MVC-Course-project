@@ -23,6 +23,9 @@ namespace Bg_Fishing.MvcClient.Models
         public string ImageInfo { get; set; }
 
         [Display(Name = "Избери категория")]
+        public string SelectedLakeId { get; set; }
+
+        [Display(Name = "Избери категория")]
         public string SelectedImageGalleryId { get; set; }
 
         [Required(ErrorMessage = "Не е избрана галерия към която да се добави снимката!")]

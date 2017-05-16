@@ -251,3 +251,4 @@ paket-files/
 .idea/
 *.sln.iml
 /Bg-Fishing/OpenCover
+/Bg-Fishing/Bg-Fishing.MvcClient/Images/Galleries/

@@ -40,6 +40,14 @@ namespace Bg_Fishing.Services
 
             return lake;
         }
+        
+
+        public string GetLakeName(string id)
+        {
+            var lakeName = this.dbContext.Lakes.Find(id).Name;
+
+            return lakeName;
+        }
 
         public IEnumerable<LakeModel> GetAll()
         {

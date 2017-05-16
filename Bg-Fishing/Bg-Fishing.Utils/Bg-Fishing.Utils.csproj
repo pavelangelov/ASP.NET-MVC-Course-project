@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Contracts\IDateProvider.cs" />
+    <Compile Include="Contracts\IDirectoryHelper.cs" />
     <Compile Include="DateProvider.cs" />
+    <Compile Include="DirectoryHelper.cs" />
     <Compile Include="GlobalMessages.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

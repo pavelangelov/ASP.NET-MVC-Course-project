@@ -56,6 +56,13 @@
 
         #endregion
 
+        #region ImageController
+
+        public const string ImageGalleriesBaseFolder = "/Images/Galleries";
+        public const string ImageGalleriesBaseServerFolder = "~/Images/Galleries";
+
+        #endregion
+
         public const string NewsDefaultImage = "";
 
         public const int ShowedNewsCount = 5;

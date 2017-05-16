@@ -81,5 +81,11 @@
         public const string RemoveVideoErroMessage = "Визникна грешка при премахването на видеото";
 
         #endregion
+
+        #region ImageController
+
+        public const string NoFileErrorMessage = "Не е избран файл!";
+
+        #endregion
     }
 }
