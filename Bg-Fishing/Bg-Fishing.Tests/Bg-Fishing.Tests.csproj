@@ -114,6 +114,7 @@
     <Compile Include="Models\FishTests\Constructor_Should.cs" />
     <Compile Include="Models\Galleries\ImageGalleryTests\Constructor_Should.cs" />
     <Compile Include="Models\Galleries\ImageTests\Constructor_Should.cs" />
+    <Compile Include="Models\InnerCommentTests\Constructor_Should.cs" />
     <Compile Include="Models\LakeTests\Constructor_Should.cs" />
     <Compile Include="Models\LocationTests\Constructor_Should.cs" />
     <Compile Include="Models\NewsCommentTests\Constructor_Should.cs" />
