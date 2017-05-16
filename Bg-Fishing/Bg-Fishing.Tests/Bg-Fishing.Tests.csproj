@@ -183,6 +183,14 @@
     <Compile Include="Services\FishServiceTests\GetAllByType_Should.cs" />
     <Compile Include="Services\FishServiceTests\GetAll_Should.cs" />
     <Compile Include="Services\FishServiceTests\Save_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\AddImageToGallery_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\Add_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\Constructor_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\FindById_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\GetAllImages_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\GetAllUnconfirmed_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\GetByLake_Should.cs" />
+    <Compile Include="Services\ImageGalleryServiceTests\Save_Should.cs" />
     <Compile Include="Services\LakeServiceTests\Add_Should.cs" />
     <Compile Include="Services\LakeServiceTests\Constructor_Should.cs" />
     <Compile Include="Services\LakeServiceTests\FindByLocation_Should.cs" />
