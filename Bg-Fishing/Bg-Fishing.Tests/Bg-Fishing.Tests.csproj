@@ -188,6 +188,7 @@
     <Compile Include="Services\LakeServiceTests\FindByLocation_Should.cs" />
     <Compile Include="Services\LakeServiceTests\FindByName_Should.cs" />
     <Compile Include="Services\LakeServiceTests\GetAll_Should.cs" />
+    <Compile Include="Services\LakeServiceTests\GetLakeName_Should.cs" />
     <Compile Include="Services\LakeServiceTests\Save_Should.cs" />
     <Compile Include="Services\LocationServiceTests\Add_Should.cs" />
     <Compile Include="Services\LocationServiceTests\Constructor_Should.cs" />
