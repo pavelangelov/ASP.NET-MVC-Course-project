@@ -131,6 +131,7 @@
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\GetEdit_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\PostEdit_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\Constructor_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\GetGalleries_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\GetIndex_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\NewsControllerTests\PostIndex_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\RemoveFish_Should.cs" />
@@ -161,6 +162,9 @@
     <Compile Include="MvcClient\Controllers\HomeControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\HomeControllerTests\Index_Should.cs" />
     <Compile Include="MvcClient\Controllers\HomeControllerTests\News_Should.cs" />
+    <Compile Include="MvcClient\Controllers\ImageControllerTests\Constructor_Should.cs" />
+    <Compile Include="MvcClient\Controllers\ImageControllerTests\GetAdd_Should.cs" />
+    <Compile Include="MvcClient\Controllers\ImageControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\AddComment_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Details_Should.cs" />
