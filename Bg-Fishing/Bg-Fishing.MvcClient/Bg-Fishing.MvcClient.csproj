@@ -416,9 +416,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\page-scripts\add-comment.js" />
+    <Content Include="Scripts\page-scripts\add-image.js" />
     <Content Include="Scripts\page-scripts\add-lake.js" />
     <Content Include="Scripts\page-scripts\add-location.js" />
     <Content Include="Scripts\page-scripts\comments-signalr.js" />
+    <Content Include="Scripts\page-scripts\file-upload-plugin.js" />
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\hide-result.js" />
     <Content Include="Scripts\page-scripts\home.js" />
