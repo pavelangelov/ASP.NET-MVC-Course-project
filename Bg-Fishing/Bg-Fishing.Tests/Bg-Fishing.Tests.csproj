@@ -126,6 +126,7 @@
     <Compile Include="MvcClient\ApiControllers\SearchControllerTests\Lakes_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\ApiControllers\VideosControllerTests\GetVideos_Should.cs" />
+    <Compile Include="MvcClient\Areas\Moderator\Controllers\FishControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\FishControllerTests\GetAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\FishControllerTests\PostAdd_Should.cs" />
     <Compile Include="MvcClient\Areas\Moderator\Controllers\LakeControllerTests\GetEdit_Should.cs" />

@@ -22,7 +22,13 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedFishService = new Mock<IFishService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(null, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(
+                null, 
+                mockedLocationFactory.Object, 
+                mockedLakeService.Object, 
+                mockedLocationService.Object, 
+                mockedFishService.Object)).Message;
+
             StringAssert.Contains("lakeFactory", message);
         }
 
@@ -36,7 +42,13 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedFishService = new Mock<IFishService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(mockedLakeFactory.Object, null, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(
+                mockedLakeFactory.Object, 
+                null,
+                mockedLakeService.Object, 
+                mockedLocationService.Object, 
+                mockedFishService.Object)).Message;
+
             StringAssert.Contains("locationFactory", message);
         }
 
@@ -50,7 +62,13 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedFishService = new Mock<IFishService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, null, mockedLocationService.Object, mockedFishService.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(
+                mockedLakeFactory.Object, 
+                mockedLocationFactory.Object, 
+                null, 
+                mockedLocationService.Object, 
+                mockedFishService.Object)).Message;
+
             StringAssert.Contains("lakeService", message);
         }
 
@@ -64,8 +82,34 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedFishService = new Mock<IFishService>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, null, mockedFishService.Object)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(
+                mockedLakeFactory.Object, 
+                mockedLocationFactory.Object, 
+                mockedLakeService.Object, 
+                null, 
+                mockedFishService.Object)).Message;
+
             StringAssert.Contains("locationService", message);
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_IFishServiceIsNull()
+        {
+            // Arrange
+            var mockedLakeFactory = new Mock<ILakeFactory>();
+            var mockedLocationFactory = new Mock<ILocationFactory>();
+            var mockedLakeService = new Mock<ILakeService>();
+            var mockedLocationService = new Mock<ILocationService>();
+
+            // Act & Assert
+            var message = Assert.Throws<ArgumentNullException>(() => new LakeController(
+                mockedLakeFactory.Object, 
+                mockedLocationFactory.Object,
+                mockedLakeService.Object, 
+                mockedLocationService.Object,
+                null)).Message;
+
+            StringAssert.Contains("fishService", message);
         }
 
         [Test]
@@ -79,7 +123,12 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.LakeControllerT
             var mockedFishService = new Mock<IFishService>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new LakeController(mockedLakeFactory.Object, mockedLocationFactory.Object, mockedLakeService.Object, mockedLocationService.Object, mockedFishService.Object));
+            Assert.DoesNotThrow(() => new LakeController(
+                mockedLakeFactory.Object, 
+                mockedLocationFactory.Object,
+                mockedLakeService.Object,
+                mockedLocationService.Object, 
+                mockedFishService.Object));
         }
     }
 }
