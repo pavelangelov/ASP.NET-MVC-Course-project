@@ -3,9 +3,9 @@
 using Moq;
 using NUnit.Framework;
 
+using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
-using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
@@ -16,15 +16,53 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
         [Test]
         public void ThrowArgumentNullException_IfCommentServiceIsNull()
         {
-            // Arrange, Act & Assert
+            // Arrange
             var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(null, mockedInnerCommentFactory.Object, mockedDateProvider.Object)).Message;
+
+            // Act & Assert
+            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(
+                null, 
+                mockedInnerCommentFactory.Object, 
+                mockedDateProvider.Object)).Message;
+
             StringAssert.Contains("commentService", message);
         }
 
         [Test]
-        public void NotThrow_IfCommentServiceIsNotNull()
+        public void ThrowArgumentNullException_IfInnerCommentFactoryIsNull()
+        {
+            // Arrange
+            var mockedCommentService = new Mock<ICommentService>();
+            var mockedDateProvider = new Mock<IDateProvider>();
+
+            // Act & Assert
+            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(
+                mockedCommentService.Object,
+                null,
+                mockedDateProvider.Object)).Message;
+
+            StringAssert.Contains("innerCommentFactory", message);
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_IfDateProviderIsNull()
+        {
+            // Arrange
+            var mockedCommentService = new Mock<ICommentService>();
+            var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
+
+            // Act & Assert
+            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(
+                mockedCommentService.Object,
+                mockedInnerCommentFactory.Object,
+                null)).Message;
+
+            StringAssert.Contains("dateProvider", message);
+        }
+
+        [Test]
+        public void NotThrow_IfAllDependenciesAreValid()
         {
             // Arrange
             var mockedCommentService = new Mock<ICommentService>();
