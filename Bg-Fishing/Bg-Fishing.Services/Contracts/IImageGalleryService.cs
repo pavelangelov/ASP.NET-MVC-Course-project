@@ -51,6 +51,12 @@ namespace Bg_Fishing.Services.Contracts
         IEnumerable<ImageModel> GetAllImages(string galleryId);
 
         /// <summary>
+        /// Get all galleries that have unconfirmed images.
+        /// </summary>
+        /// <returns>Returns <see cref="IEnumerable{ImageGalleryModel}"/></returns>
+        IEnumerable<ImageGalleryModel> GetGalleriesWithUnconfirmedImages();
+
+        /// <summary>
         /// Get all unconfirmed images.
         /// </summary>
         /// <param name="galleryId">The Id of the gallery.</param>

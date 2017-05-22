@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Bg_Fishing.Services.Models.ImageGalleryModel>
+
+@{
+    ViewBag.Title = "Confirm";
+}
+
+@section PageStyles {
+    <link href="~/Content/page-styles/confirm-image.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div id="galleries-container" class="row col-sm-9">
+        <select id="galleries-select" class="form-control col-sm-6 col-sm-offset-3">
+            <option>Избери галлерия</option>
+            @foreach (var gallery in Model)
+            {
+                <option value="@gallery.Id">@gallery.Name</option>
+            }
+        </select>
+    </div>
+    <div class="row col-sm-12">
+        <hr />
+        @Html.AntiForgeryToken()
+        <div id="images-container">
+
+        </div>
+    </div>
+</div>
+
+@section PageScripts {
+    <script src="~/Scripts/page-scripts/confirm-image.js"></script>
+}

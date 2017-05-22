@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\CommentsController.cs" />
+    <Compile Include="ApiControllers\ImagesController.cs" />
     <Compile Include="ApiControllers\SearchController.cs" />
     <Compile Include="ApiControllers\VideosController.cs" />
     <Compile Include="App_GlobalResources\ValidationMessages.Designer.cs">
@@ -281,6 +282,7 @@
     <Content Include="Content\page-styles\404.css" />
     <Content Include="Content\page-styles\500.css" />
     <Content Include="Content\page-styles\add-image.css" />
+    <Content Include="Content\page-styles\confirm-image.css" />
     <Content Include="Content\page-styles\details.css" />
     <Content Include="Content\page-styles\fish-list-index.css" />
     <Content Include="Content\page-styles\home-style.css" />
@@ -420,6 +422,7 @@
     <Content Include="Scripts\page-scripts\add-lake.js" />
     <Content Include="Scripts\page-scripts\add-location.js" />
     <Content Include="Scripts\page-scripts\comments-signalr.js" />
+    <Content Include="Scripts\page-scripts\confirm-image.js" />
     <Content Include="Scripts\page-scripts\file-upload-plugin.js" />
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\hide-result.js" />
@@ -484,6 +487,7 @@
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Image\Add.cshtml" />
     <Content Include="Views\Image\Remove.cshtml" />
+    <Content Include="Views\Image\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

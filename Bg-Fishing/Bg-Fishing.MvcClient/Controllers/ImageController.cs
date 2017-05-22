@@ -132,17 +132,27 @@ namespace Bg_Fishing.MvcClient.Controllers
         [HttpGet]
         public ActionResult Confirm()
         {
-            // TODO: Get all unconfirmed images from service, and show it!
-            return View();
+            var galleries = this.imageGalleryService.GetGalleriesWithUnconfirmedImages();
+
+            return View(galleries);
         }
 
+        [HttpPut]
         [Authorize(Roles = "Moderator")]
-        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Confirm(string imageId)
+        public string Confirm(string imageId)
         {
-            // TODO: Get image from service and confirm it!
-            return View();
+            try
+            {
+                this.imageGalleryService.ConfirmImage(imageId);
+                this.imageGalleryService.Save();
+
+                return JsonConvert.SerializeObject(new { status = "success", message = "Изображението е потвърдено" });
+            }
+            catch (NullReferenceException)
+            {
+                return JsonConvert.SerializeObject(new { status = "error", message = "Опитвате се да потвърдите невалидно изображение!" });
+            }
         }
 
         [HttpGet]

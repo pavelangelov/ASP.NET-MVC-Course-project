@@ -7,6 +7,7 @@ using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
 using System.Data.Entity;
+using System;
 
 namespace Bg_Fishing.Services
 {
@@ -76,6 +77,15 @@ namespace Bg_Fishing.Services
                                                 .Images
                                                 .Where(i => !i.IsConfirmed)
                                                 .Select(ImageModel.Cast);
+        }
+
+        public IEnumerable<ImageGalleryModel> GetGalleriesWithUnconfirmedImages()
+        {
+            var galleries = 
+                this.dbContext.ImageGalleries.Where(g => g.Images.Any(i => !i.IsConfirmed))
+                                                .Select(ImageGalleryModel.Cast);
+
+            return galleries;
         }
         
         public int Save()

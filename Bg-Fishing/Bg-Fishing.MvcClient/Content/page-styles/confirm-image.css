@@ -1,0 +1,10 @@
+﻿div.response {
+    text-align: center;
+    height: 13em;
+    padding-top: 6em;
+    font-weight: bolder;
+}
+
+div.thumbnail img {
+    height: 10.5em;
+}
