@@ -17,6 +17,12 @@ namespace Bg_Fishing.Services.Contracts
         ImageGallery FindById(string id);
 
         /// <summary>
+        /// Mark image as confirmed.
+        /// </summary>
+        /// <param name="imageId">The Id of the image.</param>
+        void ConfirmImage(string imageId);
+
+        /// <summary>
         /// Get all Galleries that contains images for passed lake name.
         /// </summary>
         /// <param name="lakeName">The name of the Lake.</param>

@@ -60,6 +60,6 @@ namespace Bg_Fishing.Models.Galleries
         /// <summary>
         /// Get all images from the gallery.
         /// </summary>
-        public virtual ICollection<Image> Images { get; private set; }
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

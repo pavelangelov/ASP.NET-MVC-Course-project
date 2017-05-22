@@ -47,6 +47,11 @@ namespace Bg_Fishing.Services
             return gallery;
         }
 
+        public void ConfirmImage(string imageId)
+        {
+            this.dbContext.Images.Find(imageId).IsConfirmed = true;
+        }
+
         public IEnumerable<ImageModel> GetAllImages(string galleryId)
         {
             return this.dbContext.ImageGalleries.Find(galleryId)
@@ -64,10 +69,13 @@ namespace Bg_Fishing.Services
             return gallery;
         }
 
-        public IEnumerable<ImageModel> GetAllUnconfirmed()
+        public IEnumerable<ImageModel> GetAllUnconfirmed(string galleryId)
         {
-            return this.dbContext.Images.Where(i => !i.IsConfirmed)
-                                        .Select(ImageModel.Cast);
+            return this.dbContext.ImageGalleries.Include(g => g.Images)
+                                                .FirstOrDefault(g => g.Id == galleryId)
+                                                .Images
+                                                .Where(i => !i.IsConfirmed)
+                                                .Select(ImageModel.Cast);
         }
         
         public int Save()
