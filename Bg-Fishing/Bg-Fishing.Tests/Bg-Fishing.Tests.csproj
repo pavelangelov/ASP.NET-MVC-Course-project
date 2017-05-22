@@ -165,7 +165,9 @@
     <Compile Include="MvcClient\Controllers\HomeControllerTests\News_Should.cs" />
     <Compile Include="MvcClient\Controllers\ImageControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\ImageControllerTests\GetAdd_Should.cs" />
+    <Compile Include="MvcClient\Controllers\ImageControllerTests\GetConfirm_Should.cs" />
     <Compile Include="MvcClient\Controllers\ImageControllerTests\PostAdd_Should.cs" />
+    <Compile Include="MvcClient\Controllers\ImageControllerTests\PutConfirm_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\AddComment_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Constructor_Should.cs" />
     <Compile Include="MvcClient\Controllers\LakesControllerTests\Details_Should.cs" />
