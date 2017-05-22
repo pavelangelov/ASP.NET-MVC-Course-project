@@ -11,7 +11,7 @@
 <div class="container">
     <div id="galleries-container" class="row col-sm-9">
         <select id="galleries-select" class="form-control col-sm-6 col-sm-offset-3">
-            <option>Избери галлерия</option>
+            <option>Избери галерия</option>
             @foreach (var gallery in Model)
             {
                 <option value="@gallery.Id">@gallery.Name</option>
@@ -21,9 +21,7 @@
     <div class="row col-sm-12">
         <hr />
         @Html.AntiForgeryToken()
-        <div id="images-container">
-
-        </div>
+        <div id="images-container"></div>
     </div>
 </div>
 
