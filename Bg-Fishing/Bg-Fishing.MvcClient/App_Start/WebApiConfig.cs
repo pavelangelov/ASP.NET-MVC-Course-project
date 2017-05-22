@@ -33,6 +33,18 @@ namespace Bg_Fishing.MvcClient
                 );
 
             config.Routes.MapHttpRoute(
+                name: "GetLakeGalleries",
+                routeTemplate: "api/images/galleries/{name}",
+                defaults: new { controller = "Images", action = "GetAllGalleriesForLake" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetGalleryImages",
+                routeTemplate: "api/images/gallery/{id}",
+                defaults: new { controller = "Images", action = "GetImagesFromGallery" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

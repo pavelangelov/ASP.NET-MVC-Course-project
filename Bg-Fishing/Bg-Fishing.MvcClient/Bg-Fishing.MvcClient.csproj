@@ -286,6 +286,7 @@
     <Content Include="Content\page-styles\details.css" />
     <Content Include="Content\page-styles\fish-list-index.css" />
     <Content Include="Content\page-styles\home-style.css" />
+    <Content Include="Content\page-styles\images-gallery.css" />
     <Content Include="Content\page-styles\lake-page.css" />
     <Content Include="Content\page-styles\nav-bar-styles.css" />
     <Content Include="Content\page-styles\news-details.css" />
@@ -427,6 +428,7 @@
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\hide-result.js" />
     <Content Include="Scripts\page-scripts\home.js" />
+    <Content Include="Scripts\page-scripts\images-gallery.js" />
     <Content Include="Scripts\page-scripts\load-comments.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />
     <Content Include="Scripts\page-scripts\remove-video.js" />
@@ -488,6 +490,7 @@
     <Content Include="Views\Image\Add.cshtml" />
     <Content Include="Views\Image\Remove.cshtml" />
     <Content Include="Views\Image\Confirm.cshtml" />
+    <Content Include="Views\Image\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Bg_Fishing.Services.Models.LakeModel>
+
+@{
+    ViewBag.Title = "Снимки";
+}
+
+@section PageStyles {
+    <link href="~/Content/page-styles/images-gallery.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="col-sm-3">
+        <select id="galleries-select" class="form-control">
+            <option>Избери язовир</option>
+            @foreach (var lake in Model)
+            {
+                <option value="@lake.Id">@lake.Name</option>
+            }
+        </select>
+    </div>
+    <div id="gallery-container" class="row col-sm-12">
+        <div id="lake-galleries-list" class="col-sm-2"></div>
+        <div id="images" class="col-sm-10">
+            <div id="images-list"></div>
+            <div id="current-image-container"></div>
+        </div>
+    </div>
+</div>
+
+@section PageScripts {
+    <script src="~/Scripts/page-scripts/images-gallery.js"></script>
+    }

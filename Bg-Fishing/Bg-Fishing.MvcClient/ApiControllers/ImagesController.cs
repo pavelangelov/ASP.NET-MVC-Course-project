@@ -20,12 +20,28 @@ namespace Bg_Fishing.MvcClient.ApiControllers
 
         [HttpGet]
         [Authorize(Roles = "Moderator")]
-        public string ForGallery(string id)
+        public string GetUnconfirmedFromGallery(string id)
         {
             var images = this.imageGalleryService.GetAllUnconfirmed(id);
 
             var result = JsonConvert.SerializeObject(new { result = images });
             return result;
+        }
+
+        [HttpGet]
+        public string GetAllGalleriesForLake(string name)
+        {
+            var galleries = this.imageGalleryService.GetByLake(name);
+
+            return JsonConvert.SerializeObject(new { result = galleries });
+        }
+
+        [HttpGet]
+        public string GetImagesFromGallery(string id)
+        {
+            var images = this.imageGalleryService.GetAllImages(id);
+
+            return JsonConvert.SerializeObject(new { result = images });
         }
     }
 }

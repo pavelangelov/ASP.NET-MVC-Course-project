@@ -28,7 +28,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesControllerTests
             var expectedResult = JsonConvert.SerializeObject(mockedCollection);
 
             // Act
-            var result = controller.ForGallery(searchedGalleryId);
+            var result = controller.GetUnconfirmedFromGallery(searchedGalleryId);
 
             // Assert
             StringAssert.Contains(expectedResult, result);

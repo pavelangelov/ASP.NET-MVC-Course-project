@@ -44,6 +44,14 @@ namespace Bg_Fishing.MvcClient.Controllers
             this.directoryHelper = directoryHelper;
         }
 
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var lakes = this.lakeService.GetAll();
+
+            return View(lakes);
+        }
+
         [Authorize]
         [HttpGet]
         public ActionResult Add()

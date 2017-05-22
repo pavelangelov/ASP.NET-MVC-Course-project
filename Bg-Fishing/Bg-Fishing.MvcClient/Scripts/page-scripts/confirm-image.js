@@ -18,7 +18,7 @@ $('#galleries-select').on('change', (ev) => {
                     .appendTo(fragment);
             });
 
-            $('#images-container').append(fragment);
+            $('#images-container').html(fragment);
         })
     }
 })
