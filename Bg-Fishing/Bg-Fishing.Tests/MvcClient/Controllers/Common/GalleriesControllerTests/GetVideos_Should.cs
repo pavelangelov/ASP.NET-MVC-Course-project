@@ -22,10 +22,10 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
             var mockedService = new Mock<IVideoService>();
             mockedService.Setup(s => s.GetVideosFromGallery(It.IsAny<string>())).Returns(mockedVideos).Verifiable();
 
-            var controller = new GalleriesController(mockedService.Object);
+            var controller = new VideosController(mockedService.Object);
 
             // Act
-            var result = controller.GetVideos(null);
+            var result = controller.GetAll(null);
 
             // Assert
             StringAssert.Contains(mockedVideos[0].Title, result);

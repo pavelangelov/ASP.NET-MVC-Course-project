@@ -15,7 +15,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
         public void ThrowArgumentNullException_IfVideoServiceIsNull()
         {
             // Arrange, Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new GalleriesController(null)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new VideosController(null)).Message;
             StringAssert.Contains("videoService", message);
         }
 
@@ -26,7 +26,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
             var mockedService = new Mock<IVideoService>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new GalleriesController(mockedService.Object));
+            Assert.DoesNotThrow(() => new VideosController(mockedService.Object));
         }
     }
 }

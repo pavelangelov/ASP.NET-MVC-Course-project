@@ -10,7 +10,7 @@ $('select#lakes-list').change((ev) => {
 
     if (value && value !== defaultValue) {
         // TODO: Get galleries from server and load them in select#galleries-list !!!
-        $.get(`/Image/GetGalleries?lakeName=${text}`, (data) => {
+        $.get(`/image/getGalleries?lakeName=${text}`, (data) => {
             let result = JSON.parse(data),
                 options = '<option>-----</option>';
 

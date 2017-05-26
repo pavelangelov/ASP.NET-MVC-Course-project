@@ -20,7 +20,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
             var mockedVideoService = new Mock<IVideoService>();
             mockedVideoService.Setup(s => s.GetVideoById(It.IsAny<string>())).Returns(mockedVideo).Verifiable();
 
-            var controller = new GalleriesController(mockedVideoService.Object);
+            var controller = new VideosController(mockedVideoService.Object);
 
             // Act
             var result = controller.Watch("some id") as ViewResult;

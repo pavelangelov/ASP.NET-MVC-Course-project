@@ -8,20 +8,19 @@ using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.Controllers.Common
 {
-    public class GalleriesController : Controller
+    public class VideosController : Controller
     {
         private IVideoService videoService;
 
-        public GalleriesController(IVideoService videoService)
+        public VideosController(IVideoService videoService)
         {
             Validator.ValidateForNull(videoService, "videoService");
 
             this.videoService = videoService;
         }
-
-        // GET: Galleries Names
+        
         [HttpGet]
-        public ActionResult Videos()
+        public ActionResult Index()
         {
             var model = new VideoGalleriesViewModel();
 
@@ -32,7 +31,7 @@ namespace Bg_Fishing.MvcClient.Controllers.Common
         }
 
         [HttpGet]
-        public string GetVideos(string galleryId)
+        public string GetAll(string galleryId)
         {
             var videos = this.videoService.GetVideosFromGallery(galleryId);
             

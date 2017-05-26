@@ -5,7 +5,7 @@
     </a>
     <ul class="dropdown-menu" aria-labelledby="options-dropdown">
         <li>
-            @Html.ActionLink("Видео галерии", "Videos", "Galleries", new { Area = "" }, null)
+            @Html.ActionLink("Видео галерии", "Index", "Videos", new { Area = "" }, null)
             @Html.ActionLink("Язовири", "Index", "Lakes", new { Area = "" }, null)
             @Html.ActionLink("Риби", "Index", "FishList", new { Area = "" }, null)
             @if (User.Identity.IsAuthenticated)

@@ -7,7 +7,7 @@ $('#GalleriesSelect').on('change', () => {
         let selectedTitle = $('#GalleriesSelect option[value=' + selectedValue + ']').text();
         $.ajax({
             method: 'GET',
-            url: `/api/Videos?galleryId=${selectedValue}`,
+            url: `/api/videos/${selectedValue}`,
             success: (data) => {
                 if (data !== null && data.length) {
                     $('#gallery-name').text(selectedTitle);

@@ -46,8 +46,8 @@ namespace Bg_Fishing.MvcClient
 
             config.Routes.MapHttpRoute(
                 name: "VideosController",
-                routeTemplate: "api/videos/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/videos/{galleryId}",
+                defaults: new { controller = "VideosApi", action = "GetVideos" }
             );
 
             config.Routes.MapHttpRoute(

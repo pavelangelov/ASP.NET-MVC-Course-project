@@ -7,7 +7,7 @@ $('#galleries').on('change', () => {
         let selectedTitle = $('#galleries option[value=' + selectedValue + ']').text();
         $.ajax({
             method: 'GET',
-            url: `/Galleries/GetVideos?galleryId=${selectedValue}`,
+            url: `/videos/getAll?galleryId=${selectedValue}`,
             success: (data) => {
                 if (data !== null) {
                     let videos = JSON.parse(data);
@@ -44,7 +44,7 @@ function dispalyVideos(videosArr) {
         let videoContainer = $('<div />').addClass('col-sm-4');
 
         let id = video.Id;
-        let videoLink = $('<a />').attr('href', '/galleries/watch?id=' + id).text(video.Title);
+        let videoLink = $('<a />').attr('href', '/videos/watch?id=' + id).text(video.Title);
         let title = $('<h4 />').addClass('text-warning').append(videoLink);
 
         let videoId = video.Url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
