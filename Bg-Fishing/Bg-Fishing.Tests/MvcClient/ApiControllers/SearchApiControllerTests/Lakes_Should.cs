@@ -9,7 +9,7 @@ using Bg_Fishing.MvcClient.WebApiModels;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchApiControllerTests
 {
     [TestFixture]
     public class Lakes_Should
@@ -24,7 +24,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
             var mockedLakeService = new Mock<ILakeService>();
             mockedLakeService.Setup(s => s.FindByLocation(It.IsAny<string>())).Verifiable();
 
-            var controller = new SearchController(mockedLakeService.Object);
+            var controller = new SearchApiController(mockedLakeService.Object);
 
             // Act
             var result = controller.Lakes(model);
@@ -42,7 +42,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
             var mockedLakeService = new Mock<ILakeService>();
             mockedLakeService.Setup(s => s.FindByLocation(It.IsAny<string>())).Verifiable();
 
-            var controller = new SearchController(mockedLakeService.Object);
+            var controller = new SearchApiController(mockedLakeService.Object);
 
             // Act
             var result = controller.Lakes(model);
@@ -66,7 +66,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
             var mockedLakeService = new Mock<ILakeService>();
             mockedLakeService.Setup(s => s.FindByLocation(It.IsAny<string>())).Returns(mockedCollection).Verifiable();
 
-            var controller = new SearchController(mockedLakeService.Object);
+            var controller = new SearchApiController(mockedLakeService.Object);
 
             // Act
             var result = controller.Lakes(model);

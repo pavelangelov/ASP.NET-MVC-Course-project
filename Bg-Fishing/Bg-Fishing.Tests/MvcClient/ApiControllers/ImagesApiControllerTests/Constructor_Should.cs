@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesApiControllerTests
 {
     [TestFixture]
     public class Constructor_Should
@@ -16,7 +16,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesControllerTests
         {
             // Arrange, Act & Assert
 
-            var message = Assert.Throws<ArgumentNullException>(() => new ImagesController(null)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new ImagesApiController(null)).Message;
             StringAssert.Contains("imageGalleryService", message);
         }
 
@@ -27,7 +27,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesControllerTests
             var mockedImageGalleryService = new Mock<IImageGalleryService>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new ImagesController(mockedImageGalleryService.Object));
+            Assert.DoesNotThrow(() => new ImagesApiController(mockedImageGalleryService.Object));
         }
     }
 }

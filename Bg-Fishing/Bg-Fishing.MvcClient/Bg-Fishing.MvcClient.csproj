@@ -208,10 +208,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiControllers\CommentsController.cs" />
-    <Compile Include="ApiControllers\ImagesController.cs" />
-    <Compile Include="ApiControllers\SearchController.cs" />
-    <Compile Include="ApiControllers\VideosController.cs" />
+    <Compile Include="ApiControllers\CommentsApiController.cs" />
+    <Compile Include="ApiControllers\ImagesApiController.cs" />
+    <Compile Include="ApiControllers\SearchApiController.cs" />
+    <Compile Include="ApiControllers\VideosApiController.cs" />
     <Compile Include="App_GlobalResources\ValidationMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchApiControllerTests
 {
     [TestFixture]
     public class Constructor_Should
@@ -15,7 +15,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
         public void ThrowArgumentNullException_IfLakeServiceIsNull()
         {
             // Arrange, Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new SearchController(null)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new SearchApiController(null)).Message;
             StringAssert.Contains("lakeService", message);
         }
 
@@ -26,7 +26,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.SearchControllerTests
             var mockedLakeService = new Mock<ILakeService>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new SearchController(mockedLakeService.Object));
+            Assert.DoesNotThrow(() => new SearchApiController(mockedLakeService.Object));
         }
     }
 }

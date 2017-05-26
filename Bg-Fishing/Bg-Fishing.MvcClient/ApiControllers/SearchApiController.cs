@@ -5,11 +5,11 @@ using Bg_Fishing.Services.Contracts;
 
 namespace Bg_Fishing.MvcClient.ApiControllers
 {
-    public class SearchController : ApiController
+    public class SearchApiController : ApiController
     {
         private ILakeService lakeService;
 
-        public SearchController(ILakeService lakeService)
+        public SearchApiController(ILakeService lakeService)
         {
             Utils.Validator.ValidateForNull(lakeService, paramName: "lakeService");
 

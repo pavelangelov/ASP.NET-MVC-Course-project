@@ -9,7 +9,7 @@ using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsApiControllerTests
 {
     [TestFixture]
     public class Add_Should
@@ -31,7 +31,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
-            var controller = new CommentsController(
+            var controller = new CommentsApiController(
                 mockedCommentService.Object,
                 mockedInnerCommentFactory.Object,
                 mockedDateProvider.Object);
@@ -62,7 +62,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
-            var controller = new CommentsController(
+            var controller = new CommentsApiController(
                 mockedCommentService.Object,
                 mockedInnerCommentFactory.Object,
                 mockedDateProvider.Object);
@@ -97,7 +97,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
             mockedDateProvider.Setup(d => d.GetDate()).Verifiable();
 
-            var controller = new CommentsController(
+            var controller = new CommentsApiController(
                 mockedCommentService.Object,
                 mockedInnerCommentFactory.Object,
                 mockedDateProvider.Object);

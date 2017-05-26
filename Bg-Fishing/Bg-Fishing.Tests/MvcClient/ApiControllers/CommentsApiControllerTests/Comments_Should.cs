@@ -11,7 +11,7 @@ using Bg_Fishing.Services.Models;
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsApiControllerTests
 {
     [TestFixture]
     public class Comments_Should
@@ -34,7 +34,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
 
-            var controller = new CommentsController(mockedCommentService.Object, mockedInnerCommentFactory.Object, mockedDateProvider.Object);
+            var controller = new CommentsApiController(mockedCommentService.Object, mockedInnerCommentFactory.Object, mockedDateProvider.Object);
 
             // Act
             var result = controller.Comments(null, It.IsAny<int>());

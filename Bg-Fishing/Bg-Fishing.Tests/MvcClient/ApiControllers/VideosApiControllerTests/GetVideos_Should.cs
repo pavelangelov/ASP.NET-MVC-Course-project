@@ -8,7 +8,7 @@ using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosApiControllerTests
 {
     [TestFixture]
     public class GetVideos_Should
@@ -20,7 +20,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
             var mockedVideoService = new Mock<IVideoService>();
             mockedVideoService.Setup(s => s.GetVideosFromGallery(It.IsAny<string>())).Verifiable();
 
-            var controller = new VideosController(mockedVideoService.Object);
+            var controller = new VideosApiController(mockedVideoService.Object);
 
             // Act
             var result = controller.GetVideos(It.IsAny<string>());
@@ -38,7 +38,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
             var mockedVideoService = new Mock<IVideoService>();
             mockedVideoService.Setup(s => s.GetVideosFromGallery(It.IsAny<string>())).Returns(mockedCollection).Verifiable();
 
-            var controller = new VideosController(mockedVideoService.Object);
+            var controller = new VideosApiController(mockedVideoService.Object);
 
             // Act
             var result = controller.GetVideos(It.IsAny<string>());

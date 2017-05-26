@@ -8,11 +8,11 @@ using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.ApiControllers
 {
-    public class VideosController : ApiController
+    public class VideosApiController : ApiController
     {
         private IVideoService videoService;
 
-        public VideosController(IVideoService videoService)
+        public VideosApiController(IVideoService videoService)
         {
             Validator.ValidateForNull(videoService, paramName: "videoService");
 

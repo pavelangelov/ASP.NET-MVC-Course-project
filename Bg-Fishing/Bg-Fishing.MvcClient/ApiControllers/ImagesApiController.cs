@@ -7,11 +7,11 @@ using Bg_Fishing.Utils;
 
 namespace Bg_Fishing.MvcClient.ApiControllers
 {
-    public class ImagesController : ApiController
+    public class ImagesApiController : ApiController
     {
         private IImageGalleryService imageGalleryService;
 
-        public ImagesController(IImageGalleryService imageGalleryService)
+        public ImagesApiController(IImageGalleryService imageGalleryService)
         {
             Validator.ValidateForNull(imageGalleryService, paramName: "imageGalleryService");
 

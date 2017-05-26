@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosApiControllerTests
 {
     [TestFixture]
     public class Constructor_Should
@@ -15,7 +15,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
         public void ThrowArgumentNullException_IfVideoServiceIsNull()
         {
             // Arrange, Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new VideosController(null)).Message;
+            var message = Assert.Throws<ArgumentNullException>(() => new VideosApiController(null)).Message;
             StringAssert.Contains("videoService", message);
         }
 
@@ -26,7 +26,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.VideosControllerTests
             var mockedVideoService = new Mock<IVideoService>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new VideosController(mockedVideoService.Object));
+            Assert.DoesNotThrow(() => new VideosApiController(mockedVideoService.Object));
         }
     }
 }

@@ -17,31 +17,37 @@ namespace Bg_Fishing.MvcClient
             config.Routes.MapHttpRoute(
                 name: "Search",
                 routeTemplate: "api/search/{action}/{name}",
-                defaults: new { controller = "Search", name = RouteParameter.Optional }
+                defaults: new { controller = "SearchApi", name = RouteParameter.Optional }
             );
 
             config.Routes.MapHttpRoute(
                 name: "AddInnerComment",
                 routeTemplate: "api/comments/add/{id}/{content}",
-                defaults: new { controller = "Comments" }
+                defaults: new { controller = "CommentsApi" }
                 );
 
             config.Routes.MapHttpRoute(
                 name: "Get",
                 routeTemplate: "api/comments/{name}/{page}",
-                defaults: new { controller = "Comments" }
+                defaults: new { controller = "CommentsApi" }
                 );
 
             config.Routes.MapHttpRoute(
                 name: "GetLakeGalleries",
                 routeTemplate: "api/images/galleries/{name}",
-                defaults: new { controller = "Images", action = "GetAllGalleriesForLake" }
+                defaults: new { controller = "ImagesApi", action = "GetAllGalleriesForLake" }
             );
 
             config.Routes.MapHttpRoute(
                 name: "GetGalleryImages",
                 routeTemplate: "api/images/gallery/{id}",
-                defaults: new { controller = "Images", action = "GetImagesFromGallery" }
+                defaults: new { controller = "ImagesApi", action = "GetImagesFromGallery" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "VideosController",
+                routeTemplate: "api/videos/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
             );
 
             config.Routes.MapHttpRoute(

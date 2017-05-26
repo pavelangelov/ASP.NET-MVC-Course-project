@@ -8,7 +8,7 @@ using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesApiControllerTests
 {
     [TestFixture]
     public class ForGallery_Should
@@ -23,7 +23,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.ImagesControllerTests
                                         .Returns(mockedCollection)
                                         .Verifiable();
 
-            var controller = new ImagesController(mockedImageGalleryService.Object);
+            var controller = new ImagesApiController(mockedImageGalleryService.Object);
             var searchedGalleryId = "Mocked Gallery Id";
             var expectedResult = JsonConvert.SerializeObject(mockedCollection);
 

@@ -11,7 +11,7 @@ using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.MvcClient.ApiControllers
 {
-    public class CommentsController : ApiController
+    public class CommentsApiController : ApiController
     {
         public const int ShowedComments = 10;
 
@@ -19,7 +19,7 @@ namespace Bg_Fishing.MvcClient.ApiControllers
         private IInnerCommentFactory innerCommentFactory;
         private IDateProvider dateProvider;
 
-        public CommentsController(
+        public CommentsApiController(
             ICommentService commentService, 
             IInnerCommentFactory innerCommentFactory,
             IDateProvider dateProvider)

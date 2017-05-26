@@ -8,7 +8,7 @@ using Bg_Fishing.MvcClient.ApiControllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
+namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsApiControllerTests
 {
     [TestFixture]
     public class Constructor_Should
@@ -21,7 +21,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(
+            var message = Assert.Throws<ArgumentNullException>(() => new CommentsApiController(
                 null, 
                 mockedInnerCommentFactory.Object, 
                 mockedDateProvider.Object)).Message;
@@ -37,7 +37,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(
+            var message = Assert.Throws<ArgumentNullException>(() => new CommentsApiController(
                 mockedCommentService.Object,
                 null,
                 mockedDateProvider.Object)).Message;
@@ -53,7 +53,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedInnerCommentFactory = new Mock<IInnerCommentFactory>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new CommentsController(
+            var message = Assert.Throws<ArgumentNullException>(() => new CommentsApiController(
                 mockedCommentService.Object,
                 mockedInnerCommentFactory.Object,
                 null)).Message;
@@ -70,7 +70,7 @@ namespace Bg_Fishing.Tests.MvcClient.ApiControllers.CommentsControllerTests
             var mockedDateProvider = new Mock<IDateProvider>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new CommentsController(mockedCommentService.Object, mockedInnerCommentFactory.Object, mockedDateProvider.Object));
+            Assert.DoesNotThrow(() => new CommentsApiController(mockedCommentService.Object, mockedInnerCommentFactory.Object, mockedDateProvider.Object));
         }
     }
 }
