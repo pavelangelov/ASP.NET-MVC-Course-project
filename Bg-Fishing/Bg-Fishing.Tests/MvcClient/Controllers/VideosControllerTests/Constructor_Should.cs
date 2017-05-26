@@ -3,10 +3,10 @@
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.MvcClient.Controllers.Common;
+using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.Services.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Controllers.VideosControllerTests
 {
     [TestFixture]
     public class Constructor_Should

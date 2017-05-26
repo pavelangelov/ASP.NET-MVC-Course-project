@@ -245,10 +245,10 @@
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\ModeratorBaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Common\VideosController.cs" />
+    <Compile Include="Controllers\VideosController.cs" />
     <Compile Include="Controllers\FishListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\PicturesController.cs" />
     <Compile Include="Controllers\LakesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -487,10 +487,10 @@
     <Content Include="Views\Videos\Watch.cshtml" />
     <Content Include="Views\Lakes\_CommentsPartial.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
-    <Content Include="Views\Image\Add.cshtml" />
-    <Content Include="Views\Image\Remove.cshtml" />
-    <Content Include="Views\Image\Confirm.cshtml" />
-    <Content Include="Views\Image\Index.cshtml" />
+    <Content Include="Views\Pictures\Add.cshtml" />
+    <Content Include="Views\Pictures\Remove.cshtml" />
+    <Content Include="Views\Pictures\Confirm.cshtml" />
+    <Content Include="Views\Pictures\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

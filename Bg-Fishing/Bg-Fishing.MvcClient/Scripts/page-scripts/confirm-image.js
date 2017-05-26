@@ -31,7 +31,7 @@ $('#images-container').on('click', 'button', (ev) => {
         $(`button[img-id=${id}]`).attr('disabled', 'disabled');
         $.ajax({
             method: 'PUT',
-            url: `/image/confirm`,
+            url: `/pictures/confirm`,
             data: {
                 imageId: id,
                 __RequestVerificationToken: token

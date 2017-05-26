@@ -14,7 +14,7 @@ using Bg_Fishing.Tests.MvcClient.Mocks;
 using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Controllers.PicturesControllerTests
 {
     public class PostAdd_Should
     {
@@ -31,7 +31,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedImageGalleryFactory = new Mock<IImageGalleryFactory>();
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
-            var controller = new ImageController(
+            var controller = new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -69,7 +69,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
             mockedHttpContext.Setup(c => c.HttpContext.User.IsInRole(It.IsAny<string>())).Returns(true);
 
-            var controller = new ImageController(
+            var controller = new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -126,7 +126,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
             mockedHttpContext.Setup(c => c.HttpContext.User.IsInRole(It.IsAny<string>())).Returns(true);
 
-            var controller = new ImageController(
+            var controller = new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -193,7 +193,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
             mockedHttpContext.Setup(c => c.HttpContext.User.IsInRole(It.IsAny<string>())).Returns(true);
 
-            var controller = new ImageController(
+            var controller = new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -259,7 +259,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             mockedHttpContext.Setup(c => c.HttpContext.Server.MapPath(It.IsAny<string>())).Returns("Test");
             mockedHttpContext.Setup(c => c.HttpContext.User.IsInRole(It.IsAny<string>())).Returns(false);
 
-            var controller = new ImageController(
+            var controller = new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,

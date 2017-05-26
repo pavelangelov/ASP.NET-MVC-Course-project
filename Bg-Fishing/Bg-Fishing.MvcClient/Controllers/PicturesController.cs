@@ -12,7 +12,7 @@ using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.MvcClient.Controllers
 {
-    public class ImageController : Controller
+    public class PicturesController : Controller
     {
         private IImageGalleryService imageGalleryService;
         private ILakeService lakeService;
@@ -21,7 +21,7 @@ namespace Bg_Fishing.MvcClient.Controllers
         private IDateProvider dateProvider;
         private IDirectoryHelper directoryHelper;
 
-        public ImageController(
+        public PicturesController(
             IImageGalleryService imageGalleryService, 
             IImageFactory imageFactory, 
             IDateProvider dateProvider, 

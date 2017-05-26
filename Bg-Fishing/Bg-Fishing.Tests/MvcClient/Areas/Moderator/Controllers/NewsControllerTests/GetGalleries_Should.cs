@@ -32,7 +32,7 @@ namespace Bg_Fishing.Tests.MvcClient.Areas.Moderator.Controllers.NewsControllerT
             var mockedImageGalleryFactory = new Mock<IImageGalleryFactory>();
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
-            var controller = new ImageController(
+            var controller = new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,

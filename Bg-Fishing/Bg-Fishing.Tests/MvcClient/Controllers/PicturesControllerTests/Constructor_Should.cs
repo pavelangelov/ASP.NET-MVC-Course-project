@@ -8,7 +8,7 @@ using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Controllers.PicturesControllerTests
 {
     [TestFixture]
     public class Constructor_Should
@@ -24,7 +24,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new ImageController(
+            var message = Assert.Throws<ArgumentNullException>(() => new PicturesController(
                 null,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -47,7 +47,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new ImageController(
+            var message = Assert.Throws<ArgumentNullException>(() => new PicturesController(
                 mockedImageGalleryService.Object,
                 null,
                 mockedDateProvider.Object,
@@ -69,7 +69,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new ImageController(
+            var message = Assert.Throws<ArgumentNullException>(() => new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 null,
@@ -91,7 +91,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new ImageController(
+            var message = Assert.Throws<ArgumentNullException>(() => new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -113,7 +113,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new ImageController(
+            var message = Assert.Throws<ArgumentNullException>(() => new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -135,7 +135,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedImageGalleryFactory = new Mock<IImageGalleryFactory>();
 
             // Act & Assert
-            var message = Assert.Throws<ArgumentNullException>(() => new ImageController(
+            var message = Assert.Throws<ArgumentNullException>(() => new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -158,7 +158,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
 
             // Act & Assert
-            Assert.DoesNotThrow(() => new ImageController(
+            Assert.DoesNotThrow(() => new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,

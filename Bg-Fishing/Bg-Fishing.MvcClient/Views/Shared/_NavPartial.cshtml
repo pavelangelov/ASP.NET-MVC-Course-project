@@ -10,7 +10,7 @@
             @Html.ActionLink("Риби", "Index", "FishList", new { Area = "" }, null)
             @if (User.Identity.IsAuthenticated)
             {
-                @Html.ActionLink("Качи снимка", "Add", "Image", new { Area = "" }, new { })
+                @Html.ActionLink("Качи снимка", "Add", "Pictures", new { Area = "" }, new { })
             }
         </li>
     </ul>

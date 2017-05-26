@@ -6,31 +6,32 @@ using NUnit.Framework;
 
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Controllers;
-using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils.Contracts;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Controllers.PicturesControllerTests
 {
     [TestFixture]
-    public class GetAdd_Should
+    public class GetConfirm_Should
     {
         [Test]
-        public void GetLakesFromService_AndRetunDefaultView()
+        public void GetGalleriesWithunconfirmedImages_FromDatabase_AndRenderDefaultView()
         {
             // Arrange
-            var mockedLakesCollection = new List<LakeModel>() { new LakeModel() { Name = "Test" } };
+            var mockedCollection = new List<ImageGalleryModel>();
             var mockedImageGalleryService = new Mock<IImageGalleryService>();
+            mockedImageGalleryService.Setup(s => s.GetGalleriesWithUnconfirmedImages())
+                                        .Returns(mockedCollection)
+                                        .Verifiable();
+
             var mockedImageFactory = new Mock<IImageFactory>();
             var mockedDateProvider = new Mock<IDateProvider>();
             var mockedLakeService = new Mock<ILakeService>();
-            mockedLakeService.Setup(s => s.GetAll()).Returns(mockedLakesCollection).Verifiable();
-
             var mockedImageGalleryFactory = new Mock<IImageGalleryFactory>();
             var mockedDirectoryHelper = new Mock<IDirectoryHelper>();
-            
-            var controller = new ImageController(
+
+            var controller = new PicturesController(
                 mockedImageGalleryService.Object,
                 mockedImageFactory.Object,
                 mockedDateProvider.Object,
@@ -39,15 +40,14 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.ImageControllerTests
                 mockedDirectoryHelper.Object);
 
             // Act
-            var result = controller.Add() as ViewResult;
-            var model = result.Model as AddImageViewModel;
+            var result = controller.Confirm() as ViewResult;
+            var model = result.Model as IEnumerable<ImageGalleryModel>;
 
             // Assert
-            Assert.AreEqual("", result.ViewName);
-            Assert.AreEqual(mockedLakesCollection, model.Lakes);
+            Assert.AreEqual(mockedCollection, model);
+            Assert.IsTrue(result.ViewName == "");
 
-            mockedLakeService.Verify(s => s.GetAll(), Times.Once);
+            mockedImageGalleryService.Verify(s => s.GetGalleriesWithUnconfirmedImages(), Times.Once);
         }
-    
     }
 }

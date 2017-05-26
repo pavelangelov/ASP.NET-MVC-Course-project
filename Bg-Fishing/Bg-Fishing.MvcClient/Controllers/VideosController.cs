@@ -6,7 +6,7 @@ using Bg_Fishing.MvcClient.Models.ViewModels.Common;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Utils;
 
-namespace Bg_Fishing.MvcClient.Controllers.Common
+namespace Bg_Fishing.MvcClient.Controllers
 {
     public class VideosController : Controller
     {

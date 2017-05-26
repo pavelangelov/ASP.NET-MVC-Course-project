@@ -4,15 +4,15 @@ using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
 
-using Bg_Fishing.MvcClient.Controllers.Common;
+using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.MvcClient.Models.ViewModels.Common;
 using Bg_Fishing.Services.Contracts;
 using Bg_Fishing.Services.Models;
 
-namespace Bg_Fishing.Tests.MvcClient.Controllers.Common.GalleriesControllerTests
+namespace Bg_Fishing.Tests.MvcClient.Controllers.VideosControllerTests
 {
     [TestFixture]
-    public class Videos_Should
+    public class Index_Should
     {
         [Test]
         public void GetVideoGalleriesFromService_AndSetToViewModel()
