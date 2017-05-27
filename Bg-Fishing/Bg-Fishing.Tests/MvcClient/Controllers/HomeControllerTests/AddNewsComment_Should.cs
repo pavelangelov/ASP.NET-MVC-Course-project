@@ -10,6 +10,7 @@ using Bg_Fishing.Models.Comments;
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.MvcClient.Models;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
@@ -43,7 +44,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
             // Assert
             Assert.AreEqual("News", result.ViewName);
             Assert.AreEqual(model, viewModel);
-            Assert.IsNull(result.TempData["AddCommentSuccess"]);
+            Assert.IsNull(result.TempData[GlobalMessages.AddNewsCommentSuccessKey]);
 
             mockedNewsService.Verify(s => s.FindById(model.NewsId), Times.Once);
             mockedNewsService.Verify(s => s.Save(), Times.Never);
@@ -78,7 +79,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.HomeControllerTests
             // Assert
             Assert.AreEqual("News", result.ViewName);
             Assert.AreEqual(model, viewModel);
-            Assert.IsNull(result.TempData["AddCommentSuccess"]);
+            Assert.IsNull(result.TempData[GlobalMessages.AddNewsCommentSuccessKey]);
             Assert.IsTrue(result.ViewData.ModelState.ContainsKey(""));
 
             mockedNewsService.Verify(s => s.FindById(model.NewsId), Times.Once);

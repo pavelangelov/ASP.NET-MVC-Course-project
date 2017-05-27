@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Bg_Fishing.Factories.Contracts;
 using Bg_Fishing.MvcClient.Controllers;
 using Bg_Fishing.Services.Contracts;
+using Bg_Fishing.Utils;
 using Bg_Fishing.Utils.Contracts;
 
 namespace Bg_Fishing.Tests.MvcClient.Controllers.PicturesControllerTests
@@ -40,7 +41,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.PicturesControllerTests
 
             // Assert
             StringAssert.Contains("error", result);
-            StringAssert.Contains("Опитвате се да потвърдите невалидно изображение!", result);
+            StringAssert.Contains(GlobalMessages.ConfirmImageErrorMessage, result);
         }
 
         [Test]
@@ -72,7 +73,7 @@ namespace Bg_Fishing.Tests.MvcClient.Controllers.PicturesControllerTests
 
             // Assert
             StringAssert.Contains("success", result);
-            StringAssert.Contains("Изображението е потвърдено", result);
+            StringAssert.Contains(GlobalMessages.ConfirmImageSuccessMessage, result);
 
             mockedImageGalleryService.Verify(s => s.ConfirmImage(mockedImageId), Times.Once);
         }

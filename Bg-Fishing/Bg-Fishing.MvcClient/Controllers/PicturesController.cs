@@ -155,11 +155,11 @@ namespace Bg_Fishing.MvcClient.Controllers
                 this.imageGalleryService.ConfirmImage(imageId);
                 this.imageGalleryService.Save();
 
-                return JsonConvert.SerializeObject(new { status = "success", message = "Изображението е потвърдено" });
+                return JsonConvert.SerializeObject(new { status = "success", message = GlobalMessages.ConfirmImageSuccessMessage });
             }
             catch (NullReferenceException)
             {
-                return JsonConvert.SerializeObject(new { status = "error", message = "Опитвате се да потвърдите невалидно изображение!" });
+                return JsonConvert.SerializeObject(new { status = "error", message = GlobalMessages.ConfirmImageErrorMessage });
             }
         }
 

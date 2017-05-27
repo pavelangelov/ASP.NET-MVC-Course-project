@@ -87,5 +87,20 @@
         public const string NoFileErrorMessage = "Не е избран файл!";
 
         #endregion
+
+        #region HomeController
+
+        public const string AddNewsCommentSuccessKey = "AddCommentSuccess";
+        public const string AddNewsCommentSuccessMessage = "Коментара е добавен.";
+        public const string AddNewsCommentErrorMessage = "Визникна грешка при добавянето на коментара!";
+
+        #endregion
+
+        #region PicturesController
+
+        public const string ConfirmImageSuccessMessage = "Изображението е потвърдено";
+        public const string ConfirmImageErrorMessage = "Опитвате се да потвърдите невалидно изображение!";
+
+        #endregion
     }
 }

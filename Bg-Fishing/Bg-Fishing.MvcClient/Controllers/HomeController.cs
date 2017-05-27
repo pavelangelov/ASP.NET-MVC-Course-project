@@ -77,19 +77,19 @@ namespace Bg_Fishing.MvcClient.Controllers
 
                     this.newsService.Save();
 
-                    TempData["AddCommentSuccess"] = "Коментара е добавен.";
+                    TempData[GlobalMessages.AddNewsCommentSuccessKey] = GlobalMessages.AddNewsCommentSuccessMessage;
 
                     return RedirectToAction("News", new { newsId = news.Id });
                 }
                 catch (System.Exception)
                 {
-                    ModelState.AddModelError("", "Визникна грешка при добавянето на коментара!");
-                    TempData.Remove("AddCommentSuccess");
+                    ModelState.AddModelError("", GlobalMessages.AddNewsCommentErrorMessage);
+                    TempData.Remove(GlobalMessages.AddNewsCommentSuccessKey);
                 }
             }
             else
             {
-                TempData.Remove("AddCommentSuccess");
+                TempData.Remove(GlobalMessages.AddNewsCommentSuccessKey);
             }
             
             model.News = this.newsService.GetNewsById(news.Id);
