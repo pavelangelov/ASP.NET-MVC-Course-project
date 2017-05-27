@@ -5,7 +5,7 @@ $('#galleries-select').on('change', (ev) => {
         defaultValue = $('select#galleries-select option:first').val();
 
     if (value && value != defaultValue) {
-        $.get(`/api/images/${value}`, (data) => {
+        $.get(`/api/images/unconfirmed/${value}`, (data) => {
             let images = JSON.parse(data).result,
                 fragment = $('<div />');
 

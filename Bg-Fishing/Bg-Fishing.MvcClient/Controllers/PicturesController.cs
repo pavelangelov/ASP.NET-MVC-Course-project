@@ -98,6 +98,7 @@ namespace Bg_Fishing.MvcClient.Controllers
                         if (gallery == null)
                         {
                             gallery = this.imageGalleryFactory.CreateImageGallery(model.Name, model.SelectedLakeId);
+                            this.imageGalleryService.Add(gallery);
                         }
 
                         gallery.Images.Add(image);

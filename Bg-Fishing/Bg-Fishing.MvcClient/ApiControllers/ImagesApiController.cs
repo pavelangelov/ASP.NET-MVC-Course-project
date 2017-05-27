@@ -20,9 +20,9 @@ namespace Bg_Fishing.MvcClient.ApiControllers
 
         [HttpGet]
         [Authorize(Roles = "Moderator")]
-        public string GetUnconfirmedFromGallery(string id)
+        public string GetUnconfirmedFromGallery(string galleryId)
         {
-            var images = this.imageGalleryService.GetAllUnconfirmed(id);
+            var images = this.imageGalleryService.GetAllUnconfirmed(galleryId);
 
             var result = JsonConvert.SerializeObject(new { result = images });
             return result;

@@ -45,6 +45,12 @@ namespace Bg_Fishing.MvcClient
             );
 
             config.Routes.MapHttpRoute(
+                name: "GetUnconfirmedImages",
+                routeTemplate: "api/images/unconfirmed/{galleryId}",
+                defaults: new { controller = "ImagesApi", action = "GetUnconfirmedFromGallery" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "VideosController",
                 routeTemplate: "api/videos/{galleryId}",
                 defaults: new { controller = "VideosApi", action = "GetVideos" }

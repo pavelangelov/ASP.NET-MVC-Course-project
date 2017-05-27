@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="col-sm-8 col-sm-offset-2">
-        @using (Html.BeginForm("Add", "Image", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Add", "Pictures", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
