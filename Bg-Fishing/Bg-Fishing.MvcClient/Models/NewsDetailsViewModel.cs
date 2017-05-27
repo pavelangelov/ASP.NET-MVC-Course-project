@@ -1,21 +1,20 @@
-﻿using Bg_Fishing.Services.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+using Bg_Fishing.Services.Models;
 using Bg_Fishing.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Bg_Fishing.MvcClient.Models
 {
     public class NewsDetailsViewModel
     {
-        [Required]
-        [Display(Name = "Коментар")]
+        [Required(
+            ErrorMessageResourceType = typeof(Resources.ValidationMessages),
+            ErrorMessageResourceName = Constants.RequiredPropertyResourceKey)]
+        [Display(Name = ViewModelsDisplayNames.ContentProperty_DisplayName)]
         [StringLength(Constants.CommentContentMaxLength, 
             MinimumLength = 1, 
             ErrorMessageResourceType = typeof(Resources.ValidationMessages),
-            ErrorMessageResourceName = "StringLengthErrorMessage")]
+            ErrorMessageResourceName = Constants.StringLengthResourceKey)]
         public string Content { get; set; }
 
         public string NewsId { get; set; }

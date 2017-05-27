@@ -67,5 +67,11 @@
         public const string GalleriesSelect_DisplayName = "Изберете категория от която да премахнете видео";
 
         #endregion
+
+        #region NewsDetailsViewModel
+
+        public const string ContentProperty_DisplayName = "Коментар";
+
+        #endregion
     }
 }
