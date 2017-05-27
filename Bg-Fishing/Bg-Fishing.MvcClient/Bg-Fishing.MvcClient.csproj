@@ -428,6 +428,7 @@
     <Content Include="Scripts\page-scripts\get-coordinates.js" />
     <Content Include="Scripts\page-scripts\hide-result.js" />
     <Content Include="Scripts\page-scripts\home.js" />
+    <Content Include="Scripts\page-scripts\image-validator.js" />
     <Content Include="Scripts\page-scripts\images-gallery.js" />
     <Content Include="Scripts\page-scripts\load-comments.js" />
     <Content Include="Scripts\page-scripts\nav-partial-script.js" />
@@ -436,6 +437,7 @@
     <Content Include="Scripts\page-scripts\show-location.js" />
     <Content Include="Scripts\page-scripts\show-videos.js" />
     <Content Include="Scripts\page-scripts\update-fish.js" />
+    <Content Include="Scripts\page-scripts\upload-video.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />

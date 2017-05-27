@@ -67,30 +67,7 @@
     </script>
     <script src="~/Scripts/page-scripts/show-location.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeGSalPydnhkGJ062cG7fWICeCJrS2zm4&callback=myMap"></script>
-    <script>
-        $('.container').on('click', '.load-comments', (ev) => {
-            $('#comment-form').hide();
-            $('#comments').show();
-            let name = $(ev.target).attr('data-name'),
-                page = $(ev.target).attr('data-page');
-
-            let container = $('#comments');
-
-            if (name == undefined) {
-                return;
-            }
-            $.ajax({
-                method: 'GET',
-                url: `/Lakes/GetComments?name=${name}&page=${page}`,
-                success: (data) => {
-                    container.html(data);
-                },
-                error: (err) => {
-                    console.log(err.message)
-                }
-            });
-        })
-    </script>
+    <script src="~/Scripts/page-scripts/load-comments.js"></script>
     <script src="~/Scripts/page-scripts/comments-signalr.js"></script>
     @if (User.Identity.IsAuthenticated)
     {
