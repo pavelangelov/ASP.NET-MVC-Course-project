@@ -1,4 +1,4 @@
-﻿"use strict"
+﻿'use strict';
 
 //=====================================================================================
 //                   Load available galleries when lake is selected

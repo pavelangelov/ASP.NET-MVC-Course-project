@@ -1,4 +1,6 @@
-﻿$('.container').on('click', 'a.show-more-btn', (ev) => {
+﻿'use strict';
+
+$('.container').on('click', 'a.show-more-btn', (ev) => {
     ev.preventDefault();
     let $this = $(ev.target);
 

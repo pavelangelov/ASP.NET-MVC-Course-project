@@ -1,4 +1,6 @@
-﻿$('#geo-click').on('click', (ev) => {
+﻿'use strict';
+
+$('#geo-click').on('click', (ev) => {
     ev.preventDefault();
     let address = $('#address-input').val().replace(' ', '+');
     let url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + keys.GeocodingWebKey;

@@ -1,4 +1,6 @@
-﻿$('#add').on('click', (ev) => {
+﻿'use strict';
+
+$('#add').on('click', (ev) => {
     ev.preventDefault();
     let name = $('#LocationName').val(),
         latitude = $('#Latitude').val(),

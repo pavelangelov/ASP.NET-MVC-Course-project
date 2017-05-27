@@ -1,4 +1,6 @@
-﻿$(function() {
+﻿'use strict';
+
+$(function () {
       $('#file-value').bind('change', function () {
           let fileSize = this.files[0].size,
               maxSize = 3 * 1024 * 1000;

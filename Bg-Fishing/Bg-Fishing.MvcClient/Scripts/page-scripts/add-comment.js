@@ -1,4 +1,6 @@
-﻿$('#submit-btn').on('click', (ev) => {
+﻿'use strict';
+
+$('#submit-btn').on('click', (ev) => {
     ev.preventDefault();
     $('#comments').hide();
     let content = $('#comment-content').val(),

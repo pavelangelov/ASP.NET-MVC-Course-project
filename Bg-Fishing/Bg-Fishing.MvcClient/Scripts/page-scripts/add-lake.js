@@ -1,4 +1,6 @@
-﻿$('#add-lake').on('click', (ev) => {
+﻿'use strict';
+
+$('#add-lake').on('click', (ev) => {
     ev.preventDefault();
     let data = {
         name: $('#Name').val(),

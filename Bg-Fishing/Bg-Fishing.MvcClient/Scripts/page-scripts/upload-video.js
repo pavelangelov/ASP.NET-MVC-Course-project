@@ -1,4 +1,6 @@
-﻿$('#video-upload').on('click', (ev) => {
+﻿'use strict';
+
+$('#video-upload').on('click', (ev) => {
         ev.preventDefault();
         var form = $('form');
         var token = $('input[name="__RequestVerificationToken"]', form).val();

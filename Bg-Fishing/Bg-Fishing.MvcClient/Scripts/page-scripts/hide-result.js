@@ -1,4 +1,6 @@
-﻿setTimeout(function () {
+﻿'use strict';
+
+setTimeout(function () {
     $('p.result').fadeOut('fast');
 }, 3000);
 

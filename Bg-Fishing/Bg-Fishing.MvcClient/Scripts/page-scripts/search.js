@@ -1,4 +1,6 @@
-﻿$('#search-btn').on('click', (ev) => {
+﻿'use strict';
+
+$('#search-btn').on('click', (ev) => {
     ev.preventDefault();
     let value = $('#search-value').val();
     if (value !== undefined && value.length > 2) {

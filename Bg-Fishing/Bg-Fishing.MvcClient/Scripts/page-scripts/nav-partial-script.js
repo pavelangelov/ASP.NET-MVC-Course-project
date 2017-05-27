@@ -1,4 +1,6 @@
-﻿// Collapse accordion every time dropdown is shown
+﻿'use strict';
+
+// Collapse accordion every time dropdown is shown
 $('.dropdown-accordion').on('show.bs.dropdown', function (event) {
     var accordion = $(this).find($(this).data('accordion'));
     accordion.find('.panel-collapse.in').collapse('hide');

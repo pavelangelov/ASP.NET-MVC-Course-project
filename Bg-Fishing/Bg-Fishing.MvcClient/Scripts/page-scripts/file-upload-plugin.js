@@ -2,7 +2,7 @@
 //                                   Plugin for file-upload
 //=====================================================================================
 (function ($) {
-    "use strict";
+    'use strict';
 
     var isIE = window.navigator.appName == 'Microsoft Internet Explorer'
 

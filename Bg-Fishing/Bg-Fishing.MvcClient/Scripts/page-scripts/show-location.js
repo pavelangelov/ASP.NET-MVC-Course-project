@@ -1,4 +1,6 @@
-﻿function myMap() {
+﻿'use strict';
+
+function myMap() {
     var mapOptions = {
         center: new google.maps.LatLng(lat, long),
         zoom: 12,
