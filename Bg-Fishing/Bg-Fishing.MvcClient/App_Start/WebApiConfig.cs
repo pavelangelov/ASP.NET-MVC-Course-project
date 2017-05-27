@@ -23,7 +23,7 @@ namespace Bg_Fishing.MvcClient
             config.Routes.MapHttpRoute(
                 name: "AddInnerComment",
                 routeTemplate: "api/comments/add/{id}/{content}",
-                defaults: new { controller = "CommentsApi" }
+                defaults: new { controller = "CommentsApi", action = "Add" }
                 );
 
             config.Routes.MapHttpRoute(

@@ -48,9 +48,12 @@ $('#comments').on('click', 'a.add-response', (ev) => {
 
     $.ajax({
         method: 'POST',
-        url: `/api/comments/add?commentId=${commentId}&content=${content}`,
+        url: `/api/comments/add/${commentId}/${content}`,
         success: (response) => {
-            $('#load-comments').trigger('click');
+            $('.load-comments').trigger('click');
+            if (response != 'success') {
+                console.log(response);
+            }
         },
         error: (err) => {
             console.log(err);

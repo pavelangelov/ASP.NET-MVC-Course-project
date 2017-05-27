@@ -43,7 +43,7 @@ namespace Bg_Fishing.MvcClient.ApiControllers
 
         [HttpPost]
         [Authorize]
-        public string Add(string commentId, string content)
+        public string Add(string id, string content)
         {
             var username = User.Identity.Name;
             var date = this.dateProvider.GetDate();
@@ -51,7 +51,7 @@ namespace Bg_Fishing.MvcClient.ApiControllers
             {
                 var innerComment = this.innerCommentFactory.CreateInnerComment(content, username, date);
             
-                var comment = this.commentService.FindById(commentId);
+                var comment = this.commentService.FindById(id);
 
                 comment.Comments.Add(innerComment);
                 this.commentService.Save();
