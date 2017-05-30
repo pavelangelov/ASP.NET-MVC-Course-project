@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 /Bg-Fishing/OpenCover
 /Bg-Fishing/Bg-Fishing.MvcClient/Images/Galleries/
+/Bg-Fishing/Bg-Fishing.MvcClient/Images/News
